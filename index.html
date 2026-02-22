@@ -5,283 +5,234 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkillMirror | Structured Hiring Intelligence</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-html { scroll-behavior:smooth; }
+*{box-sizing:border-box;}
 body{
 margin:0;
 font-family:'Inter',sans-serif;
+background:linear-gradient(135deg,#0f172a 0%,#111827 50%,#1e1b4b 100%);
 color:#fff;
-background: radial-gradient(circle at 20% 30%, #1e1b4b, transparent 40%),
-            radial-gradient(circle at 80% 70%, #312e81, transparent 40%),
-            #0f172a;
-overflow-x:hidden;
 }
 
-/* Floating blur */
-body::before, body::after{
-content:"";
-position:fixed;
-width:400px;
-height:400px;
-background:rgba(99,102,241,0.25);
-filter:blur(120px);
-z-index:-1;
-}
-body::before{top:-100px;left:-100px;}
-body::after{bottom:-120px;right:-120px;}
-
-.glass{
-background:rgba(255,255,255,0.06);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.1);
-box-shadow:0 8px 32px rgba(0,0,0,0.3);
-border-radius:20px;
+/* Container */
+.container{
+max-width:1200px;
+margin:0 auto;
+padding:0 24px;
 }
 
-section{padding:100px 7%;}
-h1{font-size:clamp(30px,5vw,52px);line-height:1.2;}
-h2{font-size:clamp(24px,4vw,36px);margin-bottom:20px;}
-p{color:#cbd5e1;max-width:800px;}
-
+/* Navigation */
 .nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 7%;
-position:sticky;
-top:0;
-z-index:1000;
+padding:24px 0;
 }
-
 .nav a{
 color:#cbd5e1;
 text-decoration:none;
-margin-left:20px;
+margin-left:24px;
 font-size:14px;
 }
+.nav a:hover{color:#fff;}
 
+/* Hero */
 .hero{
-display:flex;
-flex-wrap:wrap;
-align-items:center;
-gap:60px;
+padding:100px 0 120px 0;
 }
-
-.metric{
-font-size:36px;
-font-weight:700;
+.hero-grid{
+display:grid;
+grid-template-columns:1.1fr 0.9fr;
+gap:60px;
+align-items:center;
+}
+.hero h1{
+font-size:52px;
+line-height:1.1;
+margin-bottom:24px;
+}
+.hero p{
+color:#94a3b8;
+font-size:18px;
+max-width:540px;
+line-height:1.6;
 }
 
 .btn{
-background:#6366f1;
-color:#fff;
-padding:14px 26px;
-border-radius:12px;
-text-decoration:none;
 display:inline-block;
-margin-top:20px;
-box-shadow:0 8px 20px rgba(99,102,241,0.4);
+margin-top:32px;
+padding:14px 28px;
+background:#6366f1;
+border-radius:10px;
+text-decoration:none;
+color:#fff;
+font-weight:500;
 transition:0.3s;
 }
-.btn:hover{transform:translateY(-2px);}
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(99,102,241,0.4);
+}
 
-.center{text-align:center;}
+/* Glass Card */
+.glass-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:20px;
+box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
 
+.metric{
+font-size:42px;
+font-weight:700;
+margin-bottom:8px;
+}
+.metric-label{
+color:#94a3b8;
+margin-bottom:24px;
+}
+
+/* Sections */
+.section{
+padding:120px 0;
+}
+.section h2{
+font-size:36px;
+margin-bottom:20px;
+}
+.section p{
+color:#94a3b8;
+max-width:700px;
+line-height:1.7;
+}
+
+/* Feature Grid */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(3,1fr);
 gap:30px;
-margin-top:40px;
+margin-top:60px;
 }
 
-.step{
-padding:25px;
-text-align:center;
-cursor:pointer;
-transition:0.3s;
-}
-.step.active{background:rgba(99,102,241,0.25);}
-
-select,input[type="file"]{
-width:100%;
-max-width:400px;
-background:rgba(255,255,255,0.08);
-color:#fff;
-border:1px solid rgba(255,255,255,0.15);
-padding:12px;
-border-radius:10px;
-margin-top:15px;
+.feature{
+padding:30px;
+background:rgba(255,255,255,0.04);
+border-radius:16px;
+border:1px solid rgba(255,255,255,0.08);
 }
 
-.progress-container{
-width:100%;
-background:rgba(255,255,255,0.08);
-border-radius:8px;
-margin-top:10px;
-}
-.progress-bar{
-width:0%;
-height:12px;
-background:#6366f1;
-border-radius:8px;
-transition:width 0.3s;
-}
-
+/* Footer */
 footer{
+padding:60px 0;
 text-align:center;
-padding:60px 7%;
-color:#94a3b8;
+color:#6b7280;
+border-top:1px solid rgba(255,255,255,0.08);
 }
 
-@media(max-width:768px){
-.hero{flex-direction:column;}
-.nav{flex-direction:column;gap:10px;}
+/* Responsive */
+@media(max-width:992px){
+.hero-grid{grid-template-columns:1fr;}
+.grid{grid-template-columns:1fr;}
+.hero h1{font-size:38px;}
 }
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <!-- NAV -->
-<div class="nav glass">
+<div class="nav">
 <strong>SkillMirror</strong>
 <div>
-<a href="#problem">Problem</a>
-<a href="#intelligence">Intelligence</a>
-<a href="#demo">Live Demo</a>
+<a href="#">Problem</a>
+<a href="#">Intelligence</a>
+<a href="#">Live Demo</a>
 <a href="#">Request Demo</a>
 </div>
 </div>
 
 <!-- HERO -->
-<section>
-<div class="hero">
+<section class="hero">
+<div class="hero-grid">
+
 <div>
 <h1>Structured Hiring Intelligence for High-Performance Teams</h1>
 <p>
-SkillMirror transforms hiring from subjective screening into structured, explainable intelligence. 
-Model role requirements. Quantify candidate alignment. Make defensible decisions with confidence.
+SkillMirror transforms hiring from subjective screening into structured,
+multi-dimensional decision intelligence. Model roles, quantify alignment,
+and make defensible hiring decisions with measurable confidence.
 </p>
 <a href="#" class="btn">Request a Demo</a>
 </div>
 
-<div class="glass" style="padding:40px;">
+<div class="glass-card">
 <h3>Hiring Intelligence Snapshot</h3>
-<div class="metric" id="alignment">0%</div>
-<p>Alignment Score</p>
-<div class="metric" id="confidence">0%</div>
-<p>Confidence Index</p>
-<div class="metric" id="risk">0%</div>
-<p>Risk Indicator</p>
+
+<div class="metric">91%</div>
+<div class="metric-label">Alignment Score</div>
+
+<div class="metric">88%</div>
+<div class="metric-label">Confidence Index</div>
+
+<div class="metric">12%</div>
+<div class="metric-label">Risk Indicator</div>
+
 </div>
+
 </div>
 </section>
 
 <!-- PROBLEM -->
-<section id="problem" class="center">
+<section class="section">
 <h2>The Cost of Unstructured Hiring</h2>
 <p>
-Traditional hiring relies on keyword filters, fragmented interview notes, and subjective judgment.
-As organizations scale, inconsistency increases, bias exposure grows, and executive confidence declines.
+Traditional hiring systems rely on keyword filters, fragmented interviews,
+and subjective evaluations. As teams scale, inconsistency grows and decision
+confidence declines.
 </p>
 </section>
 
 <!-- INTELLIGENCE -->
-<section id="intelligence" class="center">
-<h2>Multi-Dimensional Alignment Scoring</h2>
+<section class="section">
+<h2>Multi-Dimensional Hiring Intelligence</h2>
 <p>
-Every candidate is evaluated across structured capability layers including depth, context, behavioral alignment, and transferable skills.
+SkillMirror evaluates every candidate across structured capability layers
+including skill depth, experience context, behavioral alignment, and
+transferable potential.
 </p>
-<div class="glass" style="padding:30px;margin-top:40px;">
-<canvas id="alignmentChart"></canvas>
-</div>
-</section>
 
-<!-- PIPELINE -->
-<section class="center">
-<h2>Structured Intelligence Pipeline</h2>
 <div class="grid">
-<div class="glass step active" onclick="activate(this)">
-<strong>Role Modeling</strong><br><br>
-Break roles into structured capability blueprints.
-</div>
-<div class="glass step" onclick="activate(this)">
-<strong>Candidate Modeling</strong><br><br>
-Convert resumes and interviews into signal maps.
-</div>
-<div class="glass step" onclick="activate(this)">
-<strong>Alignment Engine</strong><br><br>
-Generate multi-dimensional fit scoring.
-</div>
-<div class="glass step" onclick="activate(this)">
-<strong>Confidence Layer</strong><br><br>
-Quantify reliability and risk indicators.
-</div>
-</div>
-</section>
 
-<!-- LIVE DEMO -->
-<section id="demo" class="center">
-<h2>Experience Structured Hiring in Action</h2>
-<p>Select a role and upload a resume to simulate SkillMirror’s intelligence engine.</p>
-
-<div class="glass" style="padding:40px;max-width:700px;margin:40px auto;">
-
-<select id="roleSelect">
-<option value="">Select Role</option>
-<option value="engineer">Software Engineer</option>
-<option value="product">Product Manager</option>
-<option value="sales">Sales Manager</option>
-</select>
-
-<input type="file" id="resumeUpload">
-
-<button class="btn" onclick="runSimulation()">Analyze Resume</button>
-
-<div id="loading" style="display:none;margin-top:20px;">
-<p>SkillBot is structuring signals...</p>
-<div class="progress-container">
-<div id="progressBar" class="progress-bar"></div>
-</div>
+<div class="feature">
+<strong>Role Modeling</strong>
+<p>Convert job descriptions into structured capability blueprints.</p>
 </div>
 
-<div id="results" style="display:none;margin-top:30px;text-align:left;">
-<h3>Structured Evaluation Output</h3>
-<p><strong>Role:</strong> <span id="selectedRole"></span></p>
-<p><strong>Alignment:</strong> <span id="demoAlignment"></span></p>
-<p><strong>Confidence:</strong> <span id="demoConfidence"></span></p>
-<p><strong>Risk:</strong> <span id="demoRisk"></span></p>
+<div class="feature">
+<strong>Alignment Engine</strong>
+<p>Generate weighted, explainable multi-dimensional scoring.</p>
 </div>
 
+<div class="feature">
+<strong>Confidence Layer</strong>
+<p>Quantify decision reliability and risk exposure.</p>
 </div>
-</section>
 
-<!-- IMPACT -->
-<section class="center">
-<h2>Business Impact</h2>
-<div class="grid">
-<div class="glass" style="padding:30px;">
-<strong>Reduce Time-to-Hire</strong><br><br>
-Structured ranking accelerates shortlisting and executive approvals.
-</div>
-<div class="glass" style="padding:30px;">
-<strong>Improve Quality-of-Hire</strong><br><br>
-Alignment scoring improves decision consistency.
-</div>
-<div class="glass" style="padding:30px;">
-<strong>Lower Bias Exposure</strong><br><br>
-Standardized evaluation reduces subjective distortions.
-</div>
 </div>
 </section>
 
 <!-- CTA -->
-<section class="center">
+<section class="section">
 <h2>Replace Instinct with Intelligence</h2>
-<p>Build structured, defensible hiring systems for modern organizations.</p>
+<p>
+Move from resume screening to structured hiring infrastructure.
+</p>
 <a href="#" class="btn">Request a Demo</a>
 </section>
 
@@ -289,67 +240,6 @@ Standardized evaluation reduces subjective distortions.
 © 2026 SkillMirror — Structured Hiring Intelligence Infrastructure
 </footer>
 
-<script>
-function animateValue(id,start,end,duration){
-let range=end-start,current=start;
-let stepTime=Math.abs(Math.floor(duration/range));
-let obj=document.getElementById(id);
-let timer=setInterval(()=>{
-current++;
-obj.textContent=current+"%";
-if(current>=end)clearInterval(timer);
-},stepTime);
-}
-animateValue("alignment",0,91,1500);
-animateValue("confidence",0,88,1500);
-animateValue("risk",0,12,1500);
-
-function activate(el){
-document.querySelectorAll(".step").forEach(s=>s.classList.remove("active"));
-el.classList.add("active");
-}
-
-new Chart(document.getElementById('alignmentChart'),{
-type:'bar',
-data:{
-labels:['Skill Depth','Experience Context','Behavior Fit','Transferable Skills'],
-datasets:[{label:'Candidate A',data:[92,85,88,90]}]
-},
-options:{plugins:{legend:{labels:{color:"#fff"}}},
-scales:{y:{ticks:{color:"#fff"}},x:{ticks:{color:"#fff"}}}}
-});
-
-const roleModels={
-engineer:{base:85},
-product:{base:82},
-sales:{base:80}
-};
-
-function runSimulation(){
-const role=document.getElementById("roleSelect").value;
-if(!role){alert("Select a role.");return;}
-document.getElementById("loading").style.display="block";
-let progress=0;
-let interval=setInterval(()=>{
-progress+=5;
-document.getElementById("progressBar").style.width=progress+"%";
-if(progress>=100){
-clearInterval(interval);
-showResults(role);
-}
-},80);
-}
-
-function showResults(role){
-document.getElementById("loading").style.display="none";
-document.getElementById("results").style.display="block";
-let alignment=Math.floor(Math.random()*10)+roleModels[role].base;
-document.getElementById("selectedRole").innerText=role;
-document.getElementById("demoAlignment").innerText=alignment+"%";
-document.getElementById("demoConfidence").innerText=alignment>88?"High":"Moderate";
-document.getElementById("demoRisk").innerText=alignment>88?"Low":"Medium";
-}
-</script>
-
+</div>
 </body>
 </html>
