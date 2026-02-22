@@ -24,7 +24,7 @@ margin:auto;
 header{
 position:fixed;
 width:100%;
-background:rgba(15,23,42,0.6);
+background:rgba(15,23,42,0.7);
 backdrop-filter:blur(12px);
 z-index:1000;
 }
@@ -33,11 +33,20 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 0;
+padding:18px 0;
 flex-wrap:wrap;
 }
 
-.logo{font-weight:800;font-size:20px;color:white}
+.logo{
+display:flex;
+align-items:center;
+}
+
+.logo img{
+height:42px;
+width:auto;
+display:block;
+}
 
 nav a{
 margin-left:20px;
@@ -54,8 +63,8 @@ border-radius:12px;
 text-decoration:none;
 font-weight:600;
 transition:0.3s;
-display:inline-block;
 }
+
 .btn:hover{
 transform:translateY(-2px);
 box-shadow:0 0 20px rgba(34,197,94,0.6);
@@ -77,7 +86,7 @@ min-width:280px;
 }
 
 .hero h1{
-font-size:48px;
+font-size:46px;
 line-height:1.1;
 margin-bottom:20px;
 background:linear-gradient(90deg,#ffffff,#94a3b8);
@@ -89,151 +98,12 @@ background:linear-gradient(90deg,#ffffff,#94a3b8);
 font-size:18px;
 color:#94a3b8;
 margin-bottom:30px;
-}
-
-.glass{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-backdrop-filter:blur(20px);
-border-radius:20px;
-box-shadow:0 20px 60px rgba(0,0,0,0.5);
-}
-
-.dashboard{
-flex:1;
-min-width:280px;
-padding:25px;
-}
-
-.metric-row{
-display:flex;
-justify-content:space-between;
-margin-top:20px;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.metric-block{
-flex:1;
-min-width:80px;
-text-align:center;
-}
-
-.big-number{
-font-size:28px;
-font-weight:800;
-}
-
-.metric-title{
-font-size:12px;
-color:#94a3b8;
-margin-top:4px;
-}
-
-.progress{
-height:8px;
-background:rgba(255,255,255,0.1);
-border-radius:20px;
-overflow:hidden;
-margin-top:6px;
-}
-
-.progress-fill{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#22c55e,#16a34a);
-transition:width 1.2s ease;
-}
-
-.progress-fill.blue{
-background:linear-gradient(90deg,#2563eb,#38bdf8);
-}
-
-.progress-fill.green{
-background:linear-gradient(90deg,#22c55e,#4ade80);
+max-width:520px;
 }
 
 .section{
 padding:100px 0;
-}
-
-.section h2{
 text-align:center;
-font-size:32px;
-margin-bottom:50px;
-}
-
-.pipeline-progress{
-height:6px;
-background:rgba(255,255,255,0.08);
-border-radius:20px;
-margin-bottom:40px;
-overflow:hidden;
-}
-
-.pipeline-fill{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#22c55e,#2563eb);
-transition:width 0.6s ease;
-}
-
-.timeline{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-margin-bottom:30px;
-}
-
-.step{
-padding:10px 18px;
-border-radius:40px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-cursor:pointer;
-transition:0.3s;
-font-size:14px;
-}
-
-.step.active{
-background:linear-gradient(135deg,#22c55e,#2563eb);
-}
-
-.workflow-panel{
-padding:30px;
-display:flex;
-flex-wrap:wrap;
-gap:30px;
-}
-
-.workflow-left, .workflow-right{
-flex:1;
-min-width:260px;
-}
-
-.workflow-right{
-background:rgba(255,255,255,0.05);
-border-radius:12px;
-padding:15px;
-}
-
-.metric-box{
-background:rgba(255,255,255,0.06);
-padding:12px;
-border-radius:10px;
-margin-top:10px;
-}
-
-textarea{
-width:100%;
-height:120px;
-padding:12px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,0.1);
-background:rgba(255,255,255,0.05);
-color:white;
-margin-top:8px;
 }
 
 footer{
@@ -242,26 +112,27 @@ padding:60px 0;
 color:#64748b;
 }
 
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width:768px){
 
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
 .hero h1{
-font-size:36px;
-}
-
-.metric-row{
-flex-direction:column;
-align-items:center;
-}
-
-.workflow-panel{
-flex-direction:column;
+font-size:32px;
 }
 
 nav{
 flex-direction:column;
 align-items:flex-start;
 gap:10px;
+}
+
+nav a{
+margin-left:0;
+margin-right:15px;
 }
 
 }
@@ -273,12 +144,18 @@ gap:10px;
 <header>
 <div class="container">
 <nav>
-<div class="logo">SkillMirror</div>
+
+<div class="logo">
+<!-- USE YOUR TRANSPARENT PNG HERE -->
+<img src="logo.png" alt="SkillMirror Logo">
+</div>
+
 <div>
 <a href="#workflow">Workflow</a>
 <a href="#demo">Live Demo</a>
 <a href="#cta" class="btn">Request a Demo</a>
 </div>
+
 </nav>
 </div>
 </header>
@@ -286,120 +163,23 @@ gap:10px;
 <section class="hero container">
 <div class="hero-content">
 <h1>AI Copilot for Intelligent Hiring.</h1>
-<p>Enterprise-grade hiring intelligence powered by structured analytics and guided recruiter decisions.</p>
-<a href="#workflow" class="btn">Explore Workflow</a>
-</div>
-
-<div class="dashboard glass">
-<h3>AI Hiring Intelligence Dashboard</h3>
-
-<div class="metric-row">
-<div class="metric-block">
-<div class="big-number" id="matchScore">0%</div>
-<div class="metric-title">Role Match</div>
-</div>
-<div class="metric-block">
-<div class="big-number" id="confidenceScore">0.00</div>
-<div class="metric-title">Confidence</div>
-</div>
-<div class="metric-block">
-<div class="big-number" id="riskLevel">Low</div>
-<div class="metric-title">Risk</div>
-</div>
-</div>
-
-<div style="margin-top:20px;">
-<div>Leadership Signal</div>
-<div class="progress"><div id="leadershipBar" class="progress-fill"></div></div>
-
-<div style="margin-top:12px;">Domain Alignment</div>
-<div class="progress"><div id="domainBar" class="progress-fill blue"></div></div>
-
-<div style="margin-top:12px;">Experience Depth</div>
-<div class="progress"><div id="experienceBar" class="progress-fill green"></div></div>
-</div>
-</div>
-</section>
-
-<section class="section" id="workflow">
-<div class="container">
-<h2>Interactive Hiring Intelligence Flow</h2>
-
-<div class="pipeline-progress">
-<div class="pipeline-fill" id="pipelineFill"></div>
-</div>
-
-<div class="timeline">
-<div class="step active" data-step="1">Define</div>
-<div class="step" data-step="2">Ingestion</div>
-<div class="step" data-step="3">Intelligence</div>
-<div class="step" data-step="4">Ranking</div>
-<div class="step" data-step="5">Decision</div>
-</div>
-
-<div id="workflowPanel" class="workflow-panel glass"></div>
+<p>
+Enterprise-grade hiring intelligence powered by structured analytics,
+predictive modeling and guided recruiter decisions.
+</p>
+<a href="#cta" class="btn">Request a Demo</a>
 </div>
 </section>
 
 <section class="section" id="cta">
-<div class="container" style="text-align:center;">
-<h2>Ready to Transform Your Hiring Process?</h2>
+<h2>Transform Your Hiring Process With SkillMirror.</h2>
+<br>
 <a href="#" class="btn">Request a Demo</a>
-</div>
 </section>
 
 <footer>
 © 2026 SkillMirror — AI Hiring Copilot
 </footer>
-
-<script>
-let score=0;
-let target=92;
-let interval=setInterval(()=>{
-if(score>=target){clearInterval(interval)}
-else{score++;document.getElementById("matchScore").innerText=score+"%"}
-},20);
-
-setTimeout(()=>{
-document.getElementById("confidenceScore").innerText="0.91";
-document.getElementById("leadershipBar").style.width="75%";
-document.getElementById("domainBar").style.width="88%";
-document.getElementById("experienceBar").style.width="94%";
-},800);
-
-const workflowPanel=document.getElementById("workflowPanel");
-const pipelineFill=document.getElementById("pipelineFill");
-const workflowSteps=document.querySelectorAll(".step");
-
-workflowSteps.forEach(step=>{
-step.addEventListener("click",()=>{
-workflowSteps.forEach(s=>s.classList.remove("active"));
-step.classList.add("active");
-updateWorkflow(step.dataset.step);
-});
-});
-
-function updateWorkflow(step){
-pipelineFill.style.width=((step-1)/4)*100+"%";
-
-if(step==="1"){
-workflowPanel.innerHTML="<div class='workflow-left'><h3>Role Structuring</h3><div class='metric-box'>Skill Extraction</div><div class='metric-box'>Seniority Mapping</div></div><div class='workflow-right'><ul><li>Node.js</li><li>AWS</li><li>System Design</li></ul></div>";
-}
-if(step==="2"){
-workflowPanel.innerHTML="<div class='workflow-left'><h3>Candidate Parsing</h3><div class='metric-box'>Experience Mapping</div><div class='metric-box'>Impact Detection</div></div><div class='workflow-right'><ul><li>Stability Index 0.84</li><li>Promotion Velocity Positive</li></ul></div>";
-}
-if(step==="3"){
-workflowPanel.innerHTML="<div class='workflow-left'><h3>Intelligence Engine</h3><div class='metric-box'>Alignment Model</div><div class='metric-box'>Confidence Score</div></div><div class='workflow-right'><ul><li>Match 92%</li><li>Confidence 0.91</li></ul></div>";
-}
-if(step==="4"){
-workflowPanel.innerHTML="<div class='workflow-left'><h3>Ranking</h3><div class='metric-box'>Weighted Comparison</div></div><div class='workflow-right'><ol><li>Candidate B</li><li>Candidate A</li></ol></div>";
-}
-if(step==="5"){
-workflowPanel.innerHTML="<div class='workflow-left'><h3>Decision Support</h3><div class='metric-box'>Interview Focus</div><div class='metric-box'>Risk Validation</div></div><div class='workflow-right'><ul><li>Schedule Interview</li></ul></div>";
-}
-}
-updateWorkflow("1");
-</script>
 
 </body>
 </html>
