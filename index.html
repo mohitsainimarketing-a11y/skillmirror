@@ -9,11 +9,12 @@
 <style>
 :root{
 --primary:#0ea5e9;
---primary-dark:#0284c7;
---bg:#f6fbff;
+--primary-soft:rgba(14,165,233,0.12);
+--bg:#f7fbff;
 --card:#ffffff;
 --text:#0f172a;
 --muted:#334155;
+--border:#e2e8f0;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
@@ -25,36 +26,31 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* Subtle Neural Background */
-body::before{
-content:"";
-position:fixed;
-width:800px;
-height:800px;
-background:radial-gradient(circle, rgba(14,165,233,0.15), transparent 70%);
-top:-200px;
-right:-200px;
-z-index:-1;
-animation:floatGlow 12s ease-in-out infinite alternate;
+.container{width:92%;max-width:1150px;margin:auto;}
+section{padding:90px 0;}
+
+.section-header{
+text-align:center;
+max-width:680px;
+margin:0 auto 60px auto;
 }
-@keyframes floatGlow{
-from{transform:translate(0,0);}
-to{transform:translate(-80px,60px);}
+.section-header h2{
+font-size:34px;
+font-weight:700;
+margin-bottom:14px;
+}
+.section-header p{
+color:var(--muted);
+font-size:16px;
+line-height:1.6;
 }
 
-.container{width:92%;max-width:1200px;margin:auto;}
-section{padding:100px 0;}
-
-.section-header{text-align:center;margin-bottom:60px;}
-.section-header h2{font-size:36px;margin-bottom:15px;}
-.section-header p{color:var(--muted);}
-
-/* Header */
+/* HEADER */
 header{
 position:fixed;
 width:100%;
 background:white;
-box-shadow:0 4px 20px rgba(0,0,0,0.05);
+border-bottom:1px solid var(--border);
 z-index:1000;
 }
 
@@ -62,74 +58,95 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 0;
+padding:16px 0;
 }
 
 .logo{
 background:linear-gradient(90deg,#e0f2fe,#f0f9ff);
-padding:8px 20px;
-border-radius:14px;
-box-shadow:0 8px 25px rgba(14,165,233,0.15);
+padding:6px 18px;
+border-radius:12px;
 display:flex;
 align-items:center;
-height:64px;
+height:58px;
+border:1px solid var(--border);
 }
-.logo img{height:64px;}
+
+.logo img{height:56px;}
 
 .btn{
 background:var(--primary);
 color:white;
-padding:12px 26px;
+padding:10px 22px;
 border-radius:8px;
 text-decoration:none;
 font-weight:600;
-transition:0.3s;
+font-size:14px;
+transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
 }
 .btn:hover{
-background:var(--primary-dark);
-box-shadow:0 10px 30px rgba(14,165,233,0.35);
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(14,165,233,0.3);
 }
 
 /* HERO */
 .hero{
-min-height:90vh;
+min-height:85vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:60px;
+gap:50px;
 flex-wrap:wrap;
-padding-top:120px;
+padding-top:110px;
 }
 
-.hero h1{font-size:44px;line-height:1.1;margin-bottom:20px;}
-.hero p{color:var(--muted);margin-bottom:30px;}
+.hero h1{
+font-size:42px;
+line-height:1.1;
+margin-bottom:18px;
+font-weight:800;
+}
+
+.hero p{
+color:var(--muted);
+margin-bottom:26px;
+}
 
 .dashboard{
 flex:1;
 min-width:320px;
 background:var(--card);
-padding:35px;
-border-radius:20px;
-box-shadow:0 25px 70px rgba(14,165,233,0.12);
+padding:32px;
+border-radius:18px;
+border:1px solid var(--border);
+box-shadow:0 20px 50px rgba(14,165,233,0.08);
 position:relative;
-overflow:hidden;
-transition:0.4s;
 }
 
-.dashboard:hover{
-transform:translateY(-6px);
+.dashboard-header{
+display:flex;
+justify-content:space-between;
+margin-bottom:25px;
+font-size:14px;
+color:var(--muted);
 }
 
 .metric{
-margin-bottom:20px;
+margin-bottom:22px;
+}
+
+.metric-title{
+font-size:13px;
+color:var(--muted);
+margin-bottom:6px;
 }
 
 .progress{
-height:8px;
-background:#e2e8f0;
+height:6px;
+background:#edf2f7;
 border-radius:20px;
 overflow:hidden;
 }
+
 .progress-fill{
 height:100%;
 width:0%;
@@ -137,82 +154,101 @@ background:var(--primary);
 transition:width 1.2s cubic-bezier(0.16,1,0.3,1);
 }
 
-/* Radar */
+.metric-value{
+font-size:14px;
+font-weight:600;
+margin-bottom:6px;
+}
+
+/* Radar refined */
 .radar-container{
-margin-top:25px;
+margin-top:20px;
 display:flex;
 justify-content:center;
 }
 
-/* Pipeline */
+/* Pipeline refined */
 .pipeline{
 display:flex;
 justify-content:space-between;
 flex-wrap:wrap;
 gap:20px;
-margin-top:50px;
+margin-top:40px;
 position:relative;
 }
 
-.pipeline::before{
-content:"";
+.pipeline-line{
 position:absolute;
 top:50%;
 left:5%;
 right:5%;
-height:3px;
+height:2px;
 background:linear-gradient(90deg,var(--primary),transparent);
-animation:flowLine 3s linear infinite;
+animation:flow 4s linear infinite;
 }
-@keyframes flowLine{
+
+@keyframes flow{
 from{background-position:0%}
 to{background-position:100%}
 }
 
 .node{
 background:white;
-padding:18px 20px;
-border-radius:14px;
-box-shadow:0 10px 30px rgba(14,165,233,0.08);
-z-index:1;
+padding:16px 18px;
+border-radius:12px;
+border:1px solid var(--border);
+font-size:14px;
+font-weight:500;
+box-shadow:0 8px 20px rgba(14,165,233,0.06);
 }
 
-/* Ranking */
-.ranking{margin-top:50px;max-width:500px;margin-left:auto;margin-right:auto;}
+/* Ranking refined */
+.ranking{
+margin-top:40px;
+max-width:500px;
+margin-left:auto;
+margin-right:auto;
+}
+
 .rank-item{
 background:white;
-padding:18px;
-border-radius:12px;
-margin-bottom:12px;
-box-shadow:0 6px 20px rgba(14,165,233,0.08);
+padding:16px 20px;
+border-radius:10px;
+border:1px solid var(--border);
+margin-bottom:10px;
 display:flex;
 justify-content:space-between;
-transition:0.4s cubic-bezier(0.16,1,0.3,1);
+transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
 }
 
-/* Fade animation */
+.rank-score{
+background:var(--primary-soft);
+color:var(--primary);
+padding:4px 10px;
+border-radius:20px;
+font-size:13px;
+font-weight:600;
+}
+
+/* Scroll refine */
 .fade{
 opacity:0;
-transform:translateY(40px) scale(0.98);
-filter:blur(4px);
-transition:0.8s cubic-bezier(0.16,1,0.3,1);
+transform:translateY(30px);
+transition:0.7s cubic-bezier(0.16,1,0.3,1);
 }
 .fade.visible{
 opacity:1;
-transform:translateY(0) scale(1);
-filter:blur(0);
+transform:translateY(0);
 }
 
-/* CTA */
 .cta{
 text-align:center;
-margin-top:40px;
 }
 
 @media(max-width:768px){
 .hero{flex-direction:column;text-align:center;}
 .pipeline{flex-direction:column;align-items:center;}
-.pipeline::before{display:none;}
+.pipeline-line{display:none;}
 }
 </style>
 </head>
@@ -233,30 +269,36 @@ margin-top:40px;
 <section class="hero container fade">
 <div>
 <h1>Structured Hiring Intelligence for High-Performance Teams.</h1>
-<p>Model role requirements and candidate signals into explainable, multi-dimensional scoring.</p>
+<p>Model role requirements and candidate signals into explainable, multi-dimensional scoring that enables faster and more confident hiring decisions.</p>
 <a href="#cta" class="btn">Schedule Walkthrough</a>
 </div>
 
-<div class="dashboard" id="dashboard">
-<h3>Hiring Intelligence Snapshot</h3>
+<div class="dashboard">
+<div class="dashboard-header">
+<span>Hiring Intelligence Snapshot</span>
+<span>Live Modeling</span>
+</div>
 
 <div class="metric">
-<p>Alignment Score <strong id="score">0%</strong></p>
+<div class="metric-title">Alignment Score</div>
+<div class="metric-value" id="score">0%</div>
 <div class="progress"><div id="bar1" class="progress-fill"></div></div>
 </div>
 
 <div class="metric">
-<p>Confidence Index</p>
+<div class="metric-title">Confidence Index</div>
+<div class="metric-value">High</div>
 <div class="progress"><div id="bar2" class="progress-fill"></div></div>
 </div>
 
 <div class="metric">
-<p>Risk Indicator</p>
+<div class="metric-title">Risk Indicator</div>
+<div class="metric-value">Low</div>
 <div class="progress"><div id="bar3" class="progress-fill"></div></div>
 </div>
 
 <div class="radar-container">
-<canvas id="radar" width="220" height="220"></canvas>
+<canvas id="radar" width="200" height="200"></canvas>
 </div>
 </div>
 </section>
@@ -264,10 +306,11 @@ margin-top:40px;
 <section class="container fade">
 <div class="section-header">
 <h2>Structured Intelligence Pipeline</h2>
-<p>From modeling to ranked output.</p>
+<p>From role modeling to ranked output — fully structured and explainable.</p>
 </div>
 
 <div class="pipeline">
+<div class="pipeline-line"></div>
 <div class="node">Role Modeling</div>
 <div class="node">Candidate Modeling</div>
 <div class="node">Alignment Engine</div>
@@ -275,10 +318,10 @@ margin-top:40px;
 <div class="node">Ranked Output</div>
 </div>
 
-<div class="ranking">
-<div class="rank-item"><span>Candidate A</span><strong>91%</strong></div>
-<div class="rank-item"><span>Candidate B</span><strong>84%</strong></div>
-<div class="rank-item"><span>Candidate C</span><strong>72%</strong></div>
+<div class="ranking" id="ranking">
+<div class="rank-item"><span>Candidate A</span><span class="rank-score">91%</span></div>
+<div class="rank-item"><span>Candidate B</span><span class="rank-score">84%</span></div>
+<div class="rank-item"><span>Candidate C</span><span class="rank-score">72%</span></div>
 </div>
 </div>
 </section>
@@ -291,17 +334,17 @@ margin-top:40px;
 </section>
 
 <script>
-// Scroll Reveal
+// Scroll reveal refined
 const faders=document.querySelectorAll('.fade');
 window.addEventListener('scroll',()=>{
 faders.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight-100){
+if(el.getBoundingClientRect().top < window.innerHeight-80){
 el.classList.add('visible');
 }
 });
 });
 
-// Bars
+// Bars refined
 let s=0,t=91;
 let interval=setInterval(()=>{
 if(s>=t){clearInterval(interval);}
@@ -317,20 +360,26 @@ document.getElementById("bar2").style.width="84%";
 document.getElementById("bar3").style.width="72%";
 },500);
 
-// Radar Graph
+// Radar refined grid
 const canvas=document.getElementById("radar");
 const ctx=canvas.getContext("2d");
+ctx.strokeStyle="#e2e8f0";
+for(let i=1;i<=3;i++){
 ctx.beginPath();
-ctx.moveTo(110,20);
-ctx.lineTo(190,80);
-ctx.lineTo(160,190);
-ctx.lineTo(60,190);
+ctx.arc(100,100,30*i,0,2*Math.PI);
+ctx.stroke();
+}
+ctx.strokeStyle="#0ea5e9";
+ctx.beginPath();
+ctx.moveTo(100,20);
+ctx.lineTo(170,80);
+ctx.lineTo(140,170);
+ctx.lineTo(60,170);
 ctx.lineTo(30,80);
 ctx.closePath();
-ctx.fillStyle="rgba(14,165,233,0.25)";
-ctx.fill();
-ctx.strokeStyle="#0ea5e9";
 ctx.stroke();
+ctx.fillStyle="rgba(14,165,233,0.15)";
+ctx.fill();
 </script>
 
 </body>
