@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkillMirror — Structured Hiring Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --primary:#0ea5e9;
 --primary-dark:#0284c7;
---bg:#f8fbff;
+--bg:#f6fbff;
 --card:#ffffff;
 --text:#0f172a;
---muted:#475569;
+--muted:#334155;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
@@ -21,35 +21,40 @@
 body{
 background:var(--bg);
 color:var(--text);
-scroll-behavior:smooth;
 overflow-x:hidden;
+scroll-behavior:smooth;
+}
+
+/* Subtle Neural Background */
+body::before{
+content:"";
+position:fixed;
+width:800px;
+height:800px;
+background:radial-gradient(circle, rgba(14,165,233,0.15), transparent 70%);
+top:-200px;
+right:-200px;
+z-index:-1;
+animation:floatGlow 12s ease-in-out infinite alternate;
+}
+@keyframes floatGlow{
+from{transform:translate(0,0);}
+to{transform:translate(-80px,60px);}
 }
 
 .container{width:92%;max-width:1200px;margin:auto;}
-section{padding:110px 0;}
+section{padding:100px 0;}
 
-.section-header{
-text-align:center;
-max-width:700px;
-margin:0 auto 70px auto;
-}
+.section-header{text-align:center;margin-bottom:60px;}
+.section-header h2{font-size:36px;margin-bottom:15px;}
+.section-header p{color:var(--muted);}
 
-.section-header h2{
-font-size:36px;
-margin-bottom:18px;
-}
-
-.section-header p{
-color:var(--muted);
-line-height:1.6;
-}
-
-/* HEADER */
+/* Header */
 header{
 position:fixed;
 width:100%;
 background:white;
-box-shadow:0 4px 25px rgba(0,0,0,0.05);
+box-shadow:0 4px 20px rgba(0,0,0,0.05);
 z-index:1000;
 }
 
@@ -62,41 +67,27 @@ padding:18px 0;
 
 .logo{
 background:linear-gradient(90deg,#e0f2fe,#f0f9ff);
-padding:8px 18px;
+padding:8px 20px;
 border-radius:14px;
 box-shadow:0 8px 25px rgba(14,165,233,0.15);
 display:flex;
 align-items:center;
 height:64px;
 }
-
 .logo img{height:64px;}
-
-.nav-links{display:flex;gap:30px;align-items:center;}
-
-nav a{
-text-decoration:none;
-color:var(--muted);
-font-weight:500;
-font-size:14px;
-transition:0.3s;
-}
-
-nav a:hover{color:var(--primary);}
 
 .btn{
 background:var(--primary);
 color:white;
-padding:11px 24px;
+padding:12px 26px;
 border-radius:8px;
 text-decoration:none;
 font-weight:600;
 transition:0.3s;
 }
-
 .btn:hover{
 background:var(--primary-dark);
-box-shadow:0 8px 25px rgba(14,165,233,0.3);
+box-shadow:0 10px 30px rgba(14,165,233,0.35);
 }
 
 /* HERO */
@@ -110,37 +101,29 @@ flex-wrap:wrap;
 padding-top:120px;
 }
 
-.hero-content{flex:1;min-width:280px;}
 .hero h1{font-size:44px;line-height:1.1;margin-bottom:20px;}
 .hero p{color:var(--muted);margin-bottom:30px;}
 
 .dashboard{
 flex:1;
-min-width:300px;
+min-width:320px;
 background:var(--card);
 padding:35px;
-border-radius:18px;
-box-shadow:0 20px 60px rgba(14,165,233,0.12);
-transition:0.4s;
+border-radius:20px;
+box-shadow:0 25px 70px rgba(14,165,233,0.12);
 position:relative;
 overflow:hidden;
+transition:0.4s;
 }
 
-/* Gradient tracking */
-.dashboard::after{
-content:"";
-position:absolute;
-width:300px;
-height:300px;
-background:radial-gradient(circle, rgba(14,165,233,0.25), transparent 60%);
-top:var(--y,50%);
-left:var(--x,50%);
-transform:translate(-50%,-50%);
-pointer-events:none;
-transition:0.1s;
+.dashboard:hover{
+transform:translateY(-6px);
 }
 
-.metric{margin-bottom:25px;}
+.metric{
+margin-bottom:20px;
+}
+
 .progress{
 height:8px;
 background:#e2e8f0;
@@ -151,70 +134,85 @@ overflow:hidden;
 height:100%;
 width:0%;
 background:var(--primary);
-transition:width 1.2s ease;
+transition:width 1.2s cubic-bezier(0.16,1,0.3,1);
 }
 
-/* Radar Chart */
-.radar{
+/* Radar */
+.radar-container{
+margin-top:25px;
 display:flex;
 justify-content:center;
-margin-top:20px;
 }
 
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-}
-
-.card{
-background:var(--card);
-padding:32px;
-border-radius:18px;
-box-shadow:0 15px 45px rgba(14,165,233,0.08);
-transition:0.3s;
-}
-
-.card:hover{transform:translateY(-5px);}
-
-/* Pipeline SVG */
-.pipeline-svg{
+/* Pipeline */
+.pipeline{
 display:flex;
-justify-content:center;
-margin-top:40px;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+margin-top:50px;
+position:relative;
 }
 
-/* Ranking Animation */
-.ranking{
-max-width:500px;
-margin:auto;
-margin-top:40px;
+.pipeline::before{
+content:"";
+position:absolute;
+top:50%;
+left:5%;
+right:5%;
+height:3px;
+background:linear-gradient(90deg,var(--primary),transparent);
+animation:flowLine 3s linear infinite;
+}
+@keyframes flowLine{
+from{background-position:0%}
+to{background-position:100%}
 }
 
-.rank-item{
-background:var(--card);
+.node{
+background:white;
 padding:18px 20px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(14,165,233,0.08);
+z-index:1;
+}
+
+/* Ranking */
+.ranking{margin-top:50px;max-width:500px;margin-left:auto;margin-right:auto;}
+.rank-item{
+background:white;
+padding:18px;
 border-radius:12px;
 margin-bottom:12px;
-box-shadow:0 6px 18px rgba(14,165,233,0.08);
-transition:0.4s;
+box-shadow:0 6px 20px rgba(14,165,233,0.08);
+display:flex;
+justify-content:space-between;
+transition:0.4s cubic-bezier(0.16,1,0.3,1);
 }
 
-/* Scroll fade */
+/* Fade animation */
 .fade{
 opacity:0;
-transform:translateY(30px);
-transition:0.8s ease;
+transform:translateY(40px) scale(0.98);
+filter:blur(4px);
+transition:0.8s cubic-bezier(0.16,1,0.3,1);
 }
 .fade.visible{
 opacity:1;
-transform:translateY(0);
+transform:translateY(0) scale(1);
+filter:blur(0);
 }
 
-/* Responsive */
+/* CTA */
+.cta{
+text-align:center;
+margin-top:40px;
+}
+
 @media(max-width:768px){
 .hero{flex-direction:column;text-align:center;}
+.pipeline{flex-direction:column;align-items:center;}
+.pipeline::before{display:none;}
 }
 </style>
 </head>
@@ -225,19 +223,15 @@ transform:translateY(0);
 <div class="container">
 <nav>
 <div class="logo">
-<img src="skillmirror-logo.png" alt="SkillMirror Logo">
+<img src="skillmirror-logo.png" alt="SkillMirror">
 </div>
-<div class="nav-links">
-<a href="#pipeline">Platform</a>
 <a href="#cta" class="btn">Schedule Walkthrough</a>
-</div>
 </nav>
 </div>
 </header>
 
-<!-- HERO -->
 <section class="hero container fade">
-<div class="hero-content">
+<div>
 <h1>Structured Hiring Intelligence for High-Performance Teams.</h1>
 <p>Model role requirements and candidate signals into explainable, multi-dimensional scoring.</p>
 <a href="#cta" class="btn">Schedule Walkthrough</a>
@@ -261,50 +255,53 @@ transform:translateY(0);
 <div class="progress"><div id="bar3" class="progress-fill"></div></div>
 </div>
 
-<div class="radar">
-<canvas id="radarChart" width="220" height="220"></canvas>
+<div class="radar-container">
+<canvas id="radar" width="220" height="220"></canvas>
 </div>
-
 </div>
 </section>
 
-<!-- PIPELINE -->
-<section id="pipeline" class="fade">
-<div class="container">
+<section class="container fade">
 <div class="section-header">
-<h2>Structured Hiring Intelligence Pipeline</h2>
-<p>From role modeling to ranked output.</p>
+<h2>Structured Intelligence Pipeline</h2>
+<p>From modeling to ranked output.</p>
 </div>
 
-<div class="pipeline-svg">
-<svg width="600" height="120">
-<line x1="50" y1="60" x2="550" y2="60" stroke="#0ea5e9" stroke-width="3" stroke-dasharray="8"/>
-<circle cx="100" cy="60" r="10" fill="#0ea5e9"/>
-<circle cx="250" cy="60" r="10" fill="#0ea5e9"/>
-<circle cx="400" cy="60" r="10" fill="#0ea5e9"/>
-<circle cx="550" cy="60" r="10" fill="#0ea5e9"/>
-</svg>
+<div class="pipeline">
+<div class="node">Role Modeling</div>
+<div class="node">Candidate Modeling</div>
+<div class="node">Alignment Engine</div>
+<div class="node">Confidence Layer</div>
+<div class="node">Ranked Output</div>
 </div>
 
 <div class="ranking">
-<div class="rank-item">Candidate A — 91%</div>
-<div class="rank-item">Candidate B — 84%</div>
-<div class="rank-item">Candidate C — 72%</div>
+<div class="rank-item"><span>Candidate A</span><strong>91%</strong></div>
+<div class="rank-item"><span>Candidate B</span><strong>84%</strong></div>
+<div class="rank-item"><span>Candidate C</span><strong>72%</strong></div>
 </div>
-
 </div>
 </section>
 
-<!-- CTA -->
-<section id="cta" class="fade">
-<div class="container section-header">
-<h2>See Structured Hiring Intelligence in Action.</h2>
+<section id="cta" class="container fade">
+<div class="cta">
+<h2>Experience Structured Hiring Intelligence.</h2>
 <a href="#" class="btn">Schedule Walkthrough</a>
 </div>
 </section>
 
 <script>
-// Metric Animation
+// Scroll Reveal
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){
+el.classList.add('visible');
+}
+});
+});
+
+// Bars
 let s=0,t=91;
 let interval=setInterval(()=>{
 if(s>=t){clearInterval(interval);}
@@ -320,36 +317,19 @@ document.getElementById("bar2").style.width="84%";
 document.getElementById("bar3").style.width="72%";
 },500);
 
-// Scroll Fade
-const faders=document.querySelectorAll(".fade");
-window.addEventListener("scroll",()=>{
-faders.forEach(el=>{
-const rect=el.getBoundingClientRect();
-if(rect.top<window.innerHeight-100){
-el.classList.add("visible");
-}
-});
-});
-
-// Gradient tracking
-const dash=document.getElementById("dashboard");
-dash.addEventListener("mousemove",e=>{
-const rect=dash.getBoundingClientRect();
-dash.style.setProperty("--x",(e.clientX-rect.left)+"px");
-dash.style.setProperty("--y",(e.clientY-rect.top)+"px");
-});
-
-// Simple Radar
-const canvas=document.getElementById("radarChart");
+// Radar Graph
+const canvas=document.getElementById("radar");
 const ctx=canvas.getContext("2d");
-ctx.strokeStyle="#0ea5e9";
 ctx.beginPath();
 ctx.moveTo(110,20);
-ctx.lineTo(180,80);
-ctx.lineTo(150,180);
-ctx.lineTo(70,180);
-ctx.lineTo(40,80);
+ctx.lineTo(190,80);
+ctx.lineTo(160,190);
+ctx.lineTo(60,190);
+ctx.lineTo(30,80);
 ctx.closePath();
+ctx.fillStyle="rgba(14,165,233,0.25)";
+ctx.fill();
+ctx.strokeStyle="#0ea5e9";
 ctx.stroke();
 </script>
 
