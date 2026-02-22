@@ -9,11 +9,11 @@
 <style>
 :root{
 --primary:#0ea5e9;
---primary-soft:rgba(14,165,233,0.12);
---bg:#f7fbff;
+--primary-dark:#0284c7;
+--bg:#f4f9ff;
 --card:#ffffff;
 --text:#0f172a;
---muted:#334155;
+--muted:#475569;
 --border:#e2e8f0;
 }
 
@@ -26,26 +26,18 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-.container{width:92%;max-width:1150px;margin:auto;}
-section{padding:90px 0;}
-
-.section-header{
-text-align:center;
-max-width:680px;
-margin:0 auto 60px auto;
-}
-.section-header h2{
-font-size:34px;
-font-weight:700;
-margin-bottom:14px;
-}
-.section-header p{
-color:var(--muted);
-font-size:16px;
-line-height:1.6;
+.container{
+width:92%;
+max-width:1200px;
+margin:auto;
 }
 
-/* HEADER */
+section{
+padding:110px 0;
+}
+
+/* ---------------- HEADER ---------------- */
+
 header{
 position:fixed;
 width:100%;
@@ -61,82 +53,97 @@ align-items:center;
 padding:16px 0;
 }
 
-.logo{
-background:linear-gradient(90deg,#e0f2fe,#f0f9ff);
-padding:6px 18px;
-border-radius:12px;
-display:flex;
-align-items:center;
-height:58px;
-border:1px solid var(--border);
+.logo img{
+height:42px;
 }
 
-.logo img{height:56px;}
-
 .btn{
-background:var(--primary);
+background:linear-gradient(135deg,var(--primary),var(--primary-dark));
 color:white;
-padding:10px 22px;
+padding:12px 26px;
 border-radius:8px;
 text-decoration:none;
 font-weight:600;
 font-size:14px;
 transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
-}
-.btn:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 25px rgba(14,165,233,0.3);
+box-shadow:0 10px 25px rgba(14,165,233,0.25);
 }
 
-/* HERO */
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 15px 35px rgba(14,165,233,0.35);
+}
+
+/* ---------------- HERO ---------------- */
+
 .hero{
-min-height:85vh;
+min-height:90vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:50px;
+gap:60px;
 flex-wrap:wrap;
-padding-top:110px;
+padding-top:120px;
 }
 
-.hero h1{
-font-size:42px;
+.hero-left{
+flex:1;
+min-width:280px;
+}
+
+.hero-left h1{
+font-size:44px;
+font-weight:800;
 line-height:1.1;
 margin-bottom:18px;
-font-weight:800;
 }
 
-.hero p{
+.hero-left p{
 color:var(--muted);
-margin-bottom:26px;
+margin-bottom:30px;
+font-size:16px;
 }
 
-.dashboard{
+.hero-right{
 flex:1;
 min-width:320px;
-background:var(--card);
-padding:32px;
-border-radius:18px;
-border:1px solid var(--border);
-box-shadow:0 20px 50px rgba(14,165,233,0.08);
+display:flex;
+align-items:center;
+justify-content:center;
 position:relative;
 }
 
-.dashboard-header{
-display:flex;
-justify-content:space-between;
-margin-bottom:25px;
+.dashboard{
+background:var(--card);
+padding:30px;
+border-radius:18px;
+border:1px solid var(--border);
+box-shadow:0 25px 60px rgba(14,165,233,0.08);
+width:100%;
+max-width:420px;
+position:relative;
+}
+
+.dashboard h3{
 font-size:14px;
+font-weight:600;
 color:var(--muted);
+margin-bottom:20px;
 }
 
 .metric{
-margin-bottom:22px;
+margin-bottom:20px;
 }
 
-.metric-title{
+.metric-label{
 font-size:13px;
 color:var(--muted);
+margin-bottom:6px;
+}
+
+.metric-value{
+font-size:14px;
+font-weight:600;
 margin-bottom:6px;
 }
 
@@ -150,79 +157,96 @@ overflow:hidden;
 .progress-fill{
 height:100%;
 width:0%;
-background:var(--primary);
+background:linear-gradient(90deg,var(--primary),#38bdf8);
 transition:width 1.2s cubic-bezier(0.16,1,0.3,1);
 }
 
-.metric-value{
-font-size:14px;
-font-weight:600;
-margin-bottom:6px;
-}
+/* Radar */
 
-/* Radar refined */
 .radar-container{
-margin-top:20px;
+margin-top:15px;
 display:flex;
 justify-content:center;
 }
 
-/* Pipeline refined */
+/* Robot */
+
+.robot{
+position:absolute;
+right:-40px;
+bottom:-10px;
+width:160px;
+}
+
+/* ---------------- PIPELINE ---------------- */
+
+.pipeline-section{
+background:white;
+border-top:1px solid var(--border);
+}
+
 .pipeline{
 display:flex;
 justify-content:space-between;
-flex-wrap:wrap;
+align-items:center;
 gap:20px;
-margin-top:40px;
+margin-top:60px;
 position:relative;
+flex-wrap:wrap;
 }
 
-.pipeline-line{
+.pipeline::before{
+content:"";
 position:absolute;
 top:50%;
 left:5%;
 right:5%;
-height:2px;
+height:3px;
 background:linear-gradient(90deg,var(--primary),transparent);
-animation:flow 4s linear infinite;
+background-size:200% 100%;
+animation:flow 3s linear infinite;
+z-index:0;
 }
 
 @keyframes flow{
-from{background-position:0%}
-to{background-position:100%}
+0%{background-position:0%}
+100%{background-position:200%}
 }
 
 .node{
-background:white;
-padding:16px 18px;
+background:var(--card);
+padding:16px 20px;
 border-radius:12px;
 border:1px solid var(--border);
+box-shadow:0 8px 20px rgba(14,165,233,0.08);
 font-size:14px;
-font-weight:500;
-box-shadow:0 8px 20px rgba(14,165,233,0.06);
+font-weight:600;
+z-index:1;
 }
 
-/* Ranking refined */
+/* Ranking */
+
 .ranking{
-margin-top:40px;
-max-width:500px;
+margin-top:50px;
+max-width:420px;
 margin-left:auto;
 margin-right:auto;
 }
 
 .rank-item{
-background:white;
-padding:16px 20px;
+background:var(--card);
+padding:14px 18px;
 border-radius:10px;
 border:1px solid var(--border);
 margin-bottom:10px;
 display:flex;
 justify-content:space-between;
+align-items:center;
 transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
 }
 
 .rank-score{
-background:var(--primary-soft);
+background:rgba(14,165,233,0.12);
 color:var(--primary);
 padding:4px 10px;
 border-radius:20px;
@@ -230,25 +254,30 @@ font-size:13px;
 font-weight:600;
 }
 
-/* Scroll refine */
-.fade{
-opacity:0;
-transform:translateY(30px);
-transition:0.7s cubic-bezier(0.16,1,0.3,1);
-}
-.fade.visible{
-opacity:1;
-transform:translateY(0);
-}
+/* Responsive */
 
-.cta{
+@media(max-width:768px){
+
+.hero{
+flex-direction:column;
 text-align:center;
 }
 
-@media(max-width:768px){
-.hero{flex-direction:column;text-align:center;}
-.pipeline{flex-direction:column;align-items:center;}
-.pipeline-line{display:none;}
+.robot{
+position:relative;
+right:auto;
+bottom:auto;
+margin-top:20px;
+width:140px;
+}
+
+.pipeline{
+flex-direction:column;
+}
+
+.pipeline::before{
+display:none;
+}
 }
 </style>
 </head>
@@ -261,56 +290,69 @@ text-align:center;
 <div class="logo">
 <img src="skillmirror-logo.png" alt="SkillMirror">
 </div>
-<a href="#cta" class="btn">Schedule Walkthrough</a>
+<a href="#" class="btn">Request a Demo</a>
 </nav>
 </div>
 </header>
 
-<section class="hero container fade">
-<div>
-<h1>Structured Hiring Intelligence for High-Performance Teams.</h1>
+<!-- HERO -->
+
+<section class="hero container">
+
+<div class="hero-left">
+<h1>Structured Hiring Intelligence<br>for High-Performance Teams.</h1>
 <p>Model role requirements and candidate signals into explainable, multi-dimensional scoring that enables faster and more confident hiring decisions.</p>
-<a href="#cta" class="btn">Schedule Walkthrough</a>
+<a href="#" class="btn">Request a Demo</a>
 </div>
+
+<div class="hero-right">
 
 <div class="dashboard">
-<div class="dashboard-header">
-<span>Hiring Intelligence Snapshot</span>
-<span>Live Modeling</span>
-</div>
+<h3>Hiring Intelligence Snapshot</h3>
 
 <div class="metric">
-<div class="metric-title">Alignment Score</div>
+<div class="metric-label">Alignment Score</div>
 <div class="metric-value" id="score">0%</div>
 <div class="progress"><div id="bar1" class="progress-fill"></div></div>
 </div>
 
 <div class="metric">
-<div class="metric-title">Confidence Index</div>
+<div class="metric-label">Confidence Index</div>
 <div class="metric-value">High</div>
 <div class="progress"><div id="bar2" class="progress-fill"></div></div>
 </div>
 
 <div class="metric">
-<div class="metric-title">Risk Indicator</div>
+<div class="metric-label">Risk Indicator</div>
 <div class="metric-value">Low</div>
 <div class="progress"><div id="bar3" class="progress-fill"></div></div>
 </div>
 
 <div class="radar-container">
-<canvas id="radar" width="200" height="200"></canvas>
+<canvas id="radar" width="180" height="180"></canvas>
 </div>
+
 </div>
+
+<img src="robot.png" class="robot" alt="SkillBot">
+
+</div>
+
 </section>
 
-<section class="container fade">
+<!-- PIPELINE -->
+
+<section class="pipeline-section">
+<div class="container">
+
 <div class="section-header">
 <h2>Structured Intelligence Pipeline</h2>
-<p>From role modeling to ranked output — fully structured and explainable.</p>
+<p style="text-align:center;color:var(--muted);margin-top:10px;">
+From role modeling to ranked output — fully structured and explainable.
+</p>
 </div>
 
 <div class="pipeline">
-<div class="pipeline-line"></div>
 <div class="node">Role Modeling</div>
 <div class="node">Candidate Modeling</div>
 <div class="node">Alignment Engine</div>
@@ -318,33 +360,18 @@ text-align:center;
 <div class="node">Ranked Output</div>
 </div>
 
-<div class="ranking" id="ranking">
+<div class="ranking">
 <div class="rank-item"><span>Candidate A</span><span class="rank-score">91%</span></div>
 <div class="rank-item"><span>Candidate B</span><span class="rank-score">84%</span></div>
 <div class="rank-item"><span>Candidate C</span><span class="rank-score">72%</span></div>
 </div>
-</div>
-</section>
 
-<section id="cta" class="container fade">
-<div class="cta">
-<h2>Experience Structured Hiring Intelligence.</h2>
-<a href="#" class="btn">Schedule Walkthrough</a>
 </div>
 </section>
 
 <script>
-// Scroll reveal refined
-const faders=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-faders.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight-80){
-el.classList.add('visible');
-}
-});
-});
 
-// Bars refined
+// Animate Score
 let s=0,t=91;
 let interval=setInterval(()=>{
 if(s>=t){clearInterval(interval);}
@@ -358,28 +385,31 @@ setTimeout(()=>{
 document.getElementById("bar1").style.width="91%";
 document.getElementById("bar2").style.width="84%";
 document.getElementById("bar3").style.width="72%";
-},500);
+},400);
 
-// Radar refined grid
+// Radar
 const canvas=document.getElementById("radar");
 const ctx=canvas.getContext("2d");
+
 ctx.strokeStyle="#e2e8f0";
 for(let i=1;i<=3;i++){
 ctx.beginPath();
-ctx.arc(100,100,30*i,0,2*Math.PI);
+ctx.arc(90,90,25*i,0,2*Math.PI);
 ctx.stroke();
 }
+
 ctx.strokeStyle="#0ea5e9";
 ctx.beginPath();
-ctx.moveTo(100,20);
-ctx.lineTo(170,80);
-ctx.lineTo(140,170);
-ctx.lineTo(60,170);
-ctx.lineTo(30,80);
+ctx.moveTo(90,20);
+ctx.lineTo(150,60);
+ctx.lineTo(130,150);
+ctx.lineTo(50,150);
+ctx.lineTo(30,60);
 ctx.closePath();
-ctx.stroke();
 ctx.fillStyle="rgba(14,165,233,0.15)";
 ctx.fill();
+ctx.stroke();
+
 </script>
 
 </body>
