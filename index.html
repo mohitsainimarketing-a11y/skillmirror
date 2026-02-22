@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillMirror — Hiring Intelligence Platform</title>
+<title>SkillMirror — Structured Hiring Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
 body{
-background:linear-gradient(180deg,#f8fbff,#eef6ff 60%,#ffffff);
+background:linear-gradient(180deg,#f8fbff,#eef6ff 50%,#ffffff);
 color:#0f172a;
 scroll-behavior:smooth;
 overflow-x:hidden;
@@ -18,23 +18,10 @@ overflow-x:hidden;
 
 .container{width:90%;max-width:1200px;margin:auto;}
 section{padding:120px 0;}
-
 h1{font-size:48px;line-height:1.1;margin-bottom:20px;}
 h2{font-size:36px;margin-bottom:50px;text-align:center;}
-h3{font-size:20px;margin-bottom:10px;}
+h3{font-size:20px;margin-bottom:12px;}
 p{color:#475569;font-size:16px;line-height:1.6;}
-
-.glass{
-background:white;
-border-radius:16px;
-padding:30px;
-box-shadow:0 15px 50px rgba(14,165,233,0.08);
-transition:0.3s;
-}
-.glass:hover{
-transform:translateY(-6px);
-box-shadow:0 25px 70px rgba(14,165,233,0.15);
-}
 
 header{
 position:fixed;
@@ -48,14 +35,37 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:16px 0;
+padding:18px 0;
 }
 
-.logo{height:55px;display:flex;align-items:center;overflow:hidden;}
-.logo img{height:70px;margin-top:-6px;}
+/* LOGO HIGHLIGHT */
+.logo{
+display:flex;
+align-items:center;
+height:60px;
+padding:6px 16px;
+border-radius:12px;
+background:linear-gradient(90deg,#e0f2fe,#f0f9ff);
+box-shadow:0 8px 25px rgba(14,165,233,0.15);
+}
 
-.nav-links{display:flex;gap:30px;align-items:center;}
-nav a{text-decoration:none;color:#334155;font-weight:500;font-size:14px;}
+.logo img{
+height:65px;
+margin-top:-6px;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+align-items:center;
+}
+
+nav a{
+text-decoration:none;
+color:#334155;
+font-weight:500;
+font-size:14px;
+}
 
 .btn{
 background:#0ea5e9;
@@ -64,7 +74,7 @@ padding:10px 22px;
 border-radius:8px;
 text-decoration:none;
 font-weight:600;
-transition:0.3s;
+transition:0.3s ease;
 }
 .btn:hover{
 background:#0284c7;
@@ -85,32 +95,58 @@ padding-top:120px;
 .dashboard{
 flex:1;
 min-width:280px;
+background:white;
+padding:30px;
+border-radius:16px;
+box-shadow:0 25px 60px rgba(14,165,233,0.1);
 }
 
 .metric{margin-bottom:20px;}
-.progress{height:8px;background:#e2e8f0;border-radius:20px;overflow:hidden;}
-.progress-fill{height:100%;width:0%;background:#0ea5e9;transition:width 1.2s ease;}
+.progress{
+height:8px;
+background:#e2e8f0;
+border-radius:20px;
+overflow:hidden;
+}
+.progress-fill{
+height:100%;
+width:0%;
+background:#0ea5e9;
+transition:width 1.2s ease;
+}
 
-.infographic-grid{
+/* INFO GRID */
+.grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
 }
 
-/* PLATFORM ARCHITECTURE */
-.architecture{
+.card{
+background:white;
+padding:30px;
+border-radius:16px;
+box-shadow:0 15px 50px rgba(14,165,233,0.08);
+transition:0.3s;
+}
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 25px 70px rgba(14,165,233,0.15);
+}
+
+/* PIPELINE DIAGRAM */
+.pipeline{
 display:flex;
 flex-direction:column;
 gap:20px;
-max-width:800px;
+max-width:700px;
 margin:auto;
 }
-.arch-layer{
+.pipeline-step{
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:20px;
 background:white;
+padding:20px;
 border-radius:12px;
 box-shadow:0 10px 30px rgba(14,165,233,0.08);
 }
@@ -130,15 +166,18 @@ background:#e0f2fe;
 cursor:pointer;
 transition:0.3s;
 }
-.step.active{background:#0ea5e9;color:white;}
+.step.active{
+background:#0ea5e9;
+color:white;
+}
 
-.flow-panel{max-width:700px;margin:auto;}
-
-/* ECOSYSTEM */
-.ecosystem-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
+.flow-panel{
+max-width:700px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:16px;
+box-shadow:0 15px 50px rgba(14,165,233,0.08);
 }
 
 /* COMPARISON */
@@ -149,17 +188,19 @@ gap:40px;
 }
 .compare ul{margin-top:20px;line-height:1.8;}
 
-/* SECURITY */
-.security-box{
+/* GOVERNANCE */
+.governance{
 background:#f1f5f9;
-padding:50px;
-border-radius:16px;
+padding:60px;
+border-radius:20px;
 max-width:800px;
 margin:auto;
 text-align:center;
 }
 
-/* Responsive */
+/* CTA */
+.cta{text-align:center;}
+
 @media(max-width:768px){
 .hero{flex-direction:column;text-align:center;}
 .compare{grid-template-columns:1fr;}
@@ -177,8 +218,8 @@ text-align:center;
 </div>
 <div class="nav-links">
 <a href="#platform">Platform</a>
-<a href="#flow">How It Works</a>
-<a href="#cta" class="btn">Request a Demo</a>
+<a href="#engine">Engine</a>
+<a href="#cta" class="btn">Schedule a Guided Walkthrough</a>
 </div>
 </nav>
 </div>
@@ -187,55 +228,59 @@ text-align:center;
 <!-- HERO -->
 <section class="hero container">
 <div>
-<h1>Hiring Decisions Should Be Structured — Not Subjective.</h1>
-<p>SkillMirror transforms resumes and job descriptions into structured, explainable hiring intelligence — ranked, modeled, and decision-ready.</p>
+<h1>Turn Unstructured Candidate Data into Structured, Decision-Ready Intelligence.</h1>
+<p>SkillMirror models role requirements and candidate signals into explainable, multi-dimensional hiring intelligence — enabling faster, clearer, and more confident decisions.</p>
 <br>
-<a href="#cta" class="btn">Request a Demo</a>
+<a href="#cta" class="btn">Schedule a Guided Walkthrough</a>
 </div>
 
-<div class="dashboard glass">
-<h3>AI Hiring Intelligence Dashboard</h3>
+<div class="dashboard">
+<h3>Hiring Intelligence Snapshot</h3>
+
 <div class="metric">
-<p>Match Score <strong id="score">0%</strong></p>
+<p>Alignment Score <strong id="score">0%</strong></p>
 <div class="progress"><div id="bar1" class="progress-fill"></div></div>
 </div>
+
 <div class="metric">
-<p>Confidence Index</p>
+<p>Confidence Spread</p>
 <div class="progress"><div id="bar2" class="progress-fill"></div></div>
 </div>
+
 <div class="metric">
-<p>Leadership Signal</p>
+<p>Risk Indicator</p>
 <div class="progress"><div id="bar3" class="progress-fill"></div></div>
 </div>
 </div>
 </section>
 
-<!-- PROBLEM INFOGRAPHIC -->
+<!-- INDUSTRY REALITY -->
 <section class="container">
-<h2>Modern Hiring Is Overloaded and Under-Structured.</h2>
-<div class="infographic-grid">
-<div class="glass"><h3>Resume Overload</h3><p>Hundreds of resumes reviewed manually each week.</p></div>
-<div class="glass"><h3>Keyword Filtering</h3><p>Context and depth are missed by static filters.</p></div>
-<div class="glass"><h3>Subjective Shortlisting</h3><p>Inconsistent evaluation across teams.</p></div>
-<div class="glass"><h3>Broken Follow-Ups</h3><p>Engagement drops due to workflow fatigue.</p></div>
+<h2>Hiring Has Scaled. Evaluation Has Not.</h2>
+<div class="grid">
+<div class="card"><h3>Volume Overload</h3><p>Recruiters review hundreds of resumes weekly with limited structural support.</p></div>
+<div class="card"><h3>Static Filtering</h3><p>Keyword-based systems miss contextual depth and impact signals.</p></div>
+<div class="card"><h3>Subjective Comparison</h3><p>Manual cross-evaluation introduces inconsistency.</p></div>
+<div class="card"><h3>Undocumented Reasoning</h3><p>Decision logic is rarely structured or auditable.</p></div>
 </div>
 </section>
 
-<!-- PLATFORM ARCHITECTURE -->
-<section id="platform" class="container">
-<h2>The SkillMirror Intelligence Platform</h2>
-<div class="architecture">
-<div class="arch-layer"><strong>Intelligence Core</strong><span>Role & Candidate Vector Modeling</span></div>
-<div class="arch-layer"><strong>Recruiter Copilot</strong><span>Guided Interview & Decision Support</span></div>
-<div class="arch-layer"><strong>Talent Analytics</strong><span>Hiring Performance Insights</span></div>
-<div class="arch-layer"><strong>Bias Guard</strong><span>Transparent & Fair Evaluation</span></div>
-<div class="arch-layer"><strong>Automation Engine</strong><span>Structured Follow-Ups & Workflow</span></div>
+<!-- PIPELINE -->
+<section class="container">
+<h2>What Structured Hiring Intelligence Looks Like</h2>
+<div class="pipeline">
+<div class="pipeline-step"><strong>Role Vector Modeling</strong><span>Extract skill clusters & weight priorities</span></div>
+<div class="pipeline-step"><strong>Candidate Vector Extraction</strong><span>Map depth, domain & progression</span></div>
+<div class="pipeline-step"><strong>Alignment Engine</strong><span>Generate weighted multi-signal scoring</span></div>
+<div class="pipeline-step"><strong>Confidence Modeling</strong><span>Evaluate decision reliability</span></div>
+<div class="pipeline-step"><strong>Ranked Output</strong><span>Decision-ready shortlist</span></div>
 </div>
 </section>
 
-<!-- FLOW -->
-<section id="flow" class="container">
-<h2>From Resume to Decision — Structured at Every Step</h2>
+<!-- INTERACTIVE ENGINE -->
+<section id="engine" class="container">
+<h2>From Resume to Decision — Modeled, Ranked, Guided.</h2>
+
 <div class="timeline">
 <div class="step active" data-step="1">Define</div>
 <div class="step" data-step="2">Ingest</div>
@@ -243,65 +288,54 @@ text-align:center;
 <div class="step" data-step="4">Rank</div>
 <div class="step" data-step="5">Guide</div>
 </div>
-<div id="flowText" class="flow-panel glass">
+
+<div id="flowText" class="flow-panel">
 Role signals extracted and structured.
 </div>
 </section>
 
-<!-- ECOSYSTEM -->
+<!-- DIFFERENTIATION -->
 <section class="container">
-<h2>A Platform Designed for Modern Talent Teams</h2>
-<div class="ecosystem-grid">
-<div class="glass"><h3>Copilot</h3><p>Multi-dimensional scoring and guided decision intelligence.</p></div>
-<div class="glass"><h3>Analytics</h3><p>Structured hiring metrics and funnel performance insights.</p></div>
-<div class="glass"><h3>Insights</h3><p>Deep candidate modeling beyond keywords.</p></div>
-<div class="glass"><h3>Outreach AI</h3><p>Smart engagement and workflow continuity.</p></div>
-<div class="glass"><h3>Integration Layer</h3><p>Designed to work across modern hiring stacks.</p></div>
-</div>
-</section>
-
-<!-- COMPARISON -->
-<section class="container">
-<h2>Beyond Traditional ATS</h2>
+<h2>Beyond Resume Management Systems</h2>
 <div class="compare">
-<div class="glass">
+<div class="card">
 <h3>Traditional ATS</h3>
 <ul>
-<li>Keyword filters</li>
-<li>Manual shortlisting</li>
-<li>Static pipelines</li>
-<li>No confidence modeling</li>
+<li>Resume storage</li>
+<li>Keyword filtering</li>
+<li>Manual comparison</li>
+<li>Static pipeline tracking</li>
 </ul>
 </div>
-<div class="glass">
+<div class="card">
 <h3>SkillMirror</h3>
 <ul>
-<li>Multi-dimensional alignment scoring</li>
-<li>Structured candidate modeling</li>
-<li>Guided interview focus</li>
-<li>Explainable decision intelligence</li>
+<li>Signal modeling</li>
+<li>Confidence scoring</li>
+<li>Structured reasoning</li>
+<li>Decision guidance</li>
 </ul>
 </div>
 </div>
 </section>
 
-<!-- SECURITY -->
+<!-- GOVERNANCE -->
 <section class="container">
-<div class="security-box">
-<h2>Built With Transparency and Fairness</h2>
-<p>Structured scoring, explainable reasoning, and blind screening capabilities designed for responsible AI hiring decisions.</p>
+<div class="governance">
+<h2>Transparency, Fairness, and Accountability Built In</h2>
+<p>Structured scoring, explainable alignment reasoning, blind screening capabilities, and evaluation audit trails designed for responsible AI hiring practices.</p>
 </div>
 </section>
 
 <!-- CTA -->
-<section id="cta" class="container" style="text-align:center;">
-<h2>Bring Structure to Your Hiring Decisions.</h2>
+<section id="cta" class="cta container">
+<h2>See Structured Hiring Intelligence in Action.</h2>
 <br>
-<a href="#" class="btn">Request a Demo</a>
+<a href="#" class="btn">Schedule a Guided Walkthrough</a>
 </section>
 
 <script>
-let s=0,t=92;
+let s=0,t=91;
 let i=setInterval(()=>{
 if(s>=t){clearInterval(i);}
 else{
@@ -311,20 +345,20 @@ document.getElementById("score").innerText=s+"%";
 },20);
 
 setTimeout(()=>{
-document.getElementById("bar1").style.width="92%";
-document.getElementById("bar2").style.width="85%";
-document.getElementById("bar3").style.width="78%";
+document.getElementById("bar1").style.width="91%";
+document.getElementById("bar2").style.width="84%";
+document.getElementById("bar3").style.width="72%";
 },500);
 
 const steps=document.querySelectorAll(".step");
 const flowText=document.getElementById("flowText");
 
 const texts={
-1:"Role signals extracted and structured.",
-2:"Resumes parsed into structured candidate vectors.",
+1:"Role requirements structured into weighted evaluation signals.",
+2:"Candidate resumes converted into structured intelligence vectors.",
 3:"Multi-dimensional alignment modeling applied.",
 4:"Comparative ranking generated with confidence spread.",
-5:"Interview focus areas and guided next steps suggested."
+5:"Interview focus areas and structured next steps suggested."
 };
 
 steps.forEach(step=>{
