@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkillMirror — AI Hiring Copilot</title>
-<meta name="description" content="AI Hiring Copilot generating match scores, structured insights, and downloadable hiring intelligence reports.">
+<meta name="description" content="SkillMirror is an AI Copilot for recruiters. From job definition to final decision, get structured insights and guided next steps.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
@@ -12,11 +12,11 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{background:#ffffff;color:#111827;scroll-behavior:smooth}
 .container{width:90%;max-width:1200px;margin:auto}
-header{position:fixed;width:100%;background:#ffffffcc;backdrop-filter:blur(8px);z-index:1000}
+header{position:fixed;width:100%;background:#ffffffee;backdrop-filter:blur(8px);z-index:1000}
 nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
 .logo{font-weight:800;font-size:20px}
 nav a{margin-left:25px;text-decoration:none;color:#374151;font-weight:500}
-.btn{background:#2563eb;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.2s}
+.btn{background:#2563eb;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:600;transition:0.2s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,99,235,0.25)}
 
 .hero{height:100vh;display:flex;align-items:center;justify-content:space-between;padding-top:100px}
@@ -24,54 +24,37 @@ nav a{margin-left:25px;text-decoration:none;color:#374151;font-weight:500}
 .hero h1{font-size:52px;line-height:1.1;margin-bottom:20px}
 .hero p{font-size:20px;color:#4b5563;margin-bottom:30px}
 
+.section{padding:120px 0}
+.section h2{text-align:center;font-size:36px;margin-bottom:60px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px}
+.card{padding:30px;border-radius:16px;background:#f9fafb;transition:0.2s}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.06)}
+
 .dashboard{
-width:560px;
+width:520px;
 background:#111827;
-border-radius:20px;
-padding:25px;
 color:white;
+padding:25px;
+border-radius:20px;
 box-shadow:0 30px 60px rgba(0,0,0,0.2);
 animation:float 6s ease-in-out infinite;
 }
 @keyframes float{
-0%,100%{transform:translateY(0px)}
+0%,100%{transform:translateY(0)}
 50%{transform:translateY(-15px)}
 }
+.score{font-size:42px;font-weight:800;color:#22c55e}
+.ai-box{margin-top:15px;background:#1f2937;padding:15px;border-radius:12px;font-size:14px}
 
-.score{
-font-size:42px;
-font-weight:800;
-color:#22c55e;
-margin-bottom:15px;
-}
-
-.ai-box{
-margin-top:15px;
-background:#1f2937;
-padding:15px;
-border-radius:12px;
-font-size:14px;
-line-height:1.5;
-}
-
-canvas{
-margin-top:20px;
-background:#1f2937;
-border-radius:12px;
-padding:10px;
-}
-
-.section{padding:120px 0}
-.section h2{text-align:center;font-size:36px;margin-bottom:60px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px}
-.card{padding:30px;border-radius:16px;background:#f9fafb;transition:all 0.2s}
-.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.06)}
-
-.cta-section{text-align:center;padding:140px 0;background:#f9fafb}
-footer{text-align:center;padding:40px 0;color:#6b7280}
-
-.fade-in{opacity:0;transform:translateY(40px);transition:all 0.8s}
+.fade-in{opacity:0;transform:translateY(40px);transition:0.8s}
 .fade-in.visible{opacity:1;transform:translateY(0)}
+
+textarea{
+width:100%;height:120px;padding:12px;border-radius:10px;border:1px solid #ddd;margin-top:8px
+}
+
+footer{text-align:center;padding:50px 0;color:#6b7280}
 </style>
 </head>
 
@@ -82,8 +65,9 @@ footer{text-align:center;padding:40px 0;color:#6b7280}
 <nav>
 <div class="logo">SkillMirror</div>
 <div>
-<a href="#product">Product</a>
-<a href="#cta" class="btn">Get Early Access</a>
+<a href="#journey">Journey</a>
+<a href="#demo">Live Demo</a>
+<a href="#cta" class="btn">Early Access</a>
 </div>
 </nav>
 </div>
@@ -91,43 +75,61 @@ footer{text-align:center;padding:40px 0;color:#6b7280}
 
 <section class="hero container">
 <div class="hero-content">
-<h1>Stop Reading Resumes.<br>Start Reading Hiring Intelligence.</h1>
-<p>SkillMirror analyzes job descriptions and resumes, generates AI match scores, highlights risks, and creates structured hiring reports recruiters can download.</p>
-<a href="#cta" class="btn">Request Early Access</a>
+<h1>Your AI Copilot for Smarter Hiring Decisions.</h1>
+<p>From defining the role to final shortlist, SkillMirror assists recruiters with structured insights, guided next steps, and explainable evaluation.</p>
+<a href="#demo" class="btn">Try Live Demo</a>
 </div>
 
 <div class="dashboard">
-<h3>AI Candidate Intelligence</h3>
-<div class="score" id="score">0%</div>
-
+<h3>Candidate Intelligence</h3>
+<div class="score" id="liveScore">0%</div>
 <canvas id="radarChart" width="300" height="250"></canvas>
+<div class="ai-box" id="liveSummary">AI analyzing candidate alignment...</div>
+</div>
+</section>
 
-<div class="ai-box" id="aiText">
-Analyzing candidate profile...
+<section class="section fade-in" id="journey">
+<div class="container">
+<h2>The Complete Hiring Journey</h2>
+<div class="grid">
+<div class="card">
+<h3>Define the Role</h3>
+<p>AI extracts skills, seniority and screening signals automatically.</p>
+</div>
+<div class="card">
+<h3>Screen Intelligently</h3>
+<p>Resumes are analyzed with structured match scoring and gap detection.</p>
+</div>
+<div class="card">
+<h3>Compare Candidates</h3>
+<p>Side-by-side evaluation with clear reasoning and confidence scores.</p>
+</div>
+<div class="card">
+<h3>Get Guided Actions</h3>
+<p>AI suggests interview focus areas and follow-up drafts.</p>
+</div>
+<div class="card">
+<h3>Make Confident Decisions</h3>
+<p>Every hiring decision becomes structured and explainable.</p>
+</div>
 </div>
 </div>
 </section>
 
-  <section class="section" id="demo">
+<section class="section fade-in" id="demo">
 <div class="container">
-<h2 style="text-align:center;margin-bottom:40px;">Try the AI Copilot</h2>
+<h2>Try the AI Copilot</h2>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;">
-
+<div class="grid">
 <div>
 <label>Paste Job Description</label>
-<textarea id="jobInput" style="width:100%;height:140px;padding:12px;border-radius:10px;border:1px solid #ddd;margin-top:8px;">
-Looking for Senior Backend Engineer with Node.js, System Design, and cloud experience.
-</textarea>
+<textarea id="jobInput">Looking for Senior Backend Engineer with Node.js, AWS, system design and leadership experience.</textarea>
 </div>
 
 <div>
 <label>Paste Resume</label>
-<textarea id="resumeInput" style="width:100%;height:140px;padding:12px;border-radius:10px;border:1px solid #ddd;margin-top:8px;">
-Backend Engineer with 7 years experience in Node.js, AWS, scalable APIs and distributed systems.
-</textarea>
+<textarea id="resumeInput">Backend Engineer with 6 years experience in Node.js, AWS, scalable APIs and microservices architecture.</textarea>
 </div>
-
 </div>
 
 <div style="text-align:center;margin-top:30px;">
@@ -135,41 +137,28 @@ Backend Engineer with 7 years experience in Node.js, AWS, scalable APIs and dist
 </div>
 
 <div id="demoResult" style="margin-top:40px;display:none;">
-<h3>AI Analysis Result</h3>
+<h3>AI Evaluation</h3>
 <p><strong>Match Score:</strong> <span id="demoScore"></span></p>
-<p><strong>AI Summary:</strong></p>
-<p id="demoSummary"></p>
-<p><strong>Recommendation:</strong> <span id="demoRecommendation"></span></p>
+<p><strong>Insight:</strong> <span id="demoSummary"></span></p>
+<p><strong>Suggested Next Step:</strong> <span id="demoRecommendation"></span></p>
 </div>
 
 </div>
 </section>
 
-<section class="section fade-in" id="product">
-<div class="container">
-<h2>Your AI Hiring Copilot</h2>
-<div class="grid">
-<div class="card">
-<h3>Job Intelligence</h3>
-<p>Extract key skills and screening criteria instantly.</p>
-</div>
-<div class="card">
-<h3>Resume Intelligence</h3>
-<p>Generate structured summaries and risk signals.</p>
-</div>
-<div class="card">
-<h3>Follow-Up Copilot</h3>
-<p>AI drafts interview invites and next steps.</p>
-</div>
-</div>
+<section class="section fade-in">
+<div class="container" style="text-align:center;">
+<h2>AI Assists. Recruiters Decide.</h2>
+<p style="max-width:700px;margin:auto;color:#4b5563;">
+SkillMirror reduces repetitive thinking and surfaces structured signals — while you stay fully in control of every decision.
+</p>
 </div>
 </section>
 
-<section class="cta-section fade-in" id="cta">
-<div class="container">
-<h2>Make Every Hiring Decision Explainable.</h2>
-<p style="margin:20px 0;color:#4b5563;">AI-powered hiring intelligence with downloadable reports.</p>
-<a href="#" class="btn">Join Early Access</a>
+<section class="section" id="cta">
+<div class="container" style="text-align:center;">
+<h2>Move Faster With Structured Hiring Intelligence.</h2>
+<a href="#" class="btn">Request Early Access</a>
 </div>
 </section>
 
@@ -178,56 +167,31 @@ Backend Engineer with 7 years experience in Node.js, AWS, scalable APIs and dist
 </footer>
 
 <script>
+// Fade-in animation
+const faders=document.querySelectorAll('.fade-in');
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){entry.target.classList.add('visible')}
+})
+});
+faders.forEach(el=>observer.observe(el));
 
-  function runDemo(){
-const job=document.getElementById("jobInput").value.toLowerCase();
-const resume=document.getElementById("resumeInput").value.toLowerCase();
-
-let score=60;
-
-if(job.includes("node") && resume.includes("node")) score+=10;
-if(job.includes("system") && resume.includes("system")) score+=10;
-if(job.includes("cloud") && resume.includes("aws")) score+=10;
-
-document.getElementById("demoResult").style.display="block";
-document.getElementById("demoScore").innerText=score+"%";
-
-document.getElementById("demoSummary").innerText=
-"Strong backend alignment. Demonstrates relevant system architecture experience. Cloud exposure matches role expectations.";
-
-document.getElementById("demoRecommendation").innerText=
-score > 75 ? "Proceed to Technical Interview" : "Needs Further Evaluation";
-}
-// Score animation
-let score=0;
-let target=82;
-let scoreEl=document.getElementById('score');
-let interval=setInterval(()=>{
-if(score>=target){clearInterval(interval);}
-else{score++;scoreEl.innerText=score+'%';}
+// Live hero score animation
+let liveScore=0;
+let liveTarget=82;
+let liveInterval=setInterval(()=>{
+if(liveScore>=liveTarget){clearInterval(liveInterval)}
+else{liveScore++;document.getElementById("liveScore").innerText=liveScore+"%"}
 },20);
 
-// AI Text
-setTimeout(()=>{
-document.getElementById('aiText').innerHTML=
-"Strong backend alignment. Moderate leadership exposure. Low delivery risk. Recommend structured technical interview.";
-},2000);
-
-// Radar Chart
+// Radar drawing
+function updateRadar(score){
 const canvas=document.getElementById('radarChart');
 const ctx=canvas.getContext('2d');
-
-const skills=[90,70,85,60,75];
-const labels=["Backend","System Design","Leadership","Communication","Problem Solving"];
-
-function drawRadar(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-let centerX=150;
-let centerY=120;
-let radius=90;
-let angleStep=(Math.PI*2)/skills.length;
-
-// grid
+const skills=[score,score-10,score-15,score-5,score-8].map(v=>v<40?40:v);
+const centerX=150, centerY=120, radius=90;
+const angleStep=(Math.PI*2)/skills.length;
 ctx.strokeStyle="#374151";
 for(let i=1;i<=4;i++){
 ctx.beginPath();
@@ -235,40 +199,52 @@ for(let j=0;j<skills.length;j++){
 let angle=j*angleStep;
 let x=centerX+Math.cos(angle)*(radius*(i/4));
 let y=centerY+Math.sin(angle)*(radius*(i/4));
-if(j===0) ctx.moveTo(x,y);
-else ctx.lineTo(x,y);
+if(j===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
 }
-ctx.closePath();
-ctx.stroke();
+ctx.closePath(); ctx.stroke();
 }
-
-// skill area
 ctx.beginPath();
 for(let j=0;j<skills.length;j++){
 let angle=j*angleStep;
 let value=skills[j]/100;
 let x=centerX+Math.cos(angle)*(radius*value);
 let y=centerY+Math.sin(angle)*(radius*value);
-if(j===0) ctx.moveTo(x,y);
-else ctx.lineTo(x,y);
+if(j===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
 }
 ctx.closePath();
-ctx.fillStyle="rgba(34,197,94,0.4)";
+ctx.fillStyle="rgba(34,197,94,0.5)";
 ctx.fill();
 }
+updateRadar(82);
 
-drawRadar();
-
-// fade in sections
-const faders=document.querySelectorAll('.fade-in');
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('visible');
+// Demo AI simulation
+function runDemo(){
+const job=document.getElementById("jobInput").value.toLowerCase();
+const resume=document.getElementById("resumeInput").value.toLowerCase();
+document.getElementById("demoResult").style.display="block";
+document.getElementById("demoScore").innerText="Analyzing...";
+document.getElementById("demoSummary").innerText="SkillMirror AI evaluating...";
+document.getElementById("demoRecommendation").innerText="";
+setTimeout(()=>{
+let score=60;
+if(job.includes("node") && resume.includes("node")) score+=10;
+if(job.includes("aws") && resume.includes("aws")) score+=10;
+if(job.includes("system") && resume.includes("microservices")) score+=10;
+if(resume.includes("senior")) score+=5;
+if(score>95) score=95;
+document.getElementById("demoScore").innerText=score+"%";
+let summary=score>=85?
+"Strong alignment. Candidate demonstrates relevant backend and cloud expertise."
+:score>=70?
+"Moderate alignment. Core skills present but leadership validation recommended."
+:"Limited alignment. Further screening required.";
+document.getElementById("demoSummary").innerText=summary;
+document.getElementById("demoRecommendation").innerText=
+score>=85?"Proceed to Interview":
+score>=70?"Structured Technical Evaluation":"Deeper Screening Needed";
+updateRadar(score);
+},1200);
 }
-});
-});
-faders.forEach(el=>observer.observe(el));
 </script>
 
 </body>
