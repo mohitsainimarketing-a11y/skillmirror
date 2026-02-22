@@ -4,195 +4,229 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkillMirror | Structured Hiring Intelligence</title>
-<meta name="description" content="SkillMirror is the AI Recruitment Copilot that transforms hiring into structured, explainable intelligence with multi-dimensional alignment scoring.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-body { font-family: 'Inter', sans-serif; margin:0; padding:0; color:#111; line-height:1.6; }
-section { padding:80px 8%; }
+html { scroll-behavior: smooth; }
+body { font-family:'Inter', sans-serif; margin:0; background:#0f172a; color:#fff; }
+section { padding:90px 8%; }
 h1 { font-size:48px; line-height:1.2; }
-h2 { font-size:32px; margin-bottom:20px; }
-h3 { font-size:20px; }
-p { color:#555; }
-.btn-primary {
-    background:#111; color:#fff; padding:14px 28px;
-    text-decoration:none; border-radius:6px; display:inline-block;
-    margin-right:15px;
-}
-.btn-secondary {
-    border:1px solid #111; padding:14px 28px;
-    text-decoration:none; border-radius:6px; color:#111;
-}
+h2 { font-size:34px; margin-bottom:20px; }
+p { color:#cbd5e1; }
 .nav {
-    display:flex; justify-content:space-between;
-    padding:20px 8%; position:sticky; top:0; background:#fff;
+display:flex; justify-content:space-between;
+padding:20px 8%; position:sticky; top:0;
+background:#0f172a; z-index:1000;
 }
-.nav a { text-decoration:none; margin-left:20px; color:#111; }
+.nav a { color:#cbd5e1; text-decoration:none; margin-left:20px; }
+.btn {
+background:#6366f1; color:#fff; padding:14px 28px;
+text-decoration:none; border-radius:8px; display:inline-block;
+cursor:pointer;
+}
 .hero { display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
-.hero-text { flex:1; }
-.hero-card {
-    flex:1; background:#f7f7f7; padding:40px;
-    border-radius:12px;
+.card {
+background:#1e293b; padding:40px; border-radius:16px;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
 }
 .grid {
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-    gap:30px;
+display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+gap:30px;
 }
-.light { background:#f9f9f9; }
+.metric { font-size:40px; font-weight:700; }
+.step { cursor:pointer; padding:20px; border-radius:12px; background:#1e293b; text-align:center; }
+.step.active { background:#6366f1; }
 .center { text-align:center; }
-footer {
-    background:#111; color:#fff; padding:40px 8%;
-}
-footer p { color:#bbb; }
+footer { background:#020617; padding:40px 8%; text-align:center; }
+input[type="file"] { color:#fff; }
+.progress-container { width:100%; background:#334155; border-radius:8px; margin-top:10px; }
+.progress-bar { width:0%; height:12px; background:#6366f1; border-radius:8px; transition:width 0.3s; }
 </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
 <div class="nav">
-    <strong>SkillMirror</strong>
-    <div>
-        <a href="#how">How It Works</a>
-        <a href="#why">Why SkillMirror</a>
-        <a href="#security">Security</a>
-        <a href="#">Request a Demo</a>
-    </div>
+<strong>SkillMirror</strong>
+<div>
+<a href="#how">How It Works</a>
+<a href="#demo">Live Demo</a>
+<a href="#impact">Impact</a>
+<a href="#">Request Demo</a>
+</div>
 </div>
 
-<!-- HERO -->
 <section>
 <div class="hero">
-    <div class="hero-text">
-        <h1>Structured Hiring Intelligence for High-Performance Teams</h1>
-        <p>
-        Move beyond resume screening. Build explainable, multi-dimensional hiring decisions powered by structured intelligence.
-        </p>
-        <a href="#" class="btn-primary">Request a Demo</a>
-        <a href="#" class="btn-secondary">See How It Works</a>
-    </div>
+<div>
+<h1>Structured Hiring Intelligence for High-Performance Teams</h1>
+<p>Model roles. Structure candidate signals. Generate explainable alignment, confidence and risk scoring.</p>
+<a href="#" class="btn">Request a Demo</a>
+</div>
 
-    <div class="hero-card">
-        <h3>Hiring Intelligence Snapshot</h3>
-        <p><strong>Alignment Score:</strong> 91%</p>
-        <p><strong>Confidence Index:</strong> High</p>
-        <p><strong>Risk Indicator:</strong> Low</p>
-        <hr>
-        <p>Transparent scoring. Explainable logic. Executive-ready clarity.</p>
-    </div>
+<div class="card">
+<h3>Hiring Intelligence Snapshot</h3>
+<p>Alignment Score</p>
+<div class="metric" id="alignment">0%</div>
+<p>Confidence Index</p>
+<div class="metric" id="confidence">0%</div>
+<p>Risk Indicator</p>
+<div class="metric" id="risk">0%</div>
+</div>
 </div>
 </section>
 
-<!-- TRUST BAR -->
-<section class="light center">
-    <p>Designed for enterprise teams, high-growth startups, and global recruitment partners.</p>
+<section class="center">
+<h2>Multi-Dimensional Alignment Scoring</h2>
+<canvas id="alignmentChart"></canvas>
 </section>
 
-<!-- PROBLEM -->
-<section>
-<h2>The Cost of Unstructured Hiring</h2>
-<div class="grid">
-    <div>
-        <h3>Subjective Evaluation</h3>
-        <p>Inconsistent interview notes and non-standardized comparisons create decision friction.</p>
-    </div>
-    <div>
-        <h3>Keyword Dependency</h3>
-        <p>Traditional systems rely on surface-level filtering instead of structured capability mapping.</p>
-    </div>
-    <div>
-        <h3>Executive Uncertainty</h3>
-        <p>Leadership lacks quantified reasoning behind hiring decisions.</p>
-    </div>
-</div>
-</section>
-
-<!-- SOLUTION -->
-<section class="light">
-<h2>Introducing Structured Hiring Intelligence</h2>
-<p>
-SkillMirror transforms job descriptions into structured blueprints and candidate profiles into measurable signal maps. Every decision becomes explainable, comparable, and defensible.
-</p>
-</section>
-
-<!-- HOW IT WORKS -->
 <section id="how">
-<h2>How SkillMirror Works</h2>
+<h2 class="center">Structured Intelligence Pipeline</h2>
 <div class="grid">
-    <div>
-        <h3>1. Role Modeling</h3>
-        <p>Deconstruct roles into skill depth, behavioral markers, impact expectations, and contextual layers.</p>
-    </div>
-    <div>
-        <h3>2. Candidate Modeling</h3>
-        <p>Convert resumes and interviews into structured signal frameworks beyond keyword matching.</p>
-    </div>
-    <div>
-        <h3>3. Alignment Engine</h3>
-        <p>Multi-dimensional scoring across weighted capability dimensions.</p>
-    </div>
-    <div>
-        <h3>4. Confidence & Risk Layer</h3>
-        <p>Quantified reliability scoring and risk exposure analysis for defensible hiring.</p>
-    </div>
+<div class="step active" onclick="activate(this)">Role Modeling</div>
+<div class="step" onclick="activate(this)">Candidate Modeling</div>
+<div class="step" onclick="activate(this)">Alignment Engine</div>
+<div class="step" onclick="activate(this)">Confidence Layer</div>
 </div>
 </section>
 
-<!-- DIFFERENTIATION -->
-<section id="why" class="light">
-<h2>Why SkillMirror Wins</h2>
-<div class="grid">
-    <div>
-        <h3>Explainable Scoring</h3>
-        <p>Every alignment percentage includes dimension-level transparency.</p>
-    </div>
-    <div>
-        <h3>Decision Confidence</h3>
-        <p>Built-in confidence metrics eliminate internal debate.</p>
-    </div>
-    <div>
-        <h3>Bias-Aware Evaluation</h3>
-        <p>Structured frameworks reduce subjective distortions.</p>
-    </div>
-    <div>
-        <h3>Infrastructure, Not Automation</h3>
-        <p>We build hiring intelligence systems — not screening bots.</p>
-    </div>
+<section class="center">
+<h2>Risk & Signal Analysis</h2>
+<canvas id="riskChart"></canvas>
+</section>
+
+<!-- LIVE DEMO -->
+<section id="demo">
+<h2 class="center">Live Structured Hiring Simulation</h2>
+<p class="center">Upload a resume and see SkillMirror generate structured alignment scoring.</p>
+
+<div class="card" style="max-width:700px;margin:40px auto;text-align:center;">
+<input type="file" id="resumeUpload" accept=".pdf,.doc,.docx"><br><br>
+<button class="btn" onclick="runSimulation()">Analyze Resume</button>
+
+<div id="loading" style="display:none;margin-top:20px;">
+<p>SkillBot is structuring candidate signals...</p>
+<div class="progress-container">
+<div id="progressBar" class="progress-bar"></div>
+</div>
+</div>
+
+<div id="results" style="display:none;margin-top:30px;text-align:left;">
+<h3>Structured Evaluation Output</h3>
+<p><strong>Alignment Score:</strong> <span id="demoAlignment"></span></p>
+<p><strong>Confidence Index:</strong> <span id="demoConfidence"></span></p>
+<p><strong>Risk Indicator:</strong> <span id="demoRisk"></span></p>
+
+<hr>
+
+<h4>Alignment Breakdown</h4>
+
+<p>Skill Depth</p>
+<div class="progress-container"><div id="bar1" class="progress-bar"></div></div>
+
+<p>Experience Context</p>
+<div class="progress-container"><div id="bar2" class="progress-bar"></div></div>
+
+<p>Behavioral Fit</p>
+<div class="progress-container"><div id="bar3" class="progress-bar"></div></div>
+</div>
 </div>
 </section>
 
-<!-- SECURITY -->
-<section id="security">
-<h2>Enterprise-Grade Security & Governance</h2>
+<section id="impact">
+<h2 class="center">Measured Business Impact</h2>
 <div class="grid">
-    <div>
-        <h3>Data Encryption</h3>
-        <p>Encrypted candidate data with role-based access control.</p>
-    </div>
-    <div>
-        <h3>Compliance Ready</h3>
-        <p>GDPR-ready architecture and structured audit trails.</p>
-    </div>
-    <div>
-        <h3>Model Transparency</h3>
-        <p>Explainable scoring logic and bias monitoring layers.</p>
-    </div>
+<div class="card"><h3>Faster Hiring</h3><p>Reduce time-to-hire with structured ranking.</p></div>
+<div class="card"><h3>Higher Confidence</h3><p>Quantified reliability scoring for executives.</p></div>
+<div class="card"><h3>Reduced Bias</h3><p>Standardized frameworks limit subjectivity.</p></div>
 </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="light center">
-    <h2>Replace Instinct with Intelligence</h2>
-    <p>Build structured, defensible hiring systems for modern teams.</p>
-    <a href="#" class="btn-primary">Request a Demo</a>
+<section class="center">
+<h2>Replace Instinct with Intelligence</h2>
+<a href="#" class="btn">Request a Demo</a>
 </section>
 
 <footer>
-    <strong>SkillMirror</strong>
-    <p>Structured Hiring Intelligence Infrastructure</p>
-    <p>© 2026 SkillMirror. All rights reserved.</p>
+<p>© 2026 SkillMirror — Structured Hiring Intelligence Infrastructure</p>
 </footer>
+
+<script>
+// Animated Hero Metrics
+function animateValue(id, start, end, duration) {
+let range = end - start;
+let current = start;
+let increment = 1;
+let stepTime = Math.abs(Math.floor(duration / range));
+let obj = document.getElementById(id);
+let timer = setInterval(function() {
+current += increment;
+obj.textContent = current + "%";
+if (current >= end) clearInterval(timer);
+}, stepTime);
+}
+animateValue("alignment",0,91,1500);
+animateValue("confidence",0,88,1500);
+animateValue("risk",0,12,1500);
+
+// Pipeline Interaction
+function activate(el){
+document.querySelectorAll(".step").forEach(s=>s.classList.remove("active"));
+el.classList.add("active");
+}
+
+// Charts
+new Chart(document.getElementById('alignmentChart'), {
+type:'bar',
+data:{
+labels:['Skill Depth','Experience','Behavior','Transferable'],
+datasets:[{label:'Candidate A',data:[92,85,88,90]}]
+},
+options:{plugins:{legend:{labels:{color:"#fff"}}},
+scales:{y:{ticks:{color:"#fff"}},x:{ticks:{color:"#fff"}}}}
+});
+
+new Chart(document.getElementById('riskChart'), {
+type:'radar',
+data:{
+labels:['Skill Gap','Experience Risk','Volatility','Misalignment','Data Density'],
+datasets:[{label:'Risk Profile',data:[20,15,25,10,30]}]
+},
+options:{plugins:{legend:{labels:{color:"#fff"}}},
+scales:{r:{ticks:{color:"#fff"},pointLabels:{color:"#fff"},grid:{color:"#334155"}}}}
+});
+
+// Live Demo Simulation
+function runSimulation(){
+const fileInput=document.getElementById("resumeUpload");
+if(!fileInput.files.length){alert("Upload a resume.");return;}
+document.getElementById("loading").style.display="block";
+document.getElementById("results").style.display="none";
+let progress=0;
+let interval=setInterval(()=>{
+progress+=5;
+document.getElementById("progressBar").style.width=progress+"%";
+if(progress>=100){clearInterval(interval);showResults();}
+},80);
+}
+
+function showResults(){
+document.getElementById("loading").style.display="none";
+document.getElementById("results").style.display="block";
+let alignment=Math.floor(Math.random()*15)+80;
+let confidence=alignment>85?"High":"Moderate";
+let risk=alignment>85?"Low":"Medium";
+document.getElementById("demoAlignment").innerText=alignment+"%";
+document.getElementById("demoConfidence").innerText=confidence;
+document.getElementById("demoRisk").innerText=risk;
+document.getElementById("bar1").style.width=(alignment-3)+"%";
+document.getElementById("bar2").style.width=(alignment-5)+"%";
+document.getElementById("bar3").style.width=(alignment-7)+"%";
+}
+</script>
 
 </body>
 </html>
