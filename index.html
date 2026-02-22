@@ -3,371 +3,348 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillMirror | Structured Hiring Intelligence</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>SkillMirror — AI Hiring Copilot</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{
-font-family:'Inter', sans-serif;
-background:#0b1120;
-color:#ffffff;
-line-height:1.6;
+background:radial-gradient(circle at 20% 30%,#1e293b,#0f172a 60%);
+color:#e2e8f0;
+scroll-behavior:smooth;
+overflow-x:hidden;
 }
 
-/* ---------- GLOBAL LAYOUT ---------- */
+.container{width:90%;max-width:1200px;margin:auto}
 
-.container{
-max-width:1180px;
-margin:0 auto;
-padding:0 24px;
+header{
+position:fixed;width:100%;
+background:rgba(15,23,42,0.6);
+backdrop-filter:blur(12px);
+z-index:1000;
 }
-
-.section{
-padding:110px 0;
-}
-
-.section-sm{
-padding:70px 0;
-}
-
-h1{
-font-size:56px;
-line-height:1.1;
-margin-bottom:24px;
-font-weight:700;
-}
-
-h2{
-font-size:36px;
-margin-bottom:20px;
-font-weight:600;
-}
-
-p{
-color:#94a3b8;
-font-size:18px;
-max-width:640px;
-}
-
-/* ---------- NAV ---------- */
-
-.nav{
-padding:26px 0;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.nav-links a{
-margin-left:28px;
-text-decoration:none;
-color:#94a3b8;
-font-size:14px;
-}
-
-.nav-links a:hover{
-color:#ffffff;
-}
-
-/* ---------- BUTTON ---------- */
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:800;font-size:20px;color:white}
+nav a{margin-left:25px;text-decoration:none;color:#cbd5e1;font-weight:500}
 
 .btn{
-display:inline-block;
-margin-top:32px;
-padding:14px 30px;
-background:#6366f1;
+background:linear-gradient(135deg,#2563eb,#22c55e);
+color:white;padding:12px 24px;
 border-radius:12px;
 text-decoration:none;
-color:#fff;
-font-weight:500;
-transition:all 0.25s ease;
+font-weight:600;
+transition:0.3s;
+box-shadow:0 0 20px rgba(34,197,94,0.4);
 }
-
 .btn:hover{
-transform:translateY(-2px);
-box-shadow:0 12px 30px rgba(99,102,241,0.35);
+transform:translateY(-3px);
+box-shadow:0 0 30px rgba(34,197,94,0.7);
 }
 
-/* ---------- HERO ---------- */
-
-.hero-grid{
-display:grid;
-grid-template-columns:1.1fr 0.9fr;
-gap:70px;
-align-items:center;
-}
-
-.snapshot-card{
-background:#111827;
-padding:40px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,0.06);
-}
-
-.metric{
-font-size:42px;
-font-weight:700;
-margin-top:18px;
-}
-
-.metric-label{
-color:#64748b;
-margin-bottom:18px;
-}
-
-/* ---------- PROBLEM SECTION ---------- */
-
-.problem{
-background:#0f172a;
-}
-
-.split{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:80px;
-align-items:center;
-}
-
-.problem-card{
-background:#111827;
-padding:40px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,0.05);
-}
-
-.problem-row{
+.hero{
+height:100vh;
 display:flex;
+align-items:center;
 justify-content:space-between;
+padding-top:100px;
+}
+
+.hero-content{max-width:550px}
+.hero h1{
+font-size:54px;
+line-height:1.1;
 margin-bottom:20px;
-color:#cbd5e1;
+background:linear-gradient(90deg,#ffffff,#94a3b8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
+.hero p{font-size:18px;color:#94a3b8;margin-bottom:30px}
 
-.problem-bad{
-color:#f87171;
-}
-
-/* ---------- INTELLIGENCE ---------- */
-
-.intelligence{
-background:#0b1120;
-}
-
-.intelligence-card{
-background:#111827;
-padding:40px;
+.glass{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(20px);
 border-radius:20px;
-border:1px solid rgba(255,255,255,0.05);
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
-.bar{
-height:12px;
-background:#1f2937;
-border-radius:6px;
-margin:18px 0;
+.dashboard{
+width:500px;
+padding:25px;
+animation:float 6s ease-in-out infinite;
 }
 
-.bar-fill{
-height:100%;
-background:#6366f1;
-border-radius:6px;
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
 }
 
-/* ---------- FEATURES ---------- */
-
-.grid-3{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:32px;
-margin-top:60px;
+.score{font-size:44px;font-weight:800;color:#22c55e}
+.ai-box{
+margin-top:15px;
+background:rgba(255,255,255,0.05);
+padding:15px;
+border-radius:12px;
 }
 
-.feature{
-background:#111827;
-padding:30px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,0.05);
+.section{padding:120px 0}
+.section h2{text-align:center;font-size:36px;margin-bottom:60px;color:white}
+
+/* Interactive Timeline */
+.timeline{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:15px;
+margin-bottom:50px;
+flex-wrap:wrap;
 }
 
-.feature h3{
-margin-bottom:12px;
-font-size:20px;
+.step{
+padding:12px 20px;
+border-radius:50px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+cursor:pointer;
+transition:0.3s;
 }
 
-/* ---------- CTA ---------- */
-
-.cta{
-background:#0f172a;
-text-align:center;
+.step:hover{
+transform:translateY(-5px);
+box-shadow:0 0 20px rgba(34,197,94,0.4);
 }
 
-/* ---------- FOOTER ---------- */
-
-footer{
-padding:60px 0;
-text-align:center;
-color:#64748b;
-border-top:1px solid rgba(255,255,255,0.05);
+.step.active{
+background:linear-gradient(135deg,#22c55e,#2563eb);
+color:white;
 }
 
-/* ---------- RESPONSIVE ---------- */
+.connector{
+height:2px;
+width:40px;
+background:linear-gradient(90deg,#22c55e,#2563eb);
+opacity:0.5;
+}
 
-@media(max-width:992px){
-.hero-grid,
-.split,
-.grid-3{
-grid-template-columns:1fr;
+.workflow-panel{
+padding:50px;
+min-height:260px;
+animation:fadeIn 0.4s ease;
 }
-h1{font-size:40px;}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1;transform:translateY(0)}
 }
+
+.mini-animation{
+margin-top:20px;
+padding:15px;
+background:rgba(255,255,255,0.05);
+border-radius:12px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:0.6}
+50%{opacity:1}
+100%{opacity:0.6}
+}
+
+textarea{
+width:100%;
+height:120px;
+padding:12px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.05);
+color:white;
+margin-top:8px;
+}
+
+footer{text-align:center;padding:60px 0;color:#64748b}
 </style>
 </head>
 
 <body>
 
+<header>
 <div class="container">
-
-<!-- NAVIGATION -->
-<div class="nav">
-<strong>SkillMirror</strong>
-<div class="nav-links">
-<a href="#">Problem</a>
-<a href="#">Intelligence</a>
-<a href="#">Workflow</a>
-<a href="#">Live Demo</a>
-<a href="#">Request Demo</a>
-</div>
-</div>
-
-<!-- HERO -->
-<section class="section">
-<div class="hero-grid">
-
+<nav>
+<div class="logo">SkillMirror</div>
 <div>
-<h1>Structured Hiring Intelligence for High-Performance Teams</h1>
-<p>
-SkillMirror transforms hiring from subjective screening into structured,
-multi-dimensional decision intelligence. Model roles, quantify alignment,
-and make defensible hiring decisions with measurable confidence.
-</p>
-<a href="#" class="btn">Request a Demo</a>
+<a href="#workflow">Workflow</a>
+<a href="#demo">Live Demo</a>
+<a href="#cta" class="btn">Early Access</a>
+</div>
+</nav>
+</div>
+</header>
+
+<section class="hero container">
+<div class="hero-content">
+<h1>AI Copilot for Intelligent Hiring.</h1>
+<p>Experience a next-generation recruitment workflow powered by structured intelligence and guided actions.</p>
+<a href="#workflow" class="btn">Experience Workflow</a>
 </div>
 
-<div class="snapshot-card">
-<h3>Hiring Intelligence Snapshot</h3>
-
-<div class="metric">91%</div>
-<div class="metric-label">Alignment Score</div>
-
-<div class="metric">88%</div>
-<div class="metric-label">Confidence Index</div>
-
-<div class="metric">12%</div>
-<div class="metric-label">Risk Indicator</div>
-
-</div>
-
+<div class="dashboard glass">
+<h3>Live Candidate Intelligence</h3>
+<div class="score" id="liveScore">0%</div>
+<canvas id="radarChart" width="300" height="250"></canvas>
+<div class="ai-box">Multi-dimensional skill alignment detected.</div>
 </div>
 </section>
 
-</div>
-
-<!-- PROBLEM -->
-<section class="section problem">
-<div class="container split">
-
-<div>
-<h2>The Cost of Unstructured Hiring</h2>
-<p>
-Traditional hiring systems rely on keyword filters, fragmented interviews,
-and subjective evaluations. As organizations scale, inconsistency grows and
-decision confidence declines.
-</p>
-</div>
-
-<div class="problem-card">
-<div class="problem-row">
-<span>Resume Screening</span>
-<span class="problem-bad">Keyword Match</span>
-</div>
-<div class="problem-row">
-<span>Interview Notes</span>
-<span class="problem-bad">Subjective</span>
-</div>
-<div class="problem-row">
-<span>Final Decision</span>
-<span class="problem-bad">Gut Based</span>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- INTELLIGENCE -->
-<section class="section intelligence">
-<div class="container split">
-
-<div class="intelligence-card">
-<h4>Alignment Breakdown</h4>
-<div class="bar"><div class="bar-fill" style="width:92%"></div></div>
-<div class="bar"><div class="bar-fill" style="width:85%"></div></div>
-<div class="bar"><div class="bar-fill" style="width:88%"></div></div>
-<div class="bar"><div class="bar-fill" style="width:90%"></div></div>
-</div>
-
-<div>
-<h2>Multi-Dimensional Hiring Intelligence</h2>
-<p>
-SkillMirror evaluates every candidate across structured capability layers including skill depth,
-experience context, behavioral alignment, and transferable potential.
-</p>
-</div>
-
-</div>
-</section>
-
-<!-- FEATURES -->
-<section class="section">
+<section class="section" id="workflow">
 <div class="container">
+<h2>Interactive Hiring Intelligence Flow</h2>
 
-<h2>Structured Intelligence Pipeline</h2>
-
-<div class="grid-3">
-
-<div class="feature">
-<h3>Role Modeling</h3>
-<p>Convert job descriptions into structured capability blueprints.</p>
+<div class="timeline">
+<div class="step active" data-step="1">Define Role</div>
+<div class="connector"></div>
+<div class="step" data-step="2">Add Candidates</div>
+<div class="connector"></div>
+<div class="step" data-step="3">AI Analysis</div>
+<div class="connector"></div>
+<div class="step" data-step="4">Compare</div>
+<div class="connector"></div>
+<div class="step" data-step="5">Guided Actions</div>
 </div>
 
-<div class="feature">
-<h3>Alignment Engine</h3>
-<p>Generate weighted, explainable multi-dimensional scoring.</p>
+<div id="infographicPanel" class="workflow-panel glass"></div>
+</div>
+</section>
+
+<section class="section" id="demo">
+<div class="container">
+<h2>Live AI Simulation</h2>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;">
+<div>
+<label>Job Description</label>
+<textarea id="jobInput">Senior Backend Engineer with Node.js, AWS and system design.</textarea>
+</div>
+<div>
+<label>Resume</label>
+<textarea id="resumeInput">Backend Engineer with Node.js, AWS and microservices experience.</textarea>
+</div>
 </div>
 
-<div class="feature">
-<h3>Confidence Layer</h3>
-<p>Quantify decision reliability and risk exposure.</p>
+<div style="text-align:center;margin-top:30px;">
+<button onclick="runDemo()" class="btn">Run AI Analysis</button>
 </div>
 
+<div id="demoResult" style="margin-top:40px;display:none;">
+<p><strong>Match Score:</strong> <span id="demoScore"></span></p>
+<p><strong>Insight:</strong> <span id="demoSummary"></span></p>
+<p><strong>Next Action:</strong> <span id="demoRecommendation"></span></p>
 </div>
 
 </div>
 </section>
 
-<!-- CTA -->
-<section class="section cta">
-<div class="container">
-<h2>Replace Instinct with Intelligence</h2>
-<p>Move from resume screening to structured hiring infrastructure.</p>
-<a href="#" class="btn">Request a Demo</a>
+<section class="section" id="cta">
+<div class="container" style="text-align:center;">
+<h2>Redefine Recruitment With AI Copilot.</h2>
+<a href="#" class="btn">Request Early Access</a>
 </div>
 </section>
 
 <footer>
-© 2026 SkillMirror — Structured Hiring Intelligence Infrastructure
+© 2026 SkillMirror — AI Hiring Copilot
 </footer>
+
+<script>
+let liveScore=0;
+let liveTarget=86;
+let liveInterval=setInterval(()=>{
+if(liveScore>=liveTarget){clearInterval(liveInterval)}
+else{liveScore++;document.getElementById("liveScore").innerText=liveScore+"%"}
+},20);
+
+// Radar
+function updateRadar(score){
+const canvas=document.getElementById('radarChart');
+const ctx=canvas.getContext('2d');
+ctx.clearRect(0,0,canvas.width,canvas.height);
+const skills=[score,score-10,score-15,score-5,score-8].map(v=>v<40?40:v);
+const centerX=150, centerY=120, radius=90;
+const angleStep=(Math.PI*2)/skills.length;
+ctx.strokeStyle="rgba(255,255,255,0.2)";
+for(let i=1;i<=4;i++){
+ctx.beginPath();
+for(let j=0;j<skills.length;j++){
+let angle=j*angleStep;
+let x=centerX+Math.cos(angle)*(radius*(i/4));
+let y=centerY+Math.sin(angle)*(radius*(i/4));
+if(j===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+}
+ctx.closePath(); ctx.stroke();
+}
+ctx.beginPath();
+for(let j=0;j<skills.length;j++){
+let angle=j*angleStep;
+let value=skills[j]/100;
+let x=centerX+Math.cos(angle)*(radius*value);
+let y=centerY+Math.sin(angle)*(radius*value);
+if(j===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+}
+ctx.closePath();
+ctx.fillStyle="rgba(34,197,94,0.6)";
+ctx.fill();
+}
+updateRadar(86);
+
+// Interactive Workflow
+const panel=document.getElementById("infographicPanel");
+const steps=document.querySelectorAll(".step");
+
+steps.forEach(step=>{
+step.addEventListener("mouseenter",()=>{
+steps.forEach(s=>s.classList.remove("active"));
+step.classList.add("active");
+updatePanel(step.dataset.step);
+});
+});
+
+function updatePanel(step){
+if(step==="1"){
+panel.innerHTML="<h3>Define Role</h3><p>Extracting structured requirements.</p><div class='mini-animation'>⚡ Parsing skills & seniority signals...</div>";
+}
+if(step==="2"){
+panel.innerHTML="<h3>Add Candidates</h3><p>Building structured talent pipeline.</p><div class='mini-animation'>📂 Parsing resume vectors...</div>";
+}
+if(step==="3"){
+panel.innerHTML="<h3>AI Analysis</h3><p>Evaluating multi-dimensional alignment.</p><div class='mini-animation'>🧠 Calculating match confidence...</div>";
+}
+if(step==="4"){
+panel.innerHTML="<h3>Compare</h3><p>Generating side-by-side ranking.</p><div class='mini-animation'>📊 Building comparison matrix...</div>";
+}
+if(step==="5"){
+panel.innerHTML="<h3>Guided Actions</h3><p>Recommending structured next steps.</p><div class='mini-animation'>✉ Drafting follow-up actions...</div>";
+}
+}
+updatePanel("1");
+
+function runDemo(){
+const job=document.getElementById("jobInput").value.toLowerCase();
+const resume=document.getElementById("resumeInput").value.toLowerCase();
+document.getElementById("demoResult").style.display="block";
+document.getElementById("demoScore").innerText="Analyzing...";
+setTimeout(()=>{
+let score=70;
+if(job.includes("node") && resume.includes("node")) score+=10;
+if(job.includes("aws") && resume.includes("aws")) score+=10;
+if(score>95) score=95;
+document.getElementById("demoScore").innerText=score+"%";
+document.getElementById("demoSummary").innerText="Structured alignment detected.";
+document.getElementById("demoRecommendation").innerText=
+score>=85?"Proceed to Interview":"Further Validation Needed";
+updateRadar(score);
+},1200);
+}
+</script>
 
 </body>
 </html>
