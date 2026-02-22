@@ -8,6 +8,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth;}
 body{
 background:linear-gradient(135deg,#0b1220,#0f172a 60%);
 color:#e5e7eb;
@@ -17,16 +18,29 @@ overflow-x:hidden;
 .section{padding:120px 0}
 h2{text-align:center;font-size:38px;margin-bottom:60px}
 
+/* HEADER */
 header{
 position:fixed;width:100%;
-background:rgba(10,15,25,0.75);
+background:rgba(10,15,25,0.8);
 backdrop-filter:blur(12px);
 z-index:1000;
 }
-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px 0;
+}
 .logo{font-weight:800;font-size:20px;color:white}
-nav a{margin-left:30px;text-decoration:none;color:#9ca3af}
+nav a{
+margin-left:30px;
+text-decoration:none;
+color:#9ca3af;
+transition:.3s;
+}
+nav a:hover{color:white}
 
+/* BUTTON */
 .btn{
 background:linear-gradient(135deg,#22c55e,#2563eb);
 padding:12px 26px;
@@ -37,8 +51,12 @@ border:none;
 cursor:pointer;
 transition:.3s;
 }
-.btn:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(34,197,94,0.4);}
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 40px rgba(34,197,94,0.4);
+}
 
+/* HERO */
 .hero{
 min-height:100vh;
 display:flex;
@@ -54,8 +72,14 @@ background:linear-gradient(90deg,#fff,#94a3b8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-.hero p{font-size:19px;color:#9ca3af;margin-bottom:35px;max-width:520px;}
+.hero p{
+font-size:19px;
+color:#9ca3af;
+margin-bottom:35px;
+max-width:520px;
+}
 
+/* ENGINE */
 .engine{
 width:560px;
 padding:30px;
@@ -64,40 +88,98 @@ background:rgba(255,255,255,0.04);
 border:1px solid rgba(255,255,255,0.08);
 box-shadow:0 20px 80px rgba(0,0,0,0.6);
 }
-
 .ring-wrap{position:relative;width:170px;height:170px;margin:auto;}
 .score{
-position:absolute;top:50%;left:50%;
+position:absolute;
+top:50%;
+left:50%;
 transform:translate(-50%,-50%);
-font-size:44px;font-weight:800;color:#22c55e;
+font-size:44px;
+font-weight:800;
+color:#22c55e;
 text-shadow:0 0 25px rgba(34,197,94,0.6);
 }
-
 .table{margin-top:30px;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;font-size:14px;}
 .row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
 .row strong{color:white}
 
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
 }
-
 .card{
-padding:28px;
-border-radius:18px;
-background:rgba(255,255,255,0.05);
+padding:34px;
+border-radius:20px;
+background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
 border:1px solid rgba(255,255,255,0.08);
-transition:.3s;
+transition:.4s;
+position:relative;
 }
 .card:hover{
-transform:translateY(-6px);
-box-shadow:0 10px 40px rgba(34,197,94,0.2);
+transform:translateY(-8px);
+box-shadow:0 20px 60px rgba(34,197,94,0.15);
+border-color:#22c55e55;
 }
 
-.muted{text-align:center;color:#9ca3af;font-size:18px;max-width:750px;margin:0 auto 40px;}
+/* ARCHITECTURE */
+.arch-wrapper{position:relative;}
+.arch-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:80px 120px;
+position:relative;
+z-index:2;
+}
+.arch-card{
+padding:40px;
+border-radius:20px;
+background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+border:1px solid rgba(255,255,255,0.08);
+transition:.4s;
+}
+.arch-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 60px rgba(34,197,94,0.2);
+border-color:#22c55e55;
+}
+.connections{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:1;
+pointer-events:none;
+}
+.flow-line{
+fill:none;
+stroke:url(#flowGrad);
+stroke-width:3;
+stroke-dasharray:12;
+animation:flow 4s linear infinite;
+opacity:0.8;
+}
+@keyframes flow{
+from { stroke-dashoffset:0; }
+to { stroke-dashoffset:24; }
+}
 
-footer{text-align:center;padding:60px 0;color:#6b7280}
+/* FOOTER */
+footer{
+text-align:center;
+padding:60px 0;
+color:#6b7280;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.hero{flex-direction:column;gap:60px;text-align:center}
+.engine{width:100%}
+.arch-grid{grid-template-columns:1fr;gap:40px}
+.connections{display:none;}
+}
 </style>
 </head>
 
@@ -108,27 +190,29 @@ footer{text-align:center;padding:60px 0;color:#6b7280}
 <nav>
 <div class="logo">SkillMirror</div>
 <div>
+<a href="#problem">Problem</a>
+<a href="#shift">Shift</a>
 <a href="#architecture">Architecture</a>
-<button class="btn">Request a Demo</button>
+<a href="#roi">Impact</a>
+<a href="#vision">Vision</a>
+<a href="#cta">Demo</a>
 </div>
 </nav>
 </div>
 </header>
 
 <!-- HERO -->
-<section class="hero container">
-
+<section class="hero container" id="hero">
 <div>
 <h1>The Decision Engine for Modern Hiring.</h1>
 <p>
 SkillMirror converts unstructured resumes and job descriptions into structured, explainable hiring intelligence — powering faster, defensible decisions at scale.
 </p>
-<button class="btn">Request a Demo</button>
+<a href="#cta" class="btn">Request a Demo</a>
 </div>
 
 <div class="engine">
 <h3 style="opacity:.8;margin-bottom:20px;">Live Hiring Intelligence</h3>
-
 <div class="ring-wrap">
 <svg width="170" height="170">
 <circle cx="85" cy="85" r="75" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="none"/>
@@ -145,37 +229,33 @@ stroke-dasharray="470" stroke-dashoffset="470"/>
 </svg>
 <div class="score" id="score">0%</div>
 </div>
-
 <div class="table">
 <div class="row"><span><strong>Candidate A</strong></span><span>92% • Interview</span></div>
 <div class="row"><span><strong>Candidate B</strong></span><span>74% • Validate Depth</span></div>
 <div class="row"><span><strong>Candidate C</strong></span><span>61% • Domain Gap</span></div>
 </div>
-
 </div>
 </section>
 
-<!-- INDUSTRY PROBLEM -->
-<section class="section">
+<!-- PROBLEM -->
+<section class="section" id="problem">
 <div class="container">
 <h2>Hiring Still Runs on Instinct.</h2>
 <div class="grid">
-<div class="card"><h3>Resume Overload</h3><p>Recruiters review hundreds of resumes manually with limited time.</p></div>
+<div class="card"><h3>Resume Overload</h3><p>Hundreds of resumes reviewed manually.</p></div>
 <div class="card"><h3>Keyword Matching</h3><p>Legacy systems detect keywords, not capability depth.</p></div>
 <div class="card"><h3>Inconsistent Scoring</h3><p>Different reviewers apply different standards.</p></div>
-<div class="card"><h3>Slow Cycles</h3><p>Manual evaluation delays high-growth hiring.</p></div>
+<div class="card"><h3>Slow Hiring Cycles</h3><p>Manual evaluation delays growth.</p></div>
 </div>
 </div>
 </section>
 
 <!-- SHIFT -->
-<section class="section" style="background:rgba(255,255,255,0.02);">
+<section class="section" id="shift" style="background:rgba(255,255,255,0.02);">
 <div class="container">
 <h2>From Resume Screening to Decision Intelligence.</h2>
-<p class="muted">
-Every role becomes a structured competency model.
-Every candidate becomes a capability graph.
-Every hiring decision becomes explainable.
+<p style="text-align:center;color:#9ca3af;font-size:18px;max-width:750px;margin:auto;">
+Every role becomes a competency model. Every candidate becomes a capability graph. Every decision becomes explainable.
 </p>
 </div>
 </section>
@@ -184,40 +264,61 @@ Every hiring decision becomes explainable.
 <section class="section" id="architecture">
 <div class="container">
 <h2>AI Decision Infrastructure</h2>
-<div class="grid">
-<div class="card"><h3>Role Intelligence Layer</h3><p>Transforms job descriptions into structured competency graphs.</p></div>
-<div class="card"><h3>Candidate Structuring Engine</h3><p>Parses resumes into experience vectors and exposure signals.</p></div>
-<div class="card"><h3>Alignment Graph Model</h3><p>Computes multi-factor match confidence with explainable scoring.</p></div>
-<div class="card"><h3>Decision Engine</h3><p>Generates interview focus areas, risk flags, and next-step guidance.</p></div>
+
+<div class="arch-wrapper">
+
+<svg class="connections" viewBox="0 0 1000 600" preserveAspectRatio="none">
+<defs>
+<linearGradient id="flowGrad">
+<stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+<stop offset="50%" stop-color="#22c55e"/>
+<stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<path class="flow-line" d="M200 150 C 350 150, 350 450, 500 450" />
+<path class="flow-line" d="M500 450 C 650 450, 650 150, 800 150" />
+</svg>
+
+<div class="arch-grid">
+<div class="arch-card"><h3>Role Intelligence Layer</h3><p>Transforms job descriptions into structured competency graphs.</p></div>
+<div class="arch-card"><h3>Candidate Structuring Engine</h3><p>Parses resumes into structured experience vectors.</p></div>
+<div class="arch-card"><h3>Alignment Graph Model</h3><p>Computes multi-factor match confidence.</p></div>
+<div class="arch-card"><h3>Decision Engine</h3><p>Generates interview focus areas and next steps.</p></div>
+</div>
+
 </div>
 </div>
 </section>
 
 <!-- ROI -->
-<section class="section" style="background:rgba(255,255,255,0.02);">
+<section class="section" id="roi" style="background:rgba(255,255,255,0.02);">
 <div class="container">
 <h2>Measured Impact</h2>
 <div class="grid">
-<div class="card"><h3>70% Faster Screening</h3></div>
-<div class="card"><h3>3x Faster Shortlisting</h3></div>
-<div class="card"><h3>Structured Audit Trails</h3></div>
-<div class="card"><h3>ATS Compatible</h3></div>
+<div class="card" style="text-align:center;"><h1 style="font-size:48px;color:#22c55e;">70%</h1><p>Faster Screening</p></div>
+<div class="card" style="text-align:center;"><h1 style="font-size:48px;color:#22c55e;">3x</h1><p>Shortlist Speed</p></div>
+<div class="card" style="text-align:center;"><h1 style="font-size:48px;color:#22c55e;">100%</h1><p>Structured Consistency</p></div>
+<div class="card" style="text-align:center;"><h1 style="font-size:48px;color:#22c55e;">∞</h1><p>Scalable Infrastructure</p></div>
 </div>
 </div>
 </section>
 
 <!-- VISION -->
-<section class="section">
+<section class="section" id="vision">
 <div class="container">
 <h2>Hiring Will Become Infrastructure.</h2>
-<p class="muted">
-Decisions will no longer rely on instinct.
-They will be computed from structured intelligence.
-SkillMirror is building the decision layer for the future of talent systems.
+<p style="text-align:center;color:#9ca3af;font-size:18px;max-width:750px;margin:auto;">
+Decisions will no longer rely on instinct. They will be computed from structured intelligence.
 </p>
-<div style="text-align:center;margin-top:40px;">
-<button class="btn">Request a Demo</button>
 </div>
+</section>
+
+<!-- CTA -->
+<section class="section" id="cta" style="background:rgba(255,255,255,0.02);">
+<div class="container" style="text-align:center;">
+<h2>See SkillMirror In Action.</h2>
+<p style="color:#9ca3af;margin:20px 0;">Request a live walkthrough of the decision engine.</p>
+<button class="btn">Request a Demo</button>
 </div>
 </section>
 
