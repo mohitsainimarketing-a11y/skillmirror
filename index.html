@@ -15,58 +15,45 @@ color:#e5e7eb;
 overflow-x:hidden;
 }
 
-/* ===== Ambient Moving Gradient Background ===== */
+/* ===== Ambient Moving Background ===== */
 .bg-ambient{
 position:fixed;
 top:0;
 left:0;
-width:100%;
-height:100%;
-z-index:-1;
+width:110%;
+height:110%;
+z-index:-2;
 background:
 radial-gradient(circle at 20% 30%, rgba(34,197,94,0.18), transparent 40%),
 radial-gradient(circle at 80% 70%, rgba(37,99,235,0.18), transparent 40%),
 radial-gradient(circle at 50% 50%, rgba(59,130,246,0.12), transparent 50%);
 animation:ambientMove 20s ease-in-out infinite alternate;
+transition:transform 0.2s ease-out;
 }
-
 @keyframes ambientMove{
-0%{
-background-position:20% 30%,80% 70%,50% 50%;
-}
-50%{
-background-position:30% 40%,70% 60%,60% 40%;
-}
-100%{
-background-position:15% 35%,85% 75%,45% 55%;
-}
+0%{background-position:20% 30%,80% 70%,50% 50%;}
+50%{background-position:30% 40%,70% 60%,60% 40%;}
+100%{background-position:15% 35%,85% 75%,45% 55%;}
 }
 
+/* ===== Layout ===== */
 .container{width:90%;max-width:1200px;margin:auto}
 .section{padding:120px 0}
 h2{text-align:center;font-size:40px;margin-bottom:80px}
 
-/* HEADER */
+/* ===== Header ===== */
 header{
 position:fixed;width:100%;
 background:rgba(5,10,20,0.7);
 backdrop-filter:blur(14px);
 z-index:1000;
 }
-nav{
-display:flex;justify-content:space-between;align-items:center;
-padding:22px 0;
-}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;}
 .logo{font-weight:800;font-size:20px;color:white}
-nav a{
-margin-left:30px;
-text-decoration:none;
-color:#9ca3af;
-transition:.3s;
-}
+nav a{margin-left:30px;text-decoration:none;color:#9ca3af;transition:.3s;}
 nav a:hover{color:white}
 
-/* BUTTON */
+/* ===== Button ===== */
 .btn{
 background:linear-gradient(135deg,#22c55e,#2563eb);
 padding:12px 28px;
@@ -83,14 +70,16 @@ transform:translateY(-3px);
 box-shadow:0 10px 40px rgba(34,197,94,0.4);
 }
 
-/* HERO */
+/* ===== Hero ===== */
 .hero{
 min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
 padding-top:140px;
+perspective:1000px;
 }
+.hero-text{transition:transform .2s ease-out;}
 .hero h1{
 font-size:60px;
 line-height:1.1;
@@ -99,14 +88,9 @@ background:linear-gradient(90deg,#fff,#94a3b8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-.hero p{
-font-size:20px;
-color:#9ca3af;
-margin-bottom:35px;
-max-width:520px;
-}
+.hero p{font-size:20px;color:#9ca3af;margin-bottom:35px;max-width:520px;}
 
-/* ENGINE */
+/* ===== Engine Card ===== */
 .engine{
 width:560px;
 padding:40px;
@@ -114,47 +98,37 @@ border-radius:24px;
 background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
 border:1px solid rgba(255,255,255,0.08);
 box-shadow:0 30px 100px rgba(0,0,0,0.6);
+transition:transform .2s ease-out;
 }
 .ring-wrap{position:relative;width:170px;height:170px;margin:auto;}
 .score{
-position:absolute;
-top:50%;left:50%;
+position:absolute;top:50%;left:50%;
 transform:translate(-50%,-50%);
-font-size:46px;
-font-weight:800;
-color:#22c55e;
+font-size:46px;font-weight:800;color:#22c55e;
 text-shadow:0 0 25px rgba(34,197,94,0.6);
 }
 .table{margin-top:30px;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;font-size:15px;}
 .row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
 .row strong{color:white}
 
-/* INFO CARDS */
+/* ===== Cards ===== */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:40px;
 }
-.card{
+.card,.arch-card{
 padding:40px;
 border-radius:24px;
 background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
 border:1px solid rgba(255,255,255,0.08);
-transition:.4s;
+transition:transform .2s ease-out, box-shadow .3s ease;
 }
-.card:hover{
-transform:translateY(-10px);
+.card:hover,.arch-card:hover{
 box-shadow:0 25px 70px rgba(34,197,94,0.15);
-border-color:#22c55e55;
 }
-.card h3{
-margin-bottom:16px;
-font-size:20px;
-color:white;
-}
-.card p{color:#cbd5e1;}
 
-/* ARCHITECTURE */
+/* ===== Architecture ===== */
 .arch-wrapper{position:relative;}
 .arch-grid{
 display:grid;
@@ -163,21 +137,8 @@ gap:80px 120px;
 position:relative;
 z-index:2;
 }
-.arch-card{
-padding:40px;
-border-radius:24px;
-background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
-border:1px solid rgba(255,255,255,0.08);
-transition:.4s;
-}
-.arch-card:hover{
-transform:translateY(-10px);
-box-shadow:0 25px 70px rgba(34,197,94,0.2);
-border-color:#22c55e55;
-}
 .connections{
-position:absolute;
-top:0;left:0;width:100%;height:100%;
+position:absolute;top:0;left:0;width:100%;height:100%;
 z-index:1;pointer-events:none;
 }
 .flow-line{
@@ -193,10 +154,7 @@ from{stroke-dashoffset:0;}
 to{stroke-dashoffset:24;}
 }
 
-/* FOOTER */
-footer{text-align:center;padding:80px 0;color:#6b7280}
-
-/* RESPONSIVE */
+/* ===== Responsive ===== */
 @media(max-width:900px){
 .hero{flex-direction:column;gap:60px;text-align:center}
 .engine{width:100%}
@@ -227,7 +185,7 @@ footer{text-align:center;padding:80px 0;color:#6b7280}
 
 <!-- HERO -->
 <section class="hero container">
-<div>
+<div class="hero-text">
 <h1>The Decision Engine for Modern Hiring.</h1>
 <p>
 SkillMirror converts unstructured resumes and job descriptions into structured, explainable hiring intelligence — powering faster, defensible decisions at scale.
@@ -267,7 +225,7 @@ stroke-dasharray="470" stroke-dashoffset="470"/>
 <h2>Hiring Still Runs on Instinct.</h2>
 <div class="grid">
 <div class="card"><h3>Resume Overload</h3><p>Hundreds of resumes reviewed manually.</p></div>
-<div class="card"><h3>Keyword Matching</h3><p>Legacy systems detect keywords, not capability depth.</p></div>
+<div class="card"><h3>Keyword Matching</h3><p>Legacy systems detect keywords, not depth.</p></div>
 <div class="card"><h3>Inconsistent Scoring</h3><p>Different reviewers apply different standards.</p></div>
 <div class="card"><h3>Slow Hiring Cycles</h3><p>Manual evaluation delays growth.</p></div>
 </div>
@@ -281,7 +239,7 @@ stroke-dasharray="470" stroke-dashoffset="470"/>
 
 <div class="arch-wrapper">
 
-<svg class="connections" viewBox="0 0 1000 600" preserveAspectRatio="none">
+<svg class="connections" viewBox="0 0 1000 600">
 <defs>
 <linearGradient id="flowGrad">
 <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
@@ -294,10 +252,10 @@ stroke-dasharray="470" stroke-dashoffset="470"/>
 </svg>
 
 <div class="arch-grid">
-<div class="arch-card"><h3>Role Intelligence Layer</h3><p>Transforms job descriptions into structured graphs.</p></div>
-<div class="arch-card"><h3>Candidate Structuring Engine</h3><p>Parses resumes into structured vectors.</p></div>
-<div class="arch-card"><h3>Alignment Graph Model</h3><p>Computes multi-factor match confidence.</p></div>
-<div class="arch-card"><h3>Decision Engine</h3><p>Generates interview focus areas and next steps.</p></div>
+<div class="arch-card"><h3>Role Intelligence Layer</h3></div>
+<div class="arch-card"><h3>Candidate Structuring Engine</h3></div>
+<div class="arch-card"><h3>Alignment Graph Model</h3></div>
+<div class="arch-card"><h3>Decision Engine</h3></div>
 </div>
 
 </div>
@@ -331,7 +289,6 @@ Decisions will no longer rely on instinct. They will be computed from structured
 <section class="section" id="cta">
 <div class="container" style="text-align:center;">
 <h2>See SkillMirror In Action.</h2>
-<p style="color:#9ca3af;margin:20px 0;">Request a live walkthrough of the decision engine.</p>
 <a href="#" class="btn">Request a Demo</a>
 </div>
 </section>
@@ -353,6 +310,22 @@ ring.style.strokeDashoffset=offset;
 requestAnimationFrame(animate);
 }
 animate();
+
+/* Subtle Parallax */
+if(window.innerWidth>900){
+document.addEventListener("mousemove",(e)=>{
+let x=(e.clientX/window.innerWidth-0.5)*20;
+let y=(e.clientY/window.innerHeight-0.5)*20;
+
+document.querySelector(".bg-ambient").style.transform=`translate(${x/2}px,${y/2}px)`;
+document.querySelector(".hero-text").style.transform=`translate(${x}px,${y}px)`;
+document.querySelector(".engine").style.transform=`translate(${-x}px,${-y}px)`;
+
+document.querySelectorAll(".arch-card").forEach((card,i)=>{
+card.style.transform=`translate(${x*(i%2?0.5:-0.5)}px,${y*0.5}px)`;
+});
+});
+}
 </script>
 
 </body>
