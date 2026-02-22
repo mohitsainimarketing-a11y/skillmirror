@@ -1,38 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillMirror — The Decision Engine for Modern Hiring</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{
+background:linear-gradient(135deg,#0b1220,#0f172a 60%);
+color:#e5e7eb;
+overflow-x:hidden;
+}
+.container{width:90%;max-width:1200px;margin:auto}
+.section{padding:120px 0}
+h2{text-align:center;font-size:38px;margin-bottom:60px}
+
+header{
+position:fixed;width:100%;
+background:rgba(10,15,25,0.75);
+backdrop-filter:blur(12px);
+z-index:1000;
+}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font-weight:800;font-size:20px;color:white}
+nav a{margin-left:30px;text-decoration:none;color:#9ca3af}
+
+.btn{
+background:linear-gradient(135deg,#22c55e,#2563eb);
+padding:12px 26px;
+border-radius:14px;
+color:white;
+font-weight:600;
+border:none;
+cursor:pointer;
+transition:.3s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(34,197,94,0.4);}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding-top:120px;
+}
+.hero h1{
+font-size:58px;
+line-height:1.1;
+margin-bottom:24px;
+background:linear-gradient(90deg,#fff,#94a3b8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.hero p{font-size:19px;color:#9ca3af;margin-bottom:35px;max-width:520px;}
+
+.engine{
+width:560px;
+padding:30px;
+border-radius:22px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 20px 80px rgba(0,0,0,0.6);
+}
+
+.ring-wrap{position:relative;width:170px;height:170px;margin:auto;}
+.score{
+position:absolute;top:50%;left:50%;
+transform:translate(-50%,-50%);
+font-size:44px;font-weight:800;color:#22c55e;
+text-shadow:0 0 25px rgba(34,197,94,0.6);
+}
+
+.table{margin-top:30px;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;font-size:14px;}
+.row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.row strong{color:white}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+padding:28px;
+border-radius:18px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+transition:.3s;
+}
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 40px rgba(34,197,94,0.2);
+}
+
+.muted{text-align:center;color:#9ca3af;font-size:18px;max-width:750px;margin:0 auto 40px;}
+
+footer{text-align:center;padding:60px 0;color:#6b7280}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<nav>
+<div class="logo">SkillMirror</div>
+<div>
+<a href="#architecture">Architecture</a>
+<button class="btn">Request a Demo</button>
+</div>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero container">
+
+<div>
+<h1>The Decision Engine for Modern Hiring.</h1>
+<p>
+SkillMirror converts unstructured resumes and job descriptions into structured, explainable hiring intelligence — powering faster, defensible decisions at scale.
+</p>
+<button class="btn">Request a Demo</button>
+</div>
+
+<div class="engine">
+<h3 style="opacity:.8;margin-bottom:20px;">Live Hiring Intelligence</h3>
+
+<div class="ring-wrap">
+<svg width="170" height="170">
+<circle cx="85" cy="85" r="75" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="none"/>
+<circle id="ring" cx="85" cy="85" r="75"
+stroke="url(#grad)" stroke-width="12"
+fill="none" stroke-linecap="round"
+stroke-dasharray="470" stroke-dashoffset="470"/>
+<defs>
+<linearGradient id="grad">
+<stop offset="0%" stop-color="#22c55e"/>
+<stop offset="100%" stop-color="#2563eb"/>
+</linearGradient>
+</defs>
+</svg>
+<div class="score" id="score">0%</div>
+</div>
+
+<div class="table">
+<div class="row"><span><strong>Candidate A</strong></span><span>92% • Interview</span></div>
+<div class="row"><span><strong>Candidate B</strong></span><span>74% • Validate Depth</span></div>
+<div class="row"><span><strong>Candidate C</strong></span><span>61% • Domain Gap</span></div>
+</div>
+
+</div>
+</section>
+
+<!-- INDUSTRY PROBLEM -->
 <section class="section">
 <div class="container">
-
 <h2>Hiring Still Runs on Instinct.</h2>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:60px;">
-
-<div class="module">
-<h3>Resume Overload</h3>
-<p>
-Recruiters review hundreds of resumes manually, relying on surface-level signals and limited time.
-</p>
-</div>
-
-<div class="module">
-<h3>Keyword Matching ≠ Intelligence</h3>
-<p>
-Traditional systems match keywords, not capability depth, system complexity, or domain exposure.
-</p>
-</div>
-
-<div class="module">
-<h3>Inconsistent Evaluation</h3>
-<p>
-Different reviewers score differently. Decisions lack structured reasoning and auditability.
-</p>
-</div>
-
-<div class="module">
-<h3>Slow Decision Cycles</h3>
-<p>
-Shortlisting, validation, and alignment take days — slowing down high-growth teams.
-</p>
-</div>
-
+<div class="grid">
+<div class="card"><h3>Resume Overload</h3><p>Recruiters review hundreds of resumes manually with limited time.</p></div>
+<div class="card"><h3>Keyword Matching</h3><p>Legacy systems detect keywords, not capability depth.</p></div>
+<div class="card"><h3>Inconsistent Scoring</h3><p>Different reviewers apply different standards.</p></div>
+<div class="card"><h3>Slow Cycles</h3><p>Manual evaluation delays high-growth hiring.</p></div>
 </div>
 </div>
 </section>
+
+<!-- SHIFT -->
+<section class="section" style="background:rgba(255,255,255,0.02);">
+<div class="container">
+<h2>From Resume Screening to Decision Intelligence.</h2>
+<p class="muted">
+Every role becomes a structured competency model.
+Every candidate becomes a capability graph.
+Every hiring decision becomes explainable.
+</p>
+</div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="section" id="architecture">
+<div class="container">
+<h2>AI Decision Infrastructure</h2>
+<div class="grid">
+<div class="card"><h3>Role Intelligence Layer</h3><p>Transforms job descriptions into structured competency graphs.</p></div>
+<div class="card"><h3>Candidate Structuring Engine</h3><p>Parses resumes into experience vectors and exposure signals.</p></div>
+<div class="card"><h3>Alignment Graph Model</h3><p>Computes multi-factor match confidence with explainable scoring.</p></div>
+<div class="card"><h3>Decision Engine</h3><p>Generates interview focus areas, risk flags, and next-step guidance.</p></div>
+</div>
+</div>
+</section>
+
+<!-- ROI -->
+<section class="section" style="background:rgba(255,255,255,0.02);">
+<div class="container">
+<h2>Measured Impact</h2>
+<div class="grid">
+<div class="card"><h3>70% Faster Screening</h3></div>
+<div class="card"><h3>3x Faster Shortlisting</h3></div>
+<div class="card"><h3>Structured Audit Trails</h3></div>
+<div class="card"><h3>ATS Compatible</h3></div>
+</div>
+</div>
+</section>
+
+<!-- VISION -->
+<section class="section">
+<div class="container">
+<h2>Hiring Will Become Infrastructure.</h2>
+<p class="muted">
+Decisions will no longer rely on instinct.
+They will be computed from structured intelligence.
+SkillMirror is building the decision layer for the future of talent systems.
+</p>
+<div style="text-align:center;margin-top:40px;">
+<button class="btn">Request a Demo</button>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 SkillMirror — AI Decision Infrastructure for Hiring
+</footer>
+
+<script>
+let s=0,target=92;
+let circumference=2*Math.PI*75;
+let ring=document.getElementById("ring");
+function animate(){
+if(s>=target) return;
+s++;
+document.getElementById("score").innerText=s+"%";
+let offset=circumference-(s/100)*circumference;
+ring.style.strokeDashoffset=offset;
+requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
