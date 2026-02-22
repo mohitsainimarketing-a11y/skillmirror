@@ -13,53 +13,83 @@ body{
 background:radial-gradient(circle at 20% 30%,#1e293b,#0f172a 60%);
 color:#e2e8f0;
 scroll-behavior:smooth;
-overflow-x:hidden;
 }
 
-.container{width:90%;max-width:1200px;margin:auto}
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
 
 header{
-position:fixed;width:100%;
+position:fixed;
+width:100%;
 background:rgba(15,23,42,0.6);
 backdrop-filter:blur(12px);
 z-index:1000;
 }
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 0;
+flex-wrap:wrap;
+}
+
 .logo{font-weight:800;font-size:20px;color:white}
-nav a{margin-left:25px;text-decoration:none;color:#cbd5e1;font-weight:500}
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:#cbd5e1;
+font-weight:500;
+}
 
 .btn{
 background:linear-gradient(135deg,#2563eb,#22c55e);
-color:white;padding:12px 24px;
+color:white;
+padding:12px 24px;
 border-radius:12px;
 text-decoration:none;
 font-weight:600;
 transition:0.3s;
-box-shadow:0 0 20px rgba(34,197,94,0.4);
+display:inline-block;
 }
 .btn:hover{
-transform:translateY(-3px);
-box-shadow:0 0 30px rgba(34,197,94,0.7);
+transform:translateY(-2px);
+box-shadow:0 0 20px rgba(34,197,94,0.6);
 }
 
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding-top:100px;
+padding-top:120px;
+gap:40px;
+flex-wrap:wrap;
 }
 
-.hero-content{max-width:520px}
+.hero-content{
+flex:1;
+min-width:280px;
+}
+
 .hero h1{
-font-size:54px;
+font-size:48px;
 line-height:1.1;
 margin-bottom:20px;
 background:linear-gradient(90deg,#ffffff,#94a3b8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-.hero p{font-size:18px;color:#94a3b8;margin-bottom:30px}
+
+.hero p{
+font-size:18px;
+color:#94a3b8;
+margin-bottom:30px;
+}
 
 .glass{
 background:rgba(255,255,255,0.05);
@@ -70,35 +100,34 @@ box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
 .dashboard{
-width:520px;
-padding:30px;
-animation:float 6s ease-in-out infinite;
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
+flex:1;
+min-width:280px;
+padding:25px;
 }
 
 .metric-row{
 display:flex;
 justify-content:space-between;
 margin-top:20px;
+gap:20px;
+flex-wrap:wrap;
 }
 
 .metric-block{
+flex:1;
+min-width:80px;
 text-align:center;
+}
+
+.big-number{
+font-size:28px;
+font-weight:800;
 }
 
 .metric-title{
 font-size:12px;
 color:#94a3b8;
-margin-top:5px;
-}
-
-.big-number{
-font-size:36px;
-font-weight:800;
+margin-top:4px;
 }
 
 .progress{
@@ -106,14 +135,14 @@ height:8px;
 background:rgba(255,255,255,0.1);
 border-radius:20px;
 overflow:hidden;
-margin-top:8px;
+margin-top:6px;
 }
 
 .progress-fill{
 height:100%;
 width:0%;
 background:linear-gradient(90deg,#22c55e,#16a34a);
-transition:width 1.5s ease;
+transition:width 1.2s ease;
 }
 
 .progress-fill.blue{
@@ -124,68 +153,76 @@ background:linear-gradient(90deg,#2563eb,#38bdf8);
 background:linear-gradient(90deg,#22c55e,#4ade80);
 }
 
-.section{padding:120px 0}
-.section h2{text-align:center;font-size:36px;margin-bottom:60px;color:white}
+.section{
+padding:100px 0;
+}
 
-/* Timeline */
+.section h2{
+text-align:center;
+font-size:32px;
+margin-bottom:50px;
+}
+
+.pipeline-progress{
+height:6px;
+background:rgba(255,255,255,0.08);
+border-radius:20px;
+margin-bottom:40px;
+overflow:hidden;
+}
+
+.pipeline-fill{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#22c55e,#2563eb);
+transition:width 0.6s ease;
+}
+
 .timeline{
 display:flex;
-align-items:center;
 justify-content:center;
-gap:15px;
-margin-bottom:50px;
 flex-wrap:wrap;
+gap:10px;
+margin-bottom:30px;
 }
 
 .step{
-padding:12px 20px;
-border-radius:50px;
+padding:10px 18px;
+border-radius:40px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
 cursor:pointer;
 transition:0.3s;
-}
-
-.step:hover{
-transform:translateY(-5px);
-box-shadow:0 0 20px rgba(34,197,94,0.4);
+font-size:14px;
 }
 
 .step.active{
 background:linear-gradient(135deg,#22c55e,#2563eb);
-color:white;
-}
-
-.connector{
-height:2px;
-width:40px;
-background:linear-gradient(90deg,#22c55e,#2563eb);
-opacity:0.5;
 }
 
 .workflow-panel{
-padding:50px;
-min-height:260px;
-animation:fadeIn 0.4s ease;
+padding:30px;
+display:flex;
+flex-wrap:wrap;
+gap:30px;
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(10px)}
-to{opacity:1;transform:translateY(0)}
+.workflow-left, .workflow-right{
+flex:1;
+min-width:260px;
 }
 
-.mini-animation{
-margin-top:20px;
-padding:15px;
+.workflow-right{
 background:rgba(255,255,255,0.05);
 border-radius:12px;
-animation:pulse 2s infinite;
+padding:15px;
 }
 
-@keyframes pulse{
-0%{opacity:0.6}
-50%{opacity:1}
-100%{opacity:0.6}
+.metric-box{
+background:rgba(255,255,255,0.06);
+padding:12px;
+border-radius:10px;
+margin-top:10px;
 }
 
 textarea{
@@ -199,7 +236,35 @@ color:white;
 margin-top:8px;
 }
 
-footer{text-align:center;padding:60px 0;color:#64748b}
+footer{
+text-align:center;
+padding:60px 0;
+color:#64748b;
+}
+
+/* Responsive adjustments */
+@media (max-width:768px){
+
+.hero h1{
+font-size:36px;
+}
+
+.metric-row{
+flex-direction:column;
+align-items:center;
+}
+
+.workflow-panel{
+flex-direction:column;
+}
+
+nav{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+
+}
 </style>
 </head>
 
@@ -212,7 +277,7 @@ footer{text-align:center;padding:60px 0;color:#64748b}
 <div>
 <a href="#workflow">Workflow</a>
 <a href="#demo">Live Demo</a>
-<a href="#cta" class="btn">Early Access</a>
+<a href="#cta" class="btn">Request a Demo</a>
 </div>
 </nav>
 </div>
@@ -221,7 +286,7 @@ footer{text-align:center;padding:60px 0;color:#64748b}
 <section class="hero container">
 <div class="hero-content">
 <h1>AI Copilot for Intelligent Hiring.</h1>
-<p>Predictive hiring intelligence powered by structured analytics, behavioral inference and guided recruiter actions.</p>
+<p>Enterprise-grade hiring intelligence powered by structured analytics and guided recruiter decisions.</p>
 <a href="#workflow" class="btn">Explore Workflow</a>
 </div>
 
@@ -235,27 +300,23 @@ footer{text-align:center;padding:60px 0;color:#64748b}
 </div>
 <div class="metric-block">
 <div class="big-number" id="confidenceScore">0.00</div>
-<div class="metric-title">Confidence Index</div>
+<div class="metric-title">Confidence</div>
 </div>
 <div class="metric-block">
 <div class="big-number" id="riskLevel">Low</div>
-<div class="metric-title">Risk Level</div>
+<div class="metric-title">Risk</div>
 </div>
 </div>
 
-<div style="margin-top:25px;">
+<div style="margin-top:20px;">
 <div>Leadership Signal</div>
 <div class="progress"><div id="leadershipBar" class="progress-fill"></div></div>
 
-<div style="margin-top:15px;">Domain Alignment</div>
+<div style="margin-top:12px;">Domain Alignment</div>
 <div class="progress"><div id="domainBar" class="progress-fill blue"></div></div>
 
-<div style="margin-top:15px;">Experience Depth</div>
+<div style="margin-top:12px;">Experience Depth</div>
 <div class="progress"><div id="experienceBar" class="progress-fill green"></div></div>
-</div>
-
-<div style="margin-top:25px;font-size:12px;color:#94a3b8;">
-AI detects quantified impact, structured career growth and strong backend specialization.
 </div>
 </div>
 </section>
@@ -264,54 +325,26 @@ AI detects quantified impact, structured career growth and strong backend specia
 <div class="container">
 <h2>Interactive Hiring Intelligence Flow</h2>
 
+<div class="pipeline-progress">
+<div class="pipeline-fill" id="pipelineFill"></div>
+</div>
+
 <div class="timeline">
-<div class="step active" data-step="1">Define Role</div>
-<div class="connector"></div>
-<div class="step" data-step="2">Add Candidates</div>
-<div class="connector"></div>
-<div class="step" data-step="3">AI Analysis</div>
-<div class="connector"></div>
-<div class="step" data-step="4">Compare</div>
-<div class="connector"></div>
-<div class="step" data-step="5">Guided Actions</div>
+<div class="step active" data-step="1">Define</div>
+<div class="step" data-step="2">Ingestion</div>
+<div class="step" data-step="3">Intelligence</div>
+<div class="step" data-step="4">Ranking</div>
+<div class="step" data-step="5">Decision</div>
 </div>
 
-<div id="infographicPanel" class="workflow-panel glass"></div>
-</div>
-</section>
-
-<section class="section" id="demo">
-<div class="container">
-<h2>Live AI Simulation</h2>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;">
-<div>
-<label>Job Description</label>
-<textarea id="jobInput">Senior Backend Engineer with Node.js, AWS and system design.</textarea>
-</div>
-<div>
-<label>Resume</label>
-<textarea id="resumeInput">Backend Engineer with Node.js, AWS and microservices experience.</textarea>
-</div>
-</div>
-
-<div style="text-align:center;margin-top:30px;">
-<button onclick="runDemo()" class="btn">Run AI Analysis</button>
-</div>
-
-<div id="demoResult" style="margin-top:40px;display:none;">
-<p><strong>Match Score:</strong> <span id="demoScore"></span></p>
-<p><strong>Insight:</strong> <span id="demoSummary"></span></p>
-<p><strong>Next Action:</strong> <span id="demoRecommendation"></span></p>
-</div>
-
+<div id="workflowPanel" class="workflow-panel glass"></div>
 </div>
 </section>
 
 <section class="section" id="cta">
 <div class="container" style="text-align:center;">
-<h2>Redefine Recruitment With AI Copilot.</h2>
-<a href="#" class="btn">Request Early Access</a>
+<h2>Ready to Transform Your Hiring Process?</h2>
+<a href="#" class="btn">Request a Demo</a>
 </div>
 </section>
 
@@ -320,68 +353,52 @@ AI detects quantified impact, structured career growth and strong backend specia
 </footer>
 
 <script>
-// Hero Analytics Animation
 let score=0;
-let target=91;
+let target=92;
 let interval=setInterval(()=>{
 if(score>=target){clearInterval(interval)}
 else{score++;document.getElementById("matchScore").innerText=score+"%"}
 },20);
 
 setTimeout(()=>{
-document.getElementById("confidenceScore").innerText="0.89";
+document.getElementById("confidenceScore").innerText="0.91";
 document.getElementById("leadershipBar").style.width="75%";
 document.getElementById("domainBar").style.width="88%";
-document.getElementById("experienceBar").style.width="92%";
+document.getElementById("experienceBar").style.width="94%";
 },800);
 
-// Workflow
-const panel=document.getElementById("infographicPanel");
-const steps=document.querySelectorAll(".step");
+const workflowPanel=document.getElementById("workflowPanel");
+const pipelineFill=document.getElementById("pipelineFill");
+const workflowSteps=document.querySelectorAll(".step");
 
-steps.forEach(step=>{
-step.addEventListener("mouseenter",()=>{
-steps.forEach(s=>s.classList.remove("active"));
+workflowSteps.forEach(step=>{
+step.addEventListener("click",()=>{
+workflowSteps.forEach(s=>s.classList.remove("active"));
 step.classList.add("active");
-updatePanel(step.dataset.step);
+updateWorkflow(step.dataset.step);
 });
 });
 
-function updatePanel(step){
+function updateWorkflow(step){
+pipelineFill.style.width=((step-1)/4)*100+"%";
+
 if(step==="1"){
-panel.innerHTML="<h3>Define Role</h3><div class='mini-animation'>Extracting skills & seniority signals...</div>";
+workflowPanel.innerHTML="<div class='workflow-left'><h3>Role Structuring</h3><div class='metric-box'>Skill Extraction</div><div class='metric-box'>Seniority Mapping</div></div><div class='workflow-right'><ul><li>Node.js</li><li>AWS</li><li>System Design</li></ul></div>";
 }
 if(step==="2"){
-panel.innerHTML="<h3>Add Candidates</h3><div class='mini-animation'>Parsing resume vectors...</div>";
+workflowPanel.innerHTML="<div class='workflow-left'><h3>Candidate Parsing</h3><div class='metric-box'>Experience Mapping</div><div class='metric-box'>Impact Detection</div></div><div class='workflow-right'><ul><li>Stability Index 0.84</li><li>Promotion Velocity Positive</li></ul></div>";
 }
 if(step==="3"){
-panel.innerHTML="<h3>AI Analysis</h3><div class='mini-animation'>Calculating alignment confidence...</div>";
+workflowPanel.innerHTML="<div class='workflow-left'><h3>Intelligence Engine</h3><div class='metric-box'>Alignment Model</div><div class='metric-box'>Confidence Score</div></div><div class='workflow-right'><ul><li>Match 92%</li><li>Confidence 0.91</li></ul></div>";
 }
 if(step==="4"){
-panel.innerHTML="<h3>Compare</h3><div class='mini-animation'>Building comparison matrix...</div>";
+workflowPanel.innerHTML="<div class='workflow-left'><h3>Ranking</h3><div class='metric-box'>Weighted Comparison</div></div><div class='workflow-right'><ol><li>Candidate B</li><li>Candidate A</li></ol></div>";
 }
 if(step==="5"){
-panel.innerHTML="<h3>Guided Actions</h3><div class='mini-animation'>Recommending next steps...</div>";
+workflowPanel.innerHTML="<div class='workflow-left'><h3>Decision Support</h3><div class='metric-box'>Interview Focus</div><div class='metric-box'>Risk Validation</div></div><div class='workflow-right'><ul><li>Schedule Interview</li></ul></div>";
 }
 }
-updatePanel("1");
-
-function runDemo(){
-const job=document.getElementById("jobInput").value.toLowerCase();
-const resume=document.getElementById("resumeInput").value.toLowerCase();
-document.getElementById("demoResult").style.display="block";
-document.getElementById("demoScore").innerText="Analyzing...";
-setTimeout(()=>{
-let score=70;
-if(job.includes("node") && resume.includes("node")) score+=10;
-if(job.includes("aws") && resume.includes("aws")) score+=10;
-if(score>95) score=95;
-document.getElementById("demoScore").innerText=score+"%";
-document.getElementById("demoSummary").innerText="Structured alignment detected.";
-document.getElementById("demoRecommendation").innerText=
-score>=85?"Proceed to Interview":"Further Validation Needed";
-},1200);
-}
+updateWorkflow("1");
 </script>
 
 </body>
