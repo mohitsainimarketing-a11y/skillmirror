@@ -178,6 +178,26 @@ Backend Engineer with 7 years experience in Node.js, AWS, scalable APIs and dist
 </footer>
 
 <script>
+
+  function runDemo(){
+const job=document.getElementById("jobInput").value.toLowerCase();
+const resume=document.getElementById("resumeInput").value.toLowerCase();
+
+let score=60;
+
+if(job.includes("node") && resume.includes("node")) score+=10;
+if(job.includes("system") && resume.includes("system")) score+=10;
+if(job.includes("cloud") && resume.includes("aws")) score+=10;
+
+document.getElementById("demoResult").style.display="block";
+document.getElementById("demoScore").innerText=score+"%";
+
+document.getElementById("demoSummary").innerText=
+"Strong backend alignment. Demonstrates relevant system architecture experience. Cloud exposure matches role expectations.";
+
+document.getElementById("demoRecommendation").innerText=
+score > 75 ? "Proceed to Technical Interview" : "Needs Further Evaluation";
+}
 // Score animation
 let score=0;
 let target=82;
