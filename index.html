@@ -6,43 +6,118 @@
 <title>SkillMirror | Structured Hiring Intelligence</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 html { scroll-behavior: smooth; }
-body { font-family:'Inter', sans-serif; margin:0; background:#0f172a; color:#fff; }
-section { padding:90px 8%; }
-h1 { font-size:48px; line-height:1.2; }
-h2 { font-size:34px; margin-bottom:20px; }
+body {
+    font-family:'Inter', sans-serif;
+    margin:0;
+    background:#0f172a;
+    color:#fff;
+}
+
+/* Layout */
+section { padding:70px 6%; }
+h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    line-height:1.2;
+}
+h2 {
+    font-size: clamp(22px, 4vw, 34px);
+    margin-bottom:20px;
+}
 p { color:#cbd5e1; }
+
 .nav {
-display:flex; justify-content:space-between;
-padding:20px 8%; position:sticky; top:0;
-background:#0f172a; z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 6%;
+    position:sticky;
+    top:0;
+    background:#0f172a;
+    z-index:1000;
 }
-.nav a { color:#cbd5e1; text-decoration:none; margin-left:20px; }
-.btn {
-background:#6366f1; color:#fff; padding:14px 28px;
-text-decoration:none; border-radius:8px; display:inline-block;
-cursor:pointer;
+.nav a {
+    color:#cbd5e1;
+    text-decoration:none;
+    margin-left:15px;
+    font-size:14px;
 }
-.hero { display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
+
+.hero {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:40px;
+}
+
 .card {
-background:#1e293b; padding:40px; border-radius:16px;
-box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    background:#1e293b;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
 }
+
 .grid {
-display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-gap:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:20px;
 }
-.metric { font-size:40px; font-weight:700; }
-.step { cursor:pointer; padding:20px; border-radius:12px; background:#1e293b; text-align:center; }
-.step.active { background:#6366f1; }
+
 .center { text-align:center; }
-footer { background:#020617; padding:40px 8%; text-align:center; }
-input[type="file"] { color:#fff; }
-.progress-container { width:100%; background:#334155; border-radius:8px; margin-top:10px; }
-.progress-bar { width:0%; height:12px; background:#6366f1; border-radius:8px; transition:width 0.3s; }
+
+.btn {
+    background:#6366f1;
+    color:#fff;
+    padding:14px 22px;
+    text-decoration:none;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    font-size:16px;
+    width:100%;
+    max-width:260px;
+}
+
+select, input[type="file"] {
+    width:100%;
+    max-width:400px;
+    background:#1e293b;
+    color:#fff;
+    border:1px solid #334155;
+    padding:12px;
+    border-radius:8px;
+    font-size:14px;
+}
+
+.progress-container {
+    width:100%;
+    background:#334155;
+    border-radius:8px;
+    margin-top:10px;
+}
+.progress-bar {
+    width:0%;
+    height:12px;
+    background:#6366f1;
+    border-radius:8px;
+    transition:width 0.3s;
+}
+
+footer {
+    background:#020617;
+    padding:30px 6%;
+    text-align:center;
+    font-size:14px;
+}
+
+/* Mobile Adjustments */
+@media (max-width:768px){
+    .hero { flex-direction:column; }
+    .nav { flex-direction:column; gap:10px; }
+    .nav div { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+}
 </style>
 </head>
 
@@ -51,9 +126,7 @@ input[type="file"] { color:#fff; }
 <div class="nav">
 <strong>SkillMirror</strong>
 <div>
-<a href="#how">How It Works</a>
 <a href="#demo">Live Demo</a>
-<a href="#impact">Impact</a>
 <a href="#">Request Demo</a>
 </div>
 </div>
@@ -62,53 +135,33 @@ input[type="file"] { color:#fff; }
 <div class="hero">
 <div>
 <h1>Structured Hiring Intelligence for High-Performance Teams</h1>
-<p>Model roles. Structure candidate signals. Generate explainable alignment, confidence and risk scoring.</p>
-<a href="#" class="btn">Request a Demo</a>
-</div>
-
-<div class="card">
-<h3>Hiring Intelligence Snapshot</h3>
-<p>Alignment Score</p>
-<div class="metric" id="alignment">0%</div>
-<p>Confidence Index</p>
-<div class="metric" id="confidence">0%</div>
-<p>Risk Indicator</p>
-<div class="metric" id="risk">0%</div>
+<p>Select a role. Upload a resume. Experience role-specific structured scoring.</p>
 </div>
 </div>
 </section>
 
-<section class="center">
-<h2>Multi-Dimensional Alignment Scoring</h2>
-<canvas id="alignmentChart"></canvas>
-</section>
-
-<section id="how">
-<h2 class="center">Structured Intelligence Pipeline</h2>
-<div class="grid">
-<div class="step active" onclick="activate(this)">Role Modeling</div>
-<div class="step" onclick="activate(this)">Candidate Modeling</div>
-<div class="step" onclick="activate(this)">Alignment Engine</div>
-<div class="step" onclick="activate(this)">Confidence Layer</div>
-</div>
-</section>
-
-<section class="center">
-<h2>Risk & Signal Analysis</h2>
-<canvas id="riskChart"></canvas>
-</section>
-
-<!-- LIVE DEMO -->
 <section id="demo">
-<h2 class="center">Live Structured Hiring Simulation</h2>
-<p class="center">Upload a resume and see SkillMirror generate structured alignment scoring.</p>
+<h2 class="center">Role-Specific Hiring Simulation</h2>
 
 <div class="card" style="max-width:700px;margin:40px auto;text-align:center;">
-<input type="file" id="resumeUpload" accept=".pdf,.doc,.docx"><br><br>
+
+<select id="roleSelect">
+<option value="">Select Role</option>
+<option value="engineer">Software Engineer</option>
+<option value="product">Product Manager</option>
+<option value="sales">Sales Manager</option>
+</select>
+
+<br><br>
+
+<input type="file" id="resumeUpload" accept=".pdf,.doc,.docx">
+
+<br><br>
+
 <button class="btn" onclick="runSimulation()">Analyze Resume</button>
 
 <div id="loading" style="display:none;margin-top:20px;">
-<p>SkillBot is structuring candidate signals...</p>
+<p>SkillBot is structuring signals for selected role...</p>
 <div class="progress-container">
 <div id="progressBar" class="progress-bar"></div>
 </div>
@@ -116,6 +169,7 @@ input[type="file"] { color:#fff; }
 
 <div id="results" style="display:none;margin-top:30px;text-align:left;">
 <h3>Structured Evaluation Output</h3>
+<p><strong>Role:</strong> <span id="selectedRole"></span></p>
 <p><strong>Alignment Score:</strong> <span id="demoAlignment"></span></p>
 <p><strong>Confidence Index:</strong> <span id="demoConfidence"></span></p>
 <p><strong>Risk Indicator:</strong> <span id="demoRisk"></span></p>
@@ -124,30 +178,17 @@ input[type="file"] { color:#fff; }
 
 <h4>Alignment Breakdown</h4>
 
-<p>Skill Depth</p>
+<p id="label1"></p>
 <div class="progress-container"><div id="bar1" class="progress-bar"></div></div>
 
-<p>Experience Context</p>
+<p id="label2"></p>
 <div class="progress-container"><div id="bar2" class="progress-bar"></div></div>
 
-<p>Behavioral Fit</p>
+<p id="label3"></p>
 <div class="progress-container"><div id="bar3" class="progress-bar"></div></div>
 </div>
-</div>
-</section>
 
-<section id="impact">
-<h2 class="center">Measured Business Impact</h2>
-<div class="grid">
-<div class="card"><h3>Faster Hiring</h3><p>Reduce time-to-hire with structured ranking.</p></div>
-<div class="card"><h3>Higher Confidence</h3><p>Quantified reliability scoring for executives.</p></div>
-<div class="card"><h3>Reduced Bias</h3><p>Standardized frameworks limit subjectivity.</p></div>
 </div>
-</section>
-
-<section class="center">
-<h2>Replace Instinct with Intelligence</h2>
-<a href="#" class="btn">Request a Demo</a>
 </section>
 
 <footer>
@@ -155,76 +196,65 @@ input[type="file"] { color:#fff; }
 </footer>
 
 <script>
-// Animated Hero Metrics
-function animateValue(id, start, end, duration) {
-let range = end - start;
-let current = start;
-let increment = 1;
-let stepTime = Math.abs(Math.floor(duration / range));
-let obj = document.getElementById(id);
-let timer = setInterval(function() {
-current += increment;
-obj.textContent = current + "%";
-if (current >= end) clearInterval(timer);
-}, stepTime);
-}
-animateValue("alignment",0,91,1500);
-animateValue("confidence",0,88,1500);
-animateValue("risk",0,12,1500);
-
-// Pipeline Interaction
-function activate(el){
-document.querySelectorAll(".step").forEach(s=>s.classList.remove("active"));
-el.classList.add("active");
-}
-
-// Charts
-new Chart(document.getElementById('alignmentChart'), {
-type:'bar',
-data:{
-labels:['Skill Depth','Experience','Behavior','Transferable'],
-datasets:[{label:'Candidate A',data:[92,85,88,90]}]
+const roleModels = {
+engineer: {
+labels:["Technical Depth","System Design","Problem Solving"],
+base:85
 },
-options:{plugins:{legend:{labels:{color:"#fff"}}},
-scales:{y:{ticks:{color:"#fff"}},x:{ticks:{color:"#fff"}}}}
-});
-
-new Chart(document.getElementById('riskChart'), {
-type:'radar',
-data:{
-labels:['Skill Gap','Experience Risk','Volatility','Misalignment','Data Density'],
-datasets:[{label:'Risk Profile',data:[20,15,25,10,30]}]
+product: {
+labels:["Strategic Thinking","Execution Ability","Stakeholder Management"],
+base:82
 },
-options:{plugins:{legend:{labels:{color:"#fff"}}},
-scales:{r:{ticks:{color:"#fff"},pointLabels:{color:"#fff"},grid:{color:"#334155"}}}}
-});
+sales: {
+labels:["Revenue Impact","Pipeline Management","Negotiation Skills"],
+base:80
+}
+};
 
-// Live Demo Simulation
 function runSimulation(){
-const fileInput=document.getElementById("resumeUpload");
-if(!fileInput.files.length){alert("Upload a resume.");return;}
+const role=document.getElementById("roleSelect").value;
+const file=document.getElementById("resumeUpload").files.length;
+
+if(!role){ alert("Select a role."); return; }
+if(!file){ alert("Upload a resume."); return; }
+
 document.getElementById("loading").style.display="block";
 document.getElementById("results").style.display="none";
+
 let progress=0;
 let interval=setInterval(()=>{
 progress+=5;
 document.getElementById("progressBar").style.width=progress+"%";
-if(progress>=100){clearInterval(interval);showResults();}
+if(progress>=100){
+clearInterval(interval);
+showResults(role);
+}
 },80);
 }
 
-function showResults(){
+function showResults(role){
 document.getElementById("loading").style.display="none";
 document.getElementById("results").style.display="block";
-let alignment=Math.floor(Math.random()*15)+80;
-let confidence=alignment>85?"High":"Moderate";
-let risk=alignment>85?"Low":"Medium";
+
+const model=roleModels[role];
+let alignment=Math.floor(Math.random()*10)+model.base;
+let confidence=alignment>88?"High":"Moderate";
+let risk=alignment>88?"Low":"Medium";
+
+document.getElementById("selectedRole").innerText=
+role.charAt(0).toUpperCase()+role.slice(1);
+
 document.getElementById("demoAlignment").innerText=alignment+"%";
 document.getElementById("demoConfidence").innerText=confidence;
 document.getElementById("demoRisk").innerText=risk;
-document.getElementById("bar1").style.width=(alignment-3)+"%";
+
+document.getElementById("label1").innerText=model.labels[0];
+document.getElementById("label2").innerText=model.labels[1];
+document.getElementById("label3").innerText=model.labels[2];
+
+document.getElementById("bar1").style.width=(alignment-2)+"%";
 document.getElementById("bar2").style.width=(alignment-5)+"%";
-document.getElementById("bar3").style.width=(alignment-7)+"%";
+document.getElementById("bar3").style.width=(alignment-8)+"%";
 }
 </script>
 
