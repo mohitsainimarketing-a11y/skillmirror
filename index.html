@@ -3,126 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillMirror — AI Hiring Copilot</title>
+<title>SkillMirror — The Decision Engine for Modern Hiring</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+
 body{
-background:radial-gradient(circle at 20% 30%,#1e293b,#0f172a 60%);
-color:#e2e8f0;
-scroll-behavior:smooth;
+background:linear-gradient(135deg,#0f172a,#0b1220 60%);
+color:#e5e7eb;
 overflow-x:hidden;
 }
 
 .container{width:90%;max-width:1200px;margin:auto}
 
+/* Header */
 header{
 position:fixed;width:100%;
-background:rgba(15,23,42,0.6);
+background:rgba(10,15,25,0.7);
 backdrop-filter:blur(12px);
 z-index:1000;
 }
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
 .logo{font-weight:800;font-size:20px;color:white}
-nav a{margin-left:25px;text-decoration:none;color:#cbd5e1;font-weight:500}
+nav a{margin-left:30px;text-decoration:none;color:#9ca3af;font-weight:500}
 
 .btn{
-background:linear-gradient(135deg,#2563eb,#22c55e);
-color:white;padding:12px 24px;
-border-radius:12px;
-text-decoration:none;
+background:linear-gradient(135deg,#22c55e,#2563eb);
+padding:12px 26px;
+border-radius:14px;
+color:white;
 font-weight:600;
-transition:0.3s;
-box-shadow:0 0 20px rgba(34,197,94,0.4);
 border:none;
 cursor:pointer;
+transition:.3s;
 }
 .btn:hover{
 transform:translateY(-3px);
-box-shadow:0 0 30px rgba(34,197,94,0.7);
+box-shadow:0 10px 40px rgba(34,197,94,0.4);
 }
 
+/* HERO */
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding-top:100px;
+padding-top:120px;
 }
 
-.hero-content{max-width:550px}
-
 .hero h1{
-font-size:54px;
+font-size:58px;
 line-height:1.1;
-margin-bottom:20px;
-background:linear-gradient(90deg,#ffffff,#94a3b8);
+margin-bottom:24px;
+background:linear-gradient(90deg,#fff,#94a3b8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-.hero p{font-size:18px;color:#94a3b8;margin-bottom:30px}
-
-.glass{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-backdrop-filter:blur(20px);
-border-radius:20px;
-box-shadow:0 20px 60px rgba(0,0,0,0.5);
+.hero p{
+font-size:19px;
+color:#9ca3af;
+margin-bottom:35px;
+max-width:520px;
 }
 
-.dashboard{
-width:520px;
+.engine{
+width:560px;
 padding:30px;
-animation:float 6s ease-in-out infinite;
+border-radius:22px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 20px 80px rgba(0,0,0,0.6);
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-}
-
-/* Circular Score */
-.score-wrapper{
+/* Decision Ring */
+.ring-wrap{
 position:relative;
-width:160px;
-height:160px;
-margin:20px auto;
+width:170px;
+height:170px;
+margin:auto;
 }
 
-.score-number{
+.score{
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-font-size:42px;
+font-size:44px;
 font-weight:800;
 color:#22c55e;
-text-shadow:0 0 20px rgba(34,197,94,0.6);
+text-shadow:0 0 25px rgba(34,197,94,0.6);
 }
 
-.confidence-box{
-margin-top:20px;
-padding:14px;
-background:rgba(255,255,255,0.06);
-border-radius:14px;
-text-align:center;
+/* Comparison Table */
+.table{
+margin-top:30px;
+border-top:1px solid rgba(255,255,255,0.1);
+padding-top:20px;
 font-size:14px;
 }
 
-.subscores{
+.row{
 display:flex;
 justify-content:space-between;
-margin-top:18px;
-font-size:13px;
-opacity:0.8;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.section{padding:120px 0}
-.section h2{text-align:center;font-size:36px;margin-bottom:60px;color:white}
+.row strong{color:white}
 
-footer{text-align:center;padding:60px 0;color:#64748b}
+/* Sections */
+.section{padding:120px 0}
+.section h2{text-align:center;font-size:38px;margin-bottom:60px}
+
+/* Architecture */
+.arch-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
+}
+
+.module{
+padding:28px;
+border-radius:18px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+transition:.3s;
+}
+.module:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 40px rgba(34,197,94,0.2);
+}
+
+footer{
+text-align:center;
+padding:60px 0;
+color:#6b7280;
+}
 </style>
 </head>
 
@@ -133,43 +151,40 @@ footer{text-align:center;padding:60px 0;color:#64748b}
 <nav>
 <div class="logo">SkillMirror</div>
 <div>
-<a href="#cta" class="btn">Request a Demo</a>
+<a href="#architecture">Architecture</a>
+<button class="btn">Request a Demo</button>
 </div>
 </nav>
 </div>
 </header>
 
 <section class="hero container">
-<div class="hero-content">
-<h1>Hire With Structured Intelligence.</h1>
+
+<div>
+<h1>The Decision Engine for Modern Hiring.</h1>
 <p>
-SkillMirror transforms job descriptions and resumes into structured,
-decision-ready insights — enabling faster, confident hiring.
+SkillMirror converts unstructured resumes and job descriptions into 
+structured, explainable hiring intelligence — powering faster, defensible decisions at scale.
 </p>
-<a href="#cta" class="btn">Request a Demo</a>
+<button class="btn">Request a Demo</button>
 </div>
 
-<div class="dashboard glass">
+<div class="engine">
 
-<h3 style="opacity:0.8;">Live Candidate Intelligence</h3>
+<h3 style="opacity:.8;margin-bottom:20px;">Live Hiring Intelligence</h3>
 
-<div class="score-wrapper">
-<svg width="160" height="160">
-<circle cx="80" cy="80" r="70"
-stroke="rgba(255,255,255,0.1)"
-stroke-width="10"
-fill="none"/>
-
-<circle id="progressRing"
-cx="80" cy="80" r="70"
+<div class="ring-wrap">
+<svg width="170" height="170">
+<circle cx="85" cy="85" r="75" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="none"/>
+<circle id="ring"
+cx="85" cy="85" r="75"
 stroke="url(#grad)"
-stroke-width="10"
+stroke-width="12"
 fill="none"
 stroke-linecap="round"
-stroke-dasharray="440"
-stroke-dashoffset="440"
+stroke-dasharray="470"
+stroke-dashoffset="470"
 />
-
 <defs>
 <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
 <stop offset="0%" stop-color="#22c55e"/>
@@ -177,115 +192,76 @@ stroke-dashoffset="440"
 </linearGradient>
 </defs>
 </svg>
-
-<div class="score-number" id="liveScore">0%</div>
+<div class="score" id="score">0%</div>
 </div>
 
-<canvas id="radarChart" width="350" height="260"></canvas>
-
-<div class="confidence-box" id="insightText">
-Analyzing structured signals...
-</div>
-
-<div class="subscores">
-<div>Skills <span id="s1">0</span>%</div>
-<div>Seniority <span id="s2">0</span>%</div>
-<div>Domain Fit <span id="s3">0</span>%</div>
+<div class="table">
+<div class="row"><span><strong>Candidate A</strong></span><span>92% • Interview</span></div>
+<div class="row"><span><strong>Candidate B</strong></span><span>74% • Validate Depth</span></div>
+<div class="row"><span><strong>Candidate C</strong></span><span>61% • Domain Gap</span></div>
 </div>
 
 </div>
 </section>
 
-<section class="section" id="cta">
-<div class="container" style="text-align:center;">
-<h2>See SkillMirror In Action.</h2>
-<p style="margin-top:15px;color:#94a3b8;">
-Request a live walkthrough of structured hiring intelligence.
-</p>
-<div style="margin-top:30px;">
-<input type="email" placeholder="Enter your work email"
-style="padding:14px;border-radius:12px;border:none;width:280px;margin-right:10px;">
-<button class="btn">Request a Demo</button>
+<section class="section" id="architecture">
+<div class="container">
+<h2>AI Decision Infrastructure</h2>
+
+<div class="arch-grid">
+
+<div class="module">
+<h3>Role Intelligence Layer</h3>
+<p>Transforms job descriptions into structured competency graphs with depth modeling.</p>
 </div>
+
+<div class="module">
+<h3>Candidate Structuring Engine</h3>
+<p>Parses resumes into experience vectors and exposure signals.</p>
+</div>
+
+<div class="module">
+<h3>Alignment Graph Model</h3>
+<p>Computes multi-factor match confidence with explainable scoring.</p>
+</div>
+
+<div class="module">
+<h3>Decision Recommendation Engine</h3>
+<p>Generates interview focus areas, risk flags, and action guidance.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container" style="text-align:center;">
+<h2>Built for High-Volume Hiring Teams</h2>
+<p style="color:#9ca3af;margin-top:15px;">
+Explainable AI scoring. Structured audit trails. Enterprise-ready deployment.
+</p>
 </div>
 </section>
 
 <footer>
-© 2026 SkillMirror — AI Hiring Copilot
+© 2026 SkillMirror — AI Decision Infrastructure for Hiring
 </footer>
 
 <script>
-let score=0;
+let s=0;
 let target=92;
-let circumference=2*Math.PI*70;
-let ring=document.getElementById("progressRing");
+let circumference=2*Math.PI*75;
+let ring=document.getElementById("ring");
 
-function animateScore(){
-if(score>=target) return;
-score++;
-document.getElementById("liveScore").innerText=score+"%";
-let offset=circumference-(score/100)*circumference;
+function animate(){
+if(s>=target) return;
+s++;
+document.getElementById("score").innerText=s+"%";
+let offset=circumference-(s/100)*circumference;
 ring.style.strokeDashoffset=offset;
-updateRadar(score);
-updateSubScores(score);
-updateInsight(score);
-requestAnimationFrame(animateScore);
+requestAnimationFrame(animate);
 }
-
-function updateSubScores(score){
-document.getElementById("s1").innerText=Math.max(score-4,70);
-document.getElementById("s2").innerText=Math.max(score-8,65);
-document.getElementById("s3").innerText=Math.max(score-6,68);
-}
-
-function updateInsight(score){
-let text="Evaluating alignment...";
-if(score>60) text="Strong structured skill alignment detected.";
-if(score>80) text="High confidence match. Recommend technical interview.";
-document.getElementById("insightText").innerText=text;
-}
-
-function updateRadar(score){
-const canvas=document.getElementById('radarChart');
-const ctx=canvas.getContext('2d');
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-const values=[score,score-5,score-8,score-6,score-4].map(v=>v<50?50:v);
-const centerX=175, centerY=130, radius=90;
-const angleStep=(Math.PI*2)/values.length;
-
-ctx.strokeStyle="rgba(255,255,255,0.1)";
-for(let i=1;i<=4;i++){
-ctx.beginPath();
-for(let j=0;j<values.length;j++){
-let angle=j*angleStep;
-let x=centerX+Math.cos(angle)*(radius*(i/4));
-let y=centerY+Math.sin(angle)*(radius*(i/4));
-if(j===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-}
-ctx.closePath(); ctx.stroke();
-}
-
-ctx.beginPath();
-for(let j=0;j<values.length;j++){
-let angle=j*angleStep;
-let value=values[j]/100;
-let x=centerX+Math.cos(angle)*(radius*value);
-let y=centerY+Math.sin(angle)*(radius*value);
-if(j===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-}
-ctx.closePath();
-
-let gradient=ctx.createLinearGradient(0,0,350,260);
-gradient.addColorStop(0,"rgba(34,197,94,0.85)");
-gradient.addColorStop(1,"rgba(37,99,235,0.85)");
-ctx.fillStyle=gradient;
-ctx.shadowColor="rgba(34,197,94,0.6)";
-ctx.shadowBlur=25;
-ctx.fill();
-}
-
-animateScore();
+animate();
 </script>
 
 </body>
