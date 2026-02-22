@@ -6,144 +6,208 @@
 <title>SkillMirror | Structured Hiring Intelligence</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-html { scroll-behavior: smooth; }
-body {
-    font-family:'Inter', sans-serif;
-    margin:0;
-    background:#0f172a;
-    color:#fff;
+html { scroll-behavior:smooth; }
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+color:#fff;
+background: radial-gradient(circle at 20% 30%, #1e1b4b, transparent 40%),
+            radial-gradient(circle at 80% 70%, #312e81, transparent 40%),
+            #0f172a;
+overflow-x:hidden;
 }
 
-/* Layout */
-section { padding:70px 6%; }
-h1 {
-    font-size: clamp(28px, 5vw, 48px);
-    line-height:1.2;
+/* Floating Blur Orbs */
+body::before, body::after{
+content:"";
+position:fixed;
+width:400px;
+height:400px;
+background:rgba(99,102,241,0.25);
+filter:blur(120px);
+z-index:-1;
 }
-h2 {
-    font-size: clamp(22px, 4vw, 34px);
-    margin-bottom:20px;
-}
-p { color:#cbd5e1; }
+body::before{top:-100px;left:-100px;}
+body::after{bottom:-120px;right:-120px;}
 
-.nav {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px 6%;
-    position:sticky;
-    top:0;
-    background:#0f172a;
-    z-index:1000;
-}
-.nav a {
-    color:#cbd5e1;
-    text-decoration:none;
-    margin-left:15px;
-    font-size:14px;
+/* Glass Effect */
+.glass{
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:0 8px 32px rgba(0,0,0,0.3);
+border-radius:20px;
 }
 
-.hero {
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:40px;
+section{padding:90px 6%;}
+h1{font-size:clamp(28px,5vw,48px);}
+h2{font-size:clamp(22px,4vw,34px);margin-bottom:20px;}
+p{color:#cbd5e1;}
+
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 6%;
+position:sticky;
+top:0;
+z-index:1000;
+}
+.nav a{
+color:#cbd5e1;
+text-decoration:none;
+margin-left:15px;
+font-size:14px;
 }
 
-.card {
-    background:#1e293b;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+.hero{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+gap:40px;
 }
 
-.grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-    gap:20px;
+.card{
+padding:30px;
 }
 
-.center { text-align:center; }
-
-.btn {
-    background:#6366f1;
-    color:#fff;
-    padding:14px 22px;
-    text-decoration:none;
-    border-radius:8px;
-    display:inline-block;
-    cursor:pointer;
-    font-size:16px;
-    width:100%;
-    max-width:260px;
+.metric{
+font-size:36px;
+font-weight:700;
 }
 
-select, input[type="file"] {
-    width:100%;
-    max-width:400px;
-    background:#1e293b;
-    color:#fff;
-    border:1px solid #334155;
-    padding:12px;
-    border-radius:8px;
-    font-size:14px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
 
-.progress-container {
-    width:100%;
-    background:#334155;
-    border-radius:8px;
-    margin-top:10px;
+.step{
+padding:20px;
+text-align:center;
+cursor:pointer;
+transition:0.3s;
 }
-.progress-bar {
-    width:0%;
-    height:12px;
-    background:#6366f1;
-    border-radius:8px;
-    transition:width 0.3s;
+.step.active{
+background:rgba(99,102,241,0.25);
 }
 
-footer {
-    background:#020617;
-    padding:30px 6%;
-    text-align:center;
-    font-size:14px;
+.center{text-align:center;}
+
+.btn{
+background:#6366f1;
+color:#fff;
+padding:14px 22px;
+border-radius:10px;
+text-decoration:none;
+display:inline-block;
+cursor:pointer;
+font-size:16px;
+width:100%;
+max-width:260px;
+box-shadow:0 8px 20px rgba(99,102,241,0.4);
+transition:0.3s;
+}
+.btn:hover{transform:translateY(-2px);}
+
+select,input[type="file"]{
+width:100%;
+max-width:400px;
+background:rgba(255,255,255,0.08);
+color:#fff;
+border:1px solid rgba(255,255,255,0.15);
+padding:12px;
+border-radius:10px;
 }
 
-/* Mobile Adjustments */
-@media (max-width:768px){
-    .hero { flex-direction:column; }
-    .nav { flex-direction:column; gap:10px; }
-    .nav div { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+.progress-container{
+width:100%;
+background:rgba(255,255,255,0.08);
+border-radius:8px;
+margin-top:10px;
+}
+.progress-bar{
+width:0%;
+height:12px;
+background:#6366f1;
+border-radius:8px;
+transition:width 0.3s;
+}
+
+footer{
+text-align:center;
+padding:40px 6%;
+color:#94a3b8;
+}
+
+@media(max-width:768px){
+.hero{flex-direction:column;}
+.nav{flex-direction:column;gap:10px;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="nav">
+<!-- NAV -->
+<div class="nav glass">
 <strong>SkillMirror</strong>
 <div>
+<a href="#intelligence">Intelligence</a>
+<a href="#pipeline">Pipeline</a>
 <a href="#demo">Live Demo</a>
-<a href="#">Request Demo</a>
 </div>
 </div>
 
+<!-- HERO -->
 <section>
 <div class="hero">
 <div>
 <h1>Structured Hiring Intelligence for High-Performance Teams</h1>
-<p>Select a role. Upload a resume. Experience role-specific structured scoring.</p>
+<p>Model roles. Structure candidate signals. Generate explainable alignment, confidence and risk scoring.</p>
+<a href="#" class="btn">Request a Demo</a>
+</div>
+
+<div class="glass card">
+<h3>Hiring Intelligence Snapshot</h3>
+<div class="metric" id="alignment">0%</div>
+<p>Alignment Score</p>
+<div class="metric" id="confidence">0%</div>
+<p>Confidence Index</p>
+<div class="metric" id="risk">0%</div>
+<p>Risk Indicator</p>
 </div>
 </div>
 </section>
 
+<!-- CHART -->
+<section id="intelligence" class="center">
+<h2>Multi-Dimensional Alignment Scoring</h2>
+<div class="glass card">
+<canvas id="alignmentChart"></canvas>
+</div>
+</section>
+
+<!-- PIPELINE -->
+<section id="pipeline">
+<h2 class="center">Structured Intelligence Pipeline</h2>
+<div class="grid">
+<div class="glass step active" onclick="activate(this)">Role Modeling</div>
+<div class="glass step" onclick="activate(this)">Candidate Modeling</div>
+<div class="glass step" onclick="activate(this)">Alignment Engine</div>
+<div class="glass step" onclick="activate(this)">Confidence Layer</div>
+</div>
+</section>
+
+<!-- DEMO -->
 <section id="demo">
 <h2 class="center">Role-Specific Hiring Simulation</h2>
 
-<div class="card" style="max-width:700px;margin:40px auto;text-align:center;">
+<div class="glass card" style="max-width:700px;margin:40px auto;text-align:center;">
 
 <select id="roleSelect">
 <option value="">Select Role</option>
@@ -161,7 +225,7 @@ footer {
 <button class="btn" onclick="runSimulation()">Analyze Resume</button>
 
 <div id="loading" style="display:none;margin-top:20px;">
-<p>SkillBot is structuring signals for selected role...</p>
+<p>SkillBot is structuring signals...</p>
 <div class="progress-container">
 <div id="progressBar" class="progress-bar"></div>
 </div>
@@ -186,40 +250,62 @@ footer {
 
 <p id="label3"></p>
 <div class="progress-container"><div id="bar3" class="progress-bar"></div></div>
-</div>
 
+</div>
 </div>
 </section>
 
 <footer>
-<p>© 2026 SkillMirror — Structured Hiring Intelligence Infrastructure</p>
+© 2026 SkillMirror — Structured Hiring Intelligence Infrastructure
 </footer>
 
 <script>
-const roleModels = {
-engineer: {
-labels:["Technical Depth","System Design","Problem Solving"],
-base:85
-},
-product: {
-labels:["Strategic Thinking","Execution Ability","Stakeholder Management"],
-base:82
-},
-sales: {
-labels:["Revenue Impact","Pipeline Management","Negotiation Skills"],
-base:80
+function animateValue(id,start,end,duration){
+let range=end-start,current=start;
+let stepTime=Math.abs(Math.floor(duration/range));
+let obj=document.getElementById(id);
+let timer=setInterval(()=>{
+current++;
+obj.textContent=current+"%";
+if(current>=end)clearInterval(timer);
+},stepTime);
 }
+animateValue("alignment",0,91,1500);
+animateValue("confidence",0,88,1500);
+animateValue("risk",0,12,1500);
+
+function activate(el){
+document.querySelectorAll(".step").forEach(s=>s.classList.remove("active"));
+el.classList.add("active");
+}
+
+new Chart(document.getElementById('alignmentChart'),{
+type:'bar',
+data:{
+labels:['Skill Depth','Experience','Behavior Fit','Transferable'],
+datasets:[{label:'Candidate A',data:[92,85,88,90]}]
+},
+options:{
+plugins:{legend:{labels:{color:"#fff"}}},
+scales:{y:{ticks:{color:"#fff"}},x:{ticks:{color:"#fff"}}}
+}
+});
+
+const roleModels={
+engineer:{labels:["Technical Depth","System Design","Problem Solving"],base:85},
+product:{labels:["Strategic Thinking","Execution Ability","Stakeholder Management"],base:82},
+sales:{labels:["Revenue Impact","Pipeline Management","Negotiation Skills"],base:80}
 };
 
 function runSimulation(){
 const role=document.getElementById("roleSelect").value;
 const file=document.getElementById("resumeUpload").files.length;
+if(!role){alert("Select a role.");return;}
+if(!file){alert("Upload a resume.");return;}
 
-if(!role){ alert("Select a role."); return; }
-if(!file){ alert("Upload a resume."); return; }
-
-document.getElementById("loading").style.display="block";
 document.getElementById("results").style.display="none";
+document.getElementById("loading").style.display="block";
+document.getElementById("progressBar").style.width="0%";
 
 let progress=0;
 let interval=setInterval(()=>{
@@ -241,9 +327,7 @@ let alignment=Math.floor(Math.random()*10)+model.base;
 let confidence=alignment>88?"High":"Moderate";
 let risk=alignment>88?"Low":"Medium";
 
-document.getElementById("selectedRole").innerText=
-role.charAt(0).toUpperCase()+role.slice(1);
-
+document.getElementById("selectedRole").innerText=role.charAt(0).toUpperCase()+role.slice(1);
 document.getElementById("demoAlignment").innerText=alignment+"%";
 document.getElementById("demoConfidence").innerText=confidence;
 document.getElementById("demoRisk").innerText=risk;
