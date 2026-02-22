@@ -35,6 +35,8 @@ text-decoration:none;
 font-weight:600;
 transition:0.3s;
 box-shadow:0 0 20px rgba(34,197,94,0.4);
+cursor:pointer;
+border:none;
 }
 .btn:hover{
 transform:translateY(-3px);
@@ -47,9 +49,11 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 padding-top:100px;
+position:relative;
 }
 
 .hero-content{max-width:550px}
+
 .hero h1{
 font-size:54px;
 line-height:1.1;
@@ -58,6 +62,7 @@ background:linear-gradient(90deg,#ffffff,#94a3b8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
+
 .hero p{font-size:18px;color:#94a3b8;margin-bottom:30px}
 
 .glass{
@@ -69,9 +74,17 @@ box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
 .dashboard{
-width:500px;
+width:520px;
 padding:25px;
 animation:float 6s ease-in-out infinite;
+transition:0.4s;
+position:relative;
+overflow:hidden;
+}
+
+.dashboard:hover{
+transform:scale(1.03);
+box-shadow:0 0 60px rgba(34,197,94,0.3);
 }
 
 @keyframes float{
@@ -79,18 +92,46 @@ animation:float 6s ease-in-out infinite;
 50%{transform:translateY(-12px)}
 }
 
-.score{font-size:44px;font-weight:800;color:#22c55e}
+.score{
+font-size:48px;
+font-weight:800;
+color:#22c55e;
+transition:0.3s;
+}
+
 .ai-box{
 margin-top:15px;
 background:rgba(255,255,255,0.05);
 padding:15px;
 border-radius:12px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:0.6}
+50%{opacity:1}
+100%{opacity:0.6}
+}
+
+/* floating particles */
+.particle{
+position:absolute;
+width:6px;
+height:6px;
+background:#22c55e;
+border-radius:50%;
+opacity:0.6;
+animation:floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+from{transform:translateY(0)}
+to{transform:translateY(-200px)}
 }
 
 .section{padding:120px 0}
 .section h2{text-align:center;font-size:36px;margin-bottom:60px;color:white}
 
-/* Interactive Timeline */
 .timeline{
 display:flex;
 align-items:center;
@@ -137,31 +178,6 @@ from{opacity:0;transform:translateY(10px)}
 to{opacity:1;transform:translateY(0)}
 }
 
-.mini-animation{
-margin-top:20px;
-padding:15px;
-background:rgba(255,255,255,0.05);
-border-radius:12px;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{opacity:0.6}
-50%{opacity:1}
-100%{opacity:0.6}
-}
-
-textarea{
-width:100%;
-height:120px;
-padding:12px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,0.1);
-background:rgba(255,255,255,0.05);
-color:white;
-margin-top:8px;
-}
-
 footer{text-align:center;padding:60px 0;color:#64748b}
 </style>
 </head>
@@ -174,8 +190,7 @@ footer{text-align:center;padding:60px 0;color:#64748b}
 <div class="logo">SkillMirror</div>
 <div>
 <a href="#workflow">Workflow</a>
-<a href="#demo">Live Demo</a>
-<a href="#cta" class="btn">Early Access</a>
+<a href="#cta" class="btn">Request a Demo</a>
 </div>
 </nav>
 </div>
@@ -183,16 +198,21 @@ footer{text-align:center;padding:60px 0;color:#64748b}
 
 <section class="hero container">
 <div class="hero-content">
-<h1>AI Copilot for Intelligent Hiring.</h1>
-<p>Experience a next-generation recruitment workflow powered by structured intelligence and guided actions.</p>
-<a href="#workflow" class="btn">Experience Workflow</a>
+<h1>Hire With Structured Intelligence.</h1>
+<p>
+SkillMirror transforms job descriptions and resumes into structured, 
+decision-ready insights — enabling faster, confident hiring.
+</p>
+<a href="#cta" class="btn">Request a Demo</a>
 </div>
 
 <div class="dashboard glass">
 <h3>Live Candidate Intelligence</h3>
 <div class="score" id="liveScore">0%</div>
-<canvas id="radarChart" width="300" height="250"></canvas>
-<div class="ai-box">Multi-dimensional skill alignment detected.</div>
+<canvas id="radarChart" width="350" height="260"></canvas>
+<div class="ai-box" id="insightText">
+Initializing multi-dimensional alignment model...
+</div>
 </div>
 </section>
 
@@ -216,38 +236,17 @@ footer{text-align:center;padding:60px 0;color:#64748b}
 </div>
 </section>
 
-<section class="section" id="demo">
-<div class="container">
-<h2>Live AI Simulation</h2>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;">
-<div>
-<label>Job Description</label>
-<textarea id="jobInput">Senior Backend Engineer with Node.js, AWS and system design.</textarea>
-</div>
-<div>
-<label>Resume</label>
-<textarea id="resumeInput">Backend Engineer with Node.js, AWS and microservices experience.</textarea>
-</div>
-</div>
-
-<div style="text-align:center;margin-top:30px;">
-<button onclick="runDemo()" class="btn">Run AI Analysis</button>
-</div>
-
-<div id="demoResult" style="margin-top:40px;display:none;">
-<p><strong>Match Score:</strong> <span id="demoScore"></span></p>
-<p><strong>Insight:</strong> <span id="demoSummary"></span></p>
-<p><strong>Next Action:</strong> <span id="demoRecommendation"></span></p>
-</div>
-
-</div>
-</section>
-
 <section class="section" id="cta">
 <div class="container" style="text-align:center;">
-<h2>Redefine Recruitment With AI Copilot.</h2>
-<a href="#" class="btn">Request Early Access</a>
+<h2>See SkillMirror In Action.</h2>
+<p style="margin-top:15px;color:#94a3b8;">
+Request a live walkthrough of structured hiring intelligence.
+</p>
+<div style="margin-top:30px;">
+<input type="email" placeholder="Enter your work email"
+style="padding:14px;border-radius:12px;border:none;width:280px;margin-right:10px;">
+<button class="btn">Request a Demo</button>
+</div>
 </div>
 </section>
 
@@ -257,20 +256,33 @@ footer{text-align:center;padding:60px 0;color:#64748b}
 
 <script>
 let liveScore=0;
-let liveTarget=86;
-let liveInterval=setInterval(()=>{
-if(liveScore>=liveTarget){clearInterval(liveInterval)}
-else{liveScore++;document.getElementById("liveScore").innerText=liveScore+"%"}
-},20);
+let target=92;
+let interval=setInterval(()=>{
+if(liveScore>=target){clearInterval(interval)}
+else{
+liveScore++;
+document.getElementById("liveScore").innerText=liveScore+"%";
+updateRadar(liveScore);
+updateInsight(liveScore);
+}
+},25);
 
-// Radar
+function updateInsight(score){
+let text="Analyzing alignment signals...";
+if(score>60) text="Skill alignment strong. Domain exposure detected.";
+if(score>80) text="High confidence match. Recommend technical interview.";
+document.getElementById("insightText").innerText=text;
+}
+
 function updateRadar(score){
 const canvas=document.getElementById('radarChart');
 const ctx=canvas.getContext('2d');
 ctx.clearRect(0,0,canvas.width,canvas.height);
-const skills=[score,score-10,score-15,score-5,score-8].map(v=>v<40?40:v);
-const centerX=150, centerY=120, radius=90;
+
+const skills=[score,score-8,score-12,score-6,score-10].map(v=>v<40?40:v);
+const centerX=175, centerY=130, radius=100;
 const angleStep=(Math.PI*2)/skills.length;
+
 ctx.strokeStyle="rgba(255,255,255,0.2)";
 for(let i=1;i<=4;i++){
 ctx.beginPath();
@@ -282,6 +294,7 @@ if(j===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
 }
 ctx.closePath(); ctx.stroke();
 }
+
 ctx.beginPath();
 for(let j=0;j<skills.length;j++){
 let angle=j*angleStep;
@@ -294,55 +307,15 @@ ctx.closePath();
 ctx.fillStyle="rgba(34,197,94,0.6)";
 ctx.fill();
 }
-updateRadar(86);
 
-// Interactive Workflow
-const panel=document.getElementById("infographicPanel");
-const steps=document.querySelectorAll(".step");
-
-steps.forEach(step=>{
-step.addEventListener("mouseenter",()=>{
-steps.forEach(s=>s.classList.remove("active"));
-step.classList.add("active");
-updatePanel(step.dataset.step);
-});
-});
-
-function updatePanel(step){
-if(step==="1"){
-panel.innerHTML="<h3>Define Role</h3><p>Extracting structured requirements.</p><div class='mini-animation'>⚡ Parsing skills & seniority signals...</div>";
-}
-if(step==="2"){
-panel.innerHTML="<h3>Add Candidates</h3><p>Building structured talent pipeline.</p><div class='mini-animation'>📂 Parsing resume vectors...</div>";
-}
-if(step==="3"){
-panel.innerHTML="<h3>AI Analysis</h3><p>Evaluating multi-dimensional alignment.</p><div class='mini-animation'>🧠 Calculating match confidence...</div>";
-}
-if(step==="4"){
-panel.innerHTML="<h3>Compare</h3><p>Generating side-by-side ranking.</p><div class='mini-animation'>📊 Building comparison matrix...</div>";
-}
-if(step==="5"){
-panel.innerHTML="<h3>Guided Actions</h3><p>Recommending structured next steps.</p><div class='mini-animation'>✉ Drafting follow-up actions...</div>";
-}
-}
-updatePanel("1");
-
-function runDemo(){
-const job=document.getElementById("jobInput").value.toLowerCase();
-const resume=document.getElementById("resumeInput").value.toLowerCase();
-document.getElementById("demoResult").style.display="block";
-document.getElementById("demoScore").innerText="Analyzing...";
-setTimeout(()=>{
-let score=70;
-if(job.includes("node") && resume.includes("node")) score+=10;
-if(job.includes("aws") && resume.includes("aws")) score+=10;
-if(score>95) score=95;
-document.getElementById("demoScore").innerText=score+"%";
-document.getElementById("demoSummary").innerText="Structured alignment detected.";
-document.getElementById("demoRecommendation").innerText=
-score>=85?"Proceed to Interview":"Further Validation Needed";
-updateRadar(score);
-},1200);
+/* Floating Particles */
+for(let i=0;i<20;i++){
+let particle=document.createElement("div");
+particle.className="particle";
+particle.style.left=Math.random()*100+"%";
+particle.style.top=Math.random()*100+"%";
+particle.style.animationDuration=(5+Math.random()*5)+"s";
+document.querySelector(".dashboard").appendChild(particle);
 }
 </script>
 
