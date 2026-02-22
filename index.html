@@ -17,6 +17,24 @@ overflow-x:hidden;
 }
 
 .container{width:90%;max-width:1200px;margin:auto;}
+section{padding:120px 0;}
+
+h1{font-size:48px;line-height:1.1;margin-bottom:20px;}
+h2{font-size:36px;margin-bottom:50px;text-align:center;}
+h3{font-size:20px;margin-bottom:10px;}
+p{color:#475569;font-size:16px;line-height:1.6;}
+
+.glass{
+background:white;
+border-radius:16px;
+padding:30px;
+box-shadow:0 15px 50px rgba(14,165,233,0.08);
+transition:0.3s;
+}
+.glass:hover{
+transform:translateY(-6px);
+box-shadow:0 25px 70px rgba(14,165,233,0.15);
+}
 
 header{
 position:fixed;
@@ -33,33 +51,11 @@ align-items:center;
 padding:16px 0;
 }
 
-.logo{
-height:55px;
-display:flex;
-align-items:center;
-overflow:hidden;
-}
+.logo{height:55px;display:flex;align-items:center;overflow:hidden;}
+.logo img{height:70px;margin-top:-6px;}
 
-.logo img{
-height:70px;
-margin-top:-6px;
-transition:0.3s;
-}
-
-.logo img:hover{transform:scale(1.05);}
-
-.nav-links{
-display:flex;
-gap:30px;
-align-items:center;
-}
-
-nav a{
-text-decoration:none;
-color:#334155;
-font-weight:500;
-font-size:14px;
-}
+.nav-links{display:flex;gap:30px;align-items:center;}
+nav a{text-decoration:none;color:#334155;font-weight:500;font-size:14px;}
 
 .btn{
 background:#0ea5e9;
@@ -70,29 +66,9 @@ text-decoration:none;
 font-weight:600;
 transition:0.3s;
 }
-
 .btn:hover{
 background:#0284c7;
 box-shadow:0 6px 20px rgba(14,165,233,0.35);
-}
-
-section{padding:120px 0;}
-
-h1{font-size:48px;line-height:1.1;margin-bottom:20px;}
-h2{font-size:36px;margin-bottom:40px;text-align:center;}
-p{color:#475569;font-size:18px;line-height:1.6;}
-
-.glass{
-background:white;
-border-radius:16px;
-padding:30px;
-box-shadow:0 20px 60px rgba(14,165,233,0.1);
-transition:0.3s;
-}
-
-.glass:hover{
-transform:translateY(-5px);
-box-shadow:0 25px 70px rgba(14,165,233,0.15);
 }
 
 /* HERO */
@@ -106,53 +82,47 @@ flex-wrap:wrap;
 padding-top:120px;
 }
 
-.hero-content{flex:1;min-width:280px;}
-
 .dashboard{
 flex:1;
 min-width:280px;
 }
 
 .metric{margin-bottom:20px;}
+.progress{height:8px;background:#e2e8f0;border-radius:20px;overflow:hidden;}
+.progress-fill{height:100%;width:0%;background:#0ea5e9;transition:width 1.2s ease;}
 
-.progress{
-height:8px;
-background:#e2e8f0;
-border-radius:20px;
-overflow:hidden;
-}
-
-.progress-fill{
-height:100%;
-width:0%;
-background:#0ea5e9;
-transition:width 1.2s ease;
-}
-
-/* Problem */
-.problem-grid{
+.infographic-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-margin-top:40px;
-}
-
-/* Platform */
-.platform-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
 }
 
-/* Flow */
+/* PLATFORM ARCHITECTURE */
+.architecture{
+display:flex;
+flex-direction:column;
+gap:20px;
+max-width:800px;
+margin:auto;
+}
+.arch-layer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:white;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(14,165,233,0.08);
+}
+
+/* FLOW */
 .timeline{
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
 gap:20px;
-margin-bottom:30px;
+margin-bottom:40px;
 }
-
 .step{
 padding:10px 18px;
 border-radius:40px;
@@ -160,37 +130,32 @@ background:#e0f2fe;
 cursor:pointer;
 transition:0.3s;
 }
+.step.active{background:#0ea5e9;color:white;}
 
-.step.active{
-background:#0ea5e9;
-color:white;
-}
+.flow-panel{max-width:700px;margin:auto;}
 
-/* Ecosystem */
+/* ECOSYSTEM */
 .ecosystem-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
 }
 
-/* Comparison */
+/* COMPARISON */
 .compare{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:40px;
 }
-
 .compare ul{margin-top:20px;line-height:1.8;}
 
-/* Security */
-.security{
+/* SECURITY */
+.security-box{
 background:#f1f5f9;
-padding:60px;
+padding:50px;
 border-radius:16px;
-}
-
-/* CTA */
-.cta{
+max-width:800px;
+margin:auto;
 text-align:center;
 }
 
@@ -221,7 +186,7 @@ text-align:center;
 
 <!-- HERO -->
 <section class="hero container">
-<div class="hero-content">
+<div>
 <h1>Hiring Decisions Should Be Structured — Not Subjective.</h1>
 <p>SkillMirror transforms resumes and job descriptions into structured, explainable hiring intelligence — ranked, modeled, and decision-ready.</p>
 <br>
@@ -229,51 +194,48 @@ text-align:center;
 </div>
 
 <div class="dashboard glass">
-<h3>AI Hiring Intelligence</h3>
-
+<h3>AI Hiring Intelligence Dashboard</h3>
 <div class="metric">
 <p>Match Score <strong id="score">0%</strong></p>
 <div class="progress"><div id="bar1" class="progress-fill"></div></div>
 </div>
-
 <div class="metric">
 <p>Confidence Index</p>
 <div class="progress"><div id="bar2" class="progress-fill"></div></div>
 </div>
-
 <div class="metric">
 <p>Leadership Signal</p>
 <div class="progress"><div id="bar3" class="progress-fill"></div></div>
 </div>
-
 </div>
 </section>
 
-<!-- PROBLEM -->
+<!-- PROBLEM INFOGRAPHIC -->
 <section class="container">
 <h2>Modern Hiring Is Overloaded and Under-Structured.</h2>
-<div class="problem-grid">
-<div class="glass">Resume overload slows shortlisting.</div>
-<div class="glass">Keyword filters miss contextual depth.</div>
-<div class="glass">Manual comparisons create inconsistency.</div>
-<div class="glass">Follow-ups break due to workflow fatigue.</div>
+<div class="infographic-grid">
+<div class="glass"><h3>Resume Overload</h3><p>Hundreds of resumes reviewed manually each week.</p></div>
+<div class="glass"><h3>Keyword Filtering</h3><p>Context and depth are missed by static filters.</p></div>
+<div class="glass"><h3>Subjective Shortlisting</h3><p>Inconsistent evaluation across teams.</p></div>
+<div class="glass"><h3>Broken Follow-Ups</h3><p>Engagement drops due to workflow fatigue.</p></div>
 </div>
 </section>
 
-<!-- PLATFORM -->
+<!-- PLATFORM ARCHITECTURE -->
 <section id="platform" class="container">
 <h2>The SkillMirror Intelligence Platform</h2>
-<div class="platform-grid">
-<div class="glass"><strong>Intelligence Core</strong><br>Transforms resumes into structured role vectors.</div>
-<div class="glass"><strong>Recruiter Copilot</strong><br>Generates interview focus and guided decisions.</div>
-<div class="glass"><strong>Talent Analytics</strong><br>Measures hiring performance and velocity.</div>
-<div class="glass"><strong>Bias Guard</strong><br>Supports transparent and fair evaluation.</div>
+<div class="architecture">
+<div class="arch-layer"><strong>Intelligence Core</strong><span>Role & Candidate Vector Modeling</span></div>
+<div class="arch-layer"><strong>Recruiter Copilot</strong><span>Guided Interview & Decision Support</span></div>
+<div class="arch-layer"><strong>Talent Analytics</strong><span>Hiring Performance Insights</span></div>
+<div class="arch-layer"><strong>Bias Guard</strong><span>Transparent & Fair Evaluation</span></div>
+<div class="arch-layer"><strong>Automation Engine</strong><span>Structured Follow-Ups & Workflow</span></div>
 </div>
 </section>
 
 <!-- FLOW -->
 <section id="flow" class="container">
-<h2>Interactive Hiring Intelligence Flow</h2>
+<h2>From Resume to Decision — Structured at Every Step</h2>
 <div class="timeline">
 <div class="step active" data-step="1">Define</div>
 <div class="step" data-step="2">Ingest</div>
@@ -281,7 +243,7 @@ text-align:center;
 <div class="step" data-step="4">Rank</div>
 <div class="step" data-step="5">Guide</div>
 </div>
-<div id="flowText" class="glass">
+<div id="flowText" class="flow-panel glass">
 Role signals extracted and structured.
 </div>
 </section>
@@ -290,10 +252,11 @@ Role signals extracted and structured.
 <section class="container">
 <h2>A Platform Designed for Modern Talent Teams</h2>
 <div class="ecosystem-grid">
-<div class="glass"><strong>SkillMirror Copilot</strong><br>Available</div>
-<div class="glass"><strong>Analytics</strong><br>Coming Soon</div>
-<div class="glass"><strong>Insights</strong><br>Coming Soon</div>
-<div class="glass"><strong>Outreach AI</strong><br>Planned</div>
+<div class="glass"><h3>Copilot</h3><p>Multi-dimensional scoring and guided decision intelligence.</p></div>
+<div class="glass"><h3>Analytics</h3><p>Structured hiring metrics and funnel performance insights.</p></div>
+<div class="glass"><h3>Insights</h3><p>Deep candidate modeling beyond keywords.</p></div>
+<div class="glass"><h3>Outreach AI</h3><p>Smart engagement and workflow continuity.</p></div>
+<div class="glass"><h3>Integration Layer</h3><p>Designed to work across modern hiring stacks.</p></div>
 </div>
 </section>
 
@@ -306,17 +269,17 @@ Role signals extracted and structured.
 <ul>
 <li>Keyword filters</li>
 <li>Manual shortlisting</li>
-<li>Static pipeline views</li>
-<li>No structured modeling</li>
+<li>Static pipelines</li>
+<li>No confidence modeling</li>
 </ul>
 </div>
 <div class="glass">
 <h3>SkillMirror</h3>
 <ul>
-<li>Multi-dimensional scoring</li>
-<li>Confidence modeling</li>
+<li>Multi-dimensional alignment scoring</li>
+<li>Structured candidate modeling</li>
 <li>Guided interview focus</li>
-<li>Explainable intelligence</li>
+<li>Explainable decision intelligence</li>
 </ul>
 </div>
 </div>
@@ -324,23 +287,21 @@ Role signals extracted and structured.
 
 <!-- SECURITY -->
 <section class="container">
-<div class="security">
+<div class="security-box">
 <h2>Built With Transparency and Fairness</h2>
-<p>Structured scoring, explainable alignment reasoning, and blind screening capabilities designed for responsible AI hiring practices.</p>
+<p>Structured scoring, explainable reasoning, and blind screening capabilities designed for responsible AI hiring decisions.</p>
 </div>
 </section>
 
 <!-- CTA -->
-<section id="cta" class="cta container">
+<section id="cta" class="container" style="text-align:center;">
 <h2>Bring Structure to Your Hiring Decisions.</h2>
 <br>
 <a href="#" class="btn">Request a Demo</a>
 </section>
 
 <script>
-// Dashboard Animation
-let s=0;
-let t=92;
+let s=0,t=92;
 let i=setInterval(()=>{
 if(s>=t){clearInterval(i);}
 else{
@@ -355,7 +316,6 @@ document.getElementById("bar2").style.width="85%";
 document.getElementById("bar3").style.width="78%";
 },500);
 
-// Flow Interaction
 const steps=document.querySelectorAll(".step");
 const flowText=document.getElementById("flowText");
 
