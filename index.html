@@ -74,6 +74,11 @@ transform:translateY(-2px);
 box-shadow:0 15px 35px rgba(14,165,233,0.35);
 }
 
+.btn:focus-visible{
+outline:3px solid rgba(14,165,233,0.35);
+outline-offset:3px;
+}
+
 /* ---------------- HERO ---------------- */
 
 .hero{
@@ -176,6 +181,10 @@ position:absolute;
 right:-40px;
 bottom:-10px;
 width:160px;
+}
+
+.robot.hidden{
+display:none;
 }
 
 /* ---------------- PIPELINE ---------------- */
@@ -290,7 +299,7 @@ display:none;
 <div class="logo">
 <img src="skillmirror-logo.png" alt="SkillMirror">
 </div>
-<a href="#" class="btn">Request a Demo</a>
+<a href="#demo" class="btn">Request a Demo</a>
 </nav>
 </div>
 </header>
@@ -302,7 +311,7 @@ display:none;
 <div class="hero-left">
 <h1>Structured Hiring Intelligence<br>for High-Performance Teams.</h1>
 <p>Model role requirements and candidate signals into explainable, multi-dimensional scoring that enables faster and more confident hiring decisions.</p>
-<a href="#" class="btn">Request a Demo</a>
+<a href="#demo" class="btn">Request a Demo</a>
 </div>
 
 <div class="hero-right">
@@ -334,7 +343,7 @@ display:none;
 
 </div>
 
-<img src="robot.png" class="robot" alt="SkillBot">
+<img src="robot.png" class="robot" alt="SkillBot" onerror="this.classList.add('hidden')">
 
 </div>
 
@@ -366,6 +375,14 @@ From role modeling to ranked output — fully structured and explainable.
 <div class="rank-item"><span>Candidate C</span><span class="rank-score">72%</span></div>
 </div>
 
+</div>
+</section>
+
+<section id="demo" class="container" style="padding-top:20px;padding-bottom:100px;">
+<div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;box-shadow:0 12px 30px rgba(14,165,233,0.08);">
+<h2 style="margin-bottom:10px;">Request a Demo</h2>
+<p style="color:var(--muted);margin-bottom:18px;">Tell us about your team and we’ll share a tailored walkthrough.</p>
+<a class="btn" href="mailto:demo@skillmirror.ai?subject=SkillMirror%20Demo%20Request">Email the team</a>
 </div>
 </section>
 
@@ -409,6 +426,14 @@ ctx.closePath();
 ctx.fillStyle="rgba(14,165,233,0.15)";
 ctx.fill();
 ctx.stroke();
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+clearInterval(interval);
+document.getElementById("score").innerText=t+"%";
+document.getElementById("bar1").style.width="91%";
+document.getElementById("bar2").style.width="84%";
+document.getElementById("bar3").style.width="72%";
+}
 
 </script>
 
