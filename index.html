@@ -3,414 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillMirror — Structured Hiring Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>SkillMirror | Structured Hiring Intelligence</title>
+<meta name="description" content="SkillMirror is the AI Recruitment Copilot that transforms hiring into structured, explainable intelligence with multi-dimensional alignment scoring.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
---primary:#0ea5e9;
---primary-dark:#0284c7;
---bg:#f4f9ff;
---card:#ffffff;
---text:#0f172a;
---muted:#475569;
---border:#e2e8f0;
+body { font-family: 'Inter', sans-serif; margin:0; padding:0; color:#111; line-height:1.6; }
+section { padding:80px 8%; }
+h1 { font-size:48px; line-height:1.2; }
+h2 { font-size:32px; margin-bottom:20px; }
+h3 { font-size:20px; }
+p { color:#555; }
+.btn-primary {
+    background:#111; color:#fff; padding:14px 28px;
+    text-decoration:none; border-radius:6px; display:inline-block;
+    margin-right:15px;
 }
-
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-
-body{
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
-scroll-behavior:smooth;
+.btn-secondary {
+    border:1px solid #111; padding:14px 28px;
+    text-decoration:none; border-radius:6px; color:#111;
 }
-
-.container{
-width:92%;
-max-width:1200px;
-margin:auto;
+.nav {
+    display:flex; justify-content:space-between;
+    padding:20px 8%; position:sticky; top:0; background:#fff;
 }
-
-section{
-padding:110px 0;
+.nav a { text-decoration:none; margin-left:20px; color:#111; }
+.hero { display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
+.hero-text { flex:1; }
+.hero-card {
+    flex:1; background:#f7f7f7; padding:40px;
+    border-radius:12px;
 }
-
-/* ---------------- HEADER ---------------- */
-
-header{
-position:fixed;
-width:100%;
-background:white;
-border-bottom:1px solid var(--border);
-z-index:1000;
+.grid {
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:30px;
 }
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px 0;
+.light { background:#f9f9f9; }
+.center { text-align:center; }
+footer {
+    background:#111; color:#fff; padding:40px 8%;
 }
-
-.logo img{
-height:42px;
-}
-
-.btn{
-background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-color:white;
-padding:12px 26px;
-border-radius:8px;
-text-decoration:none;
-font-weight:600;
-font-size:14px;
-transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
-box-shadow:0 10px 25px rgba(14,165,233,0.25);
-}
-
-.btn:hover{
-transform:translateY(-2px);
-box-shadow:0 15px 35px rgba(14,165,233,0.35);
-}
-
-/* ---------------- HERO ---------------- */
-
-.hero{
-min-height:90vh;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:60px;
-flex-wrap:wrap;
-padding-top:120px;
-}
-
-.hero-left{
-flex:1;
-min-width:280px;
-}
-
-.hero-left h1{
-font-size:44px;
-font-weight:800;
-line-height:1.1;
-margin-bottom:18px;
-}
-
-.hero-left p{
-color:var(--muted);
-margin-bottom:30px;
-font-size:16px;
-}
-
-.hero-right{
-flex:1;
-min-width:320px;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
-
-.dashboard{
-background:var(--card);
-padding:30px;
-border-radius:18px;
-border:1px solid var(--border);
-box-shadow:0 25px 60px rgba(14,165,233,0.08);
-width:100%;
-max-width:420px;
-position:relative;
-}
-
-.dashboard h3{
-font-size:14px;
-font-weight:600;
-color:var(--muted);
-margin-bottom:20px;
-}
-
-.metric{
-margin-bottom:20px;
-}
-
-.metric-label{
-font-size:13px;
-color:var(--muted);
-margin-bottom:6px;
-}
-
-.metric-value{
-font-size:14px;
-font-weight:600;
-margin-bottom:6px;
-}
-
-.progress{
-height:6px;
-background:#edf2f7;
-border-radius:20px;
-overflow:hidden;
-}
-
-.progress-fill{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,var(--primary),#38bdf8);
-transition:width 1.2s cubic-bezier(0.16,1,0.3,1);
-}
-
-/* Radar */
-
-.radar-container{
-margin-top:15px;
-display:flex;
-justify-content:center;
-}
-
-/* Robot */
-
-.robot{
-position:absolute;
-right:-40px;
-bottom:-10px;
-width:160px;
-}
-
-/* ---------------- PIPELINE ---------------- */
-
-.pipeline-section{
-background:white;
-border-top:1px solid var(--border);
-}
-
-.pipeline{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-margin-top:60px;
-position:relative;
-flex-wrap:wrap;
-}
-
-.pipeline::before{
-content:"";
-position:absolute;
-top:50%;
-left:5%;
-right:5%;
-height:3px;
-background:linear-gradient(90deg,var(--primary),transparent);
-background-size:200% 100%;
-animation:flow 3s linear infinite;
-z-index:0;
-}
-
-@keyframes flow{
-0%{background-position:0%}
-100%{background-position:200%}
-}
-
-.node{
-background:var(--card);
-padding:16px 20px;
-border-radius:12px;
-border:1px solid var(--border);
-box-shadow:0 8px 20px rgba(14,165,233,0.08);
-font-size:14px;
-font-weight:600;
-z-index:1;
-}
-
-/* Ranking */
-
-.ranking{
-margin-top:50px;
-max-width:420px;
-margin-left:auto;
-margin-right:auto;
-}
-
-.rank-item{
-background:var(--card);
-padding:14px 18px;
-border-radius:10px;
-border:1px solid var(--border);
-margin-bottom:10px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
-}
-
-.rank-score{
-background:rgba(14,165,233,0.12);
-color:var(--primary);
-padding:4px 10px;
-border-radius:20px;
-font-size:13px;
-font-weight:600;
-}
-
-/* Responsive */
-
-@media(max-width:768px){
-
-.hero{
-flex-direction:column;
-text-align:center;
-}
-
-.robot{
-position:relative;
-right:auto;
-bottom:auto;
-margin-top:20px;
-width:140px;
-}
-
-.pipeline{
-flex-direction:column;
-}
-
-.pipeline::before{
-display:none;
-}
-}
+footer p { color:#bbb; }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="container">
-<nav>
-<div class="logo">
-<img src="skillmirror-logo.png" alt="SkillMirror">
+<!-- NAVIGATION -->
+<div class="nav">
+    <strong>SkillMirror</strong>
+    <div>
+        <a href="#how">How It Works</a>
+        <a href="#why">Why SkillMirror</a>
+        <a href="#security">Security</a>
+        <a href="#">Request a Demo</a>
+    </div>
 </div>
-<a href="#" class="btn">Request a Demo</a>
-</nav>
-</div>
-</header>
 
 <!-- HERO -->
+<section>
+<div class="hero">
+    <div class="hero-text">
+        <h1>Structured Hiring Intelligence for High-Performance Teams</h1>
+        <p>
+        Move beyond resume screening. Build explainable, multi-dimensional hiring decisions powered by structured intelligence.
+        </p>
+        <a href="#" class="btn-primary">Request a Demo</a>
+        <a href="#" class="btn-secondary">See How It Works</a>
+    </div>
 
-<section class="hero container">
-
-<div class="hero-left">
-<h1>Structured Hiring Intelligence<br>for High-Performance Teams.</h1>
-<p>Model role requirements and candidate signals into explainable, multi-dimensional scoring that enables faster and more confident hiring decisions.</p>
-<a href="#" class="btn">Request a Demo</a>
+    <div class="hero-card">
+        <h3>Hiring Intelligence Snapshot</h3>
+        <p><strong>Alignment Score:</strong> 91%</p>
+        <p><strong>Confidence Index:</strong> High</p>
+        <p><strong>Risk Indicator:</strong> Low</p>
+        <hr>
+        <p>Transparent scoring. Explainable logic. Executive-ready clarity.</p>
+    </div>
 </div>
-
-<div class="hero-right">
-
-<div class="dashboard">
-<h3>Hiring Intelligence Snapshot</h3>
-
-<div class="metric">
-<div class="metric-label">Alignment Score</div>
-<div class="metric-value" id="score">0%</div>
-<div class="progress"><div id="bar1" class="progress-fill"></div></div>
-</div>
-
-<div class="metric">
-<div class="metric-label">Confidence Index</div>
-<div class="metric-value">High</div>
-<div class="progress"><div id="bar2" class="progress-fill"></div></div>
-</div>
-
-<div class="metric">
-<div class="metric-label">Risk Indicator</div>
-<div class="metric-value">Low</div>
-<div class="progress"><div id="bar3" class="progress-fill"></div></div>
-</div>
-
-<div class="radar-container">
-<canvas id="radar" width="180" height="180"></canvas>
-</div>
-
-</div>
-
-<img src="robot.png" class="robot" alt="SkillBot">
-
-</div>
-
 </section>
 
-<!-- PIPELINE -->
+<!-- TRUST BAR -->
+<section class="light center">
+    <p>Designed for enterprise teams, high-growth startups, and global recruitment partners.</p>
+</section>
 
-<section class="pipeline-section">
-<div class="container">
+<!-- PROBLEM -->
+<section>
+<h2>The Cost of Unstructured Hiring</h2>
+<div class="grid">
+    <div>
+        <h3>Subjective Evaluation</h3>
+        <p>Inconsistent interview notes and non-standardized comparisons create decision friction.</p>
+    </div>
+    <div>
+        <h3>Keyword Dependency</h3>
+        <p>Traditional systems rely on surface-level filtering instead of structured capability mapping.</p>
+    </div>
+    <div>
+        <h3>Executive Uncertainty</h3>
+        <p>Leadership lacks quantified reasoning behind hiring decisions.</p>
+    </div>
+</div>
+</section>
 
-<div class="section-header">
-<h2>Structured Intelligence Pipeline</h2>
-<p style="text-align:center;color:var(--muted);margin-top:10px;">
-From role modeling to ranked output — fully structured and explainable.
+<!-- SOLUTION -->
+<section class="light">
+<h2>Introducing Structured Hiring Intelligence</h2>
+<p>
+SkillMirror transforms job descriptions into structured blueprints and candidate profiles into measurable signal maps. Every decision becomes explainable, comparable, and defensible.
 </p>
-</div>
+</section>
 
-<div class="pipeline">
-<div class="node">Role Modeling</div>
-<div class="node">Candidate Modeling</div>
-<div class="node">Alignment Engine</div>
-<div class="node">Confidence Layer</div>
-<div class="node">Ranked Output</div>
-</div>
-
-<div class="ranking">
-<div class="rank-item"><span>Candidate A</span><span class="rank-score">91%</span></div>
-<div class="rank-item"><span>Candidate B</span><span class="rank-score">84%</span></div>
-<div class="rank-item"><span>Candidate C</span><span class="rank-score">72%</span></div>
-</div>
-
+<!-- HOW IT WORKS -->
+<section id="how">
+<h2>How SkillMirror Works</h2>
+<div class="grid">
+    <div>
+        <h3>1. Role Modeling</h3>
+        <p>Deconstruct roles into skill depth, behavioral markers, impact expectations, and contextual layers.</p>
+    </div>
+    <div>
+        <h3>2. Candidate Modeling</h3>
+        <p>Convert resumes and interviews into structured signal frameworks beyond keyword matching.</p>
+    </div>
+    <div>
+        <h3>3. Alignment Engine</h3>
+        <p>Multi-dimensional scoring across weighted capability dimensions.</p>
+    </div>
+    <div>
+        <h3>4. Confidence & Risk Layer</h3>
+        <p>Quantified reliability scoring and risk exposure analysis for defensible hiring.</p>
+    </div>
 </div>
 </section>
 
-<script>
+<!-- DIFFERENTIATION -->
+<section id="why" class="light">
+<h2>Why SkillMirror Wins</h2>
+<div class="grid">
+    <div>
+        <h3>Explainable Scoring</h3>
+        <p>Every alignment percentage includes dimension-level transparency.</p>
+    </div>
+    <div>
+        <h3>Decision Confidence</h3>
+        <p>Built-in confidence metrics eliminate internal debate.</p>
+    </div>
+    <div>
+        <h3>Bias-Aware Evaluation</h3>
+        <p>Structured frameworks reduce subjective distortions.</p>
+    </div>
+    <div>
+        <h3>Infrastructure, Not Automation</h3>
+        <p>We build hiring intelligence systems — not screening bots.</p>
+    </div>
+</div>
+</section>
 
-// Animate Score
-let s=0,t=91;
-let interval=setInterval(()=>{
-if(s>=t){clearInterval(interval);}
-else{
-s++;
-document.getElementById("score").innerText=s+"%";
-}
-},20);
+<!-- SECURITY -->
+<section id="security">
+<h2>Enterprise-Grade Security & Governance</h2>
+<div class="grid">
+    <div>
+        <h3>Data Encryption</h3>
+        <p>Encrypted candidate data with role-based access control.</p>
+    </div>
+    <div>
+        <h3>Compliance Ready</h3>
+        <p>GDPR-ready architecture and structured audit trails.</p>
+    </div>
+    <div>
+        <h3>Model Transparency</h3>
+        <p>Explainable scoring logic and bias monitoring layers.</p>
+    </div>
+</div>
+</section>
 
-setTimeout(()=>{
-document.getElementById("bar1").style.width="91%";
-document.getElementById("bar2").style.width="84%";
-document.getElementById("bar3").style.width="72%";
-},400);
+<!-- FINAL CTA -->
+<section class="light center">
+    <h2>Replace Instinct with Intelligence</h2>
+    <p>Build structured, defensible hiring systems for modern teams.</p>
+    <a href="#" class="btn-primary">Request a Demo</a>
+</section>
 
-// Radar
-const canvas=document.getElementById("radar");
-const ctx=canvas.getContext("2d");
-
-ctx.strokeStyle="#e2e8f0";
-for(let i=1;i<=3;i++){
-ctx.beginPath();
-ctx.arc(90,90,25*i,0,2*Math.PI);
-ctx.stroke();
-}
-
-ctx.strokeStyle="#0ea5e9";
-ctx.beginPath();
-ctx.moveTo(90,20);
-ctx.lineTo(150,60);
-ctx.lineTo(130,150);
-ctx.lineTo(50,150);
-ctx.lineTo(30,60);
-ctx.closePath();
-ctx.fillStyle="rgba(14,165,233,0.15)";
-ctx.fill();
-ctx.stroke();
-
-</script>
+<footer>
+    <strong>SkillMirror</strong>
+    <p>Structured Hiring Intelligence Infrastructure</p>
+    <p>© 2026 SkillMirror. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
