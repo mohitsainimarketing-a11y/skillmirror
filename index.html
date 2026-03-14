@@ -1,4 +1,4 @@
-```html id="k9f3dx"
+```html id="skillmirror_complete_page_v1"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth}
 
 body{
 background:#050c1c;
@@ -35,9 +36,9 @@ animation:ambientMove 20s ease-in-out infinite alternate;
 }
 
 @keyframes ambientMove{
-0%{background-position:20% 30%,80% 70%,50% 50%;}
-50%{background-position:30% 40%,70% 60%,60% 40%;}
-100%{background-position:15% 35%,85% 75%,45% 55%;}
+0%{background-position:20% 30%,80% 70%,50% 50%}
+50%{background-position:30% 40%,70% 60%,60% 40%}
+100%{background-position:15% 35%,85% 75%,45% 55%}
 }
 
 .container{width:90%;max-width:1200px;margin:auto}
@@ -52,7 +53,7 @@ margin-bottom:40px;
 .section-sub{
 text-align:center;
 max-width:700px;
-margin:0 auto 70px auto;
+margin:0 auto 60px auto;
 color:#9ca3af;
 font-size:18px;
 }
@@ -83,14 +84,14 @@ cursor:pointer;
 }
 
 nav a{
-margin-left:30px;
+margin-left:28px;
 text-decoration:none;
 color:#9ca3af;
 }
 
 nav a:hover{color:white}
 
-/* Buttons */
+/* Button */
 
 .btn{
 background:linear-gradient(135deg,#22c55e,#2563eb);
@@ -99,8 +100,8 @@ border-radius:14px;
 color:white;
 font-weight:600;
 display:inline-block;
-cursor:pointer;
 border:none;
+cursor:pointer;
 }
 
 /* HERO */
@@ -129,6 +130,8 @@ margin-bottom:35px;
 max-width:520px;
 }
 
+/* Engine */
+
 .engine{
 width:560px;
 padding:40px;
@@ -137,7 +140,7 @@ background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))
 border:1px solid rgba(255,255,255,0.08);
 }
 
-.ring-wrap{position:relative;width:170px;height:170px;margin:auto;}
+.ring-wrap{position:relative;width:170px;height:170px;margin:auto}
 
 .score{
 position:absolute;
@@ -162,7 +165,7 @@ padding:14px 0;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-/* Problem section */
+/* Problem */
 
 .problem-grid{
 display:grid;
@@ -171,8 +174,7 @@ gap:40px;
 align-items:center;
 }
 
-.problem-card,
-.solution-card{
+.problem-card,.solution-card{
 padding:30px;
 border-radius:20px;
 background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
@@ -190,10 +192,7 @@ opacity:0.6;
 
 /* Pipeline */
 
-.pipeline-wrapper{
-position:relative;
-margin-top:80px;
-}
+.pipeline-wrapper{position:relative;margin-top:80px}
 
 .pipeline{
 display:flex;
@@ -255,17 +254,13 @@ animation:pulseMove 6s linear infinite;
 }
 
 .step-detail{
-margin-top:50px;
+margin-top:40px;
 padding:30px;
 border-radius:20px;
 background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
 border:1px solid rgba(255,255,255,0.08);
-max-width:800px;
-margin-left:auto;
-margin-right:auto;
 text-align:center;
 color:#9ca3af;
-font-size:16px;
 }
 
 /* DEMO */
@@ -343,6 +338,22 @@ border:1px solid rgba(255,255,255,0.08);
 text-align:center;
 }
 
+/* Vision */
+
+.vision-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+margin-top:40px;
+}
+
+.vision-card{
+padding:30px;
+border-radius:20px;
+background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+border:1px solid rgba(255,255,255,0.08);
+}
+
 /* Popup */
 
 .popup{
@@ -418,9 +429,7 @@ overflow:auto;
 font-size:14px;
 }
 
-.chat-input{
-display:flex;
-}
+.chat-input{display:flex}
 
 .chat-input input{
 flex:1;
@@ -435,6 +444,8 @@ color:white;
 padding:10px;
 }
 
+/* Responsive */
+
 @media(max-width:900px){
 .hero{flex-direction:column;text-align:center;gap:60px}
 .problem-grid{grid-template-columns:1fr}
@@ -442,6 +453,7 @@ padding:10px;
 .pipeline-line,.pipeline-pulse{display:none}
 .demo-grid{grid-template-columns:1fr}
 }
+
 </style>
 </head>
 
@@ -452,9 +464,7 @@ padding:10px;
 <header>
 <div class="container">
 <nav>
-
 <a href="#hero" class="logo">SkillMirror</a>
-
 <div>
 <a href="#hero">Product</a>
 <a href="#problem">Problem</a>
@@ -463,13 +473,9 @@ padding:10px;
 <a href="#roi">Impact</a>
 <a href="#vision">Vision</a>
 </div>
-
 </nav>
 </div>
 </header>
-
-
-<!-- HERO -->
 
 <section class="hero container" id="hero">
 
@@ -517,37 +523,28 @@ stroke-dashoffset="470"/>
 </div>
 
 <div class="table">
-
 <div class="row"><span>Candidate A</span><span>92%</span></div>
 <div class="row"><span>Candidate B</span><span>74%</span></div>
 <div class="row"><span>Candidate C</span><span>61%</span></div>
-
 </div>
 
 </div>
 
 </section>
 
-
-<!-- HOW SECTION -->
-
 <section class="section" id="how">
 <div class="container">
-
 <h2>How SkillMirror Turns Hiring Data Into Decisions</h2>
 
 <div class="pipeline-wrapper">
-
 <div class="pipeline-line"></div>
 <div class="pipeline-pulse"></div>
 
 <div class="pipeline">
-
 <div class="step active" data-step="1"><div class="step-icon">📄</div><h3>Role Intelligence</h3></div>
 <div class="step" data-step="2"><div class="step-icon">🧾</div><h3>Candidate Structuring</h3></div>
 <div class="step" data-step="3"><div class="step-icon">📊</div><h3>Alignment Intelligence</h3></div>
 <div class="step" data-step="4"><div class="step-icon">🤖</div><h3>Decision Guidance</h3></div>
-
 </div>
 
 <div class="step-detail" id="stepDetail">
@@ -558,9 +555,6 @@ SkillMirror analyzes job descriptions and extracts structured competency signals
 </div>
 </section>
 
-
-<!-- LIVE DEMO -->
-
 <section class="section" id="demo">
 
 <div class="container">
@@ -568,7 +562,8 @@ SkillMirror analyzes job descriptions and extracts structured competency signals
 <h2>Live Resume Alignment Demo</h2>
 
 <p class="section-sub">
-Paste a job description and a candidate resume to see SkillMirror evaluate the alignment.
+Paste a job description and a candidate resume to see how SkillMirror evaluates
+alignment across skills, experience depth, and domain exposure.
 </p>
 
 <div class="demo-grid">
@@ -576,10 +571,10 @@ Paste a job description and a candidate resume to see SkillMirror evaluate the a
 <div class="glass">
 
 <label>Job Description</label>
-<textarea id="jobInput">Senior Backend Engineer with Node.js and AWS.</textarea>
+<textarea id="jobInput">Senior Backend Engineer with Node.js AWS system design microservices</textarea>
 
 <label>Candidate Resume</label>
-<textarea id="resumeInput">Backend engineer with Node.js, AWS and microservices.</textarea>
+<textarea id="resumeInput">Backend engineer experienced with Node.js AWS microservices</textarea>
 
 <button class="btn" onclick="runDemo()">Analyze Candidate</button>
 
@@ -595,10 +590,16 @@ Paste a job description and a candidate resume to see SkillMirror evaluate the a
 
 <circle cx="90" cy="90" r="75" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="none"/>
 
-<circle id="demoRing" cx="90" cy="90" r="75"
-stroke="url(#grad)" stroke-width="12"
-fill="none" stroke-linecap="round"
-stroke-dasharray="470" stroke-dashoffset="470"/>
+<circle id="demoRing"
+cx="90"
+cy="90"
+r="75"
+stroke="url(#grad)"
+stroke-width="12"
+fill="none"
+stroke-linecap="round"
+stroke-dasharray="470"
+stroke-dashoffset="470"/>
 
 </svg>
 
@@ -609,7 +610,7 @@ stroke-dasharray="470" stroke-dashoffset="470"/>
 <div class="demo-item"><span>Domain Exposure</span><strong id="domainScore">—</strong></div>
 
 <div class="demo-insight" id="demoInsight">
-Run the analysis to see SkillMirror's evaluation.
+Run the analysis to evaluate candidate-role alignment.
 </div>
 
 </div>
@@ -617,111 +618,85 @@ Run the analysis to see SkillMirror's evaluation.
 </div>
 
 </div>
-
 </section>
-
-
-<!-- IMPACT -->
 
 <section class="section" id="roi">
 <div class="container">
-
 <h2>Measured Impact</h2>
-
 <div class="grid">
-
 <div class="card"><h1 style="font-size:50px;color:#22c55e">70%</h1><p>Faster Screening</p></div>
 <div class="card"><h1 style="font-size:50px;color:#22c55e">3×</h1><p>Shortlist Speed</p></div>
 <div class="card"><h1 style="font-size:50px;color:#22c55e">100%</h1><p>Consistency</p></div>
 <div class="card"><h1 style="font-size:50px;color:#22c55e">40%</h1><p>Better Alignment</p></div>
-
 </div>
-
 </div>
 </section>
-
-
-<!-- VISION -->
 
 <section class="section" id="vision">
-
 <div class="container">
-
 <h2>Hiring Will Become Infrastructure</h2>
-
-<p style="text-align:center;color:#9ca3af;font-size:18px;max-width:700px;margin:auto">
-SkillMirror transforms hiring into structured intelligence infrastructure.
+<p class="section-sub">
+Today hiring decisions rely on fragmented signals such as resumes,
+interviews and subjective impressions. As organizations scale this
+approach becomes inconsistent and difficult to manage.
 </p>
 
+<div class="vision-grid">
+
+<div class="vision-card">
+<h3>From Documents to Data</h3>
+<p>Resumes and job descriptions become structured capability signals.</p>
 </div>
 
+<div class="vision-card">
+<h3>From Screening to Intelligence</h3>
+<p>AI systems analyze candidate capability across multiple dimensions.</p>
+</div>
+
+<div class="vision-card">
+<h3>From Opinion to Evidence</h3>
+<p>Hiring decisions will rely on explainable intelligence and structured match scoring.</p>
+</div>
+
+</div>
+
+</div>
 </section>
-
-
-<!-- CTA -->
 
 <section class="section" id="cta">
-
 <div class="container" style="text-align:center">
-
 <h2>See SkillMirror in Action</h2>
-
 <button class="btn openPopup">Request a Demo</button>
-
 </div>
-
 </section>
-
 
 <footer style="text-align:center;padding:80px 0;color:#6b7280">
 © 2026 SkillMirror
 </footer>
 
-
-<!-- POPUP FORM -->
-
 <div class="popup" id="popupForm">
-
 <div class="popup-content">
-
 <span class="popup-close" id="closePopup">✕</span>
-
 <h3>Request a Demo</h3>
-
 <input placeholder="Full Name">
 <input placeholder="Work Email">
 <input placeholder="Company">
-
 <button class="btn">Submit</button>
-
 </div>
-
 </div>
-
-
-<!-- CHAT -->
 
 <div class="chat-button" id="chatBtn">Live Chat</div>
 
 <div class="chat-box" id="chatBox">
-
 <div class="chat-header">SkillMirror Support</div>
-
-<div class="chat-body" id="chatBody">
-Hello 👋 How can we help you today?
-</div>
-
+<div class="chat-body" id="chatBody">Hello 👋 How can we help you today?</div>
 <div class="chat-input">
 <input id="chatInput" placeholder="Type message...">
 <button id="sendChat">Send</button>
 </div>
-
 </div>
 
-
 <script>
-
-/* hero score */
 
 let s=0,target=92
 let circumference=2*Math.PI*75
@@ -735,10 +710,7 @@ let offset=circumference-(s/100)*circumference
 ring.style.strokeDashoffset=offset
 requestAnimationFrame(animate)
 }
-
 animate()
-
-/* pipeline interaction */
 
 const steps=document.querySelectorAll(".step")
 const detail=document.getElementById("stepDetail")
@@ -758,19 +730,48 @@ detail.innerText=content[step.dataset.step]
 })
 })
 
-/* demo analyzer */
-
 function runDemo(){
 
-let score=85
+const job=document.getElementById("jobInput").value.toLowerCase()
+const resume=document.getElementById("resumeInput").value.toLowerCase()
 
+const skills=["node","aws","microservices","system","backend","api","cloud"]
+
+let jobSkills=skills.filter(s=>job.includes(s))
+let resumeSkills=skills.filter(s=>resume.includes(s))
+
+let matched=jobSkills.filter(s=>resumeSkills.includes(s))
+
+let ratio=jobSkills.length?matched.length/jobSkills.length:0
+
+let skillScore=Math.round(ratio*100)
+let expScore=Math.min(95,skillScore+10)
+let domainScore=Math.min(90,skillScore+5)
+
+let finalScore=Math.round(skillScore*0.5+expScore*0.3+domainScore*0.2)
+
+animateDemo(finalScore)
+
+document.getElementById("skillScore").innerText=skillScore+"%"
+document.getElementById("expScore").innerText=expScore+"%"
+document.getElementById("domainScore").innerText=domainScore+"%"
+
+document.getElementById("demoInsight").innerText=
+finalScore>80?
+"Strong alignment detected. Candidate likely qualifies for interview.":
+"Partial alignment detected. Further validation recommended."
+
+}
+
+function animateDemo(target){
+
+let current=0
 let ring=document.getElementById("demoRing")
 let circumference=2*Math.PI*75
-let current=0
 
 function step(){
 
-if(current>=score) return
+if(current>=target) return
 
 current++
 
@@ -780,31 +781,18 @@ let offset=circumference-(current/100)*circumference
 ring.style.strokeDashoffset=offset
 
 requestAnimationFrame(step)
-
 }
 
 step()
-
-document.getElementById("skillScore").innerText="90%"
-document.getElementById("expScore").innerText="82%"
-document.getElementById("domainScore").innerText="85%"
-document.getElementById("demoInsight").innerText="Strong alignment detected. Candidate likely meets core role requirements."
-
 }
 
-/* popup */
-
 const popup=document.getElementById("popupForm")
-
 document.querySelectorAll(".openPopup").forEach(btn=>{
 btn.onclick=()=>popup.style.display="flex"
 })
-
 document.getElementById("closePopup").onclick=()=>{
 popup.style.display="none"
 }
-
-/* chat */
 
 const chatBtn=document.getElementById("chatBtn")
 const chatBox=document.getElementById("chatBox")
