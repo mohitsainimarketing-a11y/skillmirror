@@ -953,17 +953,6 @@ approach becomes inconsistent and difficult to manage.
 </div>
 </div>
 
-  <div class="chat-button" id="chatBtn">Live Chat</div>
-
-<div class="chat-box" id="chatBox">
-<div class="chat-header">SkillMirror Support</div>
-<div class="chat-body" id="chatBody">Hello 👋 How can we help you today?</div>
-<div class="chat-input">
-<input id="chatInput" placeholder="Type message...">
-<button id="sendChat">Send</button>
-</div>
-</div>
-
 <script>
 
 let s=0,target=92
@@ -1062,28 +1051,6 @@ document.getElementById("closePopup").onclick=()=>{
 popup.style.display="none"
 }
 
-const chatBtn=document.getElementById("chatBtn")
-const chatBox=document.getElementById("chatBox")
-
-chatBtn.onclick=()=>{
-chatBox.style.display=chatBox.style.display==="flex"?"none":"flex"
-}
-
-document.getElementById("sendChat").onclick=()=>{
-let input=document.getElementById("chatInput")
-let msg=document.createElement("div")
-msg.innerText=input.value
-document.getElementById("chatBody").appendChild(msg)
-input.value=""
-}
-document.getElementById("sendChat").onclick=()=>{
-let input=document.getElementById("chatInput")
-let msg=document.createElement("div")
-msg.innerText=input.value
-document.getElementById("chatBody").appendChild(msg)
-input.value=""
-}
-
 /* ---- ADD THIS PART BELOW ---- */
 
 const form = document.getElementById("demoForm");
@@ -1108,6 +1075,24 @@ document.getElementById("formSuccess").style.display="block";
 });
   
 </script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69b6126d7afc871c37be224c/1jjnjfup7';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+</html>
+
 
 </body>
 </html>
