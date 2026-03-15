@@ -21,7 +21,7 @@ box-sizing:border-box;
 font-family:'Inter',sans-serif;
 }
 
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth}
 
 body{
 background:#050c1c;
@@ -29,33 +29,11 @@ color:#e5e7eb;
 overflow-x:hidden;
 }
 
-/* Layout */
-
 .container{
 width:90%;
 max-width:1200px;
 margin:auto;
 }
-
-.section{
-padding:120px 0;
-}
-
-h2{
-text-align:center;
-font-size:40px;
-margin-bottom:40px;
-}
-
-.section-sub{
-text-align:center;
-max-width:700px;
-margin:0 auto 60px;
-color:#9ca3af;
-font-size:18px;
-}
-
-/* Header */
 
 header{
 position:fixed;
@@ -85,11 +63,7 @@ text-decoration:none;
 color:#9ca3af;
 }
 
-nav a:hover{
-color:white;
-}
-
-/* Buttons */
+nav a:hover{color:white}
 
 .btn{
 background:linear-gradient(135deg,#22c55e,#2563eb);
@@ -100,8 +74,6 @@ font-weight:600;
 border:none;
 cursor:pointer;
 }
-
-/* Hero */
 
 .hero{
 min-height:100vh;
@@ -127,8 +99,6 @@ margin-bottom:35px;
 max-width:520px;
 }
 
-/* Engine */
-
 .engine{
 width:560px;
 padding:40px;
@@ -153,8 +123,6 @@ font-size:46px;
 font-weight:800;
 color:#22c55e;
 }
-
-/* Popup */
 
 .popup{
 position:fixed;
@@ -183,8 +151,8 @@ position:relative;
 position:absolute;
 top:20px;
 right:30px;
-font-size:24px;
 cursor:pointer;
+font-size:24px;
 }
 
 .form-group{
@@ -215,18 +183,6 @@ background:linear-gradient(135deg,#22c55e,#2563eb);
 color:white;
 font-weight:600;
 cursor:pointer;
-}
-
-/* Responsive */
-
-@media(max-width:900px){
-
-.hero{
-flex-direction:column;
-text-align:center;
-gap:60px;
-}
-
 }
 
 </style>
@@ -345,12 +301,9 @@ stroke-dashoffset="470"/>
 </div>
 
 </div>
-
 </div>
 
 <script>
-
-/* Score Animation */
 
 window.addEventListener("load",()=>{
 
@@ -379,8 +332,6 @@ animate()
 
 })
 
-/* Popup */
-
 const popup=document.getElementById("popupForm")
 const closePopup=document.getElementById("closePopup")
 
@@ -389,8 +340,6 @@ btn.addEventListener("click",()=>popup.style.display="flex")
 })
 
 closePopup.addEventListener("click",()=>popup.style.display="none")
-
-/* Form Submit */
 
 const form=document.getElementById("demoForm")
 
@@ -413,8 +362,6 @@ document.getElementById("formSuccess").style.display="block"
 })
 
 </script>
-
-<!-- Tawk Chat -->
 
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
