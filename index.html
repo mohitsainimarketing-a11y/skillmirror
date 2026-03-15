@@ -241,7 +241,10 @@ box-shadow:0 10px 30px rgba(2,6,23,.25);
 
 .demo-layout{display:flex;flex-direction:column;gap:14px}
 .demo-summary{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.score-pill{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,.35);background:rgba(34,197,94,.14);color:#bbf7d0}
+.score-pill{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,.35);background:rgba(34,197,94,.14);color:#bbf7d0;letter-spacing:.02em}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.demo-grid .btn{padding:10px 20px;border-radius:12px;font-size:14px}
 
 .metric-grid{
 display:grid;
@@ -263,7 +266,7 @@ padding:10px;
 .demo-bars{margin-top:4px;display:flex;flex-direction:column;gap:10px}
 .bar-row{display:grid;grid-template-columns:130px 1fr 46px;gap:8px;align-items:center;font-size:13px;color:#cbd5e1}
 .bar-track{height:8px;border-radius:999px;background:rgba(148,163,184,.18);overflow:hidden}
-.bar-fill{height:100%;background:linear-gradient(90deg,#22c55e,#2563eb);width:0;transition:width .5s ease}
+.bar-fill{height:100%;background:linear-gradient(90deg,#22c55e,#2563eb);width:0;transition:width .5s ease;border-radius:999px;animation:barGlow .7s ease both}
 
 .benchmark{margin-top:8px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.18);border-radius:12px;padding:10px}
 .benchmark-header{display:flex;justify-content:space-between;font-size:13px;color:#9ca3af;margin-bottom:10px}
@@ -275,6 +278,16 @@ padding:10px;
 .chip.match{background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.38);color:#bbf7d0}
 .chip.gap{background:rgba(251,146,60,.12);border-color:rgba(251,146,60,.3);color:#fed7aa}
 
+
+.status-wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:2px}
+.status-chip{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid rgba(148,163,184,.25);color:#cbd5e1;background:rgba(15,23,42,.45)}
+.status-chip.pass{border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.14);color:#bbf7d0}
+.status-chip.fail{border-color:rgba(251,146,60,.4);background:rgba(251,146,60,.14);color:#fed7aa}
+
+@keyframes barGlow{
+0%{opacity:.65;filter:saturate(.85)}
+100%{opacity:1;filter:saturate(1)}
+}
 .demo-note{
 margin-top:6px;
 padding:10px;
@@ -351,14 +364,22 @@ z-index:2000;
 }
 
 .popup-content{
-background:#0f172a;
-padding:40px;
-border-radius:20px;
-width:460px;
-max-height:80vh;
+background:linear-gradient(165deg,rgba(15,23,42,.96),rgba(15,23,42,.88));
+padding:34px;
+border-radius:22px;
+width:min(520px,92vw);
+max-height:86vh;
 overflow-y:auto;
 position:relative;
+border:1px solid rgba(148,163,184,.22);
+box-shadow:0 30px 70px rgba(2,6,23,.6), inset 0 1px 0 rgba(255,255,255,.04);
 }
+
+.popup-content h3{font-size:28px;margin-bottom:8px;color:#f8fafc}
+.popup-sub{font-size:14px;line-height:1.5;color:#94a3b8;margin-bottom:18px}
+.popup-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.popup-field{margin-bottom:10px}
+.popup-label{display:block;font-size:12px;color:#cbd5e1;margin-bottom:6px;letter-spacing:.02em}
 
 .popup-close{
 position:absolute;
@@ -368,22 +389,51 @@ cursor:pointer;
 font-size:24px;
 }
 
-input,textarea{
+.popup-content input,
+.popup-content textarea{
 width:100%;
-padding:12px;
-margin-bottom:12px;
+padding:12px 13px;
+margin-bottom:0;
 border-radius:10px;
-border:none;
+border:1px solid rgba(148,163,184,.24);
+background:rgba(15,23,42,.72);
+color:#e5e7eb;
+transition:border-color .2s ease, box-shadow .2s ease;
 }
+
+.popup-content input:focus,
+.popup-content textarea:focus{
+outline:none;
+border-color:rgba(59,130,246,.7);
+box-shadow:0 0 0 3px rgba(59,130,246,.2);
+}
+
+.popup-content textarea{min-height:96px;resize:vertical}
 
 .demo-btn{
 width:100%;
-padding:14px;
+padding:13px 14px;
 border-radius:12px;
 border:none;
 background:linear-gradient(135deg,#22c55e,#2563eb);
 color:white;
-font-weight:600;
+font-weight:700;
+letter-spacing:.01em;
+margin-top:8px;
+}
+
+.demo-btn:hover{filter:brightness(1.08)}
+
+.popup-success{
+display:none;
+margin-top:14px;
+padding:12px 14px;
+border-radius:12px;
+background:rgba(34,197,94,.12);
+border:1px solid rgba(34,197,94,.35);
+color:#bbf7d0;
+font-size:13px;
+line-height:1.45;
 }
 
 /* Responsive */
@@ -394,6 +444,7 @@ font-weight:600;
 .pipeline{flex-direction:column}
 .demo-grid{grid-template-columns:1fr}
 .bar-row{grid-template-columns:110px 1fr 42px}
+.popup-grid{grid-template-columns:1fr}
 }
 
 </style>
@@ -600,9 +651,18 @@ Paste a job description and candidate resume to simulate how modern AI recruitin
 
 <div class="chips" id="matchChips"></div>
 
-<p id="demoInsight" style="margin-top:8px;color:#9ca3af;font-size:13px;line-height:1.45">
+<div class="status-wrap">
+<p id="demoInsight" style="margin-top:0;color:#9ca3af;font-size:13px;line-height:1.45">
 Run the analysis to evaluate candidate-role alignment and visualize strengths vs. gaps.
 </p>
+<span class="status-chip" id="statusChip">Pending</span>
+</div>
+
+<div class="demo-note">
+This demo uses weighted competency scoring, explicit gap detection, and benchmark-aware recommendations.
+</div>
+
+</div>
 
 <div class="demo-note">
 This demo reflects 2026 hiring trends: weighted competency scoring, explainable skill coverage, and benchmark-based shortlist recommendations.
@@ -694,16 +754,33 @@ SkillMirror envisions a future where hiring is powered by structured intelligenc
 <span class="popup-close" id="closePopup">✕</span>
 
 <h3>Request a SkillMirror Demo</h3>
+<p class="popup-sub">Tell us about your hiring workflow and we’ll tailor a focused walkthrough for your team.</p>
 
-<form>
+<form id="demoRequestForm">
 
-<input type="text" placeholder="Full Name" required>
-<input type="email" placeholder="Work Email" required>
-<input type="text" placeholder="Company">
+<div class="popup-grid">
+<div class="popup-field">
+<label class="popup-label" for="fullName">Full Name</label>
+<input id="fullName" type="text" placeholder="Jane Cooper" required>
+</div>
+<div class="popup-field">
+<label class="popup-label" for="workEmail">Work Email</label>
+<input id="workEmail" type="email" placeholder="jane@company.com" required>
+</div>
+</div>
 
-<textarea placeholder="Tell us about your hiring goals"></textarea>
+<div class="popup-field">
+<label class="popup-label" for="companyName">Company</label>
+<input id="companyName" type="text" placeholder="Acme Inc.">
+</div>
 
-<button class="demo-btn">Request Demo</button>
+<div class="popup-field">
+<label class="popup-label" for="hiringGoals">Hiring Goals</label>
+<textarea id="hiringGoals" placeholder="Hiring 10 backend engineers in Q3. Need faster, fair shortlisting."></textarea>
+</div>
+
+<button class="demo-btn" type="submit">Request Demo</button>
+<div class="popup-success" id="popupSuccessMsg" role="status" aria-live="polite"></div>
 
 </form>
 
@@ -737,22 +814,43 @@ function runDemo(){
 const job=document.getElementById("jobInput").value.toLowerCase()
 const resume=document.getElementById("resumeInput").value.toLowerCase()
 
-const skills=["node","aws","microservices","system","backend","api","cloud","kubernetes","sql","design","distributed","security"]
+const skillGroups={
+"node.js":["node","node.js","nestjs","express"],
+"aws":["aws","amazon web services"],
+"microservices":["microservice","microservices"],
+"system design":["system design","architecture","scalable systems"],
+"backend":["backend","server-side"],
+"api":["api","rest","graphql"],
+"cloud":["cloud","gcp","azure"],
+"kubernetes":["kubernetes","k8s"],
+"sql":["sql","postgres","mysql"],
+"distributed systems":["distributed","event-driven","high availability"],
+"security":["security","oauth","auth","jwt"]
+}
 
-let jobSkills=skills.filter(s=>job.includes(s))
-let resumeSkills=skills.filter(s=>resume.includes(s))
+const normalize=(text)=>text.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
+const jobText=normalize(job)
+const resumeText=normalize(resume)
+
+const extractMatched=(text)=>Object.entries(skillGroups)
+  .filter(([,aliases])=>aliases.some(alias=>text.includes(alias)))
+  .map(([skill])=>skill)
+
+let jobSkills=extractMatched(jobText)
+let resumeSkills=extractMatched(resumeText)
 
 let matched=jobSkills.filter(s=>resumeSkills.includes(s))
 let missing=jobSkills.filter(s=>!resumeSkills.includes(s))
 
-let ratio=jobSkills.length?matched.length/jobSkills.length:0
+const yearMatch=resumeText.match(/(\d+)\s*\+?\s*(years|yrs|year)/)
+const years=yearMatch?Math.min(15,parseInt(yearMatch[1],10)):0
 
-let skillScore=Math.round(ratio*100)
-let expScore=Math.min(95,skillScore+10)
-let domainScore=Math.min(90,skillScore+5)
+let skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
+let expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
+let domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/(Object.keys(skillGroups).length))*40+15))
 
-let finalScore=Math.round(skillScore*0.5+expScore*0.3+domainScore*0.2)
-let coverageScore=Math.round((resumeSkills.length/skills.length)*100)
+let finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
+let coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
 let marketBenchmark=78
 
 document.getElementById("demoScore").innerText=finalScore+"%"
@@ -782,20 +880,32 @@ chip.textContent=`✔ ${skill}`
 chips.appendChild(chip)
 })
 
-missing.forEach(skill=>{
+missing.slice(0,5).forEach(skill=>{
 const chip=document.createElement("span")
 chip.className="chip gap"
 chip.textContent=`Gap: ${skill}`
 chips.appendChild(chip)
 })
 
+if(!matched.length && !missing.length){
+const chip=document.createElement("span")
+chip.className="chip gap"
+chip.textContent="Add more role keywords for a better analysis"
+chips.appendChild(chip)
+}
+
 const insight=document.getElementById("demoInsight")
+const statusChip=document.getElementById("statusChip")
 if(finalScore>=marketBenchmark){
-insight.innerText="Candidate is above benchmark. Recommendation: fast-track to technical interview with focus on depth validation."
+insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
 insight.style.color="#86efac"
+statusChip.textContent="Above Benchmark"
+statusChip.className="status-chip pass"
 }else{
-insight.innerText="Candidate is below benchmark. Recommendation: hold for secondary review or source additional profiles."
+insight.innerText="Below benchmark: keep in backup pool or run targeted screening for missing competencies."
 insight.style.color="#fdba74"
+statusChip.textContent="Below Benchmark"
+statusChip.className="status-chip fail"
 }
 
 }
@@ -808,9 +918,30 @@ document.querySelectorAll(".openPopup").forEach(btn=>{
 btn.onclick=()=>popup.style.display="flex"
 })
 
-document.getElementById("closePopup").onclick=()=>{
+const closePopup=()=>{
 popup.style.display="none"
 }
+
+document.getElementById("closePopup").onclick=closePopup
+
+window.addEventListener("click",(e)=>{
+if(e.target===popup)closePopup()
+})
+
+window.addEventListener("keydown",(e)=>{
+if(e.key==="Escape" && popup.style.display==="flex")closePopup()
+})
+
+const demoRequestForm=document.getElementById("demoRequestForm")
+const popupSuccessMsg=document.getElementById("popupSuccessMsg")
+
+demoRequestForm.addEventListener("submit",(e)=>{
+e.preventDefault()
+const fullName=document.getElementById("fullName").value.trim() || "there"
+popupSuccessMsg.style.display="block"
+popupSuccessMsg.innerText=`Thanks ${fullName}! Your demo request is submitted. Our team will contact you within 24 hours.`
+demoRequestForm.reset()
+})
 
 </script>
 
