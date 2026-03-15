@@ -600,9 +600,48 @@ Paste a job description and candidate resume to simulate how modern AI recruitin
 
 <div class="chips" id="matchChips"></div>
 
+<div class="status-wrap">
+<p id="demoInsight" style="margin-top:0;color:#9ca3af;font-size:13px;line-height:1.45">
+
+<div class="demo-summary">
+<div>
+<div style="font-size:36px;font-weight:700;line-height:1" id="demoScore">0%</div>
+<div style="color:#9ca3af;font-size:13px;margin-top:4px">Overall role-fit confidence</div>
+</div>
+<div class="score-pill">AI Fit Signal</div>
+</div>
+
+<div class="metric-grid">
+<div class="metric-card"><small>Skill Alignment</small><strong id="skillScore">—</strong></div>
+<div class="metric-card"><small>Experience Depth</small><strong id="expScore">—</strong></div>
+<div class="metric-card"><small>Domain Exposure</small><strong id="domainScore">—</strong></div>
+<div class="metric-card"><small>Keyword Coverage</small><strong id="coverageScore">—</strong></div>
+</div>
+
+<div class="demo-bars">
+<div class="bar-row"><span>Skill Alignment</span><div class="bar-track"><div class="bar-fill" id="barSkill"></div></div><span id="barSkillLabel">0%</span></div>
+<div class="bar-row"><span>Experience Depth</span><div class="bar-track"><div class="bar-fill" id="barExp"></div></div><span id="barExpLabel">0%</span></div>
+<div class="bar-row"><span>Domain Exposure</span><div class="bar-track"><div class="bar-fill" id="barDomain"></div></div><span id="barDomainLabel">0%</span></div>
+</div>
+
+<div class="benchmark">
+<div class="benchmark-header"><span>Market Benchmark</span><span id="benchmarkLabel">Hiring bar: 78%</span></div>
+<div class="benchmark-track"><div class="benchmark-point" id="benchmarkPoint"></div></div>
+</div>
+
+<div class="chips" id="matchChips"></div>
+
 <p id="demoInsight" style="margin-top:8px;color:#9ca3af;font-size:13px;line-height:1.45">
 Run the analysis to evaluate candidate-role alignment and visualize strengths vs. gaps.
 </p>
+<span class="status-chip" id="statusChip">Pending</span>
+</div>
+
+<div class="demo-note">
+This demo uses weighted competency scoring, explicit gap detection, and benchmark-aware recommendations.
+</div>
+
+</div>
 
 <div class="demo-note">
 This demo reflects 2026 hiring trends: weighted competency scoring, explainable skill coverage, and benchmark-based shortlist recommendations.
@@ -737,20 +776,44 @@ function runDemo(){
 const job=document.getElementById("jobInput").value.toLowerCase()
 const resume=document.getElementById("resumeInput").value.toLowerCase()
 
+const skillGroups={
+"node.js":["node","node.js","nestjs","express"],
+"aws":["aws","amazon web services"],
+"microservices":["microservice","microservices"],
+"system design":["system design","architecture","scalable systems"],
+"backend":["backend","server-side"],
+"api":["api","rest","graphql"],
+"cloud":["cloud","gcp","azure"],
+"kubernetes":["kubernetes","k8s"],
+"sql":["sql","postgres","mysql"],
+"distributed systems":["distributed","event-driven","high availability"],
+"security":["security","oauth","auth","jwt"]
+}
+
+const normalize=(text)=>text.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
+const jobText=normalize(job)
+const resumeText=normalize(resume)
 const skills=["node","aws","microservices","system","backend","api","cloud","kubernetes","sql","design","distributed","security"]
 
-let jobSkills=skills.filter(s=>job.includes(s))
-let resumeSkills=skills.filter(s=>resume.includes(s))
+const extractMatched=(text)=>Object.entries(skillGroups)
+  .filter(([,aliases])=>aliases.some(alias=>text.includes(alias)))
+  .map(([skill])=>skill)
+
+let jobSkills=extractMatched(jobText)
+let resumeSkills=extractMatched(resumeText)
 
 let matched=jobSkills.filter(s=>resumeSkills.includes(s))
 let missing=jobSkills.filter(s=>!resumeSkills.includes(s))
 
-let ratio=jobSkills.length?matched.length/jobSkills.length:0
+const yearMatch=resumeText.match(/(\d+)\s*\+?\s*(years|yrs|year)/)
+const years=yearMatch?Math.min(15,parseInt(yearMatch[1],10)):0
 
-let skillScore=Math.round(ratio*100)
-let expScore=Math.min(95,skillScore+10)
-let domainScore=Math.min(90,skillScore+5)
+let skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
+let expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
+let domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/(Object.keys(skillGroups).length))*40+15))
 
+let finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
+let coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
 let finalScore=Math.round(skillScore*0.5+expScore*0.3+domainScore*0.2)
 let coverageScore=Math.round((resumeSkills.length/skills.length)*100)
 let marketBenchmark=78
@@ -782,6 +845,7 @@ chip.textContent=`✔ ${skill}`
 chips.appendChild(chip)
 })
 
+missing.slice(0,5).forEach(skill=>{
 missing.forEach(skill=>{
 const chip=document.createElement("span")
 chip.className="chip gap"
@@ -789,6 +853,25 @@ chip.textContent=`Gap: ${skill}`
 chips.appendChild(chip)
 })
 
+if(!matched.length && !missing.length){
+const chip=document.createElement("span")
+chip.className="chip gap"
+chip.textContent="Add more role keywords for a better analysis"
+chips.appendChild(chip)
+}
+
+const insight=document.getElementById("demoInsight")
+const statusChip=document.getElementById("statusChip")
+if(finalScore>=marketBenchmark){
+insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
+insight.style.color="#86efac"
+statusChip.textContent="Above Benchmark"
+statusChip.className="status-chip pass"
+}else{
+insight.innerText="Below benchmark: keep in backup pool or run targeted screening for missing competencies."
+insight.style.color="#fdba74"
+statusChip.textContent="Below Benchmark"
+statusChip.className="status-chip fail"
 const insight=document.getElementById("demoInsight")
 if(finalScore>=marketBenchmark){
 insight.innerText="Candidate is above benchmark. Recommendation: fast-track to technical interview with focus on depth validation."
