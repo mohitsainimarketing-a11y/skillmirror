@@ -9,137 +9,7 @@
 
 <style>
 
-.radio-title{
-display:block;
-font-size:13px;
-color:#9ca3af;
-margin-bottom:10px;
-}
-
-.radio-group{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-}
-
-.radio-card{
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:10px;
-padding:10px;
-text-align:center;
-cursor:pointer;
-transition:all .2s ease;
-font-size:13px;
-}
-
-.radio-card input{
-display:none;
-}
-
-.radio-card:hover{
-border-color:#22c55e;
-}
-
-.radio-card input:checked + span{
-color:#22c55e;
-font-weight:600;
-}
-
-.popup-glass{
-background:linear-gradient(145deg, rgba(17,24,39,0.95), rgba(8,15,35,0.95));
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:26px;
-padding:40px;
-width:480px;
-max-height:85vh;
-overflow-y:auto;
-box-shadow:0 25px 70px rgba(0,0,0,0.6);
-}
-
-.popup-header{
-margin-bottom:24px;
-}
-
-.popup-header h3{
-font-size:24px;
-margin-bottom:6px;
-}
-
-.popup-header p{
-font-size:14px;
-color:#9ca3af;
-}
-
-.form-group{
-margin-bottom:16px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-width:100%;
-padding:14px 14px;
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:10px;
-color:white;
-font-size:14px;
-transition:all .2s ease;
-}
-
-.form-group textarea{
-height:90px;
-resize:none;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-outline:none;
-border-color:#22c55e;
-box-shadow:0 0 0 1px rgba(34,197,94,0.3);
-}
-
-.demo-btn{
-margin-top:10px;
-width:100%;
-padding:14px;
-border:none;
-border-radius:14px;
-background:linear-gradient(135deg,#22c55e,#2563eb);
-color:white;
-font-weight:600;
-font-size:15px;
-cursor:pointer;
-transition:all .2s ease;
-}
-
-.demo-btn:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 25px rgba(34,197,94,0.35);
-}
-
-.form-footer{
-margin-top:12px;
-font-size:12px;
-color:#9ca3af;
-text-align:center;
-}
-
-.popup-close{
-position:absolute;
-top:18px;
-right:22px;
-font-size:22px;
-cursor:pointer;
-opacity:0.7;
-}
-
-.popup-close:hover{
-opacity:1;
-}
+/* ===== BASIC RESET ===== */
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 html{scroll-behavior:smooth}
@@ -149,6 +19,8 @@ background:#050c1c;
 color:#e5e7eb;
 overflow-x:hidden;
 }
+
+/* ===== AMBIENT BACKGROUND ===== */
 
 .bg-ambient{
 position:fixed;
@@ -187,6 +59,8 @@ color:#9ca3af;
 font-size:18px;
 }
 
+/* ===== HEADER ===== */
+
 header{
 position:fixed;
 width:100%;
@@ -207,7 +81,6 @@ font-weight:800;
 font-size:20px;
 color:white;
 text-decoration:none;
-cursor:pointer;
 }
 
 nav a{
@@ -218,16 +91,19 @@ color:#9ca3af;
 
 nav a:hover{color:white}
 
+/* ===== BUTTON ===== */
+
 .btn{
 background:linear-gradient(135deg,#22c55e,#2563eb);
 padding:12px 28px;
 border-radius:14px;
 color:white;
 font-weight:600;
-display:inline-block;
 border:none;
 cursor:pointer;
 }
+
+/* ===== HERO ===== */
 
 .hero{
 min-height:100vh;
@@ -253,6 +129,8 @@ margin-bottom:35px;
 max-width:520px;
 }
 
+/* ===== ENGINE ===== */
+
 .engine{
 width:560px;
 padding:40px;
@@ -273,7 +151,111 @@ font-weight:800;
 color:#22c55e;
 }
 
-/* Popup */
+.table{
+margin-top:30px;
+border-top:1px solid rgba(255,255,255,0.1);
+padding-top:20px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+padding:14px 0;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+/* ===== DEMO ===== */
+
+.demo-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-top:60px;
+}
+
+.glass{
+background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+border:1px solid rgba(255,255,255,0.08);
+border-radius:20px;
+padding:30px;
+}
+
+textarea{
+width:100%;
+height:120px;
+margin-bottom:15px;
+background:rgba(255,255,255,0.05);
+border:none;
+border-radius:10px;
+padding:12px;
+color:white;
+}
+
+.demo-score-wrap{
+position:relative;
+width:180px;
+height:180px;
+margin:auto;
+}
+
+.demo-score{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:38px;
+font-weight:800;
+color:#22c55e;
+}
+
+.demo-item{
+display:flex;
+justify-content:space-between;
+padding:8px 0;
+color:#9ca3af;
+}
+
+.demo-insight{
+margin-top:15px;
+padding:15px;
+background:rgba(34,197,94,0.08);
+border-radius:10px;
+font-size:14px;
+}
+
+/* ===== IMPACT ===== */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+
+.card{
+padding:40px;
+border-radius:24px;
+background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+border:1px solid rgba(255,255,255,0.08);
+text-align:center;
+}
+
+/* ===== VISION ===== */
+
+.vision-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+margin-top:40px;
+}
+
+.vision-card{
+padding:30px;
+border-radius:20px;
+background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+border:1px solid rgba(255,255,255,0.08);
+}
+
+/* ===== POPUP ===== */
 
 .popup{
 position:fixed;
@@ -298,17 +280,30 @@ overflow-y:auto;
 position:relative;
 }
 
-/* Chat */
-
-.chat-button{
-position:fixed;
-bottom:30px;
+.popup-close{
+position:absolute;
+top:20px;
 right:30px;
-background:#22c55e;
-color:white;
-padding:14px 18px;
-border-radius:30px;
 cursor:pointer;
+font-size:24px;
+}
+
+.demo-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#22c55e,#2563eb);
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+.hero{flex-direction:column;text-align:center;gap:60px}
+.demo-grid{grid-template-columns:1fr}
 }
 
 </style>
@@ -336,7 +331,6 @@ cursor:pointer;
 <section class="hero container" id="hero">
 
 <div>
-
 <h1>The Decision Engine for Modern Hiring.</h1>
 
 <p>
@@ -344,6 +338,43 @@ SkillMirror converts resumes and job descriptions into structured hiring intelli
 </p>
 
 <button class="btn openPopup">Request a Demo</button>
+</div>
+
+<div class="engine">
+
+<h3 style="opacity:.8;margin-bottom:20px;">Live Hiring Intelligence</h3>
+
+<div class="ring-wrap">
+
+<svg width="170" height="170">
+
+<circle cx="85" cy="85" r="75"
+stroke="rgba(255,255,255,0.1)"
+stroke-width="12"
+fill="none"/>
+
+<circle id="ring"
+cx="85"
+cy="85"
+r="75"
+stroke="#22c55e"
+stroke-width="12"
+fill="none"
+stroke-linecap="round"
+stroke-dasharray="470"
+stroke-dashoffset="470"/>
+
+</svg>
+
+<div class="score" id="score">0%</div>
+
+</div>
+
+<div class="table">
+<div class="row"><span>Candidate A</span><span>92%</span></div>
+<div class="row"><span>Candidate B</span><span>74%</span></div>
+<div class="row"><span>Candidate C</span><span>61%</span></div>
+</div>
 
 </div>
 
@@ -355,37 +386,24 @@ SkillMirror converts resumes and job descriptions into structured hiring intelli
 
 <div class="popup" id="popupForm">
 
-<div class="popup-content popup-glass">
+<div class="popup-content">
 
 <span class="popup-close" id="closePopup">✕</span>
 
-<div class="popup-header">
 <h3>Request a SkillMirror Demo</h3>
-<p>See how structured hiring intelligence improves decision speed and quality.</p>
-</div>
 
 <form id="demoForm" action="https://formsubmit.co/mohitsaini20793@gmail.com" method="POST">
 
 <input type="hidden" name="_subject" value="New SkillMirror Demo Request">
 <input type="hidden" name="_captcha" value="false">
 
-<div class="form-group">
 <input type="text" name="name" placeholder="Full Name" required>
-</div>
-
-<div class="form-group">
 <input type="email" name="email" placeholder="Work Email" required>
-</div>
+<input type="text" name="company" placeholder="Company Name">
 
-<div class="form-group">
 <textarea name="message" placeholder="Tell us about your hiring goals"></textarea>
-</div>
 
 <button class="demo-btn" type="submit">Request Demo</button>
-
-<div class="form-footer">
-<span>Response within 24 hours</span>
-</div>
 
 </form>
 
@@ -399,6 +417,20 @@ SkillMirror converts resumes and job descriptions into structured hiring intelli
 
 <script>
 
+let s=0,target=92
+let circumference=2*Math.PI*75
+let ring=document.getElementById("ring")
+
+function animate(){
+if(s>=target) return
+s++
+document.getElementById("score").innerText=s+"%"
+let offset=circumference-(s/100)*circumference
+ring.style.strokeDashoffset=offset
+requestAnimationFrame(animate)
+}
+animate()
+
 const popup=document.getElementById("popupForm")
 
 document.querySelectorAll(".openPopup").forEach(btn=>{
@@ -408,27 +440,6 @@ btn.onclick=()=>popup.style.display="flex"
 document.getElementById("closePopup").onclick=()=>{
 popup.style.display="none"
 }
-
-const form = document.getElementById("demoForm");
-
-form.addEventListener("submit", function(e){
-
-e.preventDefault();
-
-fetch(form.action,{
-method:"POST",
-body:new FormData(form),
-headers:{'Accept':'application/json'}
-})
-
-.then(response=>{
-if(response.ok){
-form.style.display="none";
-document.getElementById("formSuccess").style.display="block";
-}
-})
-
-});
 
 </script>
 
