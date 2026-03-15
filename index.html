@@ -9,13 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>SkillMirror — The Decision Engine for Modern Hiring</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-
-/* Base */
-
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 html{scroll-behavior:smooth}
 
@@ -577,17 +572,14 @@ line-height:1.45;
 .hero-footnote{margin-top:12px;font-size:12px;color:#94a3b8;line-height:1.45}
 
 .problem-grid{grid-template-columns:1fr}
-.pipeline{flex-direction:column}
+.pipeline{grid-template-columns:1fr}
 .demo-grid{grid-template-columns:1fr}
 .bar-row{grid-template-columns:110px 1fr 42px}
 .popup-grid{grid-template-columns:1fr}
 }
-
 </style>
 </head>
-
 <body>
-
 <div class="bg-ambient"></div>
 
 <header>
@@ -1155,22 +1147,10 @@ The next generation of talent organizations will run hiring as a strategic opera
 </div>
 
 <script>
-
-/* Score ring */
-
 let s=0,target=92
-let circumference=2*Math.PI*75
-let ring=document.getElementById("ring")
-
-function animate(){
-if(s>=target)return
-s++
-document.getElementById("score").innerText=s+"%"
-let offset=circumference-(s/100)*circumference
-ring.style.strokeDashoffset=offset
-requestAnimationFrame(animate)
-}
-
+const circumference=2*Math.PI*75
+const ring=document.getElementById("ring")
+function animate(){if(s>=target)return;s++;document.getElementById("score").innerText=s+"%";ring.style.strokeDashoffset=circumference-(s/100)*circumference;requestAnimationFrame(animate)}
 animate()
 
 const sentiment={pos:76,neu:18,risk:6}
@@ -1346,6 +1326,8 @@ runDemo()
 /* Popup */
 
 const popup=document.getElementById("popupForm")
+const demoRequestForm=document.getElementById("demoRequestForm")
+const popupSuccessMsg=document.getElementById("popupSuccessMsg")
 
 document.querySelectorAll(".openPopup").forEach(btn=>{
 btn.onclick=()=>{
@@ -1383,8 +1365,6 @@ demoRequestForm.reset()
 
 </script>
 
-<!-- Tawk chat -->
-
 <script type="text/javascript">
 window.addEventListener("load",()=>{
 const bootChat=()=>{
@@ -1400,6 +1380,5 @@ if("requestIdleCallback" in window){requestIdleCallback(bootChat,{timeout:2500})
 else{setTimeout(bootChat,1200);}
 });
 </script>
-
 </body>
 </html>
