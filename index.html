@@ -220,7 +220,7 @@ opacity:0.6;
 display:flex;
 justify-content:space-between;
 gap:16px;
-margin-top:38px;
+margin-top:46px;
 }
 
 .step{
@@ -252,15 +252,15 @@ margin-top:32px;
 .demo-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:22px;
-margin-top:24px;
+gap:26px;
+margin-top:28px;
 }
 
 .glass{
 background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
 border:1px solid rgba(148,163,184,.2);
 border-radius:18px;
-padding:20px;
+padding:22px;
 box-shadow:0 10px 30px rgba(2,6,23,.25);
 }
 
@@ -360,7 +360,7 @@ margin-bottom:10px;
 
 /* AI Industry Impact */
 
-.ai-impact-wrap{margin-top:32px;display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+.ai-impact-wrap{margin-top:40px;display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
 .ai-panel{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.2);border-radius:18px;padding:20px}
 .ai-panel h3{font-size:20px;margin-bottom:8px}
 .ai-panel p{font-size:13px;color:#94a3b8;line-height:1.55}
@@ -401,12 +401,12 @@ border-radius:20px;
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
 }
-.vision-cta{margin-top:22px;padding:22px;border-radius:18px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(37,99,235,.12));border:1px solid rgba(148,163,184,.25);text-align:center}
+.vision-cta{margin-top:26px;padding:22px;border-radius:18px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(37,99,235,.12));border:1px solid rgba(148,163,184,.25);text-align:center}
 .vision-cta h3{font-size:26px;margin-bottom:8px}
 .vision-cta p{color:#cbd5e1;margin-bottom:16px}
 
 .impact-story{
-margin-top:22px;
+margin-top:26px;
 display:grid;
 grid-template-columns:1.3fr .9fr;
 gap:18px;
@@ -551,9 +551,7 @@ line-height:1.45;
 /* Responsive */
 
 @media(max-width:900px){
-.section{padding:74px 0}
-.section-sub{margin-bottom:30px}
-.hero{flex-direction:column;text-align:center;gap:48px}
+.hero{flex-direction:column;text-align:center;gap:60px}
 
 
 .hero-sentiment{margin-top:16px;padding:14px;border-radius:14px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.2)}
@@ -574,13 +572,6 @@ line-height:1.45;
 .demo-grid{grid-template-columns:1fr}
 .bar-row{grid-template-columns:110px 1fr 42px}
 .popup-grid{grid-template-columns:1fr}
-.impact-story{grid-template-columns:1fr}
-.vision-infographic{grid-template-columns:1fr}
-.vision-kpis{grid-template-columns:repeat(2,minmax(110px,1fr))}
-.v-node:after{display:none}
-.ai-impact-wrap{grid-template-columns:1fr}
-.ai-stats{grid-template-columns:1fr}
-.impl-row{grid-template-columns:1fr}
 }
 
 </style>
@@ -751,7 +742,15 @@ SkillMirror applies an AI decisioning layer across the hiring funnel — from ro
 
 </div>
 
-<div class="how-note">Built for modern talent teams: ATS-friendly, explainable, and designed for high-volume hiring environments.</div>
+<div class="hero-sentiment">
+<div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
+<div class="sentiment-list">
+<div class="sentiment-row"><span>Positive</span><div class="sentiment-track"><div class="sentiment-fill pos" id="sentPos"></div></div><span id="sentPosVal">0%</span></div>
+<div class="sentiment-row"><span>Neutral</span><div class="sentiment-track"><div class="sentiment-fill neu" id="sentNeu"></div></div><span id="sentNeuVal">0%</span></div>
+<div class="sentiment-row"><span>Risk</span><div class="sentiment-track"><div class="sentiment-fill risk" id="sentRisk"></div></div><span id="sentRiskVal">0%</span></div>
+</div>
+<div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
+</div>
 
 </div>
 
@@ -764,7 +763,7 @@ SkillMirror applies an AI decisioning layer across the hiring funnel — from ro
 <h2>Live Resume Alignment Demo</h2>
 
 <p class="section-sub">
-Test SkillMirror’s AI evaluation flow: compare role requirements with candidate evidence, inspect multi-factor scores, and get shortlist guidance against a market benchmark.
+Paste a job description and candidate resume to simulate how modern AI recruiting systems score capability fit, detect gaps, and benchmark candidates against current hiring thresholds.
 </p>
 
 <div class="demo-grid">
@@ -821,13 +820,23 @@ Run the analysis to evaluate candidate-role alignment and visualize strengths vs
 </div>
 
 <div class="demo-note">
-This live simulation uses explainable scoring logic with competency weighting, gap visibility, and benchmark-based recommendation guidance.
+This demo uses weighted competency scoring, explicit gap detection, and benchmark-aware recommendations.
 </div>
 
 </div>
 
 </div>
 
+</div>
+
+<div class="hero-sentiment">
+<div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
+<div class="sentiment-list">
+<div class="sentiment-row"><span>Positive</span><div class="sentiment-track"><div class="sentiment-fill pos" id="sentPos"></div></div><span id="sentPosVal">0%</span></div>
+<div class="sentiment-row"><span>Neutral</span><div class="sentiment-track"><div class="sentiment-fill neu" id="sentNeu"></div></div><span id="sentNeuVal">0%</span></div>
+<div class="sentiment-row"><span>Risk</span><div class="sentiment-track"><div class="sentiment-fill risk" id="sentRisk"></div></div><span id="sentRiskVal">0%</span></div>
+</div>
+<div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
 
 </div>
@@ -972,25 +981,20 @@ SkillMirror enables this shift by converting every hiring interaction into reusa
 <p>Talent decisions directly feed workforce planning, capability mapping, and long-term performance strategy.</p>
 </div>
 
-</div>
-
-<div class="vision-infographic">
-<div class="v-node"><span class="tag">Input Layer</span><h4>Role + Candidate Data</h4><p>Job requirements, resumes, and interview evidence are continuously structured.</p></div>
-<div class="v-node"><span class="tag">Intelligence Layer</span><h4>AI Decision Graph</h4><p>Capability signals are scored, benchmarked, and traced to evidence.</p></div>
-<div class="v-node"><span class="tag">Execution Layer</span><h4>Hiring Operations OS</h4><p>Recruiters ship faster decisions with measurable quality and governance.</p></div>
-</div>
-
-<div class="vision-kpis">
-<div class="v-kpi"><strong>24h</strong><span>Shortlist SLA</span></div>
-<div class="v-kpi"><strong>95%</strong><span>Decision Traceability</span></div>
-<div class="v-kpi"><strong>2.5×</strong><span>Recruiter Throughput</span></div>
-<div class="v-kpi"><strong>+38%</strong><span>Role Fit Precision</span></div>
-</div>
-
 <div class="vision-cta">
 <h3>Build Your Hiring Intelligence Layer</h3>
 <p>Stop screening resumes. Start engineering confident hiring decisions.</p>
 <button class="btn openPopup">Request a Strategic Demo</button>
+</div>
+
+<div class="hero-sentiment">
+<div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
+<div class="sentiment-list">
+<div class="sentiment-row"><span>Positive</span><div class="sentiment-track"><div class="sentiment-fill pos" id="sentPos"></div></div><span id="sentPosVal">0%</span></div>
+<div class="sentiment-row"><span>Neutral</span><div class="sentiment-track"><div class="sentiment-fill neu" id="sentNeu"></div></div><span id="sentNeuVal">0%</span></div>
+<div class="sentiment-row"><span>Risk</span><div class="sentiment-track"><div class="sentiment-fill risk" id="sentRisk"></div></div><span id="sentRiskVal">0%</span></div>
+</div>
+<div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
 
 </div>
