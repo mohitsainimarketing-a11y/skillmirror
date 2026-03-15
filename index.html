@@ -11,18 +11,8 @@
 
 <style>
 
-/* GLOBAL */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth}
 
 body{
 background:#050c1c;
@@ -30,27 +20,20 @@ color:#e5e7eb;
 overflow-x:hidden;
 }
 
-.container{
-width:90%;
-max-width:1200px;
-margin:auto;
-}
-
-.section{
-padding:120px 0;
-}
+.container{width:90%;max-width:1200px;margin:auto}
+.section{padding:120px 0}
 
 h2{
-font-size:42px;
 text-align:center;
+font-size:42px;
 margin-bottom:30px;
 }
 
 .section-sub{
 text-align:center;
-color:#9ca3af;
 max-width:720px;
 margin:0 auto 60px auto;
+color:#9ca3af;
 font-size:18px;
 line-height:1.6;
 }
@@ -61,7 +44,7 @@ header{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(5,10,20,0.75);
+background:rgba(5,10,20,0.7);
 backdrop-filter:blur(14px);
 z-index:999;
 }
@@ -84,12 +67,9 @@ nav a{
 margin-left:28px;
 text-decoration:none;
 color:#9ca3af;
-font-weight:500;
 }
 
-nav a:hover{
-color:white;
-}
+nav a:hover{color:white}
 
 /* BUTTON */
 
@@ -97,9 +77,9 @@ color:white;
 background:linear-gradient(135deg,#22c55e,#2563eb);
 padding:12px 28px;
 border-radius:14px;
-border:none;
 color:white;
 font-weight:600;
+border:none;
 cursor:pointer;
 }
 
@@ -124,10 +104,9 @@ font-size:20px;
 color:#9ca3af;
 margin-bottom:30px;
 max-width:520px;
-line-height:1.6;
 }
 
-/* ENGINE CARD */
+/* ENGINE */
 
 .engine{
 width:520px;
@@ -137,12 +116,7 @@ background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
 }
 
-.ring-wrap{
-position:relative;
-width:170px;
-height:170px;
-margin:auto;
-}
+.ring-wrap{position:relative;width:170px;height:170px;margin:auto}
 
 .score{
 position:absolute;
@@ -153,8 +127,6 @@ font-size:46px;
 font-weight:800;
 color:#22c55e;
 }
-
-/* TABLE */
 
 .table{
 margin-top:30px;
@@ -184,13 +156,8 @@ background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
 }
 
-.problem-card{
-border-left:4px solid #ef4444;
-}
-
-.solution-card{
-border-left:4px solid #22c55e;
-}
+.problem-card{border-left:4px solid #ef4444}
+.solution-card{border-left:4px solid #22c55e}
 
 .problem-arrow{
 font-size:60px;
@@ -216,10 +183,92 @@ border:1px solid rgba(255,255,255,.08);
 text-align:center;
 }
 
-.step-icon{
-font-size:28px;
-margin-bottom:10px;
+.step-icon{font-size:28px;margin-bottom:10px}
+
+/* VISUAL SECTIONS */
+
+.viz-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:22px;
+padding:34px;
 }
+
+.ai-graphic{
+display:grid;
+grid-template-columns:1fr 120px 1fr;
+gap:20px;
+margin-top:50px;
+align-items:center;
+}
+
+.ai-box{
+text-align:center;
+padding:20px;
+border-radius:14px;
+background:rgba(255,255,255,.05);
+}
+
+.ai-arrow{font-size:36px;text-align:center;opacity:.6}
+
+.ai-core{
+width:80px;
+height:80px;
+border-radius:50%;
+background:linear-gradient(135deg,#22c55e,#2563eb);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+margin:auto;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+margin-top:50px;
+display:grid;
+grid-template-columns:260px 1fr;
+gap:30px;
+}
+
+.sidebar div{
+background:rgba(255,255,255,.05);
+padding:10px;
+margin-bottom:8px;
+border-radius:10px;
+}
+
+.dashboard-main{
+background:rgba(255,255,255,.05);
+padding:20px;
+border-radius:16px;
+}
+
+.candidate-row{
+display:flex;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+/* GRAPH */
+
+.capability-wrap{display:flex;justify-content:center;margin-top:40px}
+
+.capability-graph{position:relative;width:320px;height:320px}
+
+.cap-label{
+position:absolute;
+font-size:13px;
+color:#9ca3af;
+}
+
+.cap1{top:-10px;left:50%;transform:translateX(-50%)}
+.cap2{right:-40px;top:90px}
+.cap3{right:-40px;bottom:90px}
+.cap4{left:-40px;bottom:90px}
+.cap5{left:-40px;top:90px}
 
 /* DEMO */
 
@@ -343,9 +392,7 @@ font-weight:600;
 <header>
 <div class="container">
 <nav>
-
 <a class="logo" href="#hero">SkillMirror</a>
-
 <div>
 <a href="#hero">Product</a>
 <a href="#problem">Problem</a>
@@ -354,12 +401,9 @@ font-weight:600;
 <a href="#roi">Impact</a>
 <a href="#vision">Vision</a>
 </div>
-
 </nav>
 </div>
 </header>
-
-<!-- HERO -->
 
 <section class="hero container" id="hero">
 
@@ -368,8 +412,7 @@ font-weight:600;
 <h1>The Decision Engine for Modern Hiring</h1>
 
 <p>
-Hiring decisions today rely on fragmented signals such as resumes, interviews and subjective impressions.  
-SkillMirror converts job descriptions and candidate profiles into structured hiring intelligence, helping recruiters and hiring managers identify the strongest candidates faster and with greater confidence.
+SkillMirror converts resumes and job descriptions into structured hiring intelligence enabling faster and more confident hiring decisions.
 </p>
 
 <button class="btn openPopup">Request a Demo</button>
@@ -416,8 +459,6 @@ stroke-dashoffset="470"/>
 
 </section>
 
-<!-- PROBLEM -->
-
 <section class="section" id="problem">
 
 <div class="container">
@@ -425,41 +466,27 @@ stroke-dashoffset="470"/>
 <h2>The Hiring Problem</h2>
 
 <p class="section-sub">
-Organizations evaluate candidates using resumes, interviews and references, but these signals are inconsistent and difficult to compare.  
-As companies scale, hiring becomes slower, subjective and increasingly dependent on individual judgment rather than structured evidence.
+Hiring decisions rely on fragmented signals such as resumes interviews and subjective interpretation making candidate comparison inconsistent.
 </p>
 
 <div class="problem-grid">
 
 <div class="problem-card">
-
 <h3>Fragmented Signals</h3>
-
-<p>
-Recruiters receive resumes in different formats with varying levels of detail.  
-Important capabilities may be hidden while irrelevant keywords dominate early screening decisions.
-</p>
-
+<p>Recruiters must manually interpret resumes and interviews to determine candidate capability.</p>
 </div>
 
 <div class="problem-arrow">→</div>
 
 <div class="solution-card">
-
-<h3>Structured Hiring Intelligence</h3>
-
-<p>
-SkillMirror transforms job descriptions and candidate resumes into structured capability signals, allowing hiring teams to compare candidates objectively and focus on evidence rather than intuition.
-</p>
-
+<h3>Structured Intelligence</h3>
+<p>SkillMirror converts hiring data into structured capability signals enabling objective evaluation.</p>
 </div>
 
 </div>
 
 </div>
 </section>
-
-<!-- HOW IT WORKS -->
 
 <section class="section" id="how">
 
@@ -468,98 +495,29 @@ SkillMirror transforms job descriptions and candidate resumes into structured ca
 <h2>How SkillMirror Works</h2>
 
 <p class="section-sub">
-SkillMirror builds structured intelligence from hiring data and converts it into decision guidance for recruiters and hiring managers.
+SkillMirror builds structured hiring intelligence from job descriptions and candidate profiles.
 </p>
 
 <div class="pipeline">
 
 <div class="step">
-
 <div class="step-icon">📄</div>
-
-<h3>Role Intelligence</h3>
-
-<p>
-Job descriptions are analyzed to identify the core competencies, technologies and experience signals required for the role.
-</p>
-
+Role Intelligence
 </div>
 
 <div class="step">
-
 <div class="step-icon">🧾</div>
-
-<h3>Candidate Structuring</h3>
-
-<p>
-Candidate resumes are converted into structured capability profiles capturing technologies, domains and depth of experience.
-</p>
-
+Candidate Structuring
 </div>
 
 <div class="step">
-
 <div class="step-icon">📊</div>
-
-<h3>Alignment Analysis</h3>
-
-<p>
-SkillMirror evaluates candidate profiles against role requirements across multiple dimensions to generate objective alignment scores.
-</p>
-
+Alignment Analysis
 </div>
 
 <div class="step">
-
 <div class="step-icon">🤖</div>
-
-<h3>Decision Guidance</h3>
-
-<p>
-Recruiters receive structured insights highlighting strengths, gaps and interview focus areas.
-</p>
-
-</div>
-
-</div>
-
-</div>
-</section>
-
-<!-- DEMO -->
-
-<section class="section" id="demo">
-
-<div class="container">
-
-<h2>Live Resume Alignment Demo</h2>
-
-<p class="section-sub">
-Paste a job description and a candidate resume to see how SkillMirror evaluates alignment across skills, experience depth and domain exposure.
-</p>
-
-<div class="demo-grid">
-
-<div class="glass">
-
-<label>Job Description</label>
-
-<textarea id="jobInput">Node AWS microservices backend engineer</textarea>
-
-<label>Candidate Resume</label>
-
-<textarea id="resumeInput">Backend engineer experienced with AWS microservices</textarea>
-
-<button class="btn" onclick="runDemo()">Analyze Candidate</button>
-
-</div>
-
-<div class="glass">
-
-<h3>Alignment Score</h3>
-
-<h1 id="demoScore">0%</h1>
-
+Decision Guidance
 </div>
 
 </div>
@@ -568,94 +526,105 @@ Paste a job description and a candidate resume to see how SkillMirror evaluates 
 
 </section>
 
-<!-- IMPACT -->
+<!-- AI GRAPHIC -->
 
-<section class="section" id="roi">
+<section class="section">
 
 <div class="container">
 
-<h2>Measured Impact</h2>
+<h2>AI Hiring Intelligence Engine</h2>
 
-<p class="section-sub">
-Organizations using structured hiring intelligence reduce screening time and improve the consistency of hiring decisions.
-</p>
+<div class="viz-card ai-graphic">
 
-<div class="grid">
-
-<div class="card">
-
-<h1>70%</h1>
-<p>Faster resume screening through structured capability extraction.</p>
-
+<div class="ai-box">
+Job Description
 </div>
 
-<div class="card">
+<div class="ai-arrow">→</div>
 
-<h1>3×</h1>
-<p>Faster shortlist creation by ranking candidates objectively.</p>
+<div class="ai-core">AI</div>
 
-</div>
+<div class="ai-arrow">→</div>
 
-<div class="card">
-
-<h1>100%</h1>
-<p>Consistent evaluation framework across hiring teams.</p>
-
-</div>
-
-<div class="card">
-
-<h1>40%</h1>
-<p>Higher role alignment through evidence-based candidate selection.</p>
-
+<div class="ai-box">
+Candidate Profile
 </div>
 
 </div>
 
 </div>
+
 </section>
 
-<!-- VISION -->
+<!-- DASHBOARD -->
 
-<section class="section" id="vision">
+<section class="section">
 
 <div class="container">
 
-<h2>Hiring Will Become Infrastructure</h2>
+<h2>Recruiter Decision Dashboard</h2>
 
-<p class="section-sub">
-As organizations scale globally, hiring decisions will increasingly rely on structured intelligence systems rather than manual screening and subjective interpretation.
-</p>
+<div class="viz-card dashboard">
 
-<div class="vision-grid">
+<div class="sidebar">
+<div>Role Overview</div>
+<div>Candidate Intelligence</div>
+<div>Alignment Scores</div>
+<div>Interview Insights</div>
+</div>
 
-<div class="vision-card">
+<div class="dashboard-main">
 
-<h3>Documents → Data</h3>
+<div class="candidate-row">
+<span>Candidate A</span>
+<strong style="color:#22c55e">92%</strong>
+</div>
 
-<p>
-Resumes and job descriptions will evolve from unstructured documents into structured capability signals.
-</p>
+<div class="candidate-row">
+<span>Candidate B</span>
+<strong style="color:#22c55e">74%</strong>
+</div>
+
+<div class="candidate-row">
+<span>Candidate C</span>
+<strong style="color:#22c55e">61%</strong>
+</div>
 
 </div>
 
-<div class="vision-card">
-
-<h3>Screening → Intelligence</h3>
-
-<p>
-AI systems will analyze candidate capability across multiple dimensions to support recruiters in making informed decisions.
-</p>
+</div>
 
 </div>
 
-<div class="vision-card">
+</section>
 
-<h3>Opinion → Evidence</h3>
+<!-- GRAPH -->
 
-<p>
-Hiring decisions will be guided by transparent and explainable intelligence rather than intuition alone.
-</p>
+<section class="section">
+
+<div class="container">
+
+<h2>Candidate Capability Graph</h2>
+
+<div class="viz-card capability-wrap">
+
+<div class="capability-graph">
+
+<svg viewBox="0 0 300 300">
+
+<polygon
+points="150,30 260,110 220,250 80,250 40,110"
+fill="rgba(34,197,94,.2)"
+stroke="#22c55e"
+stroke-width="2"/>
+
+</svg>
+
+<div class="cap-label cap1">Backend</div>
+<div class="cap-label cap2">Cloud</div>
+<div class="cap-label cap3">System</div>
+<div class="cap-label cap4">API</div>
+<div class="cap-label cap5">Data</div>
 
 </div>
 
@@ -666,12 +635,8 @@ Hiring decisions will be guided by transparent and explainable intelligence rath
 </section>
 
 <footer style="text-align:center;padding:80px 0;color:#6b7280">
-
 © 2026 SkillMirror
-
 </footer>
-
-<!-- POPUP -->
 
 <div class="popup" id="popupForm">
 
@@ -699,37 +664,22 @@ Hiring decisions will be guided by transparent and explainable intelligence rath
 
 <script>
 
-/* HERO SCORE */
+/* SCORE */
 
 let s=0,target=92
 let circumference=2*Math.PI*75
 let ring=document.getElementById("ring")
 
 function animate(){
-
 if(s>=target)return
-
 s++
-
 document.getElementById("score").innerText=s+"%"
-
 let offset=circumference-(s/100)*circumference
-
 ring.style.strokeDashoffset=offset
-
 requestAnimationFrame(animate)
-
 }
 
 animate()
-
-/* DEMO */
-
-function runDemo(){
-
-document.getElementById("demoScore").innerText=Math.floor(Math.random()*30+70)+"%"
-
-}
 
 /* POPUP */
 
@@ -741,6 +691,20 @@ document.getElementById("closePopup").onclick=()=>{
 document.getElementById("popupForm").style.display="none"
 }
 
+</script>
+
+<!-- TAWK -->
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69b6126d7afc871c37be224c/1jjnjfup7';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
 
 </body>
