@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SkillMirror is an AI hiring intelligence platform that transforms resumes, interviews, and role requirements into explainable, benchmarked hiring decisions.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://skillmirror.ai/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>SkillMirror — The Decision Engine for Modern Hiring</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -20,21 +25,24 @@ color:#e5e7eb;
 overflow-x:hidden;
 }
 
+/* Defensive cleanup: hide any legacy sentiment widgets */
+.hero-sentiment,.sentiment-head,.sentiment-list,.sentiment-row,.legacy-sentiment{display:none!important}
+
 /* Layout */
 
 .container{width:90%;max-width:1200px;margin:auto}
-.section{padding:120px 0}
+.section{padding:96px 0}
 
 h2{
 text-align:center;
 font-size:42px;
-margin-bottom:24px;
+margin-bottom:20px;
 }
 
 .section-sub{
 text-align:center;
 max-width:720px;
-margin:0 auto 60px auto;
+margin:0 auto 46px auto;
 color:#9ca3af;
 font-size:18px;
 line-height:1.6;
@@ -114,13 +122,13 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding-top:140px;
+padding-top:132px;
 }
 
 .hero h1{
 font-size:58px;
 line-height:1.1;
-margin-bottom:24px;
+margin-bottom:20px;
 background:linear-gradient(90deg,#fff,#94a3b8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -137,11 +145,16 @@ max-width:520px;
 
 .engine{
 width:520px;
-padding:40px;
+padding:28px;
 border-radius:24px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
+background:linear-gradient(165deg,rgba(15,23,42,.92),rgba(30,41,59,.72));
+border:1px solid rgba(148,163,184,.24);
+box-shadow:0 30px 60px rgba(2,6,23,.45);
 }
+
+.engine-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.engine-title{font-size:13px;color:#cbd5e1;letter-spacing:.03em;text-transform:uppercase}
+.live-pill{font-size:11px;padding:5px 9px;border-radius:999px;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.35);color:#bbf7d0}
 
 .ring-wrap{position:relative;width:170px;height:170px;margin:auto}
 
@@ -156,18 +169,20 @@ color:#22c55e;
 }
 
 .table{
-margin-top:30px;
+margin-top:20px;
 border-top:1px solid rgba(255,255,255,0.1);
 }
 
 .row{
 display:flex;
 justify-content:space-between;
-padding:14px 0;
+padding:12px 0;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 /* Problem */
+
+
 
 .problem-grid{
 display:grid;
@@ -177,11 +192,13 @@ align-items:center;
 }
 
 .problem-card,.solution-card{
-padding:30px;
+padding:28px;
 border-radius:20px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
 }
+.problem-list{margin-top:12px;padding-left:18px;color:#cbd5e1;line-height:1.6;font-size:14px}
+.problem-list li{margin-bottom:8px}
 
 .problem-card{border-left:4px solid #ef4444}
 .solution-card{border-left:4px solid #22c55e}
@@ -197,20 +214,23 @@ opacity:0.6;
 .pipeline{
 display:flex;
 justify-content:space-between;
-gap:20px;
-margin-top:60px;
+gap:16px;
+margin-top:38px;
 }
 
 .step{
 flex:1;
-padding:24px;
+padding:20px;
 border-radius:18px;
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
-text-align:center;
+text-align:left;
 }
 
-.step-icon{font-size:28px;margin-bottom:10px}
+.step strong{display:block;font-size:14px;margin-bottom:8px;color:#f8fafc}
+.step p{font-size:13px;color:#94a3b8;line-height:1.45}
+.step-icon{font-size:24px;margin-bottom:10px}
+.how-note{margin-top:18px;padding:12px 14px;border-radius:12px;border:1px solid rgba(59,130,246,.3);background:rgba(37,99,235,.1);color:#bfdbfe;font-size:13px}
 
 /* Visual cards */
 
@@ -219,7 +239,7 @@ background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
 border-radius:22px;
 padding:34px;
-margin-top:40px;
+margin-top:32px;
 }
 
 /* Demo */
@@ -227,20 +247,81 @@ margin-top:40px;
 .demo-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:40px;
-margin-top:40px;
+gap:22px;
+margin-top:24px;
 }
 
 .glass{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:20px;
-padding:30px;
+background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+border:1px solid rgba(148,163,184,.2);
+border-radius:18px;
+padding:20px;
+box-shadow:0 10px 30px rgba(2,6,23,.25);
+}
+
+.demo-layout{display:flex;flex-direction:column;gap:14px}
+.demo-summary{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.score-pill{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,.35);background:rgba(34,197,94,.14);color:#bbf7d0;letter-spacing:.02em}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.demo-grid .btn{padding:10px 20px;border-radius:12px;font-size:14px}
+
+.metric-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(120px,1fr));
+gap:10px;
+margin-top:8px;
+}
+
+.metric-card{
+background:rgba(15,23,42,.55);
+border:1px solid rgba(148,163,184,.2);
+border-radius:12px;
+padding:10px;
+}
+
+.metric-card small{display:block;color:#94a3b8;font-size:11px;margin-bottom:3px}
+.metric-card strong{font-size:19px}
+
+.demo-bars{margin-top:4px;display:flex;flex-direction:column;gap:10px}
+.bar-row{display:grid;grid-template-columns:130px 1fr 46px;gap:8px;align-items:center;font-size:13px;color:#cbd5e1}
+.bar-track{height:8px;border-radius:999px;background:rgba(148,163,184,.18);overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,#22c55e,#2563eb);width:0;transition:width .5s ease;border-radius:999px;animation:barGlow .7s ease both}
+
+.benchmark{margin-top:8px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.18);border-radius:12px;padding:10px}
+.benchmark-header{display:flex;justify-content:space-between;font-size:13px;color:#9ca3af;margin-bottom:10px}
+.benchmark-track{position:relative;height:8px;background:rgba(148,163,184,.2);border-radius:999px}
+.benchmark-point{position:absolute;top:50%;transform:translate(-50%,-50%);width:15px;height:15px;border-radius:50%;background:#22c55e;border:2px solid #e2e8f0;box-shadow:0 0 0 6px rgba(34,197,94,.2);left:0;transition:left .5s ease}
+
+.chips{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11px;padding:5px 9px;border-radius:999px;border:1px solid rgba(148,163,184,.25)}
+.chip.match{background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.38);color:#bbf7d0}
+.chip.gap{background:rgba(251,146,60,.12);border-color:rgba(251,146,60,.3);color:#fed7aa}
+
+
+.status-wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:2px}
+.status-chip{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid rgba(148,163,184,.25);color:#cbd5e1;background:rgba(15,23,42,.45)}
+.status-chip.pass{border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.14);color:#bbf7d0}
+.status-chip.fail{border-color:rgba(251,146,60,.4);background:rgba(251,146,60,.14);color:#fed7aa}
+
+@keyframes barGlow{
+0%{opacity:.65;filter:saturate(.85)}
+100%{opacity:1;filter:saturate(1)}
+}
+.demo-note{
+margin-top:6px;
+padding:10px;
+border-radius:10px;
+background:rgba(34,197,94,.08);
+border:1px solid rgba(34,197,94,.24);
+font-size:12px;
+line-height:1.45;
+color:#d1fae5;
 }
 
 textarea{
 width:100%;
-height:120px;
+height:110px;
 margin-bottom:16px;
 background:rgba(255,255,255,.06);
 border:none;
@@ -271,21 +352,60 @@ color:#22c55e;
 margin-bottom:10px;
 }
 
+
+/* AI Industry Impact */
+
+.ai-impact-layout{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ai-col{display:flex;flex-direction:column;gap:14px}
+.ai-block{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.2);border-radius:18px;padding:18px}
+.ai-block h3{font-size:19px;margin-bottom:8px;color:#f8fafc}
+.ai-block p{font-size:13px;color:#94a3b8;line-height:1.55}
+
+.ai-stats-grid{display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:10px;margin-top:12px}
+.ai-stat{padding:12px;border-radius:12px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.18)}
+.ai-stat strong{display:block;font-size:23px;color:#22c55e}
+.ai-stat span{font-size:12px;color:#cbd5e1;line-height:1.4}
+
+.ai-gap-list,.ai-impl-list{margin-top:12px;display:flex;flex-direction:column;gap:9px}
+.ai-gap-item,.ai-impl-item{padding:10px 12px;border-radius:12px;background:rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.17)}
+.ai-gap-item strong,.ai-impl-item strong{font-size:13px;color:#f1f5f9;display:block;margin-bottom:2px}
+.ai-gap-item span,.ai-impl-item span{font-size:12px;color:#94a3b8;line-height:1.45}
+
+.partner-band{margin-top:2px;padding:14px;border-radius:12px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(37,99,235,.12));border:1px solid rgba(148,163,184,.22)}
+.partner-band h4{font-size:16px;margin-bottom:5px}
+.partner-band p{font-size:13px;color:#cbd5e1;line-height:1.5}
+
 /* Vision */
 
-.vision-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
-margin-top:40px;
-}
+.vision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:22px;align-items:stretch}
+.vision-card{padding:20px;border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(148,163,184,.22);min-height:100%}
+.vision-card h3{font-size:32px;line-height:1.15;margin-bottom:10px}
+.vision-card p{color:#cbd5e1;line-height:1.45}
 
-.vision-card{
-padding:30px;
-border-radius:20px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-}
+.vision-kpis{margin-top:16px;display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:10px}
+.v-kpi{padding:12px;border-radius:12px;background:rgba(15,23,42,.62);border:1px solid rgba(148,163,184,.2);text-align:center}
+.v-kpi strong{display:block;color:#22c55e;font-size:28px;line-height:1.05}
+.v-kpi span{font-size:12px;color:#94a3b8;line-height:1.35;display:block;margin-top:6px}
+
+.vision-cta{margin-top:18px;padding:24px;border-radius:18px;background:linear-gradient(135deg,rgba(34,197,94,.18),rgba(37,99,235,.18));border:1px solid rgba(148,163,184,.28);text-align:center}
+.vision-cta h3{font-size:52px;margin-bottom:12px;line-height:1.02}
+.vision-cta p{color:#dbeafe;margin-bottom:16px;font-size:28px;line-height:1.25}
+.vision-cta .btn{padding:12px 24px;font-size:20px;border-radius:14px}
+
+.impact-story{margin-top:22px;display:grid;grid-template-columns:1.3fr .9fr;gap:18px}
+.impact-panel,.impact-chart{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.18);border-radius:18px;padding:18px}
+.impact-panel h3,.impact-chart h3{font-size:17px;margin-bottom:8px}
+.impact-panel p,.impact-chart p{font-size:13px;color:#9ca3af;line-height:1.5}
+.timeline{margin-top:14px;display:flex;flex-direction:column;gap:12px}
+.t-item{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:flex-start}
+.t-stage{font-size:11px;color:#60a5fa;text-transform:uppercase;letter-spacing:.05em;padding-top:3px}
+.t-body{background:rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.16);border-radius:12px;padding:10px 12px}
+.t-body strong{display:block;font-size:13px;margin-bottom:3px;color:#f1f5f9}
+.t-body span{font-size:12px;color:#94a3b8}
+.chart-bars{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.c-row{display:grid;grid-template-columns:120px 1fr 44px;gap:8px;align-items:center;font-size:12px;color:#cbd5e1}
+.c-track{height:8px;border-radius:999px;background:rgba(148,163,184,.2);overflow:hidden}
+.c-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#22c55e,#2563eb)}
 
 /* Popup */
 
@@ -303,14 +423,22 @@ z-index:2000;
 }
 
 .popup-content{
-background:#0f172a;
-padding:40px;
-border-radius:20px;
-width:460px;
-max-height:80vh;
+background:linear-gradient(165deg,rgba(15,23,42,.96),rgba(15,23,42,.88));
+padding:34px;
+border-radius:22px;
+width:min(520px,92vw);
+max-height:86vh;
 overflow-y:auto;
 position:relative;
+border:1px solid rgba(148,163,184,.22);
+box-shadow:0 30px 70px rgba(2,6,23,.6), inset 0 1px 0 rgba(255,255,255,.04);
 }
+
+.popup-content h3{font-size:28px;margin-bottom:8px;color:#f8fafc}
+.popup-sub{font-size:14px;line-height:1.5;color:#94a3b8;margin-bottom:18px}
+.popup-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.popup-field{margin-bottom:10px}
+.popup-label{display:block;font-size:12px;color:#cbd5e1;margin-bottom:6px;letter-spacing:.02em}
 
 .popup-close{
 position:absolute;
@@ -320,31 +448,73 @@ cursor:pointer;
 font-size:24px;
 }
 
-input,textarea{
+.popup-content input,
+.popup-content textarea{
 width:100%;
-padding:12px;
-margin-bottom:12px;
+padding:12px 13px;
+margin-bottom:0;
 border-radius:10px;
-border:none;
+border:1px solid rgba(148,163,184,.24);
+background:rgba(15,23,42,.72);
+color:#e5e7eb;
+transition:border-color .2s ease, box-shadow .2s ease;
 }
+
+.popup-content input:focus,
+.popup-content textarea:focus{
+outline:none;
+border-color:rgba(59,130,246,.7);
+box-shadow:0 0 0 3px rgba(59,130,246,.2);
+}
+
+.popup-content textarea{min-height:96px;resize:vertical}
 
 .demo-btn{
 width:100%;
-padding:14px;
+padding:13px 14px;
 border-radius:12px;
 border:none;
 background:linear-gradient(135deg,#22c55e,#2563eb);
 color:white;
-font-weight:600;
+font-weight:700;
+letter-spacing:.01em;
+margin-top:8px;
+}
+
+.demo-btn:hover{filter:brightness(1.08)}
+
+.popup-success{
+display:none;
+margin-top:14px;
+padding:12px 14px;
+border-radius:12px;
+background:rgba(34,197,94,.12);
+border:1px solid rgba(34,197,94,.35);
+color:#bbf7d0;
+font-size:13px;
+line-height:1.45;
 }
 
 /* Responsive */
 
 @media(max-width:900px){
-.hero{flex-direction:column;text-align:center;gap:60px}
+.section{padding:74px 0}
+.section-sub{margin-bottom:30px}
+.hero{flex-direction:column;text-align:center;gap:48px}
+
+
 .problem-grid{grid-template-columns:1fr}
 .pipeline{flex-direction:column}
 .demo-grid{grid-template-columns:1fr}
+.bar-row{grid-template-columns:110px 1fr 42px}
+.popup-grid{grid-template-columns:1fr}
+.impact-story{grid-template-columns:1fr}
+.vision-grid{grid-template-columns:1fr}
+.vision-kpis{grid-template-columns:repeat(2,minmax(120px,1fr))}
+.ai-impact-layout{grid-template-columns:1fr}
+.ai-stats-grid{grid-template-columns:1fr}
+.vision-cta h3{font-size:34px}
+.vision-cta p{font-size:18px}
 }
 
 </style>
@@ -364,6 +534,7 @@ font-weight:600;
 <a href="#how">How It Works</a>
 <a href="#demo">Demo</a>
 <a href="#roi">Impact</a>
+<a href="#ai-impact">AI Impact</a>
 <a href="#vision">Vision</a>
 </div>
 </nav>
@@ -386,6 +557,8 @@ allowing recruiters to move beyond guesswork and make faster evidence-based hiri
 </div>
 
 <div class="engine">
+
+<div class="engine-head"><span class="engine-title">Live Decision Signal</span><span class="live-pill">Realtime</span></div>
 
 <div class="ring-wrap">
 
@@ -421,6 +594,7 @@ stroke-dashoffset="470"/>
 
 </div>
 
+
 </div>
 
 </section>
@@ -432,23 +606,32 @@ stroke-dashoffset="470"/>
 <h2>The Hiring Problem</h2>
 
 <p class="section-sub">
-Modern hiring still relies on fragmented signals such as resumes,
-interviews and subjective interpretation. As organizations scale
-this approach becomes inconsistent and difficult to manage.
+Hiring teams are expected to move fast, hire fairly, and prove quality of hire — but most workflows still run on PDFs, gut feel, and disconnected tools.
+SkillMirror is positioned to solve this by turning hiring activity into a structured intelligence system that scales with the business.
 </p>
 
 <div class="problem-grid">
 
 <div class="problem-card">
-<h3>Fragmented Signals</h3>
-<p>Recruiters manually interpret resumes and interviews to determine capability.</p>
+<h3>Where Hiring Breaks Today</h3>
+<ul class="problem-list">
+<li>Resume screening is keyword-heavy, not capability-aware.</li>
+<li>Interview feedback is inconsistent across interviewers.</li>
+<li>Hiring decisions are hard to justify to leadership.</li>
+<li>Great candidates drop due to slow loop completion.</li>
+</ul>
 </div>
 
 <div class="problem-arrow">→</div>
 
 <div class="solution-card">
-<h3>Structured Intelligence</h3>
-<p>SkillMirror converts hiring data into structured capability insights.</p>
+<h3>How SkillMirror Repositions the Process</h3>
+<ul class="problem-list">
+<li>Normalizes role expectations into measurable competencies.</li>
+<li>Generates explainable candidate-fit scores with evidence trails.</li>
+<li>Highlights strengths, risks, and missing signals in real time.</li>
+<li>Creates faster, more defensible shortlist decisions.</li>
+</ul>
 </div>
 
 </div>
@@ -463,33 +646,38 @@ this approach becomes inconsistent and difficult to manage.
 <h2>How SkillMirror Works</h2>
 
 <p class="section-sub">
-SkillMirror transforms hiring signals into structured intelligence
-using AI-powered capability analysis.
+SkillMirror applies an AI decisioning layer across the hiring funnel — from role intake to shortlist recommendation — so teams can hire with speed, consistency, and evidence.
 </p>
 
 <div class="pipeline">
 
 <div class="step">
-<div class="step-icon">📄</div>
-Role Intelligence
+<div class="step-icon">🧠</div>
+<strong>Role Intelligence Graph</strong>
+<p>Transforms JD text into weighted skill, depth, and impact expectations.</p>
 </div>
 
 <div class="step">
-<div class="step-icon">🧾</div>
-Candidate Structuring
+<div class="step-icon">🧬</div>
+<strong>Candidate Signal Extraction</strong>
+<p>Parses resumes and interview notes into structured competency signals.</p>
 </div>
 
 <div class="step">
-<div class="step-icon">📊</div>
-Alignment Analysis
+<div class="step-icon">📈</div>
+<strong>Alignment + Risk Modeling</strong>
+<p>Scores fit, flags missing capabilities, and predicts interview confidence.</p>
 </div>
 
 <div class="step">
-<div class="step-icon">🤖</div>
-Decision Guidance
+<div class="step-icon">✅</div>
+<strong>Decision Copilot</strong>
+<p>Provides benchmark-aware recommendations with clear rationale.</p>
 </div>
 
 </div>
+
+<div class="how-note">Built for modern talent teams: ATS-friendly, explainable, and designed for high-volume hiring environments.</div>
 
 </div>
 
@@ -502,7 +690,7 @@ Decision Guidance
 <h2>Live Resume Alignment Demo</h2>
 
 <p class="section-sub">
-Paste a job description and candidate resume to simulate SkillMirror’s capability alignment analysis.
+Test SkillMirror’s AI evaluation flow: compare role requirements with candidate evidence, inspect multi-factor scores, and get shortlist guidance against a market benchmark.
 </p>
 
 <div class="demo-grid">
@@ -521,15 +709,48 @@ Paste a job description and candidate resume to simulate SkillMirror’s capabil
 
 <div class="glass">
 
-<div style="font-size:40px;font-weight:700;margin-bottom:10px" id="demoScore">0%</div>
+<div class="demo-layout">
 
-<div>Skill Alignment: <span id="skillScore">—</span></div>
-<div>Experience Depth: <span id="expScore">—</span></div>
-<div>Domain Exposure: <span id="domainScore">—</span></div>
+<div class="demo-summary">
+<div>
+<div style="font-size:36px;font-weight:700;line-height:1" id="demoScore">0%</div>
+<div style="color:#9ca3af;font-size:13px;margin-top:4px">Overall role-fit confidence</div>
+</div>
+<div class="score-pill">AI Fit Signal</div>
+</div>
 
-<p id="demoInsight" style="margin-top:15px;color:#9ca3af">
-Run the analysis to evaluate candidate-role alignment.
+<div class="metric-grid">
+<div class="metric-card"><small>Skill Alignment</small><strong id="skillScore">—</strong></div>
+<div class="metric-card"><small>Experience Depth</small><strong id="expScore">—</strong></div>
+<div class="metric-card"><small>Domain Exposure</small><strong id="domainScore">—</strong></div>
+<div class="metric-card"><small>Keyword Coverage</small><strong id="coverageScore">—</strong></div>
+</div>
+
+<div class="demo-bars">
+<div class="bar-row"><span>Skill Alignment</span><div class="bar-track"><div class="bar-fill" id="barSkill"></div></div><span id="barSkillLabel">0%</span></div>
+<div class="bar-row"><span>Experience Depth</span><div class="bar-track"><div class="bar-fill" id="barExp"></div></div><span id="barExpLabel">0%</span></div>
+<div class="bar-row"><span>Domain Exposure</span><div class="bar-track"><div class="bar-fill" id="barDomain"></div></div><span id="barDomainLabel">0%</span></div>
+</div>
+
+<div class="benchmark">
+<div class="benchmark-header"><span>Market Benchmark</span><span id="benchmarkLabel">Hiring bar: 78%</span></div>
+<div class="benchmark-track"><div class="benchmark-point" id="benchmarkPoint"></div></div>
+</div>
+
+<div class="chips" id="matchChips"></div>
+
+<div class="status-wrap">
+<p id="demoInsight" style="margin-top:0;color:#9ca3af;font-size:13px;line-height:1.45">
+Run the analysis to evaluate candidate-role alignment and visualize strengths vs. gaps.
 </p>
+<span class="status-chip" id="statusChip">Pending</span>
+</div>
+
+<div class="demo-note">
+This live simulation uses explainable scoring logic with competency weighting, gap visibility, and benchmark-based recommendation guidance.
+</div>
+
+</div>
 
 </div>
 
@@ -543,6 +764,10 @@ Run the analysis to evaluate candidate-role alignment.
 <div class="container">
 
 <h2>Measured Impact</h2>
+
+<p class="section-sub">
+Teams using SkillMirror don’t just move faster — they build a repeatable hiring engine with better signal quality at every stage.
+</p>
 
 <div class="grid">
 
@@ -568,6 +793,84 @@ Run the analysis to evaluate candidate-role alignment.
 
 </div>
 
+<div class="impact-story">
+<div class="impact-panel">
+<h3>Before vs After: Hiring Execution Flow</h3>
+<p>A visual operating shift from manual resume triage to AI-augmented evidence-based decisioning.</p>
+<div class="timeline">
+<div class="t-item"><div class="t-stage">Before</div><div class="t-body"><strong>Manual Review Loops</strong><span>Recruiters spend cycles parsing unstructured resumes and notes.</span></div></div>
+<div class="t-item"><div class="t-stage">Transition</div><div class="t-body"><strong>Signal Normalization</strong><span>SkillMirror converts role + candidate data into comparable capability signals.</span></div></div>
+<div class="t-item"><div class="t-stage">After</div><div class="t-body"><strong>Decision Intelligence</strong><span>Shortlists become benchmarked, explainable, and consistent across teams.</span></div></div>
+</div>
+</div>
+
+<div class="impact-chart">
+<h3>Outcome Contribution Breakdown</h3>
+<p>Relative impact across core talent acquisition outcomes.</p>
+<div class="chart-bars">
+<div class="c-row"><span>Speed</span><div class="c-track"><div class="c-fill" style="width:88%"></div></div><span>88</span></div>
+<div class="c-row"><span>Quality</span><div class="c-track"><div class="c-fill" style="width:81%"></div></div><span>81</span></div>
+<div class="c-row"><span>Fairness</span><div class="c-track"><div class="c-fill" style="width:84%"></div></div><span>84</span></div>
+<div class="c-row"><span>Confidence</span><div class="c-track"><div class="c-fill" style="width:90%"></div></div><span>90</span></div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+
+<section class="section" id="ai-impact">
+<div class="container">
+
+<h2>AI Will Reshape Recruitment Operations</h2>
+
+<p class="section-sub">
+AI is changing recruitment from a reactive workflow into a precision operating system — but only when teams close the gap between tooling, process, and governance.
+</p>
+
+<div class="ai-impact-layout">
+<div class="ai-col">
+<div class="ai-block">
+<h3>Market Direction: AI Is Becoming Core Hiring Infrastructure</h3>
+<p>Forward-looking talent teams are standardizing role signals, automating repetitive evaluation tasks, and giving recruiters decision support instead of manual sorting overload.</p>
+<div class="ai-stats-grid">
+<div class="ai-stat"><strong>67%</strong><span>TA leaders plan to increase AI usage in core hiring workflows.</span></div>
+<div class="ai-stat"><strong>52%</strong><span>report faster time-to-shortlist after structured AI deployment.</span></div>
+<div class="ai-stat"><strong>44%</strong><span>see improved quality-of-hire with evidence-based scoring models.</span></div>
+<div class="ai-stat"><strong>39%</strong><span>cite governance and explainability as top adoption blockers.</span></div>
+</div>
+</div>
+
+<div class="ai-block">
+<h3>Gaps Teams Must Solve</h3>
+<div class="ai-gap-list">
+<div class="ai-gap-item"><strong>Adoption Gap</strong><span>Tools are purchased, but recruiter workflows are not redesigned around them.</span></div>
+<div class="ai-gap-item"><strong>Data Gap</strong><span>Unstructured role and interview data weakens model confidence and trust.</span></div>
+<div class="ai-gap-item"><strong>Decision Gap</strong><span>Final hiring calls lack explainable evidence trails for leadership sign-off.</span></div>
+</div>
+</div>
+</div>
+
+<div class="ai-col">
+<div class="ai-block">
+<h3>Where to Implement AI First</h3>
+<p>The strongest ROI comes from deploying AI in high-friction, high-volume decision points while keeping recruiters in control.</p>
+<div class="ai-impl-list">
+<div class="ai-impl-item"><strong>Role Intake Intelligence</strong><span>Convert job descriptions into weighted competencies and expected impact levels.</span></div>
+<div class="ai-impl-item"><strong>Candidate Signal Extraction</strong><span>Transform resumes and notes into comparable capability evidence.</span></div>
+<div class="ai-impl-item"><strong>Interview Consistency Layer</strong><span>Reduce panel variance with structured scorecards and quality prompts.</span></div>
+<div class="ai-impl-item"><strong>Benchmark-Aware Decisioning</strong><span>Support shortlist recommendations with transparent score drivers.</span></div>
+</div>
+</div>
+
+<div class="partner-band">
+<h4>SkillMirror as Your AI Hiring Support Partner</h4>
+<p>We help teams operationalize AI recruitment end-to-end — from role signal design to explainable decision support — so adoption is measurable, trusted, and scalable.</p>
+</div>
+</div>
+</div>
+
 </div>
 </section>
 
@@ -578,26 +881,26 @@ Run the analysis to evaluate candidate-role alignment.
 <h2>Hiring Will Become Infrastructure</h2>
 
 <p class="section-sub">
-SkillMirror envisions a future where hiring is powered by structured intelligence rather than fragmented interpretation.
+The next generation of talent organizations will run hiring as a strategic operating layer: measurable, repeatable, and continuously improved through intelligence loops.
 </p>
 
 <div class="vision-grid">
-
-<div class="vision-card">
-<h3>From Documents to Data</h3>
-<p>Resumes and job descriptions become structured capability signals.</p>
+<div class="vision-card"><h3>From Workflow to System</h3><p>Role design, assessment logic, and decision quality are managed as one integrated operating layer.</p></div>
+<div class="vision-card"><h3>From Manual Review to AI-Assisted Teams</h3><p>Recruiters and hiring managers get real-time fit, risk, and rationale before every shortlist decision.</p></div>
+<div class="vision-card"><h3>From Hiring Metrics to Business Outcomes</h3><p>Hiring intelligence directly supports workforce planning, capability mapping, and performance strategy.</p></div>
 </div>
 
-<div class="vision-card">
-<h3>From Screening to Intelligence</h3>
-<p>AI systems analyze candidate capability across multiple dimensions.</p>
+<div class="vision-kpis">
+<div class="v-kpi"><strong>24h</strong><span>Shortlist SLA</span></div>
+<div class="v-kpi"><strong>95%</strong><span>Decision Traceability</span></div>
+<div class="v-kpi"><strong>2.5×</strong><span>Recruiter Throughput</span></div>
+<div class="v-kpi"><strong>+38%</strong><span>Role-Fit Precision</span></div>
 </div>
 
-<div class="vision-card">
-<h3>From Opinion to Evidence</h3>
-<p>Hiring decisions rely on explainable intelligence and structured scoring.</p>
-</div>
-
+<div class="vision-cta">
+<h3>Build Your Hiring Intelligence Layer</h3>
+<p>Stop screening resumes. Start engineering confident hiring decisions.</p>
+<button class="btn openPopup">Request a Strategic Demo</button>
 </div>
 
 </div>
@@ -615,16 +918,33 @@ SkillMirror envisions a future where hiring is powered by structured intelligenc
 <span class="popup-close" id="closePopup">✕</span>
 
 <h3>Request a SkillMirror Demo</h3>
+<p class="popup-sub">Tell us about your hiring workflow and we’ll tailor a focused walkthrough for your team.</p>
 
-<form>
+<form id="demoRequestForm">
 
-<input type="text" placeholder="Full Name" required>
-<input type="email" placeholder="Work Email" required>
-<input type="text" placeholder="Company">
+<div class="popup-grid">
+<div class="popup-field">
+<label class="popup-label" for="fullName">Full Name</label>
+<input id="fullName" type="text" placeholder="Jane Cooper" required>
+</div>
+<div class="popup-field">
+<label class="popup-label" for="workEmail">Work Email</label>
+<input id="workEmail" type="email" placeholder="jane@company.com" required>
+</div>
+</div>
 
-<textarea placeholder="Tell us about your hiring goals"></textarea>
+<div class="popup-field">
+<label class="popup-label" for="companyName">Company</label>
+<input id="companyName" type="text" placeholder="Acme Inc.">
+</div>
 
-<button class="demo-btn">Request Demo</button>
+<div class="popup-field">
+<label class="popup-label" for="hiringGoals">Hiring Goals</label>
+<textarea id="hiringGoals" placeholder="Hiring 10 backend engineers in Q3. Need faster, fair shortlisting."></textarea>
+</div>
+
+<button class="demo-btn" type="submit">Request Demo</button>
+<div class="popup-success" id="popupSuccessMsg" role="status" aria-live="polite"></div>
 
 </form>
 
@@ -651,6 +971,22 @@ requestAnimationFrame(animate)
 
 animate()
 
+// Remove any legacy sentiment widget instances that may persist from older markup/cached fragments
+;(()=>{
+const legacySelectors=[".hero-sentiment",".legacy-sentiment"]
+legacySelectors.forEach(sel=>{
+ document.querySelectorAll(sel).forEach(node=>node.remove())
+})
+
+// Extra safeguard: remove blocks containing the old heading text
+document.querySelectorAll("div,section").forEach(node=>{
+ if(node.textContent && node.textContent.includes("Interview Sentiment Analysis")){
+  const hasStrong=node.querySelector("strong") && node.querySelector("strong").textContent.includes("Interview Sentiment Analysis")
+  if(hasStrong){ node.remove() }
+ }
+})
+})()
+
 /* Demo */
 
 function runDemo(){
@@ -658,54 +994,160 @@ function runDemo(){
 const job=document.getElementById("jobInput").value.toLowerCase()
 const resume=document.getElementById("resumeInput").value.toLowerCase()
 
-const skills=["node","aws","microservices","system","backend","api","cloud"]
+const skillGroups={
+"node.js":["node","node.js","nestjs","express"],
+"aws":["aws","amazon web services"],
+"microservices":["microservice","microservices"],
+"system design":["system design","architecture","scalable systems"],
+"backend":["backend","server-side"],
+"api":["api","rest","graphql"],
+"cloud":["cloud","gcp","azure"],
+"kubernetes":["kubernetes","k8s"],
+"sql":["sql","postgres","mysql"],
+"distributed systems":["distributed","event-driven","high availability"],
+"security":["security","oauth","auth","jwt"]
+}
 
-let jobSkills=skills.filter(s=>job.includes(s))
-let resumeSkills=skills.filter(s=>resume.includes(s))
+const normalize=(text)=>text.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
+const jobText=normalize(job)
+const resumeText=normalize(resume)
+
+const extractMatched=(text)=>Object.entries(skillGroups)
+  .filter(([,aliases])=>aliases.some(alias=>text.includes(alias)))
+  .map(([skill])=>skill)
+
+let jobSkills=extractMatched(jobText)
+let resumeSkills=extractMatched(resumeText)
 
 let matched=jobSkills.filter(s=>resumeSkills.includes(s))
+let missing=jobSkills.filter(s=>!resumeSkills.includes(s))
 
-let ratio=jobSkills.length?matched.length/jobSkills.length:0
+const yearMatch=resumeText.match(/(\d+)\s*\+?\s*(years|yrs|year)/)
+const years=yearMatch?Math.min(15,parseInt(yearMatch[1],10)):0
 
-let skillScore=Math.round(ratio*100)
-let expScore=Math.min(95,skillScore+10)
-let domainScore=Math.min(90,skillScore+5)
+let skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
+let expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
+let domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/(Object.keys(skillGroups).length))*40+15))
 
-let finalScore=Math.round(skillScore*0.5+expScore*0.3+domainScore*0.2)
+let finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
+let coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
+let marketBenchmark=78
 
 document.getElementById("demoScore").innerText=finalScore+"%"
 document.getElementById("skillScore").innerText=skillScore+"%"
 document.getElementById("expScore").innerText=expScore+"%"
 document.getElementById("domainScore").innerText=domainScore+"%"
+document.getElementById("coverageScore").innerText=coverageScore+"%"
+
+document.getElementById("barSkill").style.width=skillScore+"%"
+document.getElementById("barExp").style.width=expScore+"%"
+document.getElementById("barDomain").style.width=domainScore+"%"
+
+document.getElementById("barSkillLabel").innerText=skillScore+"%"
+document.getElementById("barExpLabel").innerText=expScore+"%"
+document.getElementById("barDomainLabel").innerText=domainScore+"%"
+
+document.getElementById("benchmarkPoint").style.left=Math.min(100,finalScore)+"%"
+document.getElementById("benchmarkLabel").innerText=`Hiring bar: ${marketBenchmark}%`
+
+const chips=document.getElementById("matchChips")
+chips.innerHTML=""
+
+matched.forEach(skill=>{
+const chip=document.createElement("span")
+chip.className="chip match"
+chip.textContent=`✔ ${skill}`
+chips.appendChild(chip)
+})
+
+missing.slice(0,5).forEach(skill=>{
+const chip=document.createElement("span")
+chip.className="chip gap"
+chip.textContent=`Gap: ${skill}`
+chips.appendChild(chip)
+})
+
+if(!matched.length && !missing.length){
+const chip=document.createElement("span")
+chip.className="chip gap"
+chip.textContent="Add more role keywords for a better analysis"
+chips.appendChild(chip)
+}
+
+const insight=document.getElementById("demoInsight")
+const statusChip=document.getElementById("statusChip")
+if(finalScore>=marketBenchmark){
+insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
+insight.style.color="#86efac"
+statusChip.textContent="Above Benchmark"
+statusChip.className="status-chip pass"
+}else{
+insight.innerText="Below benchmark: keep in backup pool or run targeted screening for missing competencies."
+insight.style.color="#fdba74"
+statusChip.textContent="Below Benchmark"
+statusChip.className="status-chip fail"
+}
 
 }
+
+runDemo()
 
 /* Popup */
 
 const popup=document.getElementById("popupForm")
 
 document.querySelectorAll(".openPopup").forEach(btn=>{
-btn.onclick=()=>popup.style.display="flex"
+btn.onclick=()=>{
+popup.style.display="flex"
+popupSuccessMsg.style.display="none"
+popupSuccessMsg.innerText=""
+}
 })
 
-document.getElementById("closePopup").onclick=()=>{
+const closePopup=()=>{
 popup.style.display="none"
+popupSuccessMsg.style.display="none"
 }
+
+document.getElementById("closePopup").onclick=closePopup
+
+window.addEventListener("click",(e)=>{
+if(e.target===popup)closePopup()
+})
+
+window.addEventListener("keydown",(e)=>{
+if(e.key==="Escape" && popup.style.display==="flex")closePopup()
+})
+
+const demoRequestForm=document.getElementById("demoRequestForm")
+const popupSuccessMsg=document.getElementById("popupSuccessMsg")
+
+demoRequestForm.addEventListener("submit",(e)=>{
+e.preventDefault()
+const fullName=document.getElementById("fullName").value.trim() || "there"
+popupSuccessMsg.style.display="block"
+popupSuccessMsg.innerText=`Thanks ${fullName}! Your demo request is submitted. Our team will contact you within 24 hours.`
+demoRequestForm.reset()
+})
 
 </script>
 
 <!-- Tawk chat -->
 
 <script type="text/javascript">
+window.addEventListener("load",()=>{
+const bootChat=()=>{
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
 s1.src='https://embed.tawk.to/69b6126d7afc871c37be224c/1jjnjfup7';
 s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
-})();
+};
+if("requestIdleCallback" in window){requestIdleCallback(bootChat,{timeout:2500});}
+else{setTimeout(bootChat,1200);}
+});
 </script>
 
 </body>
