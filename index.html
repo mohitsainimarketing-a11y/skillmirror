@@ -372,9 +372,35 @@ z-index:2000;
 background:#0f172a;
 padding:40px;
 border-radius:20px;
-width:400px;
+width:480px;
+max-height:80vh;
+overflow-y:auto;
+position:relative;
 }
 
+  /* HubSpot form styling */
+
+.hs-form input,
+.hs-form textarea,
+.hs-form select{
+width:100%!important;
+padding:12px!important;
+background:rgba(255,255,255,0.05)!important;
+border:1px solid rgba(255,255,255,0.1)!important;
+border-radius:10px!important;
+color:white!important;
+margin-bottom:12px!important;
+}
+
+.hs-button{
+background:linear-gradient(135deg,#22c55e,#2563eb)!important;
+border:none!important;
+border-radius:10px!important;
+padding:12px 20px!important;
+color:white!important;
+font-weight:600!important;
+}
+  
 .popup-content input{
 width:100%;
 padding:12px;
@@ -674,14 +700,24 @@ approach becomes inconsistent and difficult to manage.
 </footer>
 
 <div class="popup" id="popupForm">
+
 <div class="popup-content">
+
 <span class="popup-close" id="closePopup">✕</span>
-<h3>Request a Demo</h3>
-<input placeholder="Full Name">
-<input placeholder="Work Email">
-<input placeholder="Company">
-<button class="btn">Submit</button>
+
+<h3>Request a SkillMirror Demo</h3>
+
+<script src="https://js-na3.hsforms.net/forms/embed/343089651.js" defer></script>
+
+<div
+class="hs-form-frame"
+data-region="na3"
+data-form-id="bf4cd75f-4bfe-4373-92f1-f3429ea1ff82"
+data-portal-id="343089651">
 </div>
+
+</div>
+
 </div>
 
 <div class="chat-button" id="chatBtn">Live Chat</div>
