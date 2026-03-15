@@ -241,10 +241,7 @@ box-shadow:0 10px 30px rgba(2,6,23,.25);
 
 .demo-layout{display:flex;flex-direction:column;gap:14px}
 .demo-summary{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.score-pill{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,.35);background:rgba(34,197,94,.14);color:#bbf7d0;letter-spacing:.02em}
-.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
-.btn:active{transform:translateY(0)}
-.demo-grid .btn{padding:10px 20px;border-radius:12px;font-size:14px}
+.score-pill{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,.35);background:rgba(34,197,94,.14);color:#bbf7d0}
 
 .metric-grid{
 display:grid;
@@ -266,7 +263,7 @@ padding:10px;
 .demo-bars{margin-top:4px;display:flex;flex-direction:column;gap:10px}
 .bar-row{display:grid;grid-template-columns:130px 1fr 46px;gap:8px;align-items:center;font-size:13px;color:#cbd5e1}
 .bar-track{height:8px;border-radius:999px;background:rgba(148,163,184,.18);overflow:hidden}
-.bar-fill{height:100%;background:linear-gradient(90deg,#22c55e,#2563eb);width:0;transition:width .5s ease;border-radius:999px;animation:barGlow .7s ease both}
+.bar-fill{height:100%;background:linear-gradient(90deg,#22c55e,#2563eb);width:0;transition:width .5s ease}
 
 .benchmark{margin-top:8px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.18);border-radius:12px;padding:10px}
 .benchmark-header{display:flex;justify-content:space-between;font-size:13px;color:#9ca3af;margin-bottom:10px}
@@ -278,16 +275,6 @@ padding:10px;
 .chip.match{background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.38);color:#bbf7d0}
 .chip.gap{background:rgba(251,146,60,.12);border-color:rgba(251,146,60,.3);color:#fed7aa}
 
-
-.status-wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:2px}
-.status-chip{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid rgba(148,163,184,.25);color:#cbd5e1;background:rgba(15,23,42,.45)}
-.status-chip.pass{border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.14);color:#bbf7d0}
-.status-chip.fail{border-color:rgba(251,146,60,.4);background:rgba(251,146,60,.14);color:#fed7aa}
-
-@keyframes barGlow{
-0%{opacity:.65;filter:saturate(.85)}
-100%{opacity:1;filter:saturate(1)}
-}
 .demo-note{
 margin-top:6px;
 padding:10px;
@@ -615,6 +602,36 @@ Paste a job description and candidate resume to simulate how modern AI recruitin
 
 <div class="status-wrap">
 <p id="demoInsight" style="margin-top:0;color:#9ca3af;font-size:13px;line-height:1.45">
+
+<div class="demo-summary">
+<div>
+<div style="font-size:36px;font-weight:700;line-height:1" id="demoScore">0%</div>
+<div style="color:#9ca3af;font-size:13px;margin-top:4px">Overall role-fit confidence</div>
+</div>
+<div class="score-pill">AI Fit Signal</div>
+</div>
+
+<div class="metric-grid">
+<div class="metric-card"><small>Skill Alignment</small><strong id="skillScore">—</strong></div>
+<div class="metric-card"><small>Experience Depth</small><strong id="expScore">—</strong></div>
+<div class="metric-card"><small>Domain Exposure</small><strong id="domainScore">—</strong></div>
+<div class="metric-card"><small>Keyword Coverage</small><strong id="coverageScore">—</strong></div>
+</div>
+
+<div class="demo-bars">
+<div class="bar-row"><span>Skill Alignment</span><div class="bar-track"><div class="bar-fill" id="barSkill"></div></div><span id="barSkillLabel">0%</span></div>
+<div class="bar-row"><span>Experience Depth</span><div class="bar-track"><div class="bar-fill" id="barExp"></div></div><span id="barExpLabel">0%</span></div>
+<div class="bar-row"><span>Domain Exposure</span><div class="bar-track"><div class="bar-fill" id="barDomain"></div></div><span id="barDomainLabel">0%</span></div>
+</div>
+
+<div class="benchmark">
+<div class="benchmark-header"><span>Market Benchmark</span><span id="benchmarkLabel">Hiring bar: 78%</span></div>
+<div class="benchmark-track"><div class="benchmark-point" id="benchmarkPoint"></div></div>
+</div>
+
+<div class="chips" id="matchChips"></div>
+
+<p id="demoInsight" style="margin-top:8px;color:#9ca3af;font-size:13px;line-height:1.45">
 Run the analysis to evaluate candidate-role alignment and visualize strengths vs. gaps.
 </p>
 <span class="status-chip" id="statusChip">Pending</span>
@@ -622,6 +639,12 @@ Run the analysis to evaluate candidate-role alignment and visualize strengths vs
 
 <div class="demo-note">
 This demo uses weighted competency scoring, explicit gap detection, and benchmark-aware recommendations.
+</div>
+
+</div>
+
+<div class="demo-note">
+This demo reflects 2026 hiring trends: weighted competency scoring, explainable skill coverage, and benchmark-based shortlist recommendations.
 </div>
 
 </div>
@@ -770,6 +793,7 @@ const skillGroups={
 const normalize=(text)=>text.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
 const jobText=normalize(job)
 const resumeText=normalize(resume)
+const skills=["node","aws","microservices","system","backend","api","cloud","kubernetes","sql","design","distributed","security"]
 
 const extractMatched=(text)=>Object.entries(skillGroups)
   .filter(([,aliases])=>aliases.some(alias=>text.includes(alias)))
@@ -790,6 +814,8 @@ let domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/(Obje
 
 let finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
 let coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
+let finalScore=Math.round(skillScore*0.5+expScore*0.3+domainScore*0.2)
+let coverageScore=Math.round((resumeSkills.length/skills.length)*100)
 let marketBenchmark=78
 
 document.getElementById("demoScore").innerText=finalScore+"%"
@@ -820,6 +846,7 @@ chips.appendChild(chip)
 })
 
 missing.slice(0,5).forEach(skill=>{
+missing.forEach(skill=>{
 const chip=document.createElement("span")
 chip.className="chip gap"
 chip.textContent=`Gap: ${skill}`
@@ -845,6 +872,13 @@ insight.innerText="Below benchmark: keep in backup pool or run targeted screenin
 insight.style.color="#fdba74"
 statusChip.textContent="Below Benchmark"
 statusChip.className="status-chip fail"
+const insight=document.getElementById("demoInsight")
+if(finalScore>=marketBenchmark){
+insight.innerText="Candidate is above benchmark. Recommendation: fast-track to technical interview with focus on depth validation."
+insight.style.color="#86efac"
+}else{
+insight.innerText="Candidate is below benchmark. Recommendation: hold for secondary review or source additional profiles."
+insight.style.color="#fdba74"
 }
 
 }
