@@ -137,11 +137,16 @@ max-width:520px;
 
 .engine{
 width:520px;
-padding:40px;
+padding:28px;
 border-radius:24px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
+background:linear-gradient(165deg,rgba(15,23,42,.92),rgba(30,41,59,.72));
+border:1px solid rgba(148,163,184,.24);
+box-shadow:0 30px 60px rgba(2,6,23,.45);
 }
+
+.engine-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.engine-title{font-size:13px;color:#cbd5e1;letter-spacing:.03em;text-transform:uppercase}
+.live-pill{font-size:11px;padding:5px 9px;border-radius:999px;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.35);color:#bbf7d0}
 
 .ring-wrap{position:relative;width:170px;height:170px;margin:auto}
 
@@ -156,18 +161,33 @@ color:#22c55e;
 }
 
 .table{
-margin-top:30px;
+margin-top:20px;
 border-top:1px solid rgba(255,255,255,0.1);
 }
 
 .row{
 display:flex;
 justify-content:space-between;
-padding:14px 0;
+padding:12px 0;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 /* Problem */
+
+
+
+.hero-sentiment{margin-top:16px;padding:14px;border-radius:14px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.2)}
+.sentiment-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sentiment-head strong{font-size:14px}
+.sentiment-head span{font-size:12px;color:#94a3b8}
+.sentiment-list{display:flex;flex-direction:column;gap:8px}
+.sentiment-row{display:grid;grid-template-columns:88px 1fr 36px;align-items:center;gap:8px;font-size:12px;color:#cbd5e1}
+.sentiment-track{height:6px;background:rgba(148,163,184,.22);border-radius:999px;overflow:hidden}
+.sentiment-fill{height:100%;width:0;transition:width .8s ease;border-radius:999px}
+.sentiment-fill.pos{background:linear-gradient(90deg,#22c55e,#4ade80)}
+.sentiment-fill.neu{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.sentiment-fill.risk{background:linear-gradient(90deg,#f59e0b,#fb923c)}
+.hero-footnote{margin-top:12px;font-size:12px;color:#94a3b8;line-height:1.45}
 
 .problem-grid{
 display:grid;
@@ -440,6 +460,21 @@ line-height:1.45;
 
 @media(max-width:900px){
 .hero{flex-direction:column;text-align:center;gap:60px}
+
+
+.hero-sentiment{margin-top:16px;padding:14px;border-radius:14px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.2)}
+.sentiment-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sentiment-head strong{font-size:14px}
+.sentiment-head span{font-size:12px;color:#94a3b8}
+.sentiment-list{display:flex;flex-direction:column;gap:8px}
+.sentiment-row{display:grid;grid-template-columns:88px 1fr 36px;align-items:center;gap:8px;font-size:12px;color:#cbd5e1}
+.sentiment-track{height:6px;background:rgba(148,163,184,.22);border-radius:999px;overflow:hidden}
+.sentiment-fill{height:100%;width:0;transition:width .8s ease;border-radius:999px}
+.sentiment-fill.pos{background:linear-gradient(90deg,#22c55e,#4ade80)}
+.sentiment-fill.neu{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.sentiment-fill.risk{background:linear-gradient(90deg,#f59e0b,#fb923c)}
+.hero-footnote{margin-top:12px;font-size:12px;color:#94a3b8;line-height:1.45}
+
 .problem-grid{grid-template-columns:1fr}
 .pipeline{flex-direction:column}
 .demo-grid{grid-template-columns:1fr}
@@ -487,6 +522,8 @@ allowing recruiters to move beyond guesswork and make faster evidence-based hiri
 
 <div class="engine">
 
+<div class="engine-head"><span class="engine-title">Live Decision Signal</span><span class="live-pill">Realtime</span></div>
+
 <div class="ring-wrap">
 
 <svg width="170" height="170">
@@ -519,6 +556,16 @@ stroke-dashoffset="470"/>
 <div class="row"><span>Candidate B</span><span>74%</span></div>
 <div class="row"><span>Candidate C</span><span>61%</span></div>
 
+</div>
+
+<div class="hero-sentiment">
+<div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
+<div class="sentiment-list">
+<div class="sentiment-row"><span>Positive</span><div class="sentiment-track"><div class="sentiment-fill pos" id="sentPos"></div></div><span id="sentPosVal">0%</span></div>
+<div class="sentiment-row"><span>Neutral</span><div class="sentiment-track"><div class="sentiment-fill neu" id="sentNeu"></div></div><span id="sentNeuVal">0%</span></div>
+<div class="sentiment-row"><span>Risk</span><div class="sentiment-track"><div class="sentiment-fill risk" id="sentRisk"></div></div><span id="sentRiskVal">0%</span></div>
+</div>
+<div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
 
 </div>
@@ -589,6 +636,16 @@ Alignment Analysis
 Decision Guidance
 </div>
 
+</div>
+
+<div class="hero-sentiment">
+<div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
+<div class="sentiment-list">
+<div class="sentiment-row"><span>Positive</span><div class="sentiment-track"><div class="sentiment-fill pos" id="sentPos"></div></div><span id="sentPosVal">0%</span></div>
+<div class="sentiment-row"><span>Neutral</span><div class="sentiment-track"><div class="sentiment-fill neu" id="sentNeu"></div></div><span id="sentNeuVal">0%</span></div>
+<div class="sentiment-row"><span>Risk</span><div class="sentiment-track"><div class="sentiment-fill risk" id="sentRisk"></div></div><span id="sentRiskVal">0%</span></div>
+</div>
+<div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
 
 </div>
@@ -664,14 +721,18 @@ This demo uses weighted competency scoring, explicit gap detection, and benchmar
 
 </div>
 
-<div class="demo-note">
-This demo reflects 2026 hiring trends: weighted competency scoring, explainable skill coverage, and benchmark-based shortlist recommendations.
 </div>
 
 </div>
 
+<div class="hero-sentiment">
+<div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
+<div class="sentiment-list">
+<div class="sentiment-row"><span>Positive</span><div class="sentiment-track"><div class="sentiment-fill pos" id="sentPos"></div></div><span id="sentPosVal">0%</span></div>
+<div class="sentiment-row"><span>Neutral</span><div class="sentiment-track"><div class="sentiment-fill neu" id="sentNeu"></div></div><span id="sentNeuVal">0%</span></div>
+<div class="sentiment-row"><span>Risk</span><div class="sentiment-track"><div class="sentiment-fill risk" id="sentRisk"></div></div><span id="sentRiskVal">0%</span></div>
 </div>
-
+<div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
 
 </div>
@@ -737,6 +798,16 @@ SkillMirror envisions a future where hiring is powered by structured intelligenc
 <p>Hiring decisions rely on explainable intelligence and structured scoring.</p>
 </div>
 
+</div>
+
+<div class="hero-sentiment">
+<div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
+<div class="sentiment-list">
+<div class="sentiment-row"><span>Positive</span><div class="sentiment-track"><div class="sentiment-fill pos" id="sentPos"></div></div><span id="sentPosVal">0%</span></div>
+<div class="sentiment-row"><span>Neutral</span><div class="sentiment-track"><div class="sentiment-fill neu" id="sentNeu"></div></div><span id="sentNeuVal">0%</span></div>
+<div class="sentiment-row"><span>Risk</span><div class="sentiment-track"><div class="sentiment-fill risk" id="sentRisk"></div></div><span id="sentRiskVal">0%</span></div>
+</div>
+<div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
 
 </div>
@@ -806,6 +877,14 @@ requestAnimationFrame(animate)
 }
 
 animate()
+
+const sentiment={pos:76,neu:18,risk:6}
+document.getElementById("sentPos").style.width=sentiment.pos+"%"
+document.getElementById("sentNeu").style.width=sentiment.neu+"%"
+document.getElementById("sentRisk").style.width=sentiment.risk+"%"
+document.getElementById("sentPosVal").innerText=sentiment.pos+"%"
+document.getElementById("sentNeuVal").innerText=sentiment.neu+"%"
+document.getElementById("sentRiskVal").innerText=sentiment.risk+"%"
 
 /* Demo */
 
