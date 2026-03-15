@@ -19,7 +19,18 @@ display:none!important;
 iframe[src*="hubspot"] + div{
 display:none!important;
 }
+/* Hide HubSpot branding footer */
+.hs-form__powered-by,
+.hs-form .hs-form-footer,
+.hs-form .hs-richtext,
+.hs-form__powered-by-hubspot{
+display:none !important;
+}
 
+/* Extra fallback */
+.hs-form iframe + div{
+display:none !important;
+}
   
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 html{scroll-behavior:smooth}
