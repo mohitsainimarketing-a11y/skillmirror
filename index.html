@@ -9,6 +9,51 @@
 
 <style>
 
+.radio-title{
+display:block;
+font-size:13px;
+color:#9ca3af;
+margin-bottom:10px;
+}
+
+.radio-group{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+}
+
+.radio-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:10px;
+padding:10px;
+text-align:center;
+cursor:pointer;
+transition:all .2s ease;
+font-size:13px;
+}
+
+.radio-card input{
+display:none;
+}
+
+.radio-card:hover{
+border-color:#22c55e;
+}
+
+.radio-card input:checked + span{
+color:#22c55e;
+font-weight:600;
+}
+
+.radio-card input:checked{
+}
+
+.radio-card input:checked + span{
+display:block;
+}
+
+  
 /* Popup glass style */
 .popup-glass{
 background:linear-gradient(145deg, rgba(17,24,39,0.95), rgba(8,15,35,0.95));
@@ -849,14 +894,42 @@ approach becomes inconsistent and difficult to manage.
         <input type="text" name="company" placeholder="Company Name">
       </div>
 
-      <div class="form-group">
-        <select name="employees">
-          <option value="">Company Size</option>
-          <option>1–10</option>
-          <option>11–50</option>
-          <option>51–200</option>
-          <option>201–1000</option>
-          <option>1000+</option>
+      
+<div class="form-group">
+
+<label class="radio-title">Company Size</label>
+
+<div class="radio-group">
+
+<label class="radio-card">
+<input type="radio" name="employees" value="1-10">
+<span>1–10</span>
+</label>
+
+<label class="radio-card">
+<input type="radio" name="employees" value="11-50">
+<span>11–50</span>
+</label>
+
+<label class="radio-card">
+<input type="radio" name="employees" value="51-200">
+<span>51–200</span>
+</label>
+
+<label class="radio-card">
+<input type="radio" name="employees" value="201-1000">
+<span>201–1000</span>
+</label>
+
+<label class="radio-card">
+<input type="radio" name="employees" value="1000+">
+<span>1000+</span>
+</label>
+
+</div>
+
+</div>
+
         </select>
       </div>
 
