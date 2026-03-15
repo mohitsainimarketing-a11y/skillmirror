@@ -722,28 +722,43 @@ approach becomes inconsistent and difficult to manage.
 © 2026 SkillMirror
 </footer>
 
+```html
 <div class="popup" id="popupForm">
 
-<div class="popup-content">
+  <div class="popup-content">
 
-<span class="popup-close" id="closePopup">✕</span>
+    <span class="popup-close" id="closePopup">✕</span>
 
-<h3>Request a SkillMirror Demo</h3>
+    <h3>Request a SkillMirror Demo</h3>
 
-<div id="hubspot-form"></div>
+    <form action="https://formsubmit.co/mohitsaini20793@gmail.com" method="POST">
 
-<script src="//js.hsforms.net/forms/embed/v2.js"></script>
+      <input type="text" name="name" placeholder="Full Name" required>
 
-<script>
-hbspt.forms.create({
-region: "na3",
-portalId: "343089651",
-formId: "bf4cd75f-4bfe-4373-92f1-f3429ea1ff82",
-target: "#hubspot-form"
-});
-</script>
+      <input type="email" name="email" placeholder="Work Email" required>
 
-</div>
+      <input type="text" name="company" placeholder="Company Name">
+
+      <select name="employees">
+        <option value="">Number of Employees</option>
+        <option>1-10</option>
+        <option>11-50</option>
+        <option>51-200</option>
+        <option>201-1000</option>
+        <option>1000+</option>
+      </select>
+
+      <textarea name="message" placeholder="Tell us about your hiring needs"></textarea>
+
+      <!-- Hidden controls -->
+      <input type="hidden" name="_subject" value="New SkillMirror Demo Request">
+      <input type="hidden" name="_captcha" value="false">
+
+      <button class="btn" type="submit">Request Demo</button>
+
+    </form>
+
+  </div>
 
 </div>
 
