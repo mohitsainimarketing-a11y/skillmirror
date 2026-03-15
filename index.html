@@ -871,80 +871,86 @@ approach becomes inconsistent and difficult to manage.
 
 
 <div class="popup" id="popupForm">
-  <div class="popup-content popup-glass">
 
-    <span class="popup-close" id="closePopup">✕</span>
+<div class="popup-content popup-glass">
 
-    <div class="popup-header">
-      <h3>Request a SkillMirror Demo</h3>
-      <p>See how structured hiring intelligence improves decision speed and quality.</p>
-    </div>
+<span class="popup-close" id="closePopup">✕</span>
 
-    <form action="https://formsubmit.co/mohitsaini20793@gmail.com" method="POST">
+<div class="popup-header">
+<h3>Request a SkillMirror Demo</h3>
+<p>See how structured hiring intelligence improves decision speed and quality.</p>
+</div>
 
-      <div class="form-group">
-        <input type="text" name="name" placeholder="Full Name" required>
-      </div>
+<form id="demoForm" action="https://formsubmit.co/mohitsaini20793@gmail.com" method="POST">
 
-      <div class="form-group">
-        <input type="email" name="email" placeholder="Work Email" required>
-      </div>
+<input type="hidden" name="_subject" value="New SkillMirror Demo Request">
+<input type="hidden" name="_captcha" value="false">
 
-      <div class="form-group">
-        <input type="text" name="company" placeholder="Company Name">
-      </div>
+<div class="form-group">
+<input type="text" name="name" placeholder="Full Name" required>
+</div>
 
-      <div class="form-group">
+<div class="form-group">
+<input type="email" name="email" placeholder="Work Email" required>
+</div>
 
-        <label class="radio-title">Company Size</label>
+<div class="form-group">
+<input type="text" name="company" placeholder="Company Name">
+</div>
 
-        <div class="radio-group">
+<div class="form-group">
 
-          <label class="radio-card">
-            <input type="radio" name="employees" value="1-10">
-            <span>1–10</span>
-          </label>
+<label class="radio-title">Company Size</label>
 
-          <label class="radio-card">
-            <input type="radio" name="employees" value="11-50">
-            <span>11–50</span>
-          </label>
+<div class="radio-group">
 
-          <label class="radio-card">
-            <input type="radio" name="employees" value="51-200">
-            <span>51–200</span>
-          </label>
+<label class="radio-card">
+<input type="radio" name="employees" value="1-10">
+<span>1–10</span>
+</label>
 
-          <label class="radio-card">
-            <input type="radio" name="employees" value="201-1000">
-            <span>201–1000</span>
-          </label>
+<label class="radio-card">
+<input type="radio" name="employees" value="11-50">
+<span>11–50</span>
+</label>
 
-          <label class="radio-card">
-            <input type="radio" name="employees" value="1000+">
-            <span>1000+</span>
-          </label>
+<label class="radio-card">
+<input type="radio" name="employees" value="51-200">
+<span>51–200</span>
+</label>
 
-        </div>
+<label class="radio-card">
+<input type="radio" name="employees" value="201-1000">
+<span>201–1000</span>
+</label>
 
-      </div>
+<label class="radio-card">
+<input type="radio" name="employees" value="1000+">
+<span>1000+</span>
+</label>
 
-      <div class="form-group">
-        <textarea name="message" placeholder="Tell us about your hiring goals"></textarea>
-      </div>
+</div>
 
-      <input type="hidden" name="_subject" value="New SkillMirror Demo Request">
-      <input type="hidden" name="_captcha" value="false">
+</div>
 
-      <button class="demo-btn" type="submit">Request Demo</button>
+<div class="form-group">
+<textarea name="message" placeholder="Tell us about your hiring goals"></textarea>
+</div>
 
-      <div class="form-footer">
-        <span>Response within 24 hours</span>
-      </div>
+<button class="demo-btn" type="submit">Request Demo</button>
 
-    </form>
+<div class="form-footer">
+<span>Response within 24 hours</span>
+</div>
 
-  </div>
+</form>
+
+<div id="formSuccess" style="display:none;text-align:center;padding:20px">
+<h3 style="color:#22c55e">Submitted ✔</h3>
+<p style="color:#9ca3af">Our team will contact you within 24 hours.</p>
+</div>
+
+</div>
 </div>
 
   <div class="chat-button" id="chatBtn">Live Chat</div>
@@ -1070,7 +1076,37 @@ msg.innerText=input.value
 document.getElementById("chatBody").appendChild(msg)
 input.value=""
 }
+document.getElementById("sendChat").onclick=()=>{
+let input=document.getElementById("chatInput")
+let msg=document.createElement("div")
+msg.innerText=input.value
+document.getElementById("chatBody").appendChild(msg)
+input.value=""
+}
 
+/* ---- ADD THIS PART BELOW ---- */
+
+const form = document.getElementById("demoForm");
+
+form.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+fetch(form.action,{
+method:"POST",
+body:new FormData(form),
+headers:{'Accept':'application/json'}
+})
+
+.then(response=>{
+if(response.ok){
+form.style.display="none";
+document.getElementById("formSuccess").style.display="block";
+}
+})
+
+});
+  
 </script>
 
 </body>
