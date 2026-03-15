@@ -722,44 +722,58 @@ approach becomes inconsistent and difficult to manage.
 © 2026 SkillMirror
 </footer>
 
-```html
-<div class="popup" id="popupForm">
 
-  <div class="popup-content">
+<div class="popup" id="popupForm">
+  <div class="popup-content popup-glass">
 
     <span class="popup-close" id="closePopup">✕</span>
 
-    <h3>Request a SkillMirror Demo</h3>
+    <div class="popup-header">
+      <h3>Request a SkillMirror Demo</h3>
+      <p>See how structured hiring intelligence improves decision speed and quality.</p>
+    </div>
 
     <form action="https://formsubmit.co/mohitsaini20793@gmail.com" method="POST">
 
-      <input type="text" name="name" placeholder="Full Name" required>
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Full Name" required>
+      </div>
 
-      <input type="email" name="email" placeholder="Work Email" required>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Work Email" required>
+      </div>
 
-      <input type="text" name="company" placeholder="Company Name">
+      <div class="form-group">
+        <input type="text" name="company" placeholder="Company Name">
+      </div>
 
-      <select name="employees">
-        <option value="">Number of Employees</option>
-        <option>1-10</option>
-        <option>11-50</option>
-        <option>51-200</option>
-        <option>201-1000</option>
-        <option>1000+</option>
-      </select>
+      <div class="form-group">
+        <select name="employees">
+          <option value="">Company Size</option>
+          <option>1–10</option>
+          <option>11–50</option>
+          <option>51–200</option>
+          <option>201–1000</option>
+          <option>1000+</option>
+        </select>
+      </div>
 
-      <textarea name="message" placeholder="Tell us about your hiring needs"></textarea>
+      <div class="form-group">
+        <textarea name="message" placeholder="Tell us about your hiring goals"></textarea>
+      </div>
 
-      <!-- Hidden controls -->
       <input type="hidden" name="_subject" value="New SkillMirror Demo Request">
       <input type="hidden" name="_captcha" value="false">
 
-      <button class="btn" type="submit">Request Demo</button>
+      <button class="demo-btn" type="submit">Request Demo</button>
+
+      <div class="form-footer">
+        <span>Response within 24 hours</span>
+      </div>
 
     </form>
 
   </div>
-
 </div>
 
 </div>
