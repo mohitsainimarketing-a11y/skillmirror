@@ -14,12 +14,7 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 
 html{scroll-behavior:smooth}
 
@@ -29,11 +24,24 @@ color:#e5e7eb;
 overflow-x:hidden;
 }
 
-.container{
-width:90%;
-max-width:1200px;
-margin:auto;
+.container{width:90%;max-width:1200px;margin:auto}
+.section{padding:120px 0}
+
+h2{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
 }
+
+.section-sub{
+text-align:center;
+max-width:700px;
+margin:0 auto 60px;
+color:#9ca3af;
+font-size:18px;
+}
+
+/* HEADER */
 
 header{
 position:fixed;
@@ -65,6 +73,8 @@ color:#9ca3af;
 
 nav a:hover{color:white}
 
+/* BUTTON */
+
 .btn{
 background:linear-gradient(135deg,#22c55e,#2563eb);
 padding:12px 28px;
@@ -74,6 +84,8 @@ font-weight:600;
 border:none;
 cursor:pointer;
 }
+
+/* HERO */
 
 .hero{
 min-height:100vh;
@@ -99,6 +111,8 @@ margin-bottom:35px;
 max-width:520px;
 }
 
+/* ENGINE */
+
 .engine{
 width:560px;
 padding:40px;
@@ -107,12 +121,7 @@ background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))
 border:1px solid rgba(255,255,255,0.08);
 }
 
-.ring-wrap{
-position:relative;
-width:170px;
-height:170px;
-margin:auto;
-}
+.ring-wrap{position:relative;width:170px;height:170px;margin:auto}
 
 .score{
 position:absolute;
@@ -123,6 +132,66 @@ font-size:46px;
 font-weight:800;
 color:#22c55e;
 }
+
+/* DEMO */
+
+.demo-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+textarea{
+width:100%;
+height:120px;
+background:rgba(255,255,255,0.05);
+border:none;
+border-radius:10px;
+padding:12px;
+color:white;
+margin-bottom:10px;
+}
+
+.demo-score{
+font-size:38px;
+font-weight:800;
+color:#22c55e;
+text-align:center;
+margin-top:20px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+
+.card{
+padding:40px;
+border-radius:24px;
+background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+border:1px solid rgba(255,255,255,0.08);
+text-align:center;
+}
+
+/* VISION */
+
+.vision-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+}
+
+.vision-card{
+padding:30px;
+border-radius:20px;
+background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+border:1px solid rgba(255,255,255,0.08);
+}
+
+/* POPUP */
 
 .popup{
 position:fixed;
@@ -142,8 +211,6 @@ background:#0f172a;
 padding:40px;
 border-radius:20px;
 width:480px;
-max-height:80vh;
-overflow-y:auto;
 position:relative;
 }
 
@@ -151,13 +218,11 @@ position:relative;
 position:absolute;
 top:20px;
 right:30px;
-cursor:pointer;
 font-size:24px;
+cursor:pointer;
 }
 
-.form-group{
-margin-bottom:16px;
-}
+.form-group{margin-bottom:16px}
 
 .form-group input,
 .form-group textarea{
@@ -167,11 +232,6 @@ background:rgba(255,255,255,0.04);
 border:1px solid rgba(255,255,255,0.1);
 border-radius:10px;
 color:white;
-}
-
-textarea{
-height:90px;
-resize:none;
 }
 
 .demo-btn{
@@ -185,20 +245,20 @@ font-weight:600;
 cursor:pointer;
 }
 
-</style>
+@media(max-width:900px){
+.hero{flex-direction:column;text-align:center;gap:60px}
+.demo-grid{grid-template-columns:1fr}
+}
 
+</style>
 </head>
 
 <body>
 
 <header>
-
 <div class="container">
-
 <nav>
-
 <a href="#" class="logo">SkillMirror</a>
-
 <div>
 <a href="#hero">Product</a>
 <a href="#how">How It Works</a>
@@ -206,11 +266,8 @@ cursor:pointer;
 <a href="#roi">Impact</a>
 <a href="#vision">Vision</a>
 </div>
-
 </nav>
-
 </div>
-
 </header>
 
 <section class="hero container" id="hero">
@@ -258,6 +315,91 @@ stroke-dashoffset="470"/>
 
 </section>
 
+<section class="section" id="how">
+<div class="container">
+<h2>How SkillMirror Turns Hiring Data Into Decisions</h2>
+
+<p class="section-sub">
+SkillMirror analyzes job descriptions, structures candidate resumes,
+and produces alignment intelligence to support hiring decisions.
+</p>
+
+</div>
+</section>
+
+<section class="section" id="demo">
+<div class="container">
+
+<h2>Live Resume Alignment Demo</h2>
+
+<div class="demo-grid">
+
+<div>
+
+<textarea id="jobInput">Senior Backend Engineer with Node.js AWS microservices</textarea>
+
+<textarea id="resumeInput">Backend engineer with Node.js AWS experience</textarea>
+
+<button class="btn" onclick="runDemo()">Analyze Candidate</button>
+
+</div>
+
+<div>
+
+<div class="demo-score" id="demoScore">0%</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section" id="roi">
+<div class="container">
+<h2>Measured Impact</h2>
+
+<div class="grid">
+
+<div class="card"><h1>70%</h1><p>Faster Screening</p></div>
+<div class="card"><h1>3×</h1><p>Shortlist Speed</p></div>
+<div class="card"><h1>100%</h1><p>Consistency</p></div>
+<div class="card"><h1>40%</h1><p>Better Alignment</p></div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section" id="vision">
+
+<div class="container">
+
+<h2>Hiring Will Become Infrastructure</h2>
+
+<div class="vision-grid">
+
+<div class="vision-card">
+<h3>From Documents to Data</h3>
+<p>Resumes and job descriptions become structured signals.</p>
+</div>
+
+<div class="vision-card">
+<h3>From Screening to Intelligence</h3>
+<p>AI systems analyze capability across multiple dimensions.</p>
+</div>
+
+<div class="vision-card">
+<h3>From Opinion to Evidence</h3>
+<p>Hiring decisions rely on explainable intelligence.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
 <footer style="text-align:center;padding:80px 0;color:#6b7280">
 © 2026 SkillMirror
 </footer>
@@ -272,40 +414,20 @@ stroke-dashoffset="470"/>
 
 <form id="demoForm" action="https://formsubmit.co/mohitsaini20793@gmail.com" method="POST">
 
-<input type="hidden" name="_subject" value="New SkillMirror Demo Request">
-<input type="hidden" name="_captcha" value="false">
-
-<div class="form-group">
 <input type="text" name="name" placeholder="Full Name" required>
-</div>
-
-<div class="form-group">
 <input type="email" name="email" placeholder="Work Email" required>
-</div>
-
-<div class="form-group">
 <input type="text" name="company" placeholder="Company Name">
-</div>
 
-<div class="form-group">
 <textarea name="message" placeholder="Tell us about your hiring goals"></textarea>
-</div>
 
 <button class="demo-btn" type="submit">Request Demo</button>
 
 </form>
 
-<div id="formSuccess" style="display:none;text-align:center;padding:20px">
-<h3 style="color:#22c55e">Submitted ✔</h3>
-<p style="color:#9ca3af">Our team will contact you within 24 hours.</p>
-</div>
-
 </div>
 </div>
 
 <script>
-
-window.addEventListener("load",()=>{
 
 let s=0
 const target=92
@@ -328,9 +450,7 @@ requestAnimationFrame(animate)
 
 }
 
-animate()
-
-})
+window.onload=animate
 
 const popup=document.getElementById("popupForm")
 const closePopup=document.getElementById("closePopup")
@@ -341,30 +461,25 @@ btn.addEventListener("click",()=>popup.style.display="flex")
 
 closePopup.addEventListener("click",()=>popup.style.display="none")
 
-const form=document.getElementById("demoForm")
+function runDemo(){
 
-form.addEventListener("submit",function(e){
+const job=document.getElementById("jobInput").value.toLowerCase()
+const resume=document.getElementById("resumeInput").value.toLowerCase()
 
-e.preventDefault()
+const skills=["node","aws","microservices"]
 
-fetch(form.action,{
-method:"POST",
-body:new FormData(form),
-headers:{'Accept':'application/json'}
-})
-.then(res=>{
-if(res.ok){
-form.style.display="none"
-document.getElementById("formSuccess").style.display="block"
+let match=skills.filter(s=>job.includes(s)&&resume.includes(s))
+
+let score=Math.round(match.length/skills.length*100)
+
+document.getElementById("demoScore").innerText=score+"%"
+
 }
-})
-
-})
 
 </script>
 
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
