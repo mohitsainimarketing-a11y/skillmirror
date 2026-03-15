@@ -1200,18 +1200,60 @@ statusChip.textContent="Below Benchmark"
 statusChip.className="status-chip fail"
 }
 
+matched.forEach(skill=>{
+const chip=document.createElement("span")
+chip.className="chip match"
+chip.textContent=`✔ ${skill}`
+chips.appendChild(chip)
+})
+
+missing.slice(0,5).forEach(skill=>{
+const chip=document.createElement("span")
+chip.className="chip gap"
+chip.textContent=`Gap: ${skill}`
+chips.appendChild(chip)
+})
+
+if(!matched.length && !missing.length){
+const chip=document.createElement("span")
+chip.className="chip gap"
+chip.textContent="Add more role keywords for a better analysis"
+chips.appendChild(chip)
 }
+
+const insight=document.getElementById("demoInsight")
+const statusChip=document.getElementById("statusChip")
+if(finalScore>=marketBenchmark){
+insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
+insight.style.color="#86efac"
+statusChip.textContent="Above Benchmark"
+statusChip.className="status-chip pass"
+}else{
+insight.innerText="Below benchmark: keep in backup pool or run targeted screening for missing competencies."
+insight.style.color="#fdba74"
+statusChip.textContent="Below Benchmark"
+statusChip.className="status-chip fail"
+}
+
+}
+
+runDemo()
 
 /* Popup */
 
 const popup=document.getElementById("popupForm")
 
 document.querySelectorAll(".openPopup").forEach(btn=>{
-btn.onclick=()=>popup.style.display="flex"
+btn.onclick=()=>{
+popup.style.display="flex"
+popupSuccessMsg.style.display="none"
+popupSuccessMsg.innerText=""
+}
 })
 
 const closePopup=()=>{
 popup.style.display="none"
+popupSuccessMsg.style.display="none"
 }
 
 document.getElementById("closePopup").onclick=closePopup
