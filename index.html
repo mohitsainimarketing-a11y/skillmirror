@@ -1210,12 +1210,40 @@ if(e.key==="Escape" && popup.style.display==="flex")closePopup()
 })
 
 
-demoRequestForm.addEventListener("submit",(e)=>{
+demoRequestForm.addEventListener("submit",async(e)=>{
 e.preventDefault()
 const fullName=document.getElementById("fullName").value.trim() || "there"
+const workEmail=document.getElementById("workEmail").value.trim()
+const companyName=document.getElementById("companyName").value.trim()
+const hiringGoals=document.getElementById("hiringGoals").value.trim()
+
+try{
+const response=await fetch("https://formsubmit.co/ajax/mohitsaini20793@gmail.com",{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"Accept":"application/json"
+},
+body:JSON.stringify({
+name:fullName,
+email:workEmail,
+company:companyName,
+hiring_goals:hiringGoals,
+subject:"New SkillMirror Demo Request"
+})
+})
+
+if(!response.ok) throw new Error("Failed to send")
+
 popupSuccessMsg.style.display="block"
-popupSuccessMsg.innerText=`Thanks ${fullName}! Your demo request is submitted. Our team will contact you within 24 hours.`
+popupSuccessMsg.style.color="#bbf7d0"
+popupSuccessMsg.innerText=`Thanks ${fullName}! Your demo request was sent successfully.`
 demoRequestForm.reset()
+}catch(err){
+popupSuccessMsg.style.display="block"
+popupSuccessMsg.style.color="#fdba74"
+popupSuccessMsg.innerText="We couldn't send your request right now. Please email mohitsaini20793@gmail.com directly."
+}
 })
 
 </script>
