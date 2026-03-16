@@ -391,77 +391,46 @@ margin-bottom:10px;
 
 /* Vision */
 
-.vision-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
-margin-top:32px;
-}
+#vision .container{max-width:1080px}
+#vision h2{font-size:48px;line-height:1.15;letter-spacing:-.01em;margin-bottom:16px;color:#e2e8f0}
+#vision .section-sub{max-width:780px;font-size:20px;line-height:1.65;color:#94a3b8;margin:0 auto 34px}
 
-.vision-card{
-padding:26px;
-border-radius:20px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-min-height:100%;
-}
-.vision-cta{margin-top:26px;padding:22px;border-radius:18px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(37,99,235,.12));border:1px solid rgba(148,163,184,.25);text-align:center}
-.vision-cta h3{font-size:26px;margin-bottom:8px}
-.vision-cta p{color:#cbd5e1;margin-bottom:16px}
+.vision-shell{padding:26px;border-radius:24px;background:linear-gradient(160deg,rgba(7,19,45,.88),rgba(7,14,32,.92));border:1px solid rgba(148,163,184,.2);box-shadow:0 20px 50px rgba(2,6,23,.38)}
 
-.impact-story{
-margin-top:26px;
-display:grid;
-grid-template-columns:1.3fr .9fr;
-gap:18px;
-}
+.vision-shifts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vision-card{padding:22px;border-radius:16px;background:rgba(15,23,42,.62);border:1px solid rgba(148,163,184,.2)}
+.vision-card h3{font-size:28px;line-height:1.2;color:#f8fafc}
+.vision-card p{margin-top:10px;font-size:18px;line-height:1.55;color:#c4cedb}
 
-.impact-panel,.impact-chart{
-background:rgba(255,255,255,.04);
-border:1px solid rgba(148,163,184,.18);
-border-radius:18px;
-padding:18px;
-}
-
-.impact-panel h3,.impact-chart h3{font-size:17px;margin-bottom:8px}
-.impact-panel p,.impact-chart p{font-size:13px;color:#9ca3af;line-height:1.5}
-
-.timeline{margin-top:14px;display:flex;flex-direction:column;gap:12px}
-.t-item{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:flex-start}
-.t-stage{font-size:11px;color:#60a5fa;text-transform:uppercase;letter-spacing:.05em;padding-top:3px}
-.t-body{background:rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.16);border-radius:12px;padding:10px 12px}
-.t-body strong{display:block;font-size:13px;margin-bottom:3px;color:#f1f5f9}
-.t-body span{font-size:12px;color:#94a3b8}
-
-.chart-bars{margin-top:14px;display:flex;flex-direction:column;gap:10px}
-.c-row{display:grid;grid-template-columns:120px 1fr 44px;gap:8px;align-items:center;font-size:12px;color:#cbd5e1}
-.c-track{height:8px;border-radius:999px;background:rgba(148,163,184,.2);overflow:hidden}
-.c-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#22c55e,#2563eb)}
-
-.vision-infographic{
-margin-top:22px;
-display:grid;
-grid-template-columns:repeat(3,minmax(180px,1fr));
-gap:14px;
-}
-
-.v-node{
-padding:14px;
-border-radius:14px;
-border:1px solid rgba(148,163,184,.2);
-background:rgba(15,23,42,.5);
-position:relative;
-}
-.v-node .tag{font-size:11px;color:#93c5fd;text-transform:uppercase;letter-spacing:.05em}
-.v-node h4{font-size:15px;margin:6px 0;color:#f8fafc}
-.v-node p{font-size:12px;color:#94a3b8;line-height:1.45}
-.v-node:after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:#64748b}
+.vision-infographic{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.v-node{padding:16px;border-radius:14px;border:1px solid rgba(148,163,184,.2);background:rgba(10,22,52,.72);position:relative}
+.v-node .tag{font-size:11px;color:#93c5fd;text-transform:uppercase;letter-spacing:.06em}
+.v-node h4{font-size:20px;margin:8px 0 6px;color:#f8fafc;line-height:1.25}
+.v-node p{font-size:14px;color:#9fb0c7;line-height:1.5}
+.v-node:after{content:'→';position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:20px;color:#64748b}
 .v-node:last-child:after{display:none}
 
-.vision-kpis{margin-top:14px;display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:10px}
-.v-kpi{padding:10px;border-radius:12px;background:rgba(15,23,42,.45);border:1px solid rgba(148,163,184,.18);text-align:center}
-.v-kpi strong{display:block;color:#22c55e;font-size:20px}
-.v-kpi span{font-size:11px;color:#94a3b8}
+.vision-kpis{margin-top:12px;display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:10px}
+.v-kpi{padding:12px;border-radius:12px;background:rgba(15,23,42,.54);border:1px solid rgba(148,163,184,.2);text-align:center}
+.v-kpi strong{display:block;color:#22c55e;font-size:30px;line-height:1.1}
+.v-kpi span{font-size:13px;color:#94a3b8;line-height:1.35}
+
+.vision-cta{margin-top:14px;padding:16px;border-radius:14px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(37,99,235,.14));border:1px solid rgba(148,163,184,.22);text-align:center}
+.vision-cta h3{font-size:24px;margin-bottom:6px}
+.vision-cta p{color:#cbd5e1;margin-bottom:12px;font-size:15px}
+
+@media(max-width:900px){
+#vision h2{font-size:34px}
+#vision .section-sub{font-size:17px;margin-bottom:24px}
+.vision-shell{padding:18px;border-radius:18px}
+.vision-shifts{grid-template-columns:1fr}
+.vision-card h3{font-size:24px}
+.vision-card p{font-size:16px}
+.vision-infographic{grid-template-columns:1fr}
+.v-node:after{display:none}
+.vision-kpis{grid-template-columns:repeat(2,minmax(130px,1fr))}
+.v-kpi strong{font-size:24px}
+}
 
 
 /* Popup */
@@ -964,6 +933,8 @@ SkillMirror enables this shift by converting every hiring interaction into reusa
 The next generation of talent organizations will run hiring as a strategic operating layer: measurable, repeatable, and continuously improved through intelligence loops.
 </p>
 
+<div class="vision-shell">
+<div class="vision-shifts">
 <div class="vision-card">
 <h3>From Individual Review to AI-Augmented Teams</h3>
 <p>Recruiters and hiring managers are supported by AI copilots that surface fit, risk, and rationale instantly.</p>
@@ -972,6 +943,7 @@ The next generation of talent organizations will run hiring as a strategic opera
 <div class="vision-card">
 <h3>From Hiring Output to Business Input</h3>
 <p>Talent decisions directly feed workforce planning, capability mapping, and long-term performance strategy.</p>
+</div>
 </div>
   
 <div class="hero-sentiment">
@@ -1001,6 +973,8 @@ The next generation of talent organizations will run hiring as a strategic opera
 <h3>Build Your Hiring Intelligence Layer</h3>
 <p>Stop screening resumes. Start engineering confident hiring decisions.</p>
 <button class="btn openPopup">Request a Strategic Demo</button>
+</div>
+
 </div>
 
 </div>
