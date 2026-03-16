@@ -1095,30 +1095,29 @@ const skillGroups={
 "security":["security","oauth","auth","jwt"]
 }
 
-const normalize=(text)=>text.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
+const normalize=(input)=>input.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
 const jobText=normalize(job)
 const resumeText=normalize(resume)
 
-const extractMatched=(text)=>Object.entries(skillGroups)
-  .filter(([,aliases])=>aliases.some(alias=>text.includes(alias)))
+const extractSkills=(source)=>Object.entries(skillGroups)
+  .filter(([,aliases])=>aliases.some(alias=>source.includes(alias)))
   .map(([skill])=>skill)
 
-let jobSkills=extractMatched(jobText)
-let resumeSkills=extractMatched(resumeText)
+const jobSkills=extractSkills(jobText)
+const resumeSkills=extractSkills(resumeText)
 
-let matched=jobSkills.filter(s=>resumeSkills.includes(s))
-let missing=jobSkills.filter(s=>!resumeSkills.includes(s))
+const matched=jobSkills.filter(skill=>resumeSkills.includes(skill))
+const missing=jobSkills.filter(skill=>!resumeSkills.includes(skill))
 
 const yearMatch=resumeText.match(/(\d+)\s*\+?\s*(years|yrs|year)/)
 const years=yearMatch?Math.min(15,parseInt(yearMatch[1],10)):0
 
-let skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
-let expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
-let domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/(Object.keys(skillGroups).length))*40+15))
-
-let finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
-let coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
-let marketBenchmark=78
+const skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
+const expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
+const domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/Object.keys(skillGroups).length)*40+15))
+const finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
+const coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
+const marketBenchmark=78
 
 document.getElementById("demoScore").innerText=finalScore+"%"
 document.getElementById("skillScore").innerText=skillScore+"%"
@@ -1163,6 +1162,7 @@ chips.appendChild(chip)
 
 const insight=document.getElementById("demoInsight")
 const statusChip=document.getElementById("statusChip")
+
 if(finalScore>=marketBenchmark){
 insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
 insight.style.color="#86efac"
@@ -1174,68 +1174,9 @@ insight.style.color="#fdba74"
 statusChip.textContent="Below Benchmark"
 statusChip.className="status-chip fail"
 }
-
-matched.forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip match"
-chip.textContent=`✔ ${skill}`
-chips.appendChild(chip)
-})
-
-missing.slice(0,5).forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent=`Gap: ${skill}`
-chips.appendChild(chip)
-})
-
-if(!matched.length && !missing.length){
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent="Add more role keywords for a better analysis"
-chips.appendChild(chip)
-}
-
-const insight=document.getElementById("demoInsight")
-const statusChip=document.getElementById("statusChip")
-if(finalScore>=marketBenchmark){
-insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
-insight.style.color="#86efac"
-statusChip.textContent="Above Benchmark"
-statusChip.className="status-chip pass"
-}else{
-insight.innerText="Below benchmark: keep in backup pool or run targeted screening for missing competencies."
-insight.style.color="#fdba74"
-statusChip.textContent="Below Benchmark"
-statusChip.className="status-chip fail"
-}
-
-const chips=document.getElementById("matchChips")
-chips.innerHTML=""
-
-matched.forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip match"
-chip.textContent=`✔ ${skill}`
-chips.appendChild(chip)
-})
-
-missing.slice(0,5).forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent=`Gap: ${skill}`
-chips.appendChild(chip)
-})
-
-if(!matched.length && !missing.length){
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent="Add more role keywords for a better analysis"
-chips.appendChild(chip)
 }
 
 runDemo()
-
 /* Popup */
 
 const popup=document.getElementById("popupForm")
@@ -1265,8 +1206,6 @@ window.addEventListener("keydown",(e)=>{
 if(e.key==="Escape" && popup.style.display==="flex")closePopup()
 })
 
-const demoRequestForm=document.getElementById("demoRequestForm")
-const popupSuccessMsg=document.getElementById("popupSuccessMsg")
 
 demoRequestForm.addEventListener("submit",(e)=>{
 e.preventDefault()
