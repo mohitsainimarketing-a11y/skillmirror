@@ -360,6 +360,36 @@ color:#22c55e;
 margin-bottom:10px;
 }
 
+.impact-story{
+margin-top:28px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+align-items:stretch;
+}
+
+.impact-panel,.impact-chart{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(148,163,184,.2);
+border-radius:18px;
+padding:20px;
+}
+
+.impact-panel h3,.impact-chart h3{font-size:20px;margin-bottom:8px}
+.impact-panel>p,.impact-chart>p{font-size:13px;color:#94a3b8;line-height:1.55;margin-bottom:12px}
+
+.timeline{display:flex;flex-direction:column;gap:10px}
+.t-item{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:start}
+.t-stage{font-size:11px;color:#93c5fd;text-transform:uppercase;letter-spacing:.05em;padding-top:4px}
+.t-body{padding:10px 12px;border-radius:12px;background:rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.17)}
+.t-body strong{display:block;font-size:13px;color:#f1f5f9;margin-bottom:4px}
+.t-body span{font-size:12px;color:#94a3b8;line-height:1.45}
+
+.chart-bars{display:flex;flex-direction:column;gap:10px}
+.c-row{display:grid;grid-template-columns:90px 1fr 32px;gap:10px;align-items:center;font-size:13px;color:#cbd5e1}
+.c-track{height:8px;border-radius:999px;background:rgba(148,163,184,.18);overflow:hidden}
+.c-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#22c55e,#2563eb)}
+
 
 /* AI Industry Impact */
 
@@ -544,6 +574,9 @@ line-height:1.45;
 .pipeline{grid-template-columns:1fr}
 .demo-grid{grid-template-columns:1fr}
 .bar-row{grid-template-columns:110px 1fr 42px}
+.impact-story{grid-template-columns:1fr}
+.t-item{grid-template-columns:1fr}
+.t-stage{padding-top:0}
 .popup-grid{grid-template-columns:1fr}
 }
 </style>
