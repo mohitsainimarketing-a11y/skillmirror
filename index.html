@@ -26,20 +26,21 @@ overflow-x:hidden;
 /* Layout */
 
 .container{width:90%;max-width:1200px;margin:auto}
-.section{padding:96px 0}
+.section{padding:84px 0}
 
 h2{
 text-align:center;
-font-size:42px;
-margin-bottom:20px;
+font-size:clamp(30px,4vw,38px);
+margin-bottom:16px;
+line-height:1.2;
 }
 
 .section-sub{
 text-align:center;
 max-width:720px;
-margin:0 auto 46px auto;
+margin:0 auto 38px auto;
 color:#9ca3af;
-font-size:18px;
+font-size:16px;
 line-height:1.6;
 }
 
@@ -121,19 +122,20 @@ padding-top:132px;
 }
 
 .hero h1{
-font-size:58px;
-line-height:1.1;
-margin-bottom:20px;
+font-size:clamp(38px,6vw,52px);
+line-height:1.12;
+margin-bottom:16px;
 background:linear-gradient(90deg,#fff,#94a3b8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 .hero p{
-font-size:20px;
+font-size:18px;
 color:#9ca3af;
-margin-bottom:35px;
+margin-bottom:28px;
 max-width:520px;
+line-height:1.6;
 }
 
 /* Engine */
@@ -360,6 +362,36 @@ color:#22c55e;
 margin-bottom:10px;
 }
 
+.impact-story{
+margin-top:28px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+align-items:stretch;
+}
+
+.impact-panel,.impact-chart{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(148,163,184,.2);
+border-radius:18px;
+padding:20px;
+}
+
+.impact-panel h3,.impact-chart h3{font-size:20px;margin-bottom:8px}
+.impact-panel>p,.impact-chart>p{font-size:13px;color:#94a3b8;line-height:1.55;margin-bottom:12px}
+
+.timeline{display:flex;flex-direction:column;gap:10px}
+.t-item{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:start}
+.t-stage{font-size:11px;color:#93c5fd;text-transform:uppercase;letter-spacing:.05em;padding-top:4px}
+.t-body{padding:10px 12px;border-radius:12px;background:rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.17)}
+.t-body strong{display:block;font-size:13px;color:#f1f5f9;margin-bottom:4px}
+.t-body span{font-size:12px;color:#94a3b8;line-height:1.45}
+
+.chart-bars{display:flex;flex-direction:column;gap:10px}
+.c-row{display:grid;grid-template-columns:90px 1fr 32px;gap:10px;align-items:center;font-size:13px;color:#cbd5e1}
+.c-track{height:8px;border-radius:999px;background:rgba(148,163,184,.18);overflow:hidden}
+.c-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#22c55e,#2563eb)}
+
 
 /* AI Industry Impact */
 
@@ -392,36 +424,36 @@ margin-bottom:10px;
 /* Vision */
 
 #vision .container{max-width:1080px}
-#vision h2{font-size:48px;line-height:1.15;letter-spacing:-.01em;margin-bottom:16px;color:#e2e8f0}
-#vision .section-sub{max-width:780px;font-size:20px;line-height:1.65;color:#94a3b8;margin:0 auto 34px}
+#vision h2{font-size:clamp(34px,5vw,44px);line-height:1.18;letter-spacing:-.01em;margin-bottom:14px;color:#e2e8f0}
+#vision .section-sub{max-width:780px;font-size:18px;line-height:1.62;color:#94a3b8;margin:0 auto 28px}
 
-.vision-shell{padding:26px;border-radius:24px;background:linear-gradient(160deg,rgba(7,19,45,.88),rgba(7,14,32,.92));border:1px solid rgba(148,163,184,.2);box-shadow:0 20px 50px rgba(2,6,23,.38)}
+.vision-shell{padding:26px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.2);box-shadow:0 20px 50px rgba(2,6,23,.38)}
 
 .vision-shifts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.vision-card{padding:22px;border-radius:16px;background:rgba(15,23,42,.62);border:1px solid rgba(148,163,184,.2)}
-.vision-card h3{font-size:28px;line-height:1.2;color:#f8fafc}
-.vision-card p{margin-top:10px;font-size:18px;line-height:1.55;color:#c4cedb}
+.vision-card{padding:22px;border-radius:16px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.2)}
+.vision-card h3{font-size:24px;line-height:1.25;color:#f8fafc}
+.vision-card p{margin-top:8px;font-size:16px;line-height:1.55;color:#94a3b8}
 
 .vision-infographic{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.v-node{padding:16px;border-radius:14px;border:1px solid rgba(148,163,184,.2);background:rgba(10,22,52,.72);position:relative}
+.v-node{padding:16px;border-radius:14px;border:1px solid rgba(148,163,184,.2);background:rgba(15,23,42,.55);position:relative}
 .v-node .tag{font-size:11px;color:#93c5fd;text-transform:uppercase;letter-spacing:.06em}
-.v-node h4{font-size:20px;margin:8px 0 6px;color:#f8fafc;line-height:1.25}
-.v-node p{font-size:14px;color:#9fb0c7;line-height:1.5}
+.v-node h4{font-size:18px;margin:8px 0 6px;color:#f8fafc;line-height:1.3}
+.v-node p{font-size:14px;color:#94a3b8;line-height:1.5}
 .v-node:after{content:'→';position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:20px;color:#64748b}
 .v-node:last-child:after{display:none}
 
 .vision-kpis{margin-top:12px;display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:10px}
 .v-kpi{padding:12px;border-radius:12px;background:rgba(15,23,42,.54);border:1px solid rgba(148,163,184,.2);text-align:center}
-.v-kpi strong{display:block;color:#22c55e;font-size:30px;line-height:1.1}
+.v-kpi strong{display:block;color:#22c55e;font-size:26px;line-height:1.1}
 .v-kpi span{font-size:13px;color:#94a3b8;line-height:1.35}
 
 .vision-cta{margin-top:14px;padding:16px;border-radius:14px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(37,99,235,.14));border:1px solid rgba(148,163,184,.22);text-align:center}
-.vision-cta h3{font-size:24px;margin-bottom:6px}
+.vision-cta h3{font-size:22px;margin-bottom:6px}
 .vision-cta p{color:#cbd5e1;margin-bottom:12px;font-size:15px}
 
 @media(max-width:900px){
-#vision h2{font-size:34px}
-#vision .section-sub{font-size:17px;margin-bottom:24px}
+#vision h2{font-size:32px}
+#vision .section-sub{font-size:16px;margin-bottom:22px}
 .vision-shell{padding:18px;border-radius:18px}
 .vision-shifts{grid-template-columns:1fr}
 .vision-card h3{font-size:24px}
@@ -544,6 +576,9 @@ line-height:1.45;
 .pipeline{grid-template-columns:1fr}
 .demo-grid{grid-template-columns:1fr}
 .bar-row{grid-template-columns:110px 1fr 42px}
+.impact-story{grid-template-columns:1fr}
+.t-item{grid-template-columns:1fr}
+.t-stage{padding-top:0}
 .popup-grid{grid-template-columns:1fr}
 }
 </style>
@@ -1062,30 +1097,29 @@ const skillGroups={
 "security":["security","oauth","auth","jwt"]
 }
 
-const normalize=(text)=>text.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
+const normalize=(input)=>input.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
 const jobText=normalize(job)
 const resumeText=normalize(resume)
 
-const extractMatched=(text)=>Object.entries(skillGroups)
-  .filter(([,aliases])=>aliases.some(alias=>text.includes(alias)))
+const extractSkills=(source)=>Object.entries(skillGroups)
+  .filter(([,aliases])=>aliases.some(alias=>source.includes(alias)))
   .map(([skill])=>skill)
 
-let jobSkills=extractMatched(jobText)
-let resumeSkills=extractMatched(resumeText)
+const jobSkills=extractSkills(jobText)
+const resumeSkills=extractSkills(resumeText)
 
-let matched=jobSkills.filter(s=>resumeSkills.includes(s))
-let missing=jobSkills.filter(s=>!resumeSkills.includes(s))
+const matched=jobSkills.filter(skill=>resumeSkills.includes(skill))
+const missing=jobSkills.filter(skill=>!resumeSkills.includes(skill))
 
 const yearMatch=resumeText.match(/(\d+)\s*\+?\s*(years|yrs|year)/)
 const years=yearMatch?Math.min(15,parseInt(yearMatch[1],10)):0
 
-let skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
-let expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
-let domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/(Object.keys(skillGroups).length))*40+15))
-
-let finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
-let coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
-let marketBenchmark=78
+const skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
+const expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
+const domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/Object.keys(skillGroups).length)*40+15))
+const finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
+const coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
+const marketBenchmark=78
 
 document.getElementById("demoScore").innerText=finalScore+"%"
 document.getElementById("skillScore").innerText=skillScore+"%"
@@ -1130,6 +1164,7 @@ chips.appendChild(chip)
 
 const insight=document.getElementById("demoInsight")
 const statusChip=document.getElementById("statusChip")
+
 if(finalScore>=marketBenchmark){
 insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
 insight.style.color="#86efac"
@@ -1141,68 +1176,9 @@ insight.style.color="#fdba74"
 statusChip.textContent="Below Benchmark"
 statusChip.className="status-chip fail"
 }
-
-matched.forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip match"
-chip.textContent=`✔ ${skill}`
-chips.appendChild(chip)
-})
-
-missing.slice(0,5).forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent=`Gap: ${skill}`
-chips.appendChild(chip)
-})
-
-if(!matched.length && !missing.length){
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent="Add more role keywords for a better analysis"
-chips.appendChild(chip)
-}
-
-const insight=document.getElementById("demoInsight")
-const statusChip=document.getElementById("statusChip")
-if(finalScore>=marketBenchmark){
-insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
-insight.style.color="#86efac"
-statusChip.textContent="Above Benchmark"
-statusChip.className="status-chip pass"
-}else{
-insight.innerText="Below benchmark: keep in backup pool or run targeted screening for missing competencies."
-insight.style.color="#fdba74"
-statusChip.textContent="Below Benchmark"
-statusChip.className="status-chip fail"
-}
-
-const chips=document.getElementById("matchChips")
-chips.innerHTML=""
-
-matched.forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip match"
-chip.textContent=`✔ ${skill}`
-chips.appendChild(chip)
-})
-
-missing.slice(0,5).forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent=`Gap: ${skill}`
-chips.appendChild(chip)
-})
-
-if(!matched.length && !missing.length){
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent="Add more role keywords for a better analysis"
-chips.appendChild(chip)
 }
 
 runDemo()
-
 /* Popup */
 
 const popup=document.getElementById("popupForm")
@@ -1232,8 +1208,6 @@ window.addEventListener("keydown",(e)=>{
 if(e.key==="Escape" && popup.style.display==="flex")closePopup()
 })
 
-const demoRequestForm=document.getElementById("demoRequestForm")
-const popupSuccessMsg=document.getElementById("popupSuccessMsg")
 
 demoRequestForm.addEventListener("submit",(e)=>{
 e.preventDefault()
