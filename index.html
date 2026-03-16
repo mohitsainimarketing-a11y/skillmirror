@@ -48,6 +48,18 @@ nav .links a:hover{color:#fff}
 .table{margin-top:18px;border-top:1px solid rgba(255,255,255,.12)}
 .row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)}
 
+.hero-trend{margin-top:14px;padding:12px;border-radius:12px;border:1px solid rgba(148,163,184,.2);background:rgba(15,23,42,.52)}
+.trend-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px;color:#9fb0c7}
+.trend-up{color:#86efac;font-weight:700}
+.trend-svg{width:100%;height:64px}
+.trend-path{fill:none;stroke:url(#trendGrad);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.trend-dot{fill:#22c55e;filter:drop-shadow(0 0 4px rgba(34,197,94,.7))}
+.trend-stats{margin-top:8px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.trend-stat{padding:8px;border-radius:10px;background:rgba(2,6,23,.45);border:1px solid rgba(148,163,184,.18);text-align:center}
+.trend-stat strong{display:block;font-size:16px;color:#e2e8f0}
+.trend-stat span{font-size:11px;color:#94a3b8}
+
+
 .problem-grid{display:grid;grid-template-columns:1fr 90px 1fr;gap:22px;align-items:center}
 .problem-card,.solution-card,.step,.glass,.card,.vision-card,.ai-block,.impact-panel,.impact-chart,.vision-cta{background:rgba(255,255,255,.05);border:1px solid rgba(148,163,184,.2);border-radius:16px}
 .problem-card,.solution-card{padding:24px}
@@ -121,6 +133,27 @@ textarea{width:100%;height:110px;border-radius:10px;border:1px solid rgba(148,16
 .vision-cta{margin-top:16px;padding:22px;text-align:center;background:linear-gradient(135deg,rgba(34,197,94,.18),rgba(37,99,235,.2));border:1px solid rgba(148,163,184,.28);box-shadow:0 14px 30px rgba(2,6,23,.28)}
 .vision-cta h3{font-size:30px;margin-bottom:10px}.vision-cta p{font-size:17px;color:#dbeafe;margin-bottom:14px}
 
+
+.decision-flow{padding-top:16px}
+.flow-wrap{padding:22px;border-radius:18px;background:linear-gradient(160deg,rgba(15,23,42,.82),rgba(15,23,42,.62));border:1px solid rgba(148,163,184,.24);box-shadow:0 16px 34px rgba(2,6,23,.3)}
+.flow-head{text-align:center;margin-bottom:16px}
+.flow-head h3{font-size:30px;margin-bottom:8px}
+.flow-head p{font-size:15px;color:#9fb0c7;max-width:760px;margin:0 auto}
+.funnel{position:relative;display:grid;grid-template-columns:1fr 80px 1fr;gap:14px;align-items:center}
+.flow-column{display:flex;flex-direction:column;gap:8px}
+.resume-chip,.shortlist-chip{padding:9px 11px;border-radius:10px;border:1px solid rgba(148,163,184,.24);font-size:12px}
+.resume-chip{background:rgba(30,41,59,.62);color:#cbd5e1}
+.shortlist-chip{background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.35);color:#bbf7d0}
+.funnel-core{position:relative;height:220px;border-radius:14px;background:linear-gradient(180deg,rgba(30,41,59,.7),rgba(2,6,23,.75));border:1px solid rgba(148,163,184,.24);overflow:hidden}
+.funnel-shape{position:absolute;left:50%;top:12px;transform:translateX(-50%);width:86%;height:190px;clip-path:polygon(0 0,100% 0,68% 100%,32% 100%);background:linear-gradient(180deg,rgba(59,130,246,.24),rgba(34,197,94,.28));border:1px solid rgba(148,163,184,.25)}
+.flow-particle{position:absolute;width:8px;height:8px;border-radius:50%;background:#93c5fd;opacity:.86;animation:drop 4.4s linear infinite}
+.flow-particle.p2{left:58%;animation-delay:1.1s;background:#86efac}
+.flow-particle.p3{left:45%;animation-delay:2.2s;background:#60a5fa}
+.flow-particle.p4{left:52%;animation-delay:3.1s;background:#22c55e}
+.flow-caption{margin-top:14px;text-align:center;font-size:12px;color:#cbd5e1}
+.flow-caption strong{color:#86efac}
+@keyframes drop{0%{transform:translate(-50%,-8px) scale(.9);opacity:0}15%{opacity:.95}70%{opacity:.88}100%{transform:translate(-50%,190px) scale(.65);opacity:.1}}
+
 .popup{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000}
 .popup-content{background:linear-gradient(165deg,rgba(15,23,42,.96),rgba(15,23,42,.88));padding:30px;border-radius:20px;width:min(520px,92vw);max-height:86vh;overflow-y:auto;position:relative;border:1px solid rgba(148,163,184,.22)}
 .popup-content h3{font-size:28px;margin-bottom:8px}.popup-sub{font-size:14px;line-height:1.5;color:#94a3b8;margin-bottom:16px}
@@ -135,6 +168,9 @@ textarea{width:100%;height:110px;border-radius:10px;border:1px solid rgba(148,16
 .hero{grid-template-columns:1fr}
 .engine{width:100%}
 .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.funnel{grid-template-columns:1fr}
+.funnel-core{order:2;height:180px}
+.flow-column{order:1}
 .vision-grid{grid-template-columns:1fr}
 .vision-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
 .roadmap-list{grid-template-columns:1fr}
@@ -153,6 +189,8 @@ nav .links{justify-content:center}
 .ai-impact-layout{grid-template-columns:1fr}
 .ai-stats-grid{grid-template-columns:1fr}
 .popup-grid{grid-template-columns:1fr}
+.flow-head h3{font-size:24px}
+.funnel-core{height:160px}
 }
 </style>
 </head>
@@ -190,6 +228,19 @@ nav .links{justify-content:center}
         <circle id="ring" cx="85" cy="85" r="75" stroke="#22c55e" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="470" stroke-dashoffset="470"/>
       </svg>
       <div class="score" id="score">0%</div>
+    </div>
+    <div class="hero-trend">
+      <div class="trend-head"><span>Pipeline confidence trend</span><span class="trend-up" id="trendDelta">+4.2%</span></div>
+      <svg class="trend-svg" viewBox="0 0 320 64" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="trendGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#22c55e"/></linearGradient></defs>
+        <path id="trendPath" class="trend-path" d="M0 48 L40 44 L80 46 L120 36 L160 34 L200 26 L240 20 L280 16 L320 12"></path>
+        <circle id="trendDot" class="trend-dot" cx="320" cy="12" r="4"></circle>
+      </svg>
+      <div class="trend-stats">
+        <div class="trend-stat"><strong id="trendSla">24h</strong><span>Avg shortlist SLA</span></div>
+        <div class="trend-stat"><strong id="trendFit">91%</strong><span>Fit confidence</span></div>
+        <div class="trend-stat"><strong id="trendRisk">8%</strong><span>Risk candidates</span></div>
+      </div>
     </div>
     <div class="table">
       <div class="row"><span>Candidate A</span><span>92%</span></div>
@@ -289,9 +340,9 @@ nav .links{justify-content:center}
   <h2>Hiring Will Become Infrastructure</h2>
   <p class="section-sub">The next generation of talent organizations will run hiring as a strategic operating layer: measurable, repeatable, and continuously improved through intelligence loops.</p>
   <div class="vision-grid">
-    <div class="vision-card"><h3>From Workflow to System</h3><p>Role design, assessment logic, and decision quality become one integrated operating layer that scales across functions and geographies.</p></div>
-    <div class="vision-card"><h3>From Manual Review to AI-Assisted Teams</h3><p>Recruiters and hiring managers get real-time fit, risk, and rationale before every shortlist decision to reduce delays and bias drift.</p></div>
-    <div class="vision-card"><h3>From Hiring Metrics to Business Outcomes</h3><p>Hiring intelligence extends into workforce planning, capability mapping, and performance strategy for long-term talent resilience.</p></div>
+    <div class="vision-card"><h3>From Individual Review to AI-Augmented Teams</h3><p>Recruiters and hiring managers are supported by AI copilots that surface fit, risk, and rationale instantly — keeping human judgment in control while reducing repetitive screening effort.</p></div>
+    <div class="vision-card"><h3>From Hiring Output to Business Input</h3><p>Talent decisions directly feed workforce planning, capability mapping, and long-term performance strategy so hiring becomes a measurable lever, not just an operational task.</p></div>
+    <div class="vision-card"><h3>From Episodic Decisions to Continuous Intelligence</h3><p>Every hiring cycle strengthens the next one through benchmarked feedback loops, improving speed, fairness, and decision confidence over time.</p></div>
   </div>
   <div class="vision-kpis">
     <div class="v-kpi"><strong>24h</strong><span>Shortlist SLA</span></div>
@@ -301,6 +352,34 @@ nav .links{justify-content:center}
   </div>
   <div class="vision-roadmap"><h4>What This Enables Over Time</h4><div class="roadmap-list"><div class="roadmap-item">Quarter 1: Standardized scorecards and benchmark baselines.</div><div class="roadmap-item">Quarter 2: Predictive fit trends and proactive pipeline prioritization.</div><div class="roadmap-item">Quarter 3+: Hiring intelligence connected to workforce strategy.</div></div></div>
   <div class="vision-cta"><h3>Build Your Hiring Intelligence Layer</h3><p>Stop screening resumes. Start engineering confident hiring decisions with auditable AI support.</p><button class="btn openPopup">Request a Strategic Demo</button></div>
+</div></section>
+
+<section class="section decision-flow"><div class="container">
+  <div class="flow-wrap">
+    <div class="flow-head"><h3>From Resume Volume to Structured Decision</h3><p>SkillMirror continuously transforms noisy candidate inflow into high-confidence, benchmarked shortlists that hiring teams can trust and act on faster.</p></div>
+    <div class="funnel">
+      <div class="flow-column">
+        <div class="resume-chip">Resume stream — Backend Engineer (Node/AWS)</div>
+        <div class="resume-chip">Resume stream — Data Analyst (SQL/BI)</div>
+        <div class="resume-chip">Resume stream — Product Manager (B2B SaaS)</div>
+        <div class="resume-chip">Resume stream — Security Engineer (Cloud)</div>
+        <div class="resume-chip">Resume stream — Mobile Engineer (React Native)</div>
+      </div>
+      <div class="funnel-core">
+        <div class="funnel-shape"></div>
+        <span class="flow-particle p1" style="left:48%"></span>
+        <span class="flow-particle p2"></span>
+        <span class="flow-particle p3"></span>
+        <span class="flow-particle p4"></span>
+      </div>
+      <div class="flow-column">
+        <div class="shortlist-chip">Shortlist #1 • 94% fit • interview-ready</div>
+        <div class="shortlist-chip">Shortlist #2 • 89% fit • strong signal depth</div>
+        <div class="shortlist-chip">Shortlist #3 • 86% fit • low risk profile</div>
+      </div>
+    </div>
+    <div class="flow-caption"><strong>500+</strong> inbound profiles → <strong>12</strong> structured finalists → <strong>3</strong> confident hiring decisions</div>
+  </div>
 </div></section>
 
 <footer style="text-align:center;padding:70px 0;color:#6b7280">© 2026 SkillMirror</footer>
@@ -328,6 +407,39 @@ const ring=document.getElementById("ring")
 function animate(){if(s>=target)return;s++;document.getElementById("score").innerText=s+"%";ring.style.strokeDashoffset=circumference-(s/100)*circumference;requestAnimationFrame(animate)}
 animate()
 
+function animateHeroTrend(){
+  const trendPath=document.getElementById("trendPath")
+  const trendDot=document.getElementById("trendDot")
+  const trendDelta=document.getElementById("trendDelta")
+  const trendSla=document.getElementById("trendSla")
+  const trendFit=document.getElementById("trendFit")
+  const trendRisk=document.getElementById("trendRisk")
+  const tableRows=[...document.querySelectorAll('.table .row span:last-child')]
+  if(!trendPath||!trendDot)return
+  let tick=0
+  const update=()=>{
+    tick+=1
+    const vals=Array.from({length:9},(_,i)=>Math.max(8,56-Math.round(i*4+Math.sin((tick+i)/2)*6)))
+    const d=vals.map((v,i)=>`${i===0?'M':'L'}${i*40} ${v}`).join(' ')
+    trendPath.setAttribute('d',d)
+    trendDot.setAttribute('cx','320')
+    trendDot.setAttribute('cy',String(vals[8]))
+    const delta=(3.6+Math.abs(Math.sin(tick*.4))*2.7).toFixed(1)
+    trendDelta.textContent=`+${delta}%`
+    const sla=24-Math.round(Math.sin(tick*.35)*2)
+    const fit=89+Math.round(Math.abs(Math.sin(tick*.3))*6)
+    const risk=6+Math.round(Math.abs(Math.cos(tick*.25))*5)
+    trendSla.textContent=`${sla}h`
+    trendFit.textContent=`${fit}%`
+    trendRisk.textContent=`${risk}%`
+    const scores=[fit,Math.max(65,fit-12),Math.max(58,fit-24)]
+    tableRows.forEach((el,i)=>{if(scores[i])el.textContent=`${scores[i]}%`})
+  }
+  update()
+  setInterval(update,2400)
+}
+animateHeroTrend()
+
 function cleanupDuplicateSections(){
   ["ai-impact","vision"].forEach(id=>{
     const sections=[...document.querySelectorAll(`#${id}`)]
@@ -352,17 +464,22 @@ function runDemo(){
     "node.js":["node","node.js","nestjs","express"],"aws":["aws","amazon web services"],"microservices":["microservice","microservices"],"system design":["system design","architecture","scalable systems"],"backend":["backend","server-side"],"api":["api","rest","graphql"],"cloud":["cloud","gcp","azure"],"kubernetes":["kubernetes","k8s"],"sql":["sql","postgres","mysql"],"distributed systems":["distributed","event-driven","high availability"],"security":["security","oauth","auth","jwt"]
   }
   const normalize=t=>t.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
-  const pick=t=>Object.entries(skillGroups).filter(([,a])=>a.some(x=>t.includes(x))).map(([k])=>k)
-  const jobSkills=pick(normalize(job)), resumeSkills=pick(normalize(resume))
+  const hasTerm=(text,term)=>` ${text} `.includes(` ${term.toLowerCase()} `)
+  const pick=t=>Object.entries(skillGroups).filter(([,a])=>a.some(x=>hasTerm(t,x))).map(([k])=>k)
+  const jobNorm=normalize(job), resumeNorm=normalize(resume)
+  const jobSkills=pick(jobNorm), resumeSkills=pick(resumeNorm)
   const matched=jobSkills.filter(x=>resumeSkills.includes(x)), missing=jobSkills.filter(x=>!resumeSkills.includes(x))
-  const yearMatch=normalize(resume).match(/(\d+)\s*\+?\s*(years|yrs|year)/)
+  const yearMatch=resumeNorm.match(/(\d+)\s*\+?\s*(years|yrs|year)/)
+  const requiredMatch=jobNorm.match(/(\d+)\s*\+?\s*(years|yrs|year)/)
   const years=yearMatch?Math.min(15,parseInt(yearMatch[1],10)):0
+  const requiredYears=requiredMatch?Math.min(15,parseInt(requiredMatch[1],10)):5
   const skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
-  const expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
-  const domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/Object.keys(skillGroups).length)*40+15))
-  const finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
+  const expRatio=Math.min(1.15,years/Math.max(1,requiredYears))
+  const expScore=Math.min(96,Math.round(skillScore*0.45+expRatio*40+18))
+  const domainScore=Math.min(94,Math.round(skillScore*0.5+(resumeSkills.length/Object.keys(skillGroups).length)*38+16))
+  const finalScore=Math.round(skillScore*0.5+expScore*0.28+domainScore*0.22)
   const coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
-  const marketBenchmark=78
+  const marketBenchmark=Math.max(72,Math.min(84,Math.round(74+jobSkills.length*1.1+requiredYears*.45)))
 
   document.getElementById("demoScore").innerText=finalScore+"%"
   document.getElementById("skillScore").innerText=skillScore+"%"
