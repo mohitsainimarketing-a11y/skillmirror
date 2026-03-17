@@ -103,6 +103,8 @@ font-size:14px;
 
 nav a:hover{color:white}
 
+.menu-toggle{display:none;background:transparent;border:1px solid rgba(148,163,184,.35);color:#e2e8f0;border-radius:10px;padding:7px 10px;font-size:18px;line-height:1;cursor:pointer}
+
 /* Button */
 
 .btn{
@@ -652,7 +654,8 @@ line-height:1.45;
 <div class="container">
 <nav>
 <a href="#hero" class="logo">SkillMirror</a>
-<div>
+<button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">☰</button>
+<div class="nav-links" id="navLinks">
 <a href="#hero">Product</a>
 <a href="#problem">Problem</a>
 <a href="#how">How It Works</a>
