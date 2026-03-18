@@ -13,7 +13,6 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 html{scroll-behavior:smooth}
-
 body{
 background:#050c1c;
 color:#e5e7eb;
@@ -21,21 +20,16 @@ font-size:16px;
 line-height:1.5;
 overflow-x:hidden;
 }
-
 /* Defensive cleanup: hide any legacy sentiment widgets */
 .hero-sentiment,.sentiment-head,.sentiment-list,.sentiment-row,.legacy-sentiment{display:none!important}
-
 /* Layout */
-
 .container{width:90%;max-width:1200px;margin:auto}
 .section{padding:84px 0}
-
 h2{
 text-align:center;
 font-size:clamp(32px,4.2vw,38px);
 margin-bottom:16px;
 }
-
 .section-sub{
 text-align:center;
 max-width:720px;
@@ -44,9 +38,7 @@ color:#9ca3af;
 font-size:17px;
 line-height:1.6;
 }
-
 /* Ambient background */
-
 .bg-ambient{
 position:fixed;
 top:0;
@@ -60,15 +52,12 @@ radial-gradient(circle at 80% 70%, rgba(37,99,235,0.18), transparent 40%),
 radial-gradient(circle at 50% 50%, rgba(59,130,246,0.12), transparent 50%);
 animation:ambientMove 20s ease-in-out infinite alternate;
 }
-
 @keyframes ambientMove{
 0%{background-position:20% 30%,80% 70%,50% 50%}
 50%{background-position:30% 40%,70% 60%,60% 40%}
 100%{background-position:15% 35%,85% 75%,45% 55%}
 }
-
 /* Header */
-
 header{
 position:fixed;
 width:100%;
@@ -76,7 +65,6 @@ background:rgba(5,10,20,0.7);
 backdrop-filter:blur(14px);
 z-index:1000;
 }
-
 nav{
 display:flex;
 justify-content:space-between;
@@ -84,29 +72,22 @@ align-items:center;
 gap:16px;
 padding:22px 0;
 }
-
 nav>div{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-
 .logo{
 font-weight:800;
 font-size:20px;
 color:white;
 text-decoration:none;
 }
-
 nav a{
 margin-left:22px;
 text-decoration:none;
 color:#9ca3af;
 font-size:14px;
 }
-
 nav a:hover{color:white}
-
 .menu-toggle{display:none;background:transparent;border:1px solid rgba(148,163,184,.35);color:#e2e8f0;border-radius:10px;padding:7px 10px;font-size:18px;line-height:1;cursor:pointer}
-
 /* Button */
-
 .btn{
 background:linear-gradient(135deg,#22c55e,#2563eb);
 padding:12px 28px;
@@ -117,9 +98,7 @@ display:inline-block;
 border:none;
 cursor:pointer;
 }
-
 /* HERO */
-
 .hero{
 min-height:100vh;
 display:flex;
@@ -127,7 +106,6 @@ align-items:center;
 justify-content:space-between;
 padding-top:132px;
 }
-
 .hero h1{
 font-size:clamp(38px,6vw,52px);
 line-height:1.1;
@@ -136,7 +114,6 @@ background:linear-gradient(90deg,#fff,#94a3b8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-
 .hero p{
 font-size:18px;
 color:#9ca3af;
@@ -144,9 +121,7 @@ margin-bottom:28px;
 max-width:520px;
 line-height:1.6;
 }
-
 /* Engine */
-
 .engine{
 width:min(520px,100%);
 padding:28px;
@@ -155,13 +130,10 @@ background:linear-gradient(165deg,rgba(15,23,42,.92),rgba(30,41,59,.72));
 border:1px solid rgba(148,163,184,.24);
 box-shadow:0 30px 60px rgba(2,6,23,.45);
 }
-
 .engine-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 .engine-title{font-size:13px;color:#cbd5e1;letter-spacing:.03em;text-transform:uppercase}
 .live-pill{font-size:11px;padding:5px 9px;border-radius:999px;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.35);color:#bbf7d0}
-
 .ring-wrap{position:relative;width:170px;height:170px;margin:auto}
-
 .score{
 position:absolute;
 top:50%;
@@ -171,23 +143,17 @@ font-size:40px;
 font-weight:800;
 color:#22c55e;
 }
-
 .table{
 margin-top:20px;
 border-top:1px solid rgba(255,255,255,0.1);
 }
-
 .row{
 display:flex;
 justify-content:space-between;
 padding:12px 0;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
-
 /* Problem */
-
-
-
 .hero-sentiment{margin-top:16px;padding:14px;border-radius:14px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.2)}
 .sentiment-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .sentiment-head strong{font-size:14px}
@@ -200,14 +166,12 @@ border-bottom:1px solid rgba(255,255,255,0.05);
 .sentiment-fill.neu{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
 .sentiment-fill.risk{background:linear-gradient(90deg,#f59e0b,#fb923c)}
 .hero-footnote{margin-top:12px;font-size:12px;color:#94a3b8;line-height:1.45}
-
 .problem-grid{
 display:grid;
 grid-template-columns:1fr 120px 1fr;
 gap:40px;
 align-items:center;
 }
-
 .problem-card,.solution-card{
 padding:28px;
 border-radius:20px;
@@ -216,25 +180,20 @@ border:1px solid rgba(255,255,255,0.08);
 }
 .problem-list{margin-top:12px;padding-left:18px;color:#cbd5e1;line-height:1.6;font-size:14px}
 .problem-list li{margin-bottom:8px}
-
 .problem-card{border-left:4px solid #ef4444}
 .solution-card{border-left:4px solid #22c55e}
-
 .problem-arrow{
 font-size:60px;
 text-align:center;
 opacity:0.6;
 }
-
 /* Pipeline */
-
 .pipeline{
 display:flex;
 justify-content:space-between;
 gap:16px;
 margin-top:46px;
 }
-
 .step{
 flex:1;
 padding:20px;
@@ -243,14 +202,11 @@ background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
 text-align:left;
 }
-
 .step strong{display:block;font-size:14px;margin-bottom:8px;color:#f8fafc}
 .step p{font-size:13px;color:#94a3b8;line-height:1.45}
 .step-icon{font-size:24px;margin-bottom:10px}
 .how-note{margin-top:18px;padding:12px 14px;border-radius:12px;border:1px solid rgba(59,130,246,.3);background:rgba(37,99,235,.1);color:#bfdbfe;font-size:13px}
-
 /* Visual cards */
-
 .viz-card{
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
@@ -258,16 +214,13 @@ border-radius:22px;
 padding:34px;
 margin-top:32px;
 }
-
 /* Demo */
-
 .demo-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:26px;
 margin-top:28px;
 }
-
 .glass{
 background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
 border:1px solid rgba(148,163,184,.2);
@@ -275,52 +228,42 @@ border-radius:18px;
 padding:22px;
 box-shadow:0 10px 30px rgba(2,6,23,.25);
 }
-
 .demo-layout{display:flex;flex-direction:column;gap:14px}
 .demo-summary{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .score-pill{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,.35);background:rgba(34,197,94,.14);color:#bbf7d0;letter-spacing:.02em}
 .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .btn:active{transform:translateY(0)}
 .demo-grid .btn{padding:10px 20px;border-radius:12px;font-size:14px}
-
 .metric-grid{
 display:grid;
 grid-template-columns:repeat(2,minmax(120px,1fr));
 gap:10px;
 margin-top:8px;
 }
-
 .metric-card{
 background:rgba(15,23,42,.55);
 border:1px solid rgba(148,163,184,.2);
 border-radius:12px;
 padding:10px;
 }
-
 .metric-card small{display:block;color:#94a3b8;font-size:11px;margin-bottom:3px}
 .metric-card strong{font-size:19px}
-
 .demo-bars{margin-top:4px;display:flex;flex-direction:column;gap:10px}
 .bar-row{display:grid;grid-template-columns:130px 1fr 46px;gap:8px;align-items:center;font-size:13px;color:#cbd5e1}
 .bar-track{height:8px;border-radius:999px;background:rgba(148,163,184,.18);overflow:hidden}
 .bar-fill{height:100%;background:linear-gradient(90deg,#22c55e,#2563eb);width:0;transition:width .5s ease;border-radius:999px;animation:barGlow .7s ease both}
-
 .benchmark{margin-top:8px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.18);border-radius:12px;padding:10px}
 .benchmark-header{display:flex;justify-content:space-between;font-size:13px;color:#9ca3af;margin-bottom:10px}
 .benchmark-track{position:relative;height:8px;background:rgba(148,163,184,.2);border-radius:999px}
 .benchmark-point{position:absolute;top:50%;transform:translate(-50%,-50%);width:15px;height:15px;border-radius:50%;background:#22c55e;border:2px solid #e2e8f0;box-shadow:0 0 0 6px rgba(34,197,94,.2);left:0;transition:left .5s ease}
-
 .chips{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
 .chip{font-size:11px;padding:5px 9px;border-radius:999px;border:1px solid rgba(148,163,184,.25)}
 .chip.match{background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.38);color:#bbf7d0}
 .chip.gap{background:rgba(251,146,60,.12);border-color:rgba(251,146,60,.3);color:#fed7aa}
-
-
 .status-wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:2px}
 .status-chip{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid rgba(148,163,184,.25);color:#cbd5e1;background:rgba(15,23,42,.45)}
 .status-chip.pass{border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.14);color:#bbf7d0}
 .status-chip.fail{border-color:rgba(251,146,60,.4);background:rgba(251,146,60,.14);color:#fed7aa}
-
 @keyframes barGlow{
 0%{opacity:.65;filter:saturate(.85)}
 100%{opacity:1;filter:saturate(1)}
@@ -335,7 +278,6 @@ font-size:12px;
 line-height:1.45;
 color:#d1fae5;
 }
-
 textarea{
 width:100%;
 height:110px;
@@ -346,15 +288,12 @@ border-radius:10px;
 padding:12px;
 color:white;
 }
-
 /* Impact */
-
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:40px;
 }
-
 .card{
 padding:40px;
 border-radius:20px;
@@ -362,13 +301,11 @@ background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
 text-align:center;
 }
-
 .card h1{
 font-size:40px;
 color:#22c55e;
 margin-bottom:10px;
 }
-
 .impact-story{
 margin-top:28px;
 display:grid;
@@ -376,71 +313,55 @@ grid-template-columns:1fr 1fr;
 gap:18px;
 align-items:stretch;
 }
-
 .impact-panel,.impact-chart{
 background:rgba(255,255,255,.04);
 border:1px solid rgba(148,163,184,.2);
 border-radius:18px;
 padding:20px;
 }
-
 .impact-panel h3,.impact-chart h3{font-size:20px;margin-bottom:8px}
 .impact-panel>p,.impact-chart>p{font-size:13px;color:#94a3b8;line-height:1.55;margin-bottom:12px}
-
 .timeline{display:flex;flex-direction:column;gap:10px}
 .t-item{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:start}
 .t-stage{font-size:11px;color:#93c5fd;text-transform:uppercase;letter-spacing:.05em;padding-top:4px}
 .t-body{padding:10px 12px;border-radius:12px;background:rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.17)}
 .t-body strong{display:block;font-size:13px;color:#f1f5f9;margin-bottom:4px}
 .t-body span{font-size:12px;color:#94a3b8;line-height:1.45}
-
 .chart-bars{display:flex;flex-direction:column;gap:10px}
 .c-row{display:grid;grid-template-columns:90px 1fr 32px;gap:10px;align-items:center;font-size:13px;color:#cbd5e1}
 .c-track{height:8px;border-radius:999px;background:rgba(148,163,184,.18);overflow:hidden}
 .c-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#22c55e,#2563eb)}
-
-
 /* AI Industry Impact */
-
 .ai-impact-wrap{margin-top:40px;display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
 .ai-panel{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.2);border-radius:18px;padding:20px}
 .ai-panel h3{font-size:20px;margin-bottom:8px}
 .ai-panel p{font-size:13px;color:#94a3b8;line-height:1.55}
-
 .ai-stats{display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:10px;margin-top:14px}
 .ai-stat{padding:12px;border-radius:12px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.18)}
 .ai-stat strong{display:block;font-size:24px;color:#22c55e}
 .ai-stat span{font-size:12px;color:#cbd5e1}
-
 .gap-grid{margin-top:14px;display:grid;gap:10px}
 .gap-item{padding:10px 12px;border-radius:12px;background:rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.17)}
 .gap-item strong{font-size:13px;color:#f8fafc}
 .gap-item p{margin-top:3px;font-size:12px;color:#94a3b8;line-height:1.45}
-
 .impl-list{margin-top:14px;display:flex;flex-direction:column;gap:10px}
 .impl-row{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
 .impl-tag{font-size:11px;color:#93c5fd;text-transform:uppercase;letter-spacing:.05em;padding-top:3px}
 .impl-body{padding:10px 12px;border-radius:12px;background:rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.17)}
 .impl-body strong{display:block;font-size:13px;color:#f1f5f9;margin-bottom:3px}
 .impl-body span{font-size:12px;color:#94a3b8}
-
 .partner-band{margin-top:14px;padding:14px;border-radius:12px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(37,99,235,.12));border:1px solid rgba(148,163,184,.22)}
 .partner-band h4{font-size:16px;margin-bottom:5px}
 .partner-band p{font-size:13px;color:#cbd5e1;line-height:1.5}
-
 /* Vision */
-
 #vision .container{max-width:1080px}
 #vision h2{font-size:clamp(34px,4.8vw,44px);line-height:1.15;letter-spacing:-.01em;margin-bottom:14px;color:#e2e8f0}
 #vision .section-sub{max-width:780px;font-size:18px;line-height:1.65;color:#94a3b8;margin:0 auto 28px}
-
 .vision-shell{padding:26px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.2);box-shadow:0 20px 50px rgba(2,6,23,.38)}
-
 .vision-shifts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .vision-card{padding:22px;border-radius:16px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.2)}
 .vision-card h3{font-size:28px;line-height:1.2;color:#f8fafc}
 .vision-card p{margin-top:10px;font-size:18px;line-height:1.55;color:#94a3b8}
-
 .vision-infographic{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .v-node{padding:16px;border-radius:14px;border:1px solid rgba(148,163,184,.2);background:rgba(15,23,42,.55);position:relative}
 .v-node .tag{font-size:11px;color:#93c5fd;text-transform:uppercase;letter-spacing:.06em}
@@ -448,16 +369,13 @@ padding:20px;
 .v-node p{font-size:14px;color:#94a3b8;line-height:1.5}
 .v-node:after{content:'→';position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:20px;color:#64748b}
 .v-node:last-child:after{display:none}
-
 .vision-kpis{margin-top:12px;display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:10px}
 .v-kpi{padding:12px;border-radius:12px;background:rgba(15,23,42,.54);border:1px solid rgba(148,163,184,.2);text-align:center}
 .v-kpi strong{display:block;color:#22c55e;font-size:26px;line-height:1.1}
 .v-kpi span{font-size:13px;color:#94a3b8;line-height:1.35}
-
 .vision-cta{margin-top:14px;padding:16px;border-radius:14px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(37,99,235,.14));border:1px solid rgba(148,163,184,.22);text-align:center}
 .vision-cta h3{font-size:21px;margin-bottom:6px}
 .vision-cta p{color:#cbd5e1;margin-bottom:12px;font-size:15px}
-
 @media(max-width:900px){
 #vision h2{font-size:32px}
 #vision .section-sub{font-size:16px;margin-bottom:22px}
@@ -470,18 +388,12 @@ padding:20px;
 .vision-kpis{grid-template-columns:repeat(2,minmax(130px,1fr))}
 .v-kpi strong{font-size:24px}
 }
-
-
-
-
 /* Global responsiveness */
-
 @media(max-width:1200px){
 .container{width:min(94%,1100px)}
 .hero h1{max-width:16ch}
 .ai-impact-wrap{grid-template-columns:1fr}
 }
-
 @media(max-width:1024px){
 .section{padding:72px 0}
 .hero{padding-top:112px;gap:32px}
@@ -494,11 +406,43 @@ padding:20px;
 .vision-kpis{grid-template-columns:repeat(2,minmax(130px,1fr))}
 }
 
+/* ── MOBILE NAV (≤768px) ─────────────────────────────────────────── */
 @media(max-width:768px){
 header{position:sticky}
-nav{padding:14px 0;align-items:flex-start;flex-direction:column}
-nav>div{width:100%;justify-content:flex-start;gap:10px 14px}
-nav a{margin-left:0;font-size:13px}
+
+/* Row 1: logo + hamburger side-by-side */
+nav{
+  padding:14px 0;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+/* Hamburger visible */
+.menu-toggle{display:block}
+
+/* Link container: full-width, hidden by default */
+.nav-links{
+  display:none;
+  flex-direction:column;
+  width:100%;
+  padding:10px 0 4px;
+  gap:4px;
+}
+
+/* Open state */
+.nav-links.open{display:flex}
+
+/* Individual links */
+.nav-links a{
+  margin-left:0;
+  font-size:14px;
+  padding:9px 4px;
+  border-bottom:1px solid rgba(148,163,184,.1);
+  color:#9ca3af;
+}
+.nav-links a:last-child{border-bottom:none}
+
+/* Rest of mobile tweaks — unchanged from original */
 .hero{min-height:auto;padding-top:34px;text-align:left;gap:30px}
 .hero p{font-size:16px}
 .engine{padding:20px;border-radius:18px}
@@ -528,9 +472,7 @@ h2{font-size:28px}
 .popup{padding:10px}
 .popup-content{width:100%;max-height:90vh}
 }
-
 /* Popup */
-
 .popup{
 position:fixed;
 top:0;
@@ -543,7 +485,6 @@ align-items:center;
 justify-content:center;
 z-index:2000;
 }
-
 .popup-content{
 background:linear-gradient(165deg,rgba(15,23,42,.96),rgba(15,23,42,.88));
 padding:34px;
@@ -555,13 +496,11 @@ position:relative;
 border:1px solid rgba(148,163,184,.22);
 box-shadow:0 30px 70px rgba(2,6,23,.6), inset 0 1px 0 rgba(255,255,255,.04);
 }
-
 .popup-content h3{font-size:28px;margin-bottom:8px;color:#f8fafc}
 .popup-sub{font-size:14px;line-height:1.5;color:#94a3b8;margin-bottom:18px}
 .popup-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .popup-field{margin-bottom:10px}
 .popup-label{display:block;font-size:12px;color:#cbd5e1;margin-bottom:6px;letter-spacing:.02em}
-
 .popup-close{
 position:absolute;
 top:20px;
@@ -569,7 +508,6 @@ right:30px;
 cursor:pointer;
 font-size:24px;
 }
-
 .popup-content input,
 .popup-content textarea{
 width:100%;
@@ -581,16 +519,13 @@ background:rgba(15,23,42,.72);
 color:#e5e7eb;
 transition:border-color .2s ease, box-shadow .2s ease;
 }
-
 .popup-content input:focus,
 .popup-content textarea:focus{
 outline:none;
 border-color:rgba(59,130,246,.7);
 box-shadow:0 0 0 3px rgba(59,130,246,.2);
 }
-
 .popup-content textarea{min-height:96px;resize:vertical}
-
 .demo-btn{
 width:100%;
 padding:13px 14px;
@@ -602,9 +537,7 @@ font-weight:700;
 letter-spacing:.01em;
 margin-top:8px;
 }
-
 .demo-btn:hover{filter:brightness(1.08)}
-
 .popup-success{
 display:none;
 margin-top:14px;
@@ -616,13 +549,9 @@ color:#bbf7d0;
 font-size:13px;
 line-height:1.45;
 }
-
 /* Responsive */
-
 @media(max-width:900px){
 .hero{flex-direction:column;text-align:center;gap:60px}
-
-
 .hero-sentiment{margin-top:16px;padding:14px;border-radius:14px;background:rgba(15,23,42,.55);border:1px solid rgba(148,163,184,.2)}
 .sentiment-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .sentiment-head strong{font-size:14px}
@@ -635,7 +564,6 @@ line-height:1.45;
 .sentiment-fill.neu{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
 .sentiment-fill.risk{background:linear-gradient(90deg,#f59e0b,#fb923c)}
 .hero-footnote{margin-top:12px;font-size:12px;color:#94a3b8;line-height:1.45}
-
 .problem-grid{grid-template-columns:1fr}
 .pipeline{grid-template-columns:1fr}
 .demo-grid{grid-template-columns:1fr}
@@ -649,7 +577,6 @@ line-height:1.45;
 </head>
 <body>
 <div class="bg-ambient"></div>
-
 <header>
 <div class="container">
 <nav>
@@ -667,35 +594,23 @@ line-height:1.45;
 </nav>
 </div>
 </header>
-
 <section class="hero container" id="hero">
-
 <div>
-
 <h1>The Decision Engine for Modern Hiring</h1>
-
 <p>
 SkillMirror converts resumes and job descriptions into structured hiring intelligence,
 allowing recruiters to move beyond guesswork and make faster evidence-based hiring decisions.
 </p>
-
 <button class="btn openPopup">Request a Demo</button>
-
 </div>
-
 <div class="engine">
-
 <div class="engine-head"><span class="engine-title">Live Decision Signal</span><span class="live-pill">Realtime</span></div>
-
 <div class="ring-wrap">
-
 <svg width="170" height="170">
-
 <circle cx="85" cy="85" r="75"
 stroke="rgba(255,255,255,0.1)"
 stroke-width="12"
 fill="none"/>
-
 <circle id="ring"
 cx="85"
 cy="85"
@@ -706,21 +621,14 @@ fill="none"
 stroke-linecap="round"
 stroke-dasharray="470"
 stroke-dashoffset="470"/>
-
 </svg>
-
 <div class="score" id="score">0%</div>
-
 </div>
-
 <div class="table">
-
 <div class="row"><span>Candidate A</span><span>92%</span></div>
 <div class="row"><span>Candidate B</span><span>74%</span></div>
 <div class="row"><span>Candidate C</span><span>61%</span></div>
-
 </div>
-
 <div class="hero-sentiment">
 <div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
 <div class="sentiment-list">
@@ -730,24 +638,16 @@ stroke-dashoffset="470"/>
 </div>
 <div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
-
 </div>
-
 </section>
-
 <section class="section" id="problem">
-
 <div class="container">
-
 <h2>The Hiring Problem</h2>
-
 <p class="section-sub">
 Hiring teams are expected to move fast, hire fairly, and prove quality of hire — but most workflows still run on PDFs, gut feel, and disconnected tools.
 SkillMirror is positioned to solve this by turning hiring activity into a structured intelligence system that scales with the business.
 </p>
-
 <div class="problem-grid">
-
 <div class="problem-card">
 <h3>Where Hiring Breaks Today</h3>
 <ul class="problem-list">
@@ -757,9 +657,7 @@ SkillMirror is positioned to solve this by turning hiring activity into a struct
 <li>Great candidates drop due to slow loop completion.</li>
 </ul>
 </div>
-
 <div class="problem-arrow">→</div>
-
 <div class="solution-card">
 <h3>How SkillMirror Repositions the Process</h3>
 <ul class="problem-list">
@@ -769,50 +667,37 @@ SkillMirror is positioned to solve this by turning hiring activity into a struct
 <li>Creates faster, more defensible shortlist decisions.</li>
 </ul>
 </div>
-
 </div>
-
 </div>
 </section>
-
 <section class="section" id="how">
-
 <div class="container">
-
 <h2>How SkillMirror Works</h2>
-
 <p class="section-sub">
 SkillMirror applies an AI decisioning layer across the hiring funnel — from role intake to shortlist recommendation — so teams can hire with speed, consistency, and evidence.
 </p>
-
 <div class="pipeline">
-
 <div class="step">
 <div class="step-icon">🧠</div>
 <strong>Role Intelligence Graph</strong>
 <p>Transforms JD text into weighted skill, depth, and impact expectations.</p>
 </div>
-
 <div class="step">
 <div class="step-icon">🧬</div>
 <strong>Candidate Signal Extraction</strong>
 <p>Parses resumes and interview notes into structured competency signals.</p>
 </div>
-
 <div class="step">
 <div class="step-icon">📈</div>
 <strong>Alignment + Risk Modeling</strong>
 <p>Scores fit, flags missing capabilities, and predicts interview confidence.</p>
 </div>
-
 <div class="step">
 <div class="step-icon">✅</div>
 <strong>Decision Copilot</strong>
 <p>Provides benchmark-aware recommendations with clear rationale.</p>
 </div>
-
 </div>
-
 <div class="hero-sentiment">
 <div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
 <div class="sentiment-list">
@@ -822,39 +707,24 @@ SkillMirror applies an AI decisioning layer across the hiring funnel — from ro
 </div>
 <div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
-
 </div>
-
 </section>
-
 <section class="section" id="demo">
-
 <div class="container">
-
 <h2>Live Resume Alignment Demo</h2>
-
 <p class="section-sub">
 Paste a job description and candidate resume to simulate how modern AI recruiting systems score capability fit, detect gaps, and benchmark candidates against current hiring thresholds.
 </p>
-
 <div class="demo-grid">
-
 <div class="glass">
-
 <label>Job Description</label>
 <textarea id="jobInput">Senior Backend Engineer Node.js AWS system design microservices</textarea>
-
 <label>Candidate Resume</label>
 <textarea id="resumeInput">Backend engineer experienced with Node.js AWS microservices</textarea>
-
 <button class="btn" onclick="runDemo()">Analyze Candidate</button>
-
 </div>
-
 <div class="glass">
-
 <div class="demo-layout">
-
 <div class="demo-summary">
 <div>
 <div style="font-size:32px;font-weight:700;line-height:1" id="demoScore">0%</div>
@@ -862,44 +732,34 @@ Paste a job description and candidate resume to simulate how modern AI recruitin
 </div>
 <div class="score-pill">AI Fit Signal</div>
 </div>
-
 <div class="metric-grid">
 <div class="metric-card"><small>Skill Alignment</small><strong id="skillScore">—</strong></div>
 <div class="metric-card"><small>Experience Depth</small><strong id="expScore">—</strong></div>
 <div class="metric-card"><small>Domain Exposure</small><strong id="domainScore">—</strong></div>
 <div class="metric-card"><small>Keyword Coverage</small><strong id="coverageScore">—</strong></div>
 </div>
-
 <div class="demo-bars">
 <div class="bar-row"><span>Skill Alignment</span><div class="bar-track"><div class="bar-fill" id="barSkill"></div></div><span id="barSkillLabel">0%</span></div>
 <div class="bar-row"><span>Experience Depth</span><div class="bar-track"><div class="bar-fill" id="barExp"></div></div><span id="barExpLabel">0%</span></div>
 <div class="bar-row"><span>Domain Exposure</span><div class="bar-track"><div class="bar-fill" id="barDomain"></div></div><span id="barDomainLabel">0%</span></div>
 </div>
-
 <div class="benchmark">
 <div class="benchmark-header"><span>Market Benchmark</span><span id="benchmarkLabel">Hiring bar: 78%</span></div>
 <div class="benchmark-track"><div class="benchmark-point" id="benchmarkPoint"></div></div>
 </div>
-
 <div class="chips" id="matchChips"></div>
-
 <div class="status-wrap">
 <p id="demoInsight" style="margin-top:0;color:#9ca3af;font-size:13px;line-height:1.45">
 Run the analysis to evaluate candidate-role alignment and visualize strengths vs. gaps.
 </p>
 <span class="status-chip" id="statusChip">Pending</span>
 </div>
-
 <div class="demo-note">
 This demo uses weighted competency scoring, explicit gap detection, and benchmark-aware recommendations.
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 <div class="hero-sentiment">
 <div class="sentiment-head"><strong>Interview Sentiment Analysis</strong><span>AI confidence factors</span></div>
 <div class="sentiment-list">
@@ -909,44 +769,32 @@ This demo uses weighted competency scoring, explicit gap detection, and benchmar
 </div>
 <div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
-
 </div>
-
 </section>
-
 <section class="section" id="roi">
 <div class="container">
-
 <h2>Measured Impact</h2>
-
 <p class="section-sub">
-Teams using SkillMirror don’t just move faster — they build a repeatable hiring engine with better signal quality at every stage.
+Teams using SkillMirror don't just move faster — they build a repeatable hiring engine with better signal quality at every stage.
 </p>
-
 <div class="grid">
-
 <div class="card">
 <h1>70%</h1>
 <p>Faster Screening</p>
 </div>
-
 <div class="card">
 <h1>3×</h1>
 <p>Shortlist Speed</p>
 </div>
-
 <div class="card">
 <h1>100%</h1>
 <p>Consistency</p>
 </div>
-
 <div class="card">
 <h1>40%</h1>
 <p>Better Alignment</p>
 </div>
-
 </div>
-
 <div class="impact-story">
 <div class="impact-panel">
 <h3>Before vs After: Hiring Execution Flow</h3>
@@ -957,7 +805,6 @@ Teams using SkillMirror don’t just move faster — they build a repeatable hir
 <div class="t-item"><div class="t-stage">After</div><div class="t-body"><strong>Decision Intelligence</strong><span>Shortlists become benchmarked, explainable, and consistent across teams.</span></div></div>
 </div>
 </div>
-
 <div class="impact-chart">
 <h3>Outcome Contribution Breakdown</h3>
 <p>Relative impact across core talent acquisition outcomes.</p>
@@ -969,22 +816,15 @@ Teams using SkillMirror don’t just move faster — they build a repeatable hir
 </div>
 </div>
 </div>
-
 </div>
 </section>
-
-
 <section class="section" id="ai-impact">
 <div class="container">
-
 <h2>AI Will Reshape Recruitment Operations</h2>
-
 <p class="section-sub">
 The next generation of talent organizations will treat hiring like a core operating system: measurable, continuously optimized, and deeply aligned to business outcomes.
 SkillMirror enables this shift by converting every hiring interaction into reusable decision intelligence.</p>
-
 <div class="ai-impact-wrap">
-
 <div class="ai-panel">
 <h3>Where the Industry Is Heading</h3>
 <p>Talent teams are moving toward AI-assisted sourcing, structured interviews, and evidence-based decisioning. Organizations that operationalize this shift are seeing faster hiring velocity and stronger role-fit outcomes.</p>
@@ -994,52 +834,41 @@ SkillMirror enables this shift by converting every hiring interaction into reusa
 <div class="ai-stat"><strong>44%</strong><span>see improved quality-of-hire when using structured scoring models.</span></div>
 <div class="ai-stat"><strong>39%</strong><span>identify governance + explainability as their biggest implementation blocker.</span></div>
 </div>
-
 <div class="gap-grid">
 <div class="gap-item"><strong>Adoption Gap</strong><p>Teams buy AI tools but fail to redesign recruiter workflows around them.</p></div>
 <div class="gap-item"><strong>Data Gap</strong><p>Unstructured role and interview data limits model reliability and trust.</p></div>
 <div class="gap-item"><strong>Governance Gap</strong><p>Leadership demands traceable, explainable decisions — not black-box scoring.</p></div>
 </div>
 </div>
-
 <div class="ai-panel">
 <h3>High-Impact Areas of Implementation</h3>
 <p>Winning organizations deploy AI where it compounds recruiter output while keeping humans in control of final decisions.</p>
-
 <div class="impl-list">
 <div class="impl-row"><div class="impl-tag">Role Intake</div><div class="impl-body"><strong>Competency Mapping</strong><span>Convert job descriptions into measurable hiring criteria and weighted expectations.</span></div></div>
 <div class="impl-row"><div class="impl-tag">Screening</div><div class="impl-body"><strong>Signal Extraction</strong><span>Parse resumes and notes into structured capability evidence and risk signals.</span></div></div>
 <div class="impl-row"><div class="impl-tag">Interviews</div><div class="impl-body"><strong>Consistency Layer</strong><span>Standardize evaluation language across panelists to reduce interpretation drift.</span></div></div>
 <div class="impl-row"><div class="impl-tag">Decisioning</div><div class="impl-body"><strong>Benchmark + Explainability</strong><span>Support shortlist calls with transparent score drivers and recommendation logic.</span></div></div>
 </div>
-
 <div class="partner-band">
 <h4>How SkillMirror Supports as an AI Hiring Partner</h4>
 <p>SkillMirror bridges strategy and execution: we help teams operationalize AI in recruitment with structured data models, explainable scoring, and workflow-native decision support that recruiters can trust.</p>
 </div>
 </div>
-
 </div>
-
 </div>
   
 <section class="section" id="vision">
-
 <div class="container">
-
 <h2>Hiring Will Become Infrastructure</h2>
-
 <p class="section-sub">
 The next generation of talent organizations will run hiring as a strategic operating layer: measurable, repeatable, and continuously improved through intelligence loops.
 </p>
-
 <div class="vision-shell">
 <div class="vision-shifts">
 <div class="vision-card">
 <h3>From Individual Review to AI-Augmented Teams</h3>
 <p>Recruiters and hiring managers are supported by AI copilots that surface fit, risk, and rationale instantly.</p>
 </div>
-
 <div class="vision-card">
 <h3>From Hiring Output to Business Input</h3>
 <p>Talent decisions directly feed workforce planning, capability mapping, and long-term performance strategy.</p>
@@ -1055,47 +884,34 @@ The next generation of talent organizations will run hiring as a strategic opera
 </div>
 <div class="hero-footnote">Combines communication clarity, ownership signals, and problem-solving confidence from interview transcripts.</div>
 </div>
-
 <div class="vision-infographic">
 <div class="v-node"><span class="tag">Input Layer</span><h4>Role + Candidate Data</h4><p>Job requirements, resumes, and interview evidence are continuously structured.</p></div>
 <div class="v-node"><span class="tag">Intelligence Layer</span><h4>AI Decision Graph</h4><p>Capability signals are scored, benchmarked, and traced to evidence.</p></div>
 <div class="v-node"><span class="tag">Execution Layer</span><h4>Hiring Operations OS</h4><p>Recruiters ship faster decisions with measurable quality and governance.</p></div>
 </div>
-
 <div class="vision-kpis">
 <div class="v-kpi"><strong>24h</strong><span>Shortlist SLA</span></div>
 <div class="v-kpi"><strong>95%</strong><span>Decision Traceability</span></div>
 <div class="v-kpi"><strong>2.5×</strong><span>Recruiter Throughput</span></div>
 <div class="v-kpi"><strong>+38%</strong><span>Role Fit Precision</span></div>
 </div>
-
 <div class="vision-cta">
 <h3>Build Your Hiring Intelligence Layer</h3>
 <p>Stop screening resumes. Start engineering confident hiring decisions.</p>
 <button class="btn openPopup">Request a Strategic Demo</button>
 </div>
-
 </div>
-
 </div>
-
 </section>
-
 <footer style="text-align:center;padding:80px 0;color:#6b7280">
 © 2026 SkillMirror
 </footer>
-
 <div class="popup" id="popupForm">
-
 <div class="popup-content">
-
 <span class="popup-close" id="closePopup">✕</span>
-
 <h3>Request a SkillMirror Demo</h3>
-<p class="popup-sub">Tell us about your hiring workflow and we’ll tailor a focused walkthrough for your team.</p>
-
+<p class="popup-sub">Tell us about your hiring workflow and we'll tailor a focused walkthrough for your team.</p>
 <form id="demoRequestForm">
-
 <div class="popup-grid">
 <div class="popup-field">
 <label class="popup-label" for="fullName">Full Name</label>
@@ -1106,33 +922,45 @@ The next generation of talent organizations will run hiring as a strategic opera
 <input id="workEmail" type="email" placeholder="jane@company.com" required>
 </div>
 </div>
-
 <div class="popup-field">
 <label class="popup-label" for="companyName">Company</label>
 <input id="companyName" type="text" placeholder="Acme Inc.">
 </div>
-
 <div class="popup-field">
 <label class="popup-label" for="hiringGoals">Hiring Goals</label>
 <textarea id="hiringGoals" placeholder="Hiring 10 backend engineers in Q3. Need faster, fair shortlisting."></textarea>
 </div>
-
 <button class="demo-btn" type="submit">Request Demo</button>
 <div class="popup-success" id="popupSuccessMsg" role="status" aria-live="polite"></div>
-
 </form>
-
 </div>
-
 </div>
-
 <script>
+/* ── MOBILE NAV TOGGLE ── */
+const menuToggle = document.getElementById('menuToggle');
+const navLinks   = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', isOpen);
+  menuToggle.textContent = isOpen ? '✕' : '☰';
+});
+
+/* Close menu when a link is tapped */
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.textContent = '☰';
+  });
+});
+
+/* ── RING ANIMATION ── */
 let s=0,target=92
 const circumference=2*Math.PI*75
 const ring=document.getElementById("ring")
 function animate(){if(s>=target)return;s++;document.getElementById("score").innerText=s+"%";ring.style.strokeDashoffset=circumference-(s/100)*circumference;requestAnimationFrame(animate)}
 animate()
-
 const sentiment={pos:76,neu:18,risk:6}
 document.getElementById("sentPos").style.width=sentiment.pos+"%"
 document.getElementById("sentNeu").style.width=sentiment.neu+"%"
@@ -1140,14 +968,10 @@ document.getElementById("sentRisk").style.width=sentiment.risk+"%"
 document.getElementById("sentPosVal").innerText=sentiment.pos+"%"
 document.getElementById("sentNeuVal").innerText=sentiment.neu+"%"
 document.getElementById("sentRiskVal").innerText=sentiment.risk+"%"
-
 /* Demo */
-
 function runDemo(){
-
 const job=document.getElementById("jobInput").value.toLowerCase()
 const resume=document.getElementById("resumeInput").value.toLowerCase()
-
 const skillGroups={
 "node.js":["node","node.js","nestjs","express"],
 "aws":["aws","amazon web services"],
@@ -1161,75 +985,59 @@ const skillGroups={
 "distributed systems":["distributed","event-driven","high availability"],
 "security":["security","oauth","auth","jwt"]
 }
-
 const normalize=(input)=>input.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
 const jobText=normalize(job)
 const resumeText=normalize(resume)
-
 const extractSkills=(source)=>Object.entries(skillGroups)
   .filter(([,aliases])=>aliases.some(alias=>source.includes(alias)))
   .map(([skill])=>skill)
-
 const jobSkills=extractSkills(jobText)
 const resumeSkills=extractSkills(resumeText)
-
 const matched=jobSkills.filter(skill=>resumeSkills.includes(skill))
 const missing=jobSkills.filter(skill=>!resumeSkills.includes(skill))
-
 const yearMatch=resumeText.match(/(\d+)\s*\+?\s*(years|yrs|year)/)
 const years=yearMatch?Math.min(15,parseInt(yearMatch[1],10)):0
-
 const skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
 const expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
 const domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/Object.keys(skillGroups).length)*40+15))
 const finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
 const coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
 const marketBenchmark=78
-
 document.getElementById("demoScore").innerText=finalScore+"%"
 document.getElementById("skillScore").innerText=skillScore+"%"
 document.getElementById("expScore").innerText=expScore+"%"
 document.getElementById("domainScore").innerText=domainScore+"%"
 document.getElementById("coverageScore").innerText=coverageScore+"%"
-
 document.getElementById("barSkill").style.width=skillScore+"%"
 document.getElementById("barExp").style.width=expScore+"%"
 document.getElementById("barDomain").style.width=domainScore+"%"
-
 document.getElementById("barSkillLabel").innerText=skillScore+"%"
 document.getElementById("barExpLabel").innerText=expScore+"%"
 document.getElementById("barDomainLabel").innerText=domainScore+"%"
-
 document.getElementById("benchmarkPoint").style.left=Math.min(100,finalScore)+"%"
 document.getElementById("benchmarkLabel").innerText=`Hiring bar: ${marketBenchmark}%`
-
 const chips=document.getElementById("matchChips")
 chips.innerHTML=""
-
 matched.forEach(skill=>{
 const chip=document.createElement("span")
 chip.className="chip match"
 chip.textContent=`✔ ${skill}`
 chips.appendChild(chip)
 })
-
 missing.slice(0,5).forEach(skill=>{
 const chip=document.createElement("span")
 chip.className="chip gap"
 chip.textContent=`Gap: ${skill}`
 chips.appendChild(chip)
 })
-
 if(!matched.length && !missing.length){
 const chip=document.createElement("span")
 chip.className="chip gap"
 chip.textContent="Add more role keywords for a better analysis"
 chips.appendChild(chip)
 }
-
 const insight=document.getElementById("demoInsight")
 const statusChip=document.getElementById("statusChip")
-
 if(finalScore>=marketBenchmark){
 insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
 insight.style.color="#86efac"
@@ -1242,14 +1050,11 @@ statusChip.textContent="Below Benchmark"
 statusChip.className="status-chip fail"
 }
 }
-
 runDemo()
 /* Popup */
-
 const popup=document.getElementById("popupForm")
 const demoRequestForm=document.getElementById("demoRequestForm")
 const popupSuccessMsg=document.getElementById("popupSuccessMsg")
-
 document.querySelectorAll(".openPopup").forEach(btn=>{
 btn.onclick=()=>{
 popup.style.display="flex"
@@ -1257,30 +1062,23 @@ popupSuccessMsg.style.display="none"
 popupSuccessMsg.innerText=""
 }
 })
-
 const closePopup=()=>{
 popup.style.display="none"
 popupSuccessMsg.style.display="none"
 }
-
 document.getElementById("closePopup").onclick=closePopup
-
 window.addEventListener("click",(e)=>{
 if(e.target===popup)closePopup()
 })
-
 window.addEventListener("keydown",(e)=>{
 if(e.key==="Escape" && popup.style.display==="flex")closePopup()
 })
-
-
 demoRequestForm.addEventListener("submit",async(e)=>{
 e.preventDefault()
 const fullName=document.getElementById("fullName").value.trim() || "there"
 const workEmail=document.getElementById("workEmail").value.trim()
 const companyName=document.getElementById("companyName").value.trim()
 const hiringGoals=document.getElementById("hiringGoals").value.trim()
-
 try{
 const response=await fetch("https://formsubmit.co/ajax/mohitsaini20793@gmail.com",{
 method:"POST",
@@ -1296,9 +1094,7 @@ hiring_goals:hiringGoals,
 subject:"New SkillMirror Demo Request"
 })
 })
-
 if(!response.ok) throw new Error("Failed to send")
-
 popupSuccessMsg.style.display="block"
 popupSuccessMsg.style.color="#bbf7d0"
 popupSuccessMsg.innerText=`Thanks ${fullName}! Your demo request was sent successfully.`
@@ -1309,8 +1105,6 @@ popupSuccessMsg.style.color="#fdba74"
 popupSuccessMsg.innerText="We couldn't send your request right now. Please email mohitsaini20793@gmail.com directly."
 }
 })
-
 </script>
-
 </body>
 </html>
