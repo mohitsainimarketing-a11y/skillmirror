@@ -905,8 +905,8 @@ The next generation of talent organizations will run hiring as a strategic opera
 </section>
 <footer style="text-align:center;padding:80px 0;color:#6b7280">
   <p style="font-size:15px;margin-bottom:10px;color:#9ca3af;letter-spacing:.01em">Get in touch</p>
-  <a href="mailto:info@skillmirror.com" style="font-size:18px;font-weight:600;color:#e2e8f0;text-decoration:none;border-bottom:1px solid rgba(148,163,184,.3);padding-bottom:2px;">info@skillmirror.com</a>
-  <p style="margin-top:32px;font-size:13px">© 2026 SkillMirror (Helios HR Solutions Pvt. Ltd.)</p>
+  <a href="/cdn-cgi/l/email-protection#caa3a4aca58ab9a1a3a6a6a7a3b8b8a5b8e4a9a5a7" style="font-size:18px;font-weight:600;color:#e2e8f0;text-decoration:none;border-bottom:1px solid rgba(148,163,184,.3);padding-bottom:2px;"><span class="__cf_email__" data-cfemail="771e19111837041c1e1b1b1a1e050518055914181a">[email&#160;protected]</span></a>
+  <p style="margin-top:32px;font-size:13px">© 2026 SkillMirror</p>
 </footer>
 <div class="popup" id="popupForm">
 <div class="popup-content">
@@ -937,7 +937,7 @@ The next generation of talent organizations will run hiring as a strategic opera
 </form>
 </div>
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── MOBILE NAV TOGGLE ── */
 const menuToggle = document.getElementById('menuToggle');
 const navLinks   = document.getElementById('navLinks');
@@ -970,89 +970,153 @@ document.getElementById("sentRisk").style.width=sentiment.risk+"%"
 document.getElementById("sentPosVal").innerText=sentiment.pos+"%"
 document.getElementById("sentNeuVal").innerText=sentiment.neu+"%"
 document.getElementById("sentRiskVal").innerText=sentiment.risk+"%"
-/* Demo */
-function runDemo(){
-const job=document.getElementById("jobInput").value.toLowerCase()
-const resume=document.getElementById("resumeInput").value.toLowerCase()
-const skillGroups={
-"node.js":["node","node.js","nestjs","express"],
-"aws":["aws","amazon web services"],
-"microservices":["microservice","microservices"],
-"system design":["system design","architecture","scalable systems"],
-"backend":["backend","server-side"],
-"api":["api","rest","graphql"],
-"cloud":["cloud","gcp","azure"],
-"kubernetes":["kubernetes","k8s"],
-"sql":["sql","postgres","mysql"],
-"distributed systems":["distributed","event-driven","high availability"],
-"security":["security","oauth","auth","jwt"]
+/* ── AI-POWERED DEMO ── */
+async function runDemo(){
+  const job    = document.getElementById("jobInput").value.trim();
+  const resume = document.getElementById("resumeInput").value.trim();
+  if(!job || !resume) return;
+
+  const btn = document.querySelector('#demo .btn[onclick]');
+  btn.disabled = true;
+  btn.textContent = "Analyzing…";
+
+  // Reset UI to loading state
+  ["demoScore","skillScore","expScore","domainScore","coverageScore"].forEach(id=>{
+    document.getElementById(id).innerText = "—";
+  });
+  ["barSkill","barExp","barDomain"].forEach(id=>{
+    document.getElementById(id).style.width = "0%";
+  });
+  ["barSkillLabel","barExpLabel","barDomainLabel"].forEach(id=>{
+    document.getElementById(id).innerText = "…";
+  });
+  document.getElementById("matchChips").innerHTML = "";
+  document.getElementById("demoInsight").innerText = "AI is analyzing the match…";
+  document.getElementById("demoInsight").style.color = "#9ca3af";
+  document.getElementById("statusChip").textContent = "Analyzing";
+  document.getElementById("statusChip").className   = "status-chip";
+  document.getElementById("benchmarkPoint").style.left = "0%";
+
+  const prompt = `You are a senior technical recruiter and hiring intelligence engine.
+
+Analyze the fit between this Job Description and Candidate Resume. Return ONLY a valid JSON object — no markdown, no explanation, no extra text.
+
+JOB DESCRIPTION:
+${job}
+
+CANDIDATE RESUME:
+${resume}
+
+Return exactly this JSON shape:
+{
+  "overallScore": <integer 0-100>,
+  "skillAlignment": <integer 0-100>,
+  "experienceDepth": <integer 0-100>,
+  "domainExposure": <integer 0-100>,
+  "keywordCoverage": <integer 0-100>,
+  "matchedSkills": [<up to 6 short skill strings that appear in both>],
+  "gapSkills": [<up to 5 short skill strings required by JD but missing from resume>],
+  "insight": "<one sharp, specific sentence telling a recruiter what to do next>",
+  "verdict": "above" | "below"
 }
-const normalize=(input)=>input.replace(/[^a-z0-9+.#\s-]/g," ").replace(/\s+/g," ").trim()
-const jobText=normalize(job)
-const resumeText=normalize(resume)
-const extractSkills=(source)=>Object.entries(skillGroups)
-  .filter(([,aliases])=>aliases.some(alias=>source.includes(alias)))
-  .map(([skill])=>skill)
-const jobSkills=extractSkills(jobText)
-const resumeSkills=extractSkills(resumeText)
-const matched=jobSkills.filter(skill=>resumeSkills.includes(skill))
-const missing=jobSkills.filter(skill=>!resumeSkills.includes(skill))
-const yearMatch=resumeText.match(/(\d+)\s*\+?\s*(years|yrs|year)/)
-const years=yearMatch?Math.min(15,parseInt(yearMatch[1],10)):0
-const skillScore=Math.round((matched.length/(jobSkills.length||1))*100)
-const expScore=Math.min(95,Math.round(skillScore*0.65+years*4+25))
-const domainScore=Math.min(92,Math.round(skillScore*0.5+(resumeSkills.length/Object.keys(skillGroups).length)*40+15))
-const finalScore=Math.round(skillScore*0.55+expScore*0.25+domainScore*0.2)
-const coverageScore=Math.round((resumeSkills.length/Object.keys(skillGroups).length)*100)
-const marketBenchmark=78
-document.getElementById("demoScore").innerText=finalScore+"%"
-document.getElementById("skillScore").innerText=skillScore+"%"
-document.getElementById("expScore").innerText=expScore+"%"
-document.getElementById("domainScore").innerText=domainScore+"%"
-document.getElementById("coverageScore").innerText=coverageScore+"%"
-document.getElementById("barSkill").style.width=skillScore+"%"
-document.getElementById("barExp").style.width=expScore+"%"
-document.getElementById("barDomain").style.width=domainScore+"%"
-document.getElementById("barSkillLabel").innerText=skillScore+"%"
-document.getElementById("barExpLabel").innerText=expScore+"%"
-document.getElementById("barDomainLabel").innerText=domainScore+"%"
-document.getElementById("benchmarkPoint").style.left=Math.min(100,finalScore)+"%"
-document.getElementById("benchmarkLabel").innerText=`Hiring bar: ${marketBenchmark}%`
-const chips=document.getElementById("matchChips")
-chips.innerHTML=""
-matched.forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip match"
-chip.textContent=`✔ ${skill}`
-chips.appendChild(chip)
-})
-missing.slice(0,5).forEach(skill=>{
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent=`Gap: ${skill}`
-chips.appendChild(chip)
-})
-if(!matched.length && !missing.length){
-const chip=document.createElement("span")
-chip.className="chip gap"
-chip.textContent="Add more role keywords for a better analysis"
-chips.appendChild(chip)
+
+Scoring rules:
+- Base all scores on genuine semantic understanding, not just keyword matching.
+- overallScore: weighted composite (skillAlignment 50%, experienceDepth 30%, domainExposure 20%).
+- skillAlignment: how well the candidate's demonstrated skills cover the JD requirements.
+- experienceDepth: seniority and depth of relevant experience implied by the resume.
+- domainExposure: breadth of relevant domain/industry exposure.
+- keywordCoverage: literal keyword overlap as a percentage.
+- verdict: "above" if overallScore >= 72, otherwise "below".
+- insight must be specific to THIS candidate and THIS role — no generic phrases.`;
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const raw  = data.content.map(b => b.text || "").join("").replace(/```json|```/g,"").trim();
+    const r    = JSON.parse(raw);
+
+    const marketBenchmark = 72;
+
+    // Animate overall score counter
+    let s = 0, target = r.overallScore;
+    const circumference = 2 * Math.PI * 75;
+    const ring = document.getElementById("ring");
+    function countUp(){
+      if(s >= target) return;
+      s++;
+      document.getElementById("demoScore").innerText = s + "%";
+      requestAnimationFrame(countUp);
+    }
+    countUp();
+
+    document.getElementById("skillScore").innerText    = r.skillAlignment   + "%";
+    document.getElementById("expScore").innerText      = r.experienceDepth  + "%";
+    document.getElementById("domainScore").innerText   = r.domainExposure   + "%";
+    document.getElementById("coverageScore").innerText = r.keywordCoverage  + "%";
+
+    // Animate bars
+    requestAnimationFrame(()=>{
+      document.getElementById("barSkill").style.width  = r.skillAlignment  + "%";
+      document.getElementById("barExp").style.width    = r.experienceDepth + "%";
+      document.getElementById("barDomain").style.width = r.domainExposure  + "%";
+    });
+    document.getElementById("barSkillLabel").innerText  = r.skillAlignment  + "%";
+    document.getElementById("barExpLabel").innerText    = r.experienceDepth + "%";
+    document.getElementById("barDomainLabel").innerText = r.domainExposure  + "%";
+
+    document.getElementById("benchmarkPoint").style.left = Math.min(100, r.overallScore) + "%";
+    document.getElementById("benchmarkLabel").innerText  = `Hiring bar: ${marketBenchmark}%`;
+
+    // Chips
+    const chips = document.getElementById("matchChips");
+    chips.innerHTML = "";
+    (r.matchedSkills || []).forEach(skill => {
+      const c = document.createElement("span");
+      c.className   = "chip match";
+      c.textContent = `✔ ${skill}`;
+      chips.appendChild(c);
+    });
+    (r.gapSkills || []).forEach(skill => {
+      const c = document.createElement("span");
+      c.className   = "chip gap";
+      c.textContent = `Gap: ${skill}`;
+      chips.appendChild(c);
+    });
+
+    // Insight + verdict
+    const insight    = document.getElementById("demoInsight");
+    const statusChip = document.getElementById("statusChip");
+    insight.innerText = r.insight;
+    if(r.verdict === "above"){
+      insight.style.color      = "#86efac";
+      statusChip.textContent   = "Above Benchmark";
+      statusChip.className     = "status-chip pass";
+    } else {
+      insight.style.color      = "#fdba74";
+      statusChip.textContent   = "Below Benchmark";
+      statusChip.className     = "status-chip fail";
+    }
+
+  } catch(err) {
+    document.getElementById("demoInsight").innerText    = "Analysis failed — please try again.";
+    document.getElementById("demoInsight").style.color  = "#fdba74";
+    document.getElementById("statusChip").textContent   = "Error";
+    console.error(err);
+  }
+
+  btn.disabled    = false;
+  btn.textContent = "Analyze Candidate";
 }
-const insight=document.getElementById("demoInsight")
-const statusChip=document.getElementById("statusChip")
-if(finalScore>=marketBenchmark){
-insight.innerText="Above benchmark: fast-track to technical interview and validate architecture depth."
-insight.style.color="#86efac"
-statusChip.textContent="Above Benchmark"
-statusChip.className="status-chip pass"
-}else{
-insight.innerText="Below benchmark: keep in backup pool or run targeted screening for missing competencies."
-insight.style.color="#fdba74"
-statusChip.textContent="Below Benchmark"
-statusChip.className="status-chip fail"
-}
-}
-runDemo()
+runDemo();
 /* Popup */
 const popup=document.getElementById("popupForm")
 const demoRequestForm=document.getElementById("demoRequestForm")
@@ -1100,13 +1164,4 @@ if(!response.ok) throw new Error("Failed to send")
 popupSuccessMsg.style.display="block"
 popupSuccessMsg.style.color="#bbf7d0"
 popupSuccessMsg.innerText=`Thanks ${fullName}! Your demo request was sent successfully.`
-demoRequestForm.reset()
-}catch(err){
-popupSuccessMsg.style.display="block"
-popupSuccessMsg.style.color="#fdba74"
-popupSuccessMsg.innerText="We couldn't send your request right now. Please email mohitsaini20793@gmail.com directly."
-}
-})
-</script>
-</body>
-</html>
+demoRequestForm.r
